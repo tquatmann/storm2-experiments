@@ -239,9 +239,9 @@
 	},
 	"polling-system.3-3-5.TmaxBothFull": {
 		"type": "maqvbs",
-		"jani": "polling-system/polling-system.jani",
+		"jani": "polling-system/polling-system.3.jani",
 		"property": "TmaxBothFull",
-		"constants": "JOB_TYPES=3,C=3,TIME_BOUND=5",
+		"constants": "C=3,TIME_BOUND=5",
 		"reference-result": "656520718285914541189633/104245454153608704"
 	},
 	"ftwc.8-5.TimeMin": {

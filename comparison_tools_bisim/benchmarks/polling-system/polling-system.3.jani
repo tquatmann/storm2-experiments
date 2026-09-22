@@ -4,7 +4,6 @@
 	"type": "ma",
 	"features": [
 		"derived-operators",
-		"nondet-selection",
 		"arrays"
 	],
 	"actions": [
@@ -19,10 +18,6 @@
 		}
 	],
 	"constants": [
-		{
-			"name": "JOB_TYPES",
-			"type": "int"
-		},
 		{
 			"name": "C",
 			"type": "int"
@@ -39,7 +34,7 @@
 				"kind": "bounded",
 				"base": "int",
 				"lower-bound": 0,
-				"upper-bound": "JOB_TYPES"
+				"upper-bound": 3
 			},
 			"transient": true,
 			"initial-value": 0
@@ -155,9 +150,7 @@
 				"values": {
 					"op": "Emin",
 					"exp": 1,
-					"accumulate": [
-						"time"
-					],
+					"accumulate": [ "time" ],
 					"reach": {
 						"op": "∧",
 						"left": {
@@ -193,9 +186,7 @@
 				"values": {
 					"op": "Emax",
 					"exp": 1,
-					"accumulate": [
-						"time"
-					],
+					"accumulate": [ "time" ],
 					"reach": {
 						"op": "∧",
 						"left": {
@@ -271,26 +262,32 @@
 				"values": {
 					"op": "Smax",
 					"exp": {
-						"op": "∧",
-						"left": {
-							"op": "=",
+						"op": "ite",
+						"if": {
+							"op": "∧",
 							"left": {
-								"op": "aa",
-								"exp": "size",
-								"index": 0
+								"op": "=",
+								"left": {
+									"op": "aa",
+									"exp": "size",
+									"index": 0
+								},
+								"right": "C"
 							},
-							"right": "C"
+							"right": {
+								"op": "=",
+								"left": {
+									"op": "aa",
+									"exp": "size",
+									"index": 1
+								},
+								"right": "C"
+							}
 						},
-						"right": {
-							"op": "=",
-							"left": {
-								"op": "aa",
-								"exp": "size",
-								"index": 1
-							},
-							"right": "C"
-						}
-					}
+						"then": 1,
+						"else": 0
+					},
+					"accumulate": [ "time" ]
 				},
 				"states": {
 					"op": "initial"
@@ -330,7 +327,7 @@
 							"kind": "bounded",
 							"base": "int",
 							"lower-bound": 0,
-							"upper-bound": "JOB_TYPES"
+							"upper-bound": 3
 						}
 					},
 					"initial-value": {
@@ -579,26 +576,103 @@
 										}
 									}
 								},
+								"value": 1
+							},
+							{
+								"ref": {
+									"op": "aa",
+									"exp": "size",
+									"index": {
+										"op": "-",
+										"left": "id",
+										"right": 1
+									}
+								},
 								"value": {
-									"op": "trc",
-									"exp": {
-										"op": "nondet",
-										"var": "i",
-										"exp": {
-											"op": "∧",
-											"left": {
-												"op": "≤",
-												"left": 1,
-												"right": "i"
-											},
-											"right": {
-												"op": "≤",
-												"left": "i",
-												"right": "JOB_TYPES"
-											}
+									"op": "+",
+									"left": {
+										"op": "aa",
+										"exp": "size",
+										"index": {
+											"op": "-",
+											"left": "id",
+											"right": 1
+										}
+									},
+									"right": 1
+								}
+							}
+						]
+					} ]
+				},
+				{
+					"location": "loc_14",
+					"destinations": [ {
+						"location": "loc_18",
+						"assignments": [
+							{
+								"ref": {
+									"op": "aa",
+									"exp": "q",
+									"index": {
+										"op": "aa",
+										"exp": "size",
+										"index": {
+											"op": "-",
+											"left": "id",
+											"right": 1
 										}
 									}
+								},
+								"value": 2
+							},
+							{
+								"ref": {
+									"op": "aa",
+									"exp": "size",
+									"index": {
+										"op": "-",
+										"left": "id",
+										"right": 1
+									}
+								},
+								"value": {
+									"op": "+",
+									"left": {
+										"op": "aa",
+										"exp": "size",
+										"index": {
+											"op": "-",
+											"left": "id",
+											"right": 1
+										}
+									},
+									"right": 1
 								}
+							}
+						]
+					} ]
+				},
+				{
+					"location": "loc_14",
+					"destinations": [ {
+						"location": "loc_18",
+						"assignments": [
+							{
+								"ref": {
+									"op": "aa",
+									"exp": "q",
+									"index": {
+										"op": "aa",
+										"exp": "size",
+										"index": {
+											"op": "-",
+											"left": "id",
+											"right": 1
+										}
+									}
+								},
+								"value": 3
 							},
 							{
 								"ref": {
@@ -660,7 +734,7 @@
 							"kind": "bounded",
 							"base": "int",
 							"lower-bound": 0,
-							"upper-bound": "JOB_TYPES"
+							"upper-bound": 3
 						}
 					},
 					"initial-value": {
@@ -909,26 +983,103 @@
 										}
 									}
 								},
+								"value": 1
+							},
+							{
+								"ref": {
+									"op": "aa",
+									"exp": "size",
+									"index": {
+										"op": "-",
+										"left": "id",
+										"right": 1
+									}
+								},
 								"value": {
-									"op": "trc",
-									"exp": {
-										"op": "nondet",
-										"var": "i",
-										"exp": {
-											"op": "∧",
-											"left": {
-												"op": "≤",
-												"left": 1,
-												"right": "i"
-											},
-											"right": {
-												"op": "≤",
-												"left": "i",
-												"right": "JOB_TYPES"
-											}
+									"op": "+",
+									"left": {
+										"op": "aa",
+										"exp": "size",
+										"index": {
+											"op": "-",
+											"left": "id",
+											"right": 1
+										}
+									},
+									"right": 1
+								}
+							}
+						]
+					} ]
+				},
+				{
+					"location": "loc_14",
+					"destinations": [ {
+						"location": "loc_18",
+						"assignments": [
+							{
+								"ref": {
+									"op": "aa",
+									"exp": "q",
+									"index": {
+										"op": "aa",
+										"exp": "size",
+										"index": {
+											"op": "-",
+											"left": "id",
+											"right": 1
 										}
 									}
+								},
+								"value": 2
+							},
+							{
+								"ref": {
+									"op": "aa",
+									"exp": "size",
+									"index": {
+										"op": "-",
+										"left": "id",
+										"right": 1
+									}
+								},
+								"value": {
+									"op": "+",
+									"left": {
+										"op": "aa",
+										"exp": "size",
+										"index": {
+											"op": "-",
+											"left": "id",
+											"right": 1
+										}
+									},
+									"right": 1
 								}
+							}
+						]
+					} ]
+				},
+				{
+					"location": "loc_14",
+					"destinations": [ {
+						"location": "loc_18",
+						"assignments": [
+							{
+								"ref": {
+									"op": "aa",
+									"exp": "q",
+									"index": {
+										"op": "aa",
+										"exp": "size",
+										"index": {
+											"op": "-",
+											"left": "id",
+											"right": 1
+										}
+									}
+								},
+								"value": 3
 							},
 							{
 								"ref": {
@@ -976,7 +1127,7 @@
 					"kind": "bounded",
 					"base": "int",
 					"lower-bound": 1,
-					"upper-bound": "JOB_TYPES"
+					"upper-bound": 3
 				},
 				"initial-value": 1
 			} ],

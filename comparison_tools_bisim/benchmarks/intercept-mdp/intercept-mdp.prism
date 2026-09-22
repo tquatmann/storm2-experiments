@@ -27,13 +27,9 @@ formula southenabled = dx != dxMAX;
 formula westenabled = dy != dyMIN;
 formula eastenabled = dy != dyMAX;
 formula done = start & (dx = ax & dy = ay) | left;
-observable "amdone" = done;
 formula left =  (ax = axMIN & ay = ayMAX-1) | (ax = axMIN + 1 & ay = ayMIN)  ;
-observable "hasleft" = left;
 formula laserdet = ax >= CAMERAXMIN & ax <= CAMERAXMAX & ay >= CAMERAYMIN & ay <= CAMERAYMAX;
 formula seedrone = ax-dx < RADIUS + 1 & dx-ax < RADIUS +1 & ay-dy < RADIUS+1 & dy -ay < RADIUS+1;
-observable "seedx" = (laserdet | seedrone) ? ax : -1;
-observable "seedy" = (laserdet | seedrone) ? ay : -1;
 
 
 module master
@@ -77,3 +73,7 @@ endmodule
 label "goal" = done & !left;
 label "notbad" =  !left;
 label "exits" = left;
+
+rewards "time"
+	true : 1;
+endrewards

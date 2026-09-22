@@ -51,3 +51,7 @@ endmodule
 label "goal" = done;
 label "traps" = crash;
 label "notbad" =  !crash;
+
+rewards "time"
+	true : 1;
+endrewards

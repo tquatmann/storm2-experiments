@@ -15,17 +15,17 @@ endmodule
 
 formula L = p = 0;
 formula M = p > 0 & p <= Pr-1;
-formula R = p >= Pr-1;
+formula Rreg = p >= Pr-1;
 
 module gv
     p : [0..Pr] init Pr;
 
     [approach] M -> 0.99-((d-1)/Dmax)*0.3: (p'=max(0,p-1)) + 0.01+((d-1)/Dmax)*0.3: (p'=p);
     [stay] M -> 0.99-(d/Dmax)*0.3: (p'=max(0,p-1)) + 0.01+(d/Dmax)*0.3: (p'=p);
-    [approach] R -> 0.99-((d-1)/Dmax)*0.2: (p'=p) + 0.01+((d-1)/Dmax)*0.2: (p'=max(0,p-1));
-    [approach] R -> (p'=p);
-    [stay] R -> 0.99-(d/Dmax)*0.2: (p'=p) + 0.01+(d/Dmax)*0.2: (p'=max(0,p-1));
-    [stay] R -> (p'=p);
+    [approach] Rreg -> 0.99-((d-1)/Dmax)*0.2: (p'=p) + 0.01+((d-1)/Dmax)*0.2: (p'=max(0,p-1));
+    [approach] Rreg -> (p'=p);
+    [stay] Rreg -> 0.99-(d/Dmax)*0.2: (p'=p) + 0.01+(d/Dmax)*0.2: (p'=max(0,p-1));
+    [stay] Rreg -> (p'=p);
     [approach] L -> (p'=p);
 endmodule
 
@@ -53,3 +53,7 @@ module master
 endmodule
 
 label "crash" = M & d=0;
+
+rewards "time"
+	true : 1;
+endrewards

@@ -14,7 +14,7 @@ const int right = 2*(K+1)*N - N;
 const int MEC_SIZE = 10;
 module mecs  // dummy module to introduce mecs
  mecs_circle : [0..MEC_SIZE-1];
- [] true -> 0.5 : (mecs_circle'=(mecs_circle+1) % MEC_SIZE) + 0.5 : (mecs_circle'=0);
+ [] true -> 0.5 : (mecs_circle'=mod(mecs_circle+1, MEC_SIZE)) + 0.5 : (mecs_circle'=0);
 endmodule
 
 // shared coin

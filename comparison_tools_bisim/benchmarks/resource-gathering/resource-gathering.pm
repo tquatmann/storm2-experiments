@@ -87,3 +87,7 @@ module gemcounter
 endmodule
 
 label "success" = required_gold=0 & required_gem=0;
+
+rewards "time"
+	true : 1;
+endrewards

@@ -1,1 +1,1 @@
-"steps_min": Tmin=? [F "goal"];
+"steps_min": R{"time"}min=? [F "goal"];

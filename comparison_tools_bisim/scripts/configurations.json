@@ -26,7 +26,7 @@
   },
   "prism-default": {
     "bin": "bin/prism",
-    "cmd": "%prism %prism-property --prop %property -const %constants",
+    "cmd": "%prism %prism-property --prop %property -const %constants -maxiters 1000000",
     "description": ""
   }
 }

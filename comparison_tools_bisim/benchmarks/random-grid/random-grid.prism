@@ -13,4 +13,6 @@ endmodule
 module agenty=agentx[x=y] endmodule
 module agentz=agentx[x=z] endmodule
 
-
+rewards "time"
+	true : 1;
+endrewards

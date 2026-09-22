@@ -1,0 +1,61 @@
+\documentclass[a4paper]{article}
+
+\usepackage[margin=2cm]{geometry}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{ifthen}
+\usepackage{amsmath}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{pgfplots.groupplots}
+
+\input{plots}
+
+\begin{document}
+
+\section*{Tool comparison}
+
+\begin{figure}[t]
+    \centering
+    \quantileplot{%
+        storm-default/colstorm/\cfgstorm,
+        storm-exact/colstormexact/\cfgstormexact,
+        mcsta-default/colmcsta/\cfgmcsta,
+        prism-default/colprism/\cfgprism}
+
+    \medskip
+
+    \scatterplot{storm-default}{\cfgstorm}{mcsta-default}{\cfgmcsta}{true}\hfill
+    \scatterplot{storm-default}{\cfgstorm}{prism-default}{\cfgprism}{false}\hfill
+    \scatterplot{storm-default}{\cfgstorm}{storm-exact}{\cfgstormexact}{false}
+
+    \caption{Comparison of \cfgstorm, \cfgstormexact, \cfgmcsta{} and \cfgprism.
+    Top: quantile plot of the runtimes. Bottom: runtime of the other
+    configurations against \cfgstorm. Points marked \emph{TO} ran out of time or
+    memory, \emph{inc} produced an incorrect result, and \emph{n/a} produced no
+    result or were not applicable.}
+    \label{fig:tools}
+\end{figure}
+
+\begin{figure}[t]
+    \centering
+    \quantileplot{%
+        storm-default/colstorm/\cfgstorm,
+        storm-default-bisim/colstormbisim/\cfgstormbisim,
+        storm-exact/colstormexact/\cfgstormexact,
+        storm-exact-bisim/colstormexactbisim/\cfgstormexactbisim}
+
+    \medskip
+
+    \scatterplot{storm-default}{\cfgstorm}{storm-default-bisim}{\cfgstormbisim}{true}\hfill
+    \scatterplot{storm-exact}{\cfgstormexact}{storm-exact-bisim}{\cfgstormexactbisim}{false}\hfill
+    \statesscatterplot{states}{states of the input model}{states-storm-default-bisim}{states of the quotient}
+
+    \caption{Effect of bisimulation minimisation. Top: quantile plot of the
+    runtimes with and without minimisation. Bottom left and middle: runtime
+    with against runtime without minimisation. Bottom right: size of the input
+    model against the size of the bisimulation quotient computed by
+    \cfgstormbisim.}
+    \label{fig:bisim}
+\end{figure}
+
+\end{document}

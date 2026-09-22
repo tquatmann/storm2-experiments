@@ -1,0 +1,55 @@
+mdp
+
+const int DMAX;
+const int PMAX;
+
+const int Dmax = DMAX - 1;
+const int Pr = PMAX - 1;
+
+module plane
+    d : [0..Dmax] init Dmax;
+
+    [approach] d > 0 -> 1: (d'=d-1);
+    [stay] true -> 1: (d'=d);
+endmodule
+
+formula L = p = 0;
+formula M = p > 0 & p <= Pr-1;
+formula R = p >= Pr-1;
+
+module gv
+    p : [0..Pr] init Pr;
+
+    [approach] M -> 0.99-((d-1)/Dmax)*0.3: (p'=max(0,p-1)) + 0.01+((d-1)/Dmax)*0.3: (p'=p);
+    [stay] M -> 0.99-(d/Dmax)*0.3: (p'=max(0,p-1)) + 0.01+(d/Dmax)*0.3: (p'=p);
+    [approach] R -> 0.99-((d-1)/Dmax)*0.2: (p'=p) + 0.01+((d-1)/Dmax)*0.2: (p'=max(0,p-1));
+    [approach] R -> (p'=p);
+    [stay] R -> 0.99-(d/Dmax)*0.2: (p'=p) + 0.01+(d/Dmax)*0.2: (p'=max(0,p-1));
+    [stay] R -> (p'=p);
+    [approach] L -> (p'=p);
+endmodule
+
+module sensor
+    pobs : [0..Pr] init Pr;
+    [measure] mode = 0 -> 0.01 + 0.05*(d/Dmax):(pobs'=max(p-3,0)) + 0.02 + 0.07*(d/Dmax):(pobs'=max(p-2,0)) + 0.04+0.11*(d/Dmax): (pobs'=max(p-1,0)) + 0.86-0.46*(d/Dmax): (pobs'=p) +
+0.04+0.11*(d/Dmax): (pobs'=min(p+1,Pr)) + 0.02 + 0.07*(d/Dmax): (pobs'=min(p+2,Pr)) + 0.01 + 0.05*(d/Dmax): (pobs'=min(p+3,Pr)) ;
+    [measure] mode = 1 -> 0.04 + 0.06*(d/Dmax):(pobs'=max(p-3,0)) + 0.05 + 0.08*(d/Dmax):(pobs'=max(p-2,0)) + 0.06+0.12*(d/Dmax): (pobs'=max(p-1,0)) + 0.70-0.52*(d/Dmax): (pobs'=p) +
+0.06+0.12*(d/Dmax): (pobs'=min(p+1,Pr)) + 0.05 + 0.08*(d/Dmax): (pobs'=min(p+2,Pr)) + 0.04 + 0.06*(d/Dmax): (pobs'=min(p+3,Pr)) ;
+endmodule
+
+module sensorqual
+    mode : [0..1] init 0;
+    [approach] mode=0 -> 0.95:(mode'=mode) + 0.05: (mode'=1-mode);
+    [approach] mode=1 -> 0.99:(mode'=mode) + 0.01: (mode'=1-mode);
+    [stay] mode=0 -> 0.95:(mode'=mode) + 0.05: (mode'=1-mode);
+    [stay] mode=1 -> 0.99:(mode'=mode) + 0.01: (mode'=1-mode);
+endmodule
+
+module master
+    turn : [0..1] init 1;
+    [approach] turn=1 -> (turn'=0);
+    [stay] turn=1 -> (turn'=0);
+    [measure] turn=0 -> (turn'=1);
+endmodule
+
+label "crash" = M & d=0;

@@ -1,0 +1,1775 @@
+{
+    "actions": [
+        {
+            "name": "approach"
+        },
+        {
+            "name": "measure"
+        },
+        {
+            "name": "stay"
+        }
+    ],
+    "automata": [
+        {
+            "edges": [
+                {
+                    "action": "approach",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "d <- (d - 1)",
+                                    "ref": "d",
+                                    "value": {
+                                        "left": "d",
+                                        "op": "-",
+                                        "right": 1
+                                    }
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(d > 0)",
+                        "exp": {
+                            "left": "d",
+                            "op": ">",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "stay",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "d <- d",
+                                    "ref": "d",
+                                    "value": "d"
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "location": "l"
+                }
+            ],
+            "initial-locations": [
+                "l"
+            ],
+            "locations": [
+                {
+                    "name": "l",
+                    "transient-values": [
+                        {
+                            "comment": "crash <- (M & (d = 0))",
+                            "ref": "crash",
+                            "value": {
+                                "left": {
+                                    "args": [],
+                                    "function": "M",
+                                    "op": "call"
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "d",
+                                    "op": "=",
+                                    "right": 0
+                                }
+                            }
+                        }
+                    ]
+                }
+            ],
+            "name": "plane",
+            "variables": []
+        },
+        {
+            "edges": [
+                {
+                    "action": "approach",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p <- (max(0, (p - 1)))",
+                                    "ref": "p",
+                                    "value": {
+                                        "left": 0,
+                                        "op": "max",
+                                        "right": {
+                                            "left": "p",
+                                            "op": "-",
+                                            "right": 1
+                                        }
+                                    }
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(99/100 - (((d - 1) / (DMAX - 1)) * 3/10))",
+                                "exp": {
+                                    "left": 0.99,
+                                    "op": "-",
+                                    "right": {
+                                        "left": {
+                                            "left": {
+                                                "left": "d",
+                                                "op": "-",
+                                                "right": 1
+                                            },
+                                            "op": "/",
+                                            "right": {
+                                                "left": "DMAX",
+                                                "op": "-",
+                                                "right": 1
+                                            }
+                                        },
+                                        "op": "*",
+                                        "right": 0.3
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p <- p",
+                                    "ref": "p",
+                                    "value": "p"
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(1/100 + (((d - 1) / (DMAX - 1)) * 3/10))",
+                                "exp": {
+                                    "left": {
+                                        "left": 1.0,
+                                        "op": "/",
+                                        "right": 100.0
+                                    },
+                                    "op": "+",
+                                    "right": {
+                                        "left": {
+                                            "left": {
+                                                "left": "d",
+                                                "op": "-",
+                                                "right": 1
+                                            },
+                                            "op": "/",
+                                            "right": {
+                                                "left": "DMAX",
+                                                "op": "-",
+                                                "right": 1
+                                            }
+                                        },
+                                        "op": "*",
+                                        "right": 0.3
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "M",
+                        "exp": {
+                            "args": [],
+                            "function": "M",
+                            "op": "call"
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "approach",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p <- p",
+                                    "ref": "p",
+                                    "value": "p"
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(99/100 - (((d - 1) / (DMAX - 1)) * 1/5))",
+                                "exp": {
+                                    "left": 0.99,
+                                    "op": "-",
+                                    "right": {
+                                        "left": {
+                                            "left": {
+                                                "left": "d",
+                                                "op": "-",
+                                                "right": 1
+                                            },
+                                            "op": "/",
+                                            "right": {
+                                                "left": "DMAX",
+                                                "op": "-",
+                                                "right": 1
+                                            }
+                                        },
+                                        "op": "*",
+                                        "right": {
+                                            "left": 1.0,
+                                            "op": "/",
+                                            "right": 5.0
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p <- (max(0, (p - 1)))",
+                                    "ref": "p",
+                                    "value": {
+                                        "left": 0,
+                                        "op": "max",
+                                        "right": {
+                                            "left": "p",
+                                            "op": "-",
+                                            "right": 1
+                                        }
+                                    }
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(1/100 + (((d - 1) / (DMAX - 1)) * 1/5))",
+                                "exp": {
+                                    "left": {
+                                        "left": 1.0,
+                                        "op": "/",
+                                        "right": 100.0
+                                    },
+                                    "op": "+",
+                                    "right": {
+                                        "left": {
+                                            "left": {
+                                                "left": "d",
+                                                "op": "-",
+                                                "right": 1
+                                            },
+                                            "op": "/",
+                                            "right": {
+                                                "left": "DMAX",
+                                                "op": "-",
+                                                "right": 1
+                                            }
+                                        },
+                                        "op": "*",
+                                        "right": {
+                                            "left": 1.0,
+                                            "op": "/",
+                                            "right": 5.0
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "R",
+                        "exp": {
+                            "args": [],
+                            "function": "R",
+                            "op": "call"
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "approach",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p <- p",
+                                    "ref": "p",
+                                    "value": "p"
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "R",
+                        "exp": {
+                            "args": [],
+                            "function": "R",
+                            "op": "call"
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "approach",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p <- p",
+                                    "ref": "p",
+                                    "value": "p"
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "L",
+                        "exp": {
+                            "args": [],
+                            "function": "L",
+                            "op": "call"
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "stay",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p <- (max(0, (p - 1)))",
+                                    "ref": "p",
+                                    "value": {
+                                        "left": 0,
+                                        "op": "max",
+                                        "right": {
+                                            "left": "p",
+                                            "op": "-",
+                                            "right": 1
+                                        }
+                                    }
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(99/100 - ((d / (DMAX - 1)) * 3/10))",
+                                "exp": {
+                                    "left": 0.99,
+                                    "op": "-",
+                                    "right": {
+                                        "left": {
+                                            "left": "d",
+                                            "op": "/",
+                                            "right": {
+                                                "left": "DMAX",
+                                                "op": "-",
+                                                "right": 1
+                                            }
+                                        },
+                                        "op": "*",
+                                        "right": 0.3
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p <- p",
+                                    "ref": "p",
+                                    "value": "p"
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(1/100 + ((d / (DMAX - 1)) * 3/10))",
+                                "exp": {
+                                    "left": {
+                                        "left": 1.0,
+                                        "op": "/",
+                                        "right": 100.0
+                                    },
+                                    "op": "+",
+                                    "right": {
+                                        "left": {
+                                            "left": "d",
+                                            "op": "/",
+                                            "right": {
+                                                "left": "DMAX",
+                                                "op": "-",
+                                                "right": 1
+                                            }
+                                        },
+                                        "op": "*",
+                                        "right": 0.3
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "M",
+                        "exp": {
+                            "args": [],
+                            "function": "M",
+                            "op": "call"
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "stay",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p <- p",
+                                    "ref": "p",
+                                    "value": "p"
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(99/100 - ((d / (DMAX - 1)) * 1/5))",
+                                "exp": {
+                                    "left": 0.99,
+                                    "op": "-",
+                                    "right": {
+                                        "left": {
+                                            "left": "d",
+                                            "op": "/",
+                                            "right": {
+                                                "left": "DMAX",
+                                                "op": "-",
+                                                "right": 1
+                                            }
+                                        },
+                                        "op": "*",
+                                        "right": {
+                                            "left": 1.0,
+                                            "op": "/",
+                                            "right": 5.0
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p <- (max(0, (p - 1)))",
+                                    "ref": "p",
+                                    "value": {
+                                        "left": 0,
+                                        "op": "max",
+                                        "right": {
+                                            "left": "p",
+                                            "op": "-",
+                                            "right": 1
+                                        }
+                                    }
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(1/100 + ((d / (DMAX - 1)) * 1/5))",
+                                "exp": {
+                                    "left": {
+                                        "left": 1.0,
+                                        "op": "/",
+                                        "right": 100.0
+                                    },
+                                    "op": "+",
+                                    "right": {
+                                        "left": {
+                                            "left": "d",
+                                            "op": "/",
+                                            "right": {
+                                                "left": "DMAX",
+                                                "op": "-",
+                                                "right": 1
+                                            }
+                                        },
+                                        "op": "*",
+                                        "right": {
+                                            "left": 1.0,
+                                            "op": "/",
+                                            "right": 5.0
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "R",
+                        "exp": {
+                            "args": [],
+                            "function": "R",
+                            "op": "call"
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "stay",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p <- p",
+                                    "ref": "p",
+                                    "value": "p"
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "R",
+                        "exp": {
+                            "args": [],
+                            "function": "R",
+                            "op": "call"
+                        }
+                    },
+                    "location": "l"
+                }
+            ],
+            "initial-locations": [
+                "l"
+            ],
+            "locations": [
+                {
+                    "name": "l"
+                }
+            ],
+            "name": "gv",
+            "variables": []
+        },
+        {
+            "edges": [
+                {
+                    "action": "measure",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "pobs <- (max((p - 3), 0))",
+                                    "ref": "pobs",
+                                    "value": {
+                                        "left": {
+                                            "left": "p",
+                                            "op": "-",
+                                            "right": 3
+                                        },
+                                        "op": "max",
+                                        "right": 0
+                                    }
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(1/100 + (1/20 * (d / (DMAX - 1))))",
+                                "exp": {
+                                    "left": {
+                                        "left": 1.0,
+                                        "op": "/",
+                                        "right": 100.0
+                                    },
+                                    "op": "+",
+                                    "right": {
+                                        "left": {
+                                            "left": 1.0,
+                                            "op": "/",
+                                            "right": 20.0
+                                        },
+                                        "op": "*",
+                                        "right": {
+                                            "left": "d",
+                                            "op": "/",
+                                            "right": {
+                                                "left": "DMAX",
+                                                "op": "-",
+                                                "right": 1
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "pobs <- (max((p - 2), 0))",
+                                    "ref": "pobs",
+                                    "value": {
+                                        "left": {
+                                            "left": "p",
+                                            "op": "-",
+                                            "right": 2
+                                        },
+                                        "op": "max",
+                                        "right": 0
+                                    }
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(1/50 + (7/100 * (d / (DMAX - 1))))",
+                                "exp": {
+                                    "left": {
+                                        "left": 1.0,
+                                        "op": "/",
+                                        "right": 50.0
+                                    },
+                                    "op": "+",
+                                    "right": {
+                                        "left": {
+                                            "left": 7.0,
+                                            "op": "/",
+                                            "right": 100.0
+                                        },
+                                        "op": "*",
+                                        "right": {
+                                            "left": "d",
+                                            "op": "/",
+                                            "right": {
+                                                "left": "DMAX",
+                                                "op": "-",
+                                                "right": 1
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "pobs <- (max((p - 1), 0))",
+                                    "ref": "pobs",
+                                    "value": {
+                                        "left": {
+                                            "left": "p",
+                                            "op": "-",
+                                            "right": 1
+                                        },
+                                        "op": "max",
+                                        "right": 0
+                                    }
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(1/25 + (11/100 * (d / (DMAX - 1))))",
+                                "exp": {
+                                    "left": {
+                                        "left": 1.0,
+                                        "op": "/",
+                                        "right": 25.0
+                                    },
+                                    "op": "+",
+                                    "right": {
+                                        "left": {
+                                            "left": 11.0,
+                                            "op": "/",
+                                            "right": 100.0
+                                        },
+                                        "op": "*",
+                                        "right": {
+                                            "left": "d",
+                                            "op": "/",
+                                            "right": {
+                                                "left": "DMAX",
+                                                "op": "-",
+                                                "right": 1
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "pobs <- p",
+                                    "ref": "pobs",
+                                    "value": "p"
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(43/50 - (23/50 * (d / (DMAX - 1))))",
+                                "exp": {
+                                    "left": 0.86,
+                                    "op": "-",
+                                    "right": {
+                                        "left": {
+                                            "left": 23.0,
+                                            "op": "/",
+                                            "right": 50.0
+                                        },
+                                        "op": "*",
+                                        "right": {
+                                            "left": "d",
+                                            "op": "/",
+                                            "right": {
+                                                "left": "DMAX",
+                                                "op": "-",
+                                                "right": 1
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "pobs <- (min((p + 1), (PMAX - 1)))",
+                                    "ref": "pobs",
+                                    "value": {
+                                        "left": {
+                                            "left": "p",
+                                            "op": "+",
+                                            "right": 1
+                                        },
+                                        "op": "min",
+                                        "right": {
+                                            "left": "PMAX",
+                                            "op": "-",
+                                            "right": 1
+                                        }
+                                    }
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(1/25 + (11/100 * (d / (DMAX - 1))))",
+                                "exp": {
+                                    "left": {
+                                        "left": 1.0,
+                                        "op": "/",
+                                        "right": 25.0
+                                    },
+                                    "op": "+",
+                                    "right": {
+                                        "left": {
+                                            "left": 11.0,
+                                            "op": "/",
+                                            "right": 100.0
+                                        },
+                                        "op": "*",
+                                        "right": {
+                                            "left": "d",
+                                            "op": "/",
+                                            "right": {
+                                                "left": "DMAX",
+                                                "op": "-",
+                                                "right": 1
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "pobs <- (min((p + 2), (PMAX - 1)))",
+                                    "ref": "pobs",
+                                    "value": {
+                                        "left": {
+                                            "left": "p",
+                                            "op": "+",
+                                            "right": 2
+                                        },
+                                        "op": "min",
+                                        "right": {
+                                            "left": "PMAX",
+                                            "op": "-",
+                                            "right": 1
+                                        }
+                                    }
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(1/50 + (7/100 * (d / (DMAX - 1))))",
+                                "exp": {
+                                    "left": {
+                                        "left": 1.0,
+                                        "op": "/",
+                                        "right": 50.0
+                                    },
+                                    "op": "+",
+                                    "right": {
+                                        "left": {
+                                            "left": 7.0,
+                                            "op": "/",
+                                            "right": 100.0
+                                        },
+                                        "op": "*",
+                                        "right": {
+                                            "left": "d",
+                                            "op": "/",
+                                            "right": {
+                                                "left": "DMAX",
+                                                "op": "-",
+                                                "right": 1
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "pobs <- (min((p + 3), (PMAX - 1)))",
+                                    "ref": "pobs",
+                                    "value": {
+                                        "left": {
+                                            "left": "p",
+                                            "op": "+",
+                                            "right": 3
+                                        },
+                                        "op": "min",
+                                        "right": {
+                                            "left": "PMAX",
+                                            "op": "-",
+                                            "right": 1
+                                        }
+                                    }
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(1/100 + (1/20 * (d / (DMAX - 1))))",
+                                "exp": {
+                                    "left": {
+                                        "left": 1.0,
+                                        "op": "/",
+                                        "right": 100.0
+                                    },
+                                    "op": "+",
+                                    "right": {
+                                        "left": {
+                                            "left": 1.0,
+                                            "op": "/",
+                                            "right": 20.0
+                                        },
+                                        "op": "*",
+                                        "right": {
+                                            "left": "d",
+                                            "op": "/",
+                                            "right": {
+                                                "left": "DMAX",
+                                                "op": "-",
+                                                "right": 1
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(mode = 0)",
+                        "exp": {
+                            "left": "mode",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "measure",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "pobs <- (max((p - 3), 0))",
+                                    "ref": "pobs",
+                                    "value": {
+                                        "left": {
+                                            "left": "p",
+                                            "op": "-",
+                                            "right": 3
+                                        },
+                                        "op": "max",
+                                        "right": 0
+                                    }
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(1/25 + (3/50 * (d / (DMAX - 1))))",
+                                "exp": {
+                                    "left": {
+                                        "left": 1.0,
+                                        "op": "/",
+                                        "right": 25.0
+                                    },
+                                    "op": "+",
+                                    "right": {
+                                        "left": 0.06,
+                                        "op": "*",
+                                        "right": {
+                                            "left": "d",
+                                            "op": "/",
+                                            "right": {
+                                                "left": "DMAX",
+                                                "op": "-",
+                                                "right": 1
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "pobs <- (max((p - 2), 0))",
+                                    "ref": "pobs",
+                                    "value": {
+                                        "left": {
+                                            "left": "p",
+                                            "op": "-",
+                                            "right": 2
+                                        },
+                                        "op": "max",
+                                        "right": 0
+                                    }
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(1/20 + (2/25 * (d / (DMAX - 1))))",
+                                "exp": {
+                                    "left": {
+                                        "left": 1.0,
+                                        "op": "/",
+                                        "right": 20.0
+                                    },
+                                    "op": "+",
+                                    "right": {
+                                        "left": {
+                                            "left": 2.0,
+                                            "op": "/",
+                                            "right": 25.0
+                                        },
+                                        "op": "*",
+                                        "right": {
+                                            "left": "d",
+                                            "op": "/",
+                                            "right": {
+                                                "left": "DMAX",
+                                                "op": "-",
+                                                "right": 1
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "pobs <- (max((p - 1), 0))",
+                                    "ref": "pobs",
+                                    "value": {
+                                        "left": {
+                                            "left": "p",
+                                            "op": "-",
+                                            "right": 1
+                                        },
+                                        "op": "max",
+                                        "right": 0
+                                    }
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(3/50 + (3/25 * (d / (DMAX - 1))))",
+                                "exp": {
+                                    "left": 0.06,
+                                    "op": "+",
+                                    "right": {
+                                        "left": 0.12,
+                                        "op": "*",
+                                        "right": {
+                                            "left": "d",
+                                            "op": "/",
+                                            "right": {
+                                                "left": "DMAX",
+                                                "op": "-",
+                                                "right": 1
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "pobs <- p",
+                                    "ref": "pobs",
+                                    "value": "p"
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(7/10 - (13/25 * (d / (DMAX - 1))))",
+                                "exp": {
+                                    "left": 0.7,
+                                    "op": "-",
+                                    "right": {
+                                        "left": {
+                                            "left": 13.0,
+                                            "op": "/",
+                                            "right": 25.0
+                                        },
+                                        "op": "*",
+                                        "right": {
+                                            "left": "d",
+                                            "op": "/",
+                                            "right": {
+                                                "left": "DMAX",
+                                                "op": "-",
+                                                "right": 1
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "pobs <- (min((p + 1), (PMAX - 1)))",
+                                    "ref": "pobs",
+                                    "value": {
+                                        "left": {
+                                            "left": "p",
+                                            "op": "+",
+                                            "right": 1
+                                        },
+                                        "op": "min",
+                                        "right": {
+                                            "left": "PMAX",
+                                            "op": "-",
+                                            "right": 1
+                                        }
+                                    }
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(3/50 + (3/25 * (d / (DMAX - 1))))",
+                                "exp": {
+                                    "left": 0.06,
+                                    "op": "+",
+                                    "right": {
+                                        "left": 0.12,
+                                        "op": "*",
+                                        "right": {
+                                            "left": "d",
+                                            "op": "/",
+                                            "right": {
+                                                "left": "DMAX",
+                                                "op": "-",
+                                                "right": 1
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "pobs <- (min((p + 2), (PMAX - 1)))",
+                                    "ref": "pobs",
+                                    "value": {
+                                        "left": {
+                                            "left": "p",
+                                            "op": "+",
+                                            "right": 2
+                                        },
+                                        "op": "min",
+                                        "right": {
+                                            "left": "PMAX",
+                                            "op": "-",
+                                            "right": 1
+                                        }
+                                    }
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(1/20 + (2/25 * (d / (DMAX - 1))))",
+                                "exp": {
+                                    "left": {
+                                        "left": 1.0,
+                                        "op": "/",
+                                        "right": 20.0
+                                    },
+                                    "op": "+",
+                                    "right": {
+                                        "left": {
+                                            "left": 2.0,
+                                            "op": "/",
+                                            "right": 25.0
+                                        },
+                                        "op": "*",
+                                        "right": {
+                                            "left": "d",
+                                            "op": "/",
+                                            "right": {
+                                                "left": "DMAX",
+                                                "op": "-",
+                                                "right": 1
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "pobs <- (min((p + 3), (PMAX - 1)))",
+                                    "ref": "pobs",
+                                    "value": {
+                                        "left": {
+                                            "left": "p",
+                                            "op": "+",
+                                            "right": 3
+                                        },
+                                        "op": "min",
+                                        "right": {
+                                            "left": "PMAX",
+                                            "op": "-",
+                                            "right": 1
+                                        }
+                                    }
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(1/25 + (3/50 * (d / (DMAX - 1))))",
+                                "exp": {
+                                    "left": {
+                                        "left": 1.0,
+                                        "op": "/",
+                                        "right": 25.0
+                                    },
+                                    "op": "+",
+                                    "right": {
+                                        "left": 0.06,
+                                        "op": "*",
+                                        "right": {
+                                            "left": "d",
+                                            "op": "/",
+                                            "right": {
+                                                "left": "DMAX",
+                                                "op": "-",
+                                                "right": 1
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(mode = 1)",
+                        "exp": {
+                            "left": "mode",
+                            "op": "=",
+                            "right": 1
+                        }
+                    },
+                    "location": "l"
+                }
+            ],
+            "initial-locations": [
+                "l"
+            ],
+            "locations": [
+                {
+                    "name": "l"
+                }
+            ],
+            "name": "sensor",
+            "variables": []
+        },
+        {
+            "edges": [
+                {
+                    "action": "approach",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "mode <- mode",
+                                    "ref": "mode",
+                                    "value": "mode"
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "19/20",
+                                "exp": 0.95
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "mode <- (1 - mode)",
+                                    "ref": "mode",
+                                    "value": {
+                                        "left": 1,
+                                        "op": "-",
+                                        "right": "mode"
+                                    }
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/20",
+                                "exp": {
+                                    "left": 1.0,
+                                    "op": "/",
+                                    "right": 20.0
+                                }
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(mode = 0)",
+                        "exp": {
+                            "left": "mode",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "approach",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "mode <- mode",
+                                    "ref": "mode",
+                                    "value": "mode"
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "99/100",
+                                "exp": 0.99
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "mode <- (1 - mode)",
+                                    "ref": "mode",
+                                    "value": {
+                                        "left": 1,
+                                        "op": "-",
+                                        "right": "mode"
+                                    }
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/100",
+                                "exp": {
+                                    "left": 1.0,
+                                    "op": "/",
+                                    "right": 100.0
+                                }
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(mode = 1)",
+                        "exp": {
+                            "left": "mode",
+                            "op": "=",
+                            "right": 1
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "stay",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "mode <- mode",
+                                    "ref": "mode",
+                                    "value": "mode"
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "19/20",
+                                "exp": 0.95
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "mode <- (1 - mode)",
+                                    "ref": "mode",
+                                    "value": {
+                                        "left": 1,
+                                        "op": "-",
+                                        "right": "mode"
+                                    }
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/20",
+                                "exp": {
+                                    "left": 1.0,
+                                    "op": "/",
+                                    "right": 20.0
+                                }
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(mode = 0)",
+                        "exp": {
+                            "left": "mode",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "stay",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "mode <- mode",
+                                    "ref": "mode",
+                                    "value": "mode"
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "99/100",
+                                "exp": 0.99
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "mode <- (1 - mode)",
+                                    "ref": "mode",
+                                    "value": {
+                                        "left": 1,
+                                        "op": "-",
+                                        "right": "mode"
+                                    }
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/100",
+                                "exp": {
+                                    "left": 1.0,
+                                    "op": "/",
+                                    "right": 100.0
+                                }
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(mode = 1)",
+                        "exp": {
+                            "left": "mode",
+                            "op": "=",
+                            "right": 1
+                        }
+                    },
+                    "location": "l"
+                }
+            ],
+            "initial-locations": [
+                "l"
+            ],
+            "locations": [
+                {
+                    "name": "l"
+                }
+            ],
+            "name": "sensorqual",
+            "variables": []
+        },
+        {
+            "edges": [
+                {
+                    "action": "approach",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "turn <- 0",
+                                    "ref": "turn",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(turn = 1)",
+                        "exp": {
+                            "left": "turn",
+                            "op": "=",
+                            "right": 1
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "measure",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "turn <- 1",
+                                    "ref": "turn",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(turn = 0)",
+                        "exp": {
+                            "left": "turn",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "stay",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "turn <- 0",
+                                    "ref": "turn",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(turn = 1)",
+                        "exp": {
+                            "left": "turn",
+                            "op": "=",
+                            "right": 1
+                        }
+                    },
+                    "location": "l"
+                }
+            ],
+            "initial-locations": [
+                "l"
+            ],
+            "locations": [
+                {
+                    "name": "l"
+                }
+            ],
+            "name": "master",
+            "variables": []
+        }
+    ],
+    "constants": [
+        {
+            "name": "DMAX",
+            "type": "int"
+        },
+        {
+            "name": "PMAX",
+            "type": "int"
+        },
+        {
+            "name": "Dmax",
+            "type": "int",
+            "value": {
+                "left": "DMAX",
+                "op": "-",
+                "right": 1
+            }
+        },
+        {
+            "name": "Pr",
+            "type": "int",
+            "value": {
+                "left": "PMAX",
+                "op": "-",
+                "right": 1
+            }
+        }
+    ],
+    "features": [
+        "derived-operators",
+        "functions"
+    ],
+    "functions": [
+        {
+            "body": {
+                "left": "p",
+                "op": "=",
+                "right": 0
+            },
+            "name": "L",
+            "parameters": [],
+            "type": "bool"
+        },
+        {
+            "body": {
+                "left": {
+                    "left": "p",
+                    "op": ">",
+                    "right": 0
+                },
+                "op": "∧",
+                "right": {
+                    "left": "p",
+                    "op": "≤",
+                    "right": {
+                        "left": {
+                            "left": "PMAX",
+                            "op": "-",
+                            "right": 1
+                        },
+                        "op": "-",
+                        "right": 1
+                    }
+                }
+            },
+            "name": "M",
+            "parameters": [],
+            "type": "bool"
+        },
+        {
+            "body": {
+                "left": "p",
+                "op": "≥",
+                "right": {
+                    "left": {
+                        "left": "PMAX",
+                        "op": "-",
+                        "right": 1
+                    },
+                    "op": "-",
+                    "right": 1
+                }
+            },
+            "name": "R",
+            "parameters": [],
+            "type": "bool"
+        }
+    ],
+    "jani-version": 1,
+    "name": "airport-mdp",
+    "properties": [
+        {
+            "expression": {
+                "fun": "values",
+                "op": "filter",
+                "states": {
+                    "op": "initial"
+                },
+                "values": {
+                    "accumulate": [
+                        "steps"
+                    ],
+                    "exp": 1,
+                    "op": "Emin",
+                    "reach": {
+                        "left": {
+                            "left": "p",
+                            "op": "=",
+                            "right": 0
+                        },
+                        "op": "∧",
+                        "right": {
+                            "left": "d",
+                            "op": "=",
+                            "right": 0
+                        }
+                    }
+                }
+            },
+            "name": "time_min"
+        }
+    ],
+    "restrict-initial": {
+        "exp": true
+    },
+    "system": {
+        "elements": [
+            {
+                "automaton": "plane"
+            },
+            {
+                "automaton": "gv"
+            },
+            {
+                "automaton": "sensor"
+            },
+            {
+                "automaton": "sensorqual"
+            },
+            {
+                "automaton": "master"
+            }
+        ],
+        "syncs": [
+            {
+                "result": "approach",
+                "synchronise": [
+                    "approach",
+                    "approach",
+                    null,
+                    "approach",
+                    "approach"
+                ]
+            },
+            {
+                "result": "measure",
+                "synchronise": [
+                    null,
+                    null,
+                    "measure",
+                    null,
+                    "measure"
+                ]
+            },
+            {
+                "result": "stay",
+                "synchronise": [
+                    "stay",
+                    "stay",
+                    null,
+                    "stay",
+                    "stay"
+                ]
+            }
+        ]
+    },
+    "type": "mdp",
+    "variables": [
+        {
+            "initial-value": false,
+            "name": "crash",
+            "transient": true,
+            "type": "bool"
+        },
+        {
+            "initial-value": {
+                "left": "DMAX",
+                "op": "-",
+                "right": 1
+            },
+            "name": "d",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": {
+                    "left": "DMAX",
+                    "op": "-",
+                    "right": 1
+                }
+            }
+        },
+        {
+            "initial-value": {
+                "left": "PMAX",
+                "op": "-",
+                "right": 1
+            },
+            "name": "p",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": {
+                    "left": "PMAX",
+                    "op": "-",
+                    "right": 1
+                }
+            }
+        },
+        {
+            "initial-value": {
+                "left": "PMAX",
+                "op": "-",
+                "right": 1
+            },
+            "name": "pobs",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": {
+                    "left": "PMAX",
+                    "op": "-",
+                    "right": 1
+                }
+            }
+        },
+        {
+            "initial-value": 0,
+            "name": "mode",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 1
+            }
+        },
+        {
+            "initial-value": 1,
+            "name": "turn",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 1
+            }
+        }
+    ]
+}

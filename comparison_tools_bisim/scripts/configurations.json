@@ -1,0 +1,22 @@
+{
+  "storm-default": {
+    "bin": "bin/storm",
+    "cmd": "--jani %jani --janiproperty %property --constants %constants",
+    "description": "Storm with default settings."
+  },
+  "storm-exact": {
+    "bin": "bin/storm",
+    "cmd": "--jani %jani --janiproperty %property --constants %constants --exact",
+    "description": "Storm with exact computations."
+  },
+  "storm-default-bisim": {
+    "bin": "bin/storm",
+    "cmd": "--jani %jani --janiproperty %property --constants %constants --bisimulation",
+    "description": "Storm with default settings."
+  },
+  "storm-exact-bisim": {
+    "bin": "bin/storm",
+    "cmd": "--jani %jani --janiproperty %property --constants %constants --exact --bisimulation",
+    "description": "Storm with exact computations."
+  }
+}

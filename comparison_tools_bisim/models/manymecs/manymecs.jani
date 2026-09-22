@@ -1,0 +1,641 @@
+{
+    "actions": [
+        {
+            "name": "a11"
+        },
+        {
+            "name": "a12"
+        },
+        {
+            "name": "a21"
+        },
+        {
+            "name": "a22"
+        }
+    ],
+    "automata": [
+        {
+            "edges": [
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "state <- 3",
+                                    "ref": "state",
+                                    "value": 3
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(state = 3)",
+                        "exp": {
+                            "left": "state",
+                            "op": "=",
+                            "right": 3
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "state <- 4",
+                                    "ref": "state",
+                                    "value": 4
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(state = 4)",
+                        "exp": {
+                            "left": "state",
+                            "op": "=",
+                            "right": 4
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "a11",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "state <- 0",
+                                    "ref": "state",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "i <- (i + 1)",
+                                    "ref": "i",
+                                    "value": {
+                                        "left": "i",
+                                        "op": "+",
+                                        "right": 1
+                                    }
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(2 / 5)",
+                                "exp": {
+                                    "left": 2,
+                                    "op": "/",
+                                    "right": 5
+                                }
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "state <- 0",
+                                    "ref": "state",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(3 / 5)",
+                                "exp": {
+                                    "left": 3,
+                                    "op": "/",
+                                    "right": 5
+                                }
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((state = 2) & (i < (N - 1)))",
+                        "exp": {
+                            "left": {
+                                "left": "state",
+                                "op": "=",
+                                "right": 2
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "i",
+                                "op": "<",
+                                "right": {
+                                    "left": "N",
+                                    "op": "-",
+                                    "right": 1
+                                }
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "a11",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "state <- 0",
+                                    "ref": "state",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(state = 1)",
+                        "exp": {
+                            "left": "state",
+                            "op": "=",
+                            "right": 1
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "a11",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "state <- 3",
+                                    "ref": "state",
+                                    "value": 3
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(2 / 5)",
+                                "exp": {
+                                    "left": 2,
+                                    "op": "/",
+                                    "right": 5
+                                }
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "state <- 4",
+                                    "ref": "state",
+                                    "value": 4
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(3 / 5)",
+                                "exp": {
+                                    "left": 3,
+                                    "op": "/",
+                                    "right": 5
+                                }
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((state = 2) & (i = (N - 1)))",
+                        "exp": {
+                            "left": {
+                                "left": "state",
+                                "op": "=",
+                                "right": 2
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "i",
+                                "op": "=",
+                                "right": {
+                                    "left": "N",
+                                    "op": "-",
+                                    "right": 1
+                                }
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "a12",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "state <- 0",
+                                    "ref": "state",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(state = 2)",
+                        "exp": {
+                            "left": "state",
+                            "op": "=",
+                            "right": 2
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "a12",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "state <- 0",
+                                    "ref": "state",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "i <- (i + 1)",
+                                    "ref": "i",
+                                    "value": {
+                                        "left": "i",
+                                        "op": "+",
+                                        "right": 1
+                                    }
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(2 / 5)",
+                                "exp": {
+                                    "left": 2,
+                                    "op": "/",
+                                    "right": 5
+                                }
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "state <- 0",
+                                    "ref": "state",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(3 / 5)",
+                                "exp": {
+                                    "left": 3,
+                                    "op": "/",
+                                    "right": 5
+                                }
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((state = 1) & (i < (N - 1)))",
+                        "exp": {
+                            "left": {
+                                "left": "state",
+                                "op": "=",
+                                "right": 1
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "i",
+                                "op": "<",
+                                "right": {
+                                    "left": "N",
+                                    "op": "-",
+                                    "right": 1
+                                }
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "a12",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "state <- 3",
+                                    "ref": "state",
+                                    "value": 3
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(1 / 2)",
+                                "exp": {
+                                    "left": 1,
+                                    "op": "/",
+                                    "right": 2
+                                }
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "state <- 4",
+                                    "ref": "state",
+                                    "value": 4
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(1 / 2)",
+                                "exp": {
+                                    "left": 1,
+                                    "op": "/",
+                                    "right": 2
+                                }
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((state = 1) & (i = (N - 1)))",
+                        "exp": {
+                            "left": {
+                                "left": "state",
+                                "op": "=",
+                                "right": 1
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "i",
+                                "op": "=",
+                                "right": {
+                                    "left": "N",
+                                    "op": "-",
+                                    "right": 1
+                                }
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "a21",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "state <- 1",
+                                    "ref": "state",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(state = 0)",
+                        "exp": {
+                            "left": "state",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "a22",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "state <- 2",
+                                    "ref": "state",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(1 / 2)",
+                                "exp": {
+                                    "left": 1,
+                                    "op": "/",
+                                    "right": 2
+                                }
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "state <- 1",
+                                    "ref": "state",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(1 / 2)",
+                                "exp": {
+                                    "left": 1,
+                                    "op": "/",
+                                    "right": 2
+                                }
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(state = 0)",
+                        "exp": {
+                            "left": "state",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                }
+            ],
+            "initial-locations": [
+                "l"
+            ],
+            "locations": [
+                {
+                    "name": "l",
+                    "transient-values": [
+                        {
+                            "comment": "label_done <- done",
+                            "ref": "label_done",
+                            "value": {
+                                "args": [],
+                                "function": "done",
+                                "op": "call"
+                            }
+                        },
+                        {
+                            "comment": "p1win <- (done & (state = 3))",
+                            "ref": "p1win",
+                            "value": {
+                                "left": {
+                                    "args": [],
+                                    "function": "done",
+                                    "op": "call"
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "state",
+                                    "op": "=",
+                                    "right": 3
+                                }
+                            }
+                        },
+                        {
+                            "comment": "p2win <- (done & (state = 4))",
+                            "ref": "p2win",
+                            "value": {
+                                "left": {
+                                    "args": [],
+                                    "function": "done",
+                                    "op": "call"
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "state",
+                                    "op": "=",
+                                    "right": 4
+                                }
+                            }
+                        }
+                    ]
+                }
+            ],
+            "name": "player1",
+            "variables": [
+                {
+                    "initial-value": 0,
+                    "name": "i",
+                    "type": {
+                        "base": "int",
+                        "kind": "bounded",
+                        "lower-bound": 0,
+                        "upper-bound": "N"
+                    }
+                }
+            ]
+        }
+    ],
+    "constants": [
+        {
+            "name": "N",
+            "type": "int"
+        }
+    ],
+    "features": [
+        "derived-operators",
+        "functions"
+    ],
+    "functions": [
+        {
+            "body": {
+                "left": {
+                    "left": "state",
+                    "op": "=",
+                    "right": 3
+                },
+                "op": "∨",
+                "right": {
+                    "left": "state",
+                    "op": "=",
+                    "right": 4
+                }
+            },
+            "name": "done",
+            "parameters": [],
+            "type": "bool"
+        }
+    ],
+    "jani-version": 1,
+    "name": "manymecs",
+    "properties": [
+        {
+            "expression": {
+                "fun": "values",
+                "op": "filter",
+                "states": {
+                    "op": "initial"
+                },
+                "values": {
+                    "exp": {
+                        "left": true,
+                        "op": "U",
+                        "right": "p1win"
+                    },
+                    "op": "Pmax"
+                }
+            },
+            "name": "prob_max"
+        }
+    ],
+    "restrict-initial": {
+        "exp": true
+    },
+    "system": {
+        "elements": [
+            {
+                "automaton": "player1"
+            }
+        ],
+        "syncs": [
+            {
+                "result": "a11",
+                "synchronise": [
+                    "a11"
+                ]
+            },
+            {
+                "result": "a12",
+                "synchronise": [
+                    "a12"
+                ]
+            },
+            {
+                "result": "a21",
+                "synchronise": [
+                    "a21"
+                ]
+            },
+            {
+                "result": "a22",
+                "synchronise": [
+                    "a22"
+                ]
+            }
+        ]
+    },
+    "type": "mdp",
+    "variables": [
+        {
+            "initial-value": 0,
+            "name": "state",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 4
+            }
+        },
+        {
+            "initial-value": false,
+            "name": "label_done",
+            "transient": true,
+            "type": "bool"
+        },
+        {
+            "initial-value": false,
+            "name": "p1win",
+            "transient": true,
+            "type": "bool"
+        },
+        {
+            "initial-value": false,
+            "name": "p2win",
+            "transient": true,
+            "type": "bool"
+        }
+    ]
+}

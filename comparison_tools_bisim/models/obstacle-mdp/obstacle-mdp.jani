@@ -1,0 +1,1005 @@
+{
+    "actions": [
+        {
+            "name": "east"
+        },
+        {
+            "name": "north"
+        },
+        {
+            "name": "placement"
+        },
+        {
+            "name": "south"
+        },
+        {
+            "name": "west"
+        }
+    ],
+    "automata": [
+        {
+            "edges": [
+                {
+                    "action": "east",
+                    "destinations": [
+                        {
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(start & !(done))",
+                        "exp": {
+                            "left": "start",
+                            "op": "∧",
+                            "right": {
+                                "exp": {
+                                    "args": [],
+                                    "function": "done",
+                                    "op": "call"
+                                },
+                                "op": "¬"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "north",
+                    "destinations": [
+                        {
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(start & !(done))",
+                        "exp": {
+                            "left": "start",
+                            "op": "∧",
+                            "right": {
+                                "exp": {
+                                    "args": [],
+                                    "function": "done",
+                                    "op": "call"
+                                },
+                                "op": "¬"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "placement",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "start <- true",
+                                    "ref": "start",
+                                    "value": true
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "!(start)",
+                        "exp": {
+                            "exp": "start",
+                            "op": "¬"
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "south",
+                    "destinations": [
+                        {
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(start & !(done))",
+                        "exp": {
+                            "left": "start",
+                            "op": "∧",
+                            "right": {
+                                "exp": {
+                                    "args": [],
+                                    "function": "done",
+                                    "op": "call"
+                                },
+                                "op": "¬"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "west",
+                    "destinations": [
+                        {
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(start & !(done))",
+                        "exp": {
+                            "left": "start",
+                            "op": "∧",
+                            "right": {
+                                "exp": {
+                                    "args": [],
+                                    "function": "done",
+                                    "op": "call"
+                                },
+                                "op": "¬"
+                            }
+                        }
+                    },
+                    "location": "l"
+                }
+            ],
+            "initial-locations": [
+                "l"
+            ],
+            "locations": [
+                {
+                    "name": "l",
+                    "transient-values": [
+                        {
+                            "comment": "goal <- done",
+                            "ref": "goal",
+                            "value": {
+                                "args": [],
+                                "function": "done",
+                                "op": "call"
+                            }
+                        },
+                        {
+                            "comment": "traps <- crash",
+                            "ref": "traps",
+                            "value": {
+                                "args": [],
+                                "function": "crash",
+                                "op": "call"
+                            }
+                        },
+                        {
+                            "comment": "notbad <- !(crash)",
+                            "ref": "notbad",
+                            "value": {
+                                "exp": {
+                                    "args": [],
+                                    "function": "crash",
+                                    "op": "call"
+                                },
+                                "op": "¬"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "name": "master",
+            "variables": []
+        },
+        {
+            "edges": [
+                {
+                    "action": "east",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "ax <- (min((ax + 1), (N - 1)))",
+                                    "ref": "ax",
+                                    "value": {
+                                        "left": {
+                                            "left": "ax",
+                                            "op": "+",
+                                            "right": 1
+                                        },
+                                        "op": "min",
+                                        "right": {
+                                            "left": "N",
+                                            "op": "-",
+                                            "right": 1
+                                        }
+                                    }
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(1 - 1/10)",
+                                "exp": {
+                                    "left": 9.0,
+                                    "op": "/",
+                                    "right": 10.0
+                                }
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "ax <- (min((ax + 2), (N - 1)))",
+                                    "ref": "ax",
+                                    "value": {
+                                        "left": {
+                                            "left": "ax",
+                                            "op": "+",
+                                            "right": 2
+                                        },
+                                        "op": "min",
+                                        "right": {
+                                            "left": "N",
+                                            "op": "-",
+                                            "right": 1
+                                        }
+                                    }
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/10",
+                                "exp": {
+                                    "left": 1.0,
+                                    "op": "/",
+                                    "right": 10.0
+                                }
+                            }
+                        }
+                    ],
+                    "location": "l"
+                },
+                {
+                    "action": "north",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "ay <- (max((ay - 1), 0))",
+                                    "ref": "ay",
+                                    "value": {
+                                        "left": {
+                                            "left": "ay",
+                                            "op": "-",
+                                            "right": 1
+                                        },
+                                        "op": "max",
+                                        "right": 0
+                                    }
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(1 - 1/10)",
+                                "exp": {
+                                    "left": 9.0,
+                                    "op": "/",
+                                    "right": 10.0
+                                }
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "ay <- (max((ay - 2), 0))",
+                                    "ref": "ay",
+                                    "value": {
+                                        "left": {
+                                            "left": "ay",
+                                            "op": "-",
+                                            "right": 2
+                                        },
+                                        "op": "max",
+                                        "right": 0
+                                    }
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/10",
+                                "exp": {
+                                    "left": 1.0,
+                                    "op": "/",
+                                    "right": 10.0
+                                }
+                            }
+                        }
+                    ],
+                    "location": "l"
+                },
+                {
+                    "action": "placement",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "ax <- (((N - 1) - 1) - 1)",
+                                    "ref": "ax",
+                                    "value": {
+                                        "left": {
+                                            "left": {
+                                                "left": "N",
+                                                "op": "-",
+                                                "right": 1
+                                            },
+                                            "op": "-",
+                                            "right": 1
+                                        },
+                                        "op": "-",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "ay <- ((N - 1) - 1)",
+                                    "ref": "ay",
+                                    "value": {
+                                        "left": {
+                                            "left": "N",
+                                            "op": "-",
+                                            "right": 1
+                                        },
+                                        "op": "-",
+                                        "right": 1
+                                    }
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(1 / 4)",
+                                "exp": {
+                                    "left": 1,
+                                    "op": "/",
+                                    "right": 4
+                                }
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "ax <- 1",
+                                    "ref": "ax",
+                                    "value": 1
+                                },
+                                {
+                                    "comment": "ay <- 1",
+                                    "ref": "ay",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(1 / 4)",
+                                "exp": {
+                                    "left": 1,
+                                    "op": "/",
+                                    "right": 4
+                                }
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "ax <- 2",
+                                    "ref": "ax",
+                                    "value": 2
+                                },
+                                {
+                                    "comment": "ay <- 1",
+                                    "ref": "ay",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(1 / 4)",
+                                "exp": {
+                                    "left": 1,
+                                    "op": "/",
+                                    "right": 4
+                                }
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "ax <- 1",
+                                    "ref": "ax",
+                                    "value": 1
+                                },
+                                {
+                                    "comment": "ay <- 3",
+                                    "ref": "ay",
+                                    "value": 3
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(1 / 4)",
+                                "exp": {
+                                    "left": 1,
+                                    "op": "/",
+                                    "right": 4
+                                }
+                            }
+                        }
+                    ],
+                    "location": "l"
+                },
+                {
+                    "action": "south",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "ay <- (min((ay + 1), (N - 1)))",
+                                    "ref": "ay",
+                                    "value": {
+                                        "left": {
+                                            "left": "ay",
+                                            "op": "+",
+                                            "right": 1
+                                        },
+                                        "op": "min",
+                                        "right": {
+                                            "left": "N",
+                                            "op": "-",
+                                            "right": 1
+                                        }
+                                    }
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(1 - 1/10)",
+                                "exp": {
+                                    "left": 9.0,
+                                    "op": "/",
+                                    "right": 10.0
+                                }
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "ay <- (min((ay + 2), (N - 1)))",
+                                    "ref": "ay",
+                                    "value": {
+                                        "left": {
+                                            "left": "ay",
+                                            "op": "+",
+                                            "right": 2
+                                        },
+                                        "op": "min",
+                                        "right": {
+                                            "left": "N",
+                                            "op": "-",
+                                            "right": 1
+                                        }
+                                    }
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/10",
+                                "exp": {
+                                    "left": 1.0,
+                                    "op": "/",
+                                    "right": 10.0
+                                }
+                            }
+                        }
+                    ],
+                    "location": "l"
+                },
+                {
+                    "action": "west",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "ax <- (max((ax - 1), 0))",
+                                    "ref": "ax",
+                                    "value": {
+                                        "left": {
+                                            "left": "ax",
+                                            "op": "-",
+                                            "right": 1
+                                        },
+                                        "op": "max",
+                                        "right": 0
+                                    }
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(1 - 1/10)",
+                                "exp": {
+                                    "left": 9.0,
+                                    "op": "/",
+                                    "right": 10.0
+                                }
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "ax <- (max((ax - 2), 0))",
+                                    "ref": "ax",
+                                    "value": {
+                                        "left": {
+                                            "left": "ax",
+                                            "op": "-",
+                                            "right": 2
+                                        },
+                                        "op": "max",
+                                        "right": 0
+                                    }
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/10",
+                                "exp": {
+                                    "left": 1.0,
+                                    "op": "/",
+                                    "right": 10.0
+                                }
+                            }
+                        }
+                    ],
+                    "location": "l"
+                }
+            ],
+            "initial-locations": [
+                "l"
+            ],
+            "locations": [
+                {
+                    "name": "l"
+                }
+            ],
+            "name": "robot",
+            "variables": [
+                {
+                    "initial-value": false,
+                    "name": "slipped",
+                    "type": "bool"
+                }
+            ]
+        }
+    ],
+    "constants": [
+        {
+            "name": "N",
+            "type": "int"
+        },
+        {
+            "name": "axMAX",
+            "type": "int",
+            "value": {
+                "left": "N",
+                "op": "-",
+                "right": 1
+            }
+        },
+        {
+            "name": "ayMAX",
+            "type": "int",
+            "value": {
+                "left": "N",
+                "op": "-",
+                "right": 1
+            }
+        },
+        {
+            "name": "axMIN",
+            "type": "int",
+            "value": 0
+        },
+        {
+            "name": "ayMIN",
+            "type": "int",
+            "value": 0
+        },
+        {
+            "name": "slippery",
+            "type": "real",
+            "value": {
+                "left": 1.0,
+                "op": "/",
+                "right": 10.0
+            }
+        },
+        {
+            "name": "ob1x",
+            "type": "int",
+            "value": {
+                "left": {
+                    "left": "N",
+                    "op": "-",
+                    "right": 1
+                },
+                "op": "-",
+                "right": 1
+            }
+        },
+        {
+            "name": "ob1y",
+            "type": "int",
+            "value": {
+                "left": {
+                    "left": "N",
+                    "op": "-",
+                    "right": 1
+                },
+                "op": "-",
+                "right": 1
+            }
+        },
+        {
+            "name": "ob2x",
+            "type": "int",
+            "value": {
+                "left": "N",
+                "op": "-",
+                "right": 1
+            }
+        },
+        {
+            "name": "ob2y",
+            "type": "int",
+            "value": 1
+        },
+        {
+            "name": "ob3x",
+            "type": "int",
+            "value": 1
+        },
+        {
+            "name": "ob3y",
+            "type": "int",
+            "value": 0
+        },
+        {
+            "name": "ob4x",
+            "type": "int",
+            "value": {
+                "left": "N",
+                "op": "-",
+                "right": 1
+            }
+        },
+        {
+            "name": "ob4y",
+            "type": "int",
+            "value": {
+                "left": {
+                    "left": "N",
+                    "op": "-",
+                    "right": 1
+                },
+                "op": "-",
+                "right": 1
+            }
+        },
+        {
+            "name": "ob5x",
+            "type": "int",
+            "value": {
+                "left": {
+                    "left": "N",
+                    "op": "-",
+                    "right": 1
+                },
+                "op": "-",
+                "right": 3
+            }
+        },
+        {
+            "name": "ob5y",
+            "type": "int",
+            "value": {
+                "left": {
+                    "left": "N",
+                    "op": "-",
+                    "right": 1
+                },
+                "op": "-",
+                "right": 1
+            }
+        }
+    ],
+    "features": [
+        "derived-operators",
+        "functions"
+    ],
+    "functions": [
+        {
+            "body": {
+                "left": {
+                    "left": "start",
+                    "op": "∧",
+                    "right": {
+                        "left": "ax",
+                        "op": "=",
+                        "right": {
+                            "left": "N",
+                            "op": "-",
+                            "right": 1
+                        }
+                    }
+                },
+                "op": "∧",
+                "right": {
+                    "left": "ay",
+                    "op": "=",
+                    "right": {
+                        "left": "N",
+                        "op": "-",
+                        "right": 1
+                    }
+                }
+            },
+            "name": "done",
+            "parameters": [],
+            "type": "bool"
+        },
+        {
+            "body": {
+                "left": {
+                    "left": {
+                        "left": {
+                            "left": {
+                                "left": "ax",
+                                "op": "=",
+                                "right": {
+                                    "left": {
+                                        "left": "N",
+                                        "op": "-",
+                                        "right": 1
+                                    },
+                                    "op": "-",
+                                    "right": 3
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "ay",
+                                "op": "=",
+                                "right": {
+                                    "left": {
+                                        "left": "N",
+                                        "op": "-",
+                                        "right": 1
+                                    },
+                                    "op": "-",
+                                    "right": 1
+                                }
+                            }
+                        },
+                        "op": "∨",
+                        "right": {
+                            "left": {
+                                "left": "ax",
+                                "op": "=",
+                                "right": {
+                                    "left": "N",
+                                    "op": "-",
+                                    "right": 1
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "ay",
+                                "op": "=",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "op": "∨",
+                    "right": {
+                        "left": {
+                            "left": "ax",
+                            "op": "=",
+                            "right": 1
+                        },
+                        "op": "∧",
+                        "right": {
+                            "left": "ay",
+                            "op": "=",
+                            "right": 0
+                        }
+                    }
+                },
+                "op": "∨",
+                "right": {
+                    "left": {
+                        "left": {
+                            "left": "ax",
+                            "op": "=",
+                            "right": {
+                                "left": "N",
+                                "op": "-",
+                                "right": 1
+                            }
+                        },
+                        "op": "∧",
+                        "right": {
+                            "left": "ay",
+                            "op": "=",
+                            "right": {
+                                "left": {
+                                    "left": "N",
+                                    "op": "-",
+                                    "right": 1
+                                },
+                                "op": "-",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "op": "∨",
+                    "right": {
+                        "left": {
+                            "left": "ax",
+                            "op": "=",
+                            "right": {
+                                "left": {
+                                    "left": "N",
+                                    "op": "-",
+                                    "right": 1
+                                },
+                                "op": "-",
+                                "right": 1
+                            }
+                        },
+                        "op": "∧",
+                        "right": {
+                            "left": "ay",
+                            "op": "=",
+                            "right": {
+                                "left": {
+                                    "left": "N",
+                                    "op": "-",
+                                    "right": 1
+                                },
+                                "op": "-",
+                                "right": 1
+                            }
+                        }
+                    }
+                }
+            },
+            "name": "crash",
+            "parameters": [],
+            "type": "bool"
+        }
+    ],
+    "jani-version": 1,
+    "name": "obstacle-mdp",
+    "properties": [
+        {
+            "expression": {
+                "fun": "values",
+                "op": "filter",
+                "states": {
+                    "op": "initial"
+                },
+                "values": {
+                    "accumulate": [
+                        "steps"
+                    ],
+                    "exp": 1,
+                    "op": "Emin",
+                    "reach": "goal"
+                }
+            },
+            "name": "steps_min"
+        }
+    ],
+    "restrict-initial": {
+        "exp": true
+    },
+    "system": {
+        "elements": [
+            {
+                "automaton": "master"
+            },
+            {
+                "automaton": "robot"
+            }
+        ],
+        "syncs": [
+            {
+                "result": "east",
+                "synchronise": [
+                    "east",
+                    "east"
+                ]
+            },
+            {
+                "result": "north",
+                "synchronise": [
+                    "north",
+                    "north"
+                ]
+            },
+            {
+                "result": "placement",
+                "synchronise": [
+                    "placement",
+                    "placement"
+                ]
+            },
+            {
+                "result": "south",
+                "synchronise": [
+                    "south",
+                    "south"
+                ]
+            },
+            {
+                "result": "west",
+                "synchronise": [
+                    "west",
+                    "west"
+                ]
+            }
+        ]
+    },
+    "type": "mdp",
+    "variables": [
+        {
+            "initial-value": false,
+            "name": "goal",
+            "transient": true,
+            "type": "bool"
+        },
+        {
+            "initial-value": false,
+            "name": "traps",
+            "transient": true,
+            "type": "bool"
+        },
+        {
+            "initial-value": false,
+            "name": "notbad",
+            "transient": true,
+            "type": "bool"
+        },
+        {
+            "initial-value": false,
+            "name": "start",
+            "type": "bool"
+        },
+        {
+            "initial-value": 0,
+            "name": "ax",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": {
+                    "left": "N",
+                    "op": "-",
+                    "right": 1
+                }
+            }
+        },
+        {
+            "initial-value": 0,
+            "name": "ay",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": {
+                    "left": "N",
+                    "op": "-",
+                    "right": 1
+                }
+            }
+        }
+    ]
+}

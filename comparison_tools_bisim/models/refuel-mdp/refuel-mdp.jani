@@ -1,0 +1,1508 @@
+{
+    "actions": [
+        {
+            "name": "done"
+        },
+        {
+            "name": "east"
+        },
+        {
+            "name": "empty"
+        },
+        {
+            "name": "north"
+        },
+        {
+            "name": "placement"
+        },
+        {
+            "name": "refuel"
+        },
+        {
+            "name": "south"
+        },
+        {
+            "name": "west"
+        }
+    ],
+    "automata": [
+        {
+            "edges": [
+                {
+                    "action": "done",
+                    "destinations": [
+                        {
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(start & done)",
+                        "exp": {
+                            "left": "start",
+                            "op": "∧",
+                            "right": {
+                                "args": [],
+                                "function": "done",
+                                "op": "call"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "east",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "steps <- 1",
+                                    "ref": "steps",
+                                    "value": 1
+                                },
+                                {
+                                    "comment": "costs <- 1",
+                                    "ref": "costs",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(start & !(done))",
+                        "exp": {
+                            "left": "start",
+                            "op": "∧",
+                            "right": {
+                                "exp": {
+                                    "args": [],
+                                    "function": "done",
+                                    "op": "call"
+                                },
+                                "op": "¬"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "north",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "steps <- 1",
+                                    "ref": "steps",
+                                    "value": 1
+                                },
+                                {
+                                    "comment": "costs <- 1",
+                                    "ref": "costs",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(start & !(done))",
+                        "exp": {
+                            "left": "start",
+                            "op": "∧",
+                            "right": {
+                                "exp": {
+                                    "args": [],
+                                    "function": "done",
+                                    "op": "call"
+                                },
+                                "op": "¬"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "placement",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "start <- true",
+                                    "ref": "start",
+                                    "value": true
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "!(start)",
+                        "exp": {
+                            "exp": "start",
+                            "op": "¬"
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "south",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "steps <- 1",
+                                    "ref": "steps",
+                                    "value": 1
+                                },
+                                {
+                                    "comment": "costs <- 1",
+                                    "ref": "costs",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(start & !(done))",
+                        "exp": {
+                            "left": "start",
+                            "op": "∧",
+                            "right": {
+                                "exp": {
+                                    "args": [],
+                                    "function": "done",
+                                    "op": "call"
+                                },
+                                "op": "¬"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "west",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "steps <- 1",
+                                    "ref": "steps",
+                                    "value": 1
+                                },
+                                {
+                                    "comment": "costs <- 1",
+                                    "ref": "costs",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(start & !(done))",
+                        "exp": {
+                            "left": "start",
+                            "op": "∧",
+                            "right": {
+                                "exp": {
+                                    "args": [],
+                                    "function": "done",
+                                    "op": "call"
+                                },
+                                "op": "¬"
+                            }
+                        }
+                    },
+                    "location": "l"
+                }
+            ],
+            "initial-locations": [
+                "l"
+            ],
+            "locations": [
+                {
+                    "name": "l",
+                    "transient-values": [
+                        {
+                            "comment": "goal <- target",
+                            "ref": "goal",
+                            "value": {
+                                "args": [],
+                                "function": "target",
+                                "op": "call"
+                            }
+                        },
+                        {
+                            "comment": "traps <- crash",
+                            "ref": "traps",
+                            "value": {
+                                "args": [],
+                                "function": "crash",
+                                "op": "call"
+                            }
+                        },
+                        {
+                            "comment": "stationvisit <- atStation",
+                            "ref": "stationvisit",
+                            "value": {
+                                "args": [],
+                                "function": "atStation",
+                                "op": "call"
+                            }
+                        },
+                        {
+                            "comment": "notbad <- (!(crash) & ((fuel > 0) | canRefuel))",
+                            "ref": "notbad",
+                            "value": {
+                                "left": {
+                                    "exp": {
+                                        "args": [],
+                                        "function": "crash",
+                                        "op": "call"
+                                    },
+                                    "op": "¬"
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": {
+                                        "left": "fuel",
+                                        "op": ">",
+                                        "right": 0
+                                    },
+                                    "op": "∨",
+                                    "right": {
+                                        "args": [],
+                                        "function": "canRefuel",
+                                        "op": "call"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            ],
+            "name": "master",
+            "variables": []
+        },
+        {
+            "edges": [
+                {
+                    "action": "east",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "fuel <- (fuel - 1)",
+                                    "ref": "fuel",
+                                    "value": {
+                                        "left": "fuel",
+                                        "op": "-",
+                                        "right": 1
+                                    }
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "7/10",
+                                "exp": 0.7
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "fuel <- (max((fuel - 1), 0))",
+                                    "ref": "fuel",
+                                    "value": {
+                                        "left": {
+                                            "left": "fuel",
+                                            "op": "-",
+                                            "right": 1
+                                        },
+                                        "op": "max",
+                                        "right": 0
+                                    }
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "3/10",
+                                "exp": 0.3
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((fuel > 0) & !(canRefuel))",
+                        "exp": {
+                            "left": {
+                                "left": "fuel",
+                                "op": ">",
+                                "right": 0
+                            },
+                            "op": "∧",
+                            "right": {
+                                "exp": {
+                                    "args": [],
+                                    "function": "canRefuel",
+                                    "op": "call"
+                                },
+                                "op": "¬"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "empty",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "fuel <- 0",
+                                    "ref": "fuel",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((fuel = 0) & !(canRefuel))",
+                        "exp": {
+                            "left": {
+                                "left": "fuel",
+                                "op": "=",
+                                "right": 0
+                            },
+                            "op": "∧",
+                            "right": {
+                                "exp": {
+                                    "args": [],
+                                    "function": "canRefuel",
+                                    "op": "call"
+                                },
+                                "op": "¬"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "north",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "fuel <- (fuel - 1)",
+                                    "ref": "fuel",
+                                    "value": {
+                                        "left": "fuel",
+                                        "op": "-",
+                                        "right": 1
+                                    }
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "7/10",
+                                "exp": 0.7
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "fuel <- (max((fuel - 1), 0))",
+                                    "ref": "fuel",
+                                    "value": {
+                                        "left": {
+                                            "left": "fuel",
+                                            "op": "-",
+                                            "right": 1
+                                        },
+                                        "op": "max",
+                                        "right": 0
+                                    }
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "3/10",
+                                "exp": 0.3
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((fuel > 0) & !(canRefuel))",
+                        "exp": {
+                            "left": {
+                                "left": "fuel",
+                                "op": ">",
+                                "right": 0
+                            },
+                            "op": "∧",
+                            "right": {
+                                "exp": {
+                                    "args": [],
+                                    "function": "canRefuel",
+                                    "op": "call"
+                                },
+                                "op": "¬"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "refuel",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "fuel <- ENERGY",
+                                    "ref": "fuel",
+                                    "value": "ENERGY"
+                                },
+                                {
+                                    "comment": "refuels <- 1",
+                                    "ref": "refuels",
+                                    "value": 1
+                                },
+                                {
+                                    "comment": "costs <- 12",
+                                    "ref": "costs",
+                                    "value": 12
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "canRefuel",
+                        "exp": {
+                            "args": [],
+                            "function": "canRefuel",
+                            "op": "call"
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "south",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "fuel <- (fuel - 1)",
+                                    "ref": "fuel",
+                                    "value": {
+                                        "left": "fuel",
+                                        "op": "-",
+                                        "right": 1
+                                    }
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "7/10",
+                                "exp": 0.7
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "fuel <- (max((fuel - 1), 0))",
+                                    "ref": "fuel",
+                                    "value": {
+                                        "left": {
+                                            "left": "fuel",
+                                            "op": "-",
+                                            "right": 1
+                                        },
+                                        "op": "max",
+                                        "right": 0
+                                    }
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "3/10",
+                                "exp": 0.3
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((fuel > 0) & !(canRefuel))",
+                        "exp": {
+                            "left": {
+                                "left": "fuel",
+                                "op": ">",
+                                "right": 0
+                            },
+                            "op": "∧",
+                            "right": {
+                                "exp": {
+                                    "args": [],
+                                    "function": "canRefuel",
+                                    "op": "call"
+                                },
+                                "op": "¬"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "west",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "fuel <- (fuel - 1)",
+                                    "ref": "fuel",
+                                    "value": {
+                                        "left": "fuel",
+                                        "op": "-",
+                                        "right": 1
+                                    }
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "7/10",
+                                "exp": 0.7
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "fuel <- (max((fuel - 1), 0))",
+                                    "ref": "fuel",
+                                    "value": {
+                                        "left": {
+                                            "left": "fuel",
+                                            "op": "-",
+                                            "right": 1
+                                        },
+                                        "op": "max",
+                                        "right": 0
+                                    }
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "3/10",
+                                "exp": 0.3
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((fuel > 0) & !(canRefuel))",
+                        "exp": {
+                            "left": {
+                                "left": "fuel",
+                                "op": ">",
+                                "right": 0
+                            },
+                            "op": "∧",
+                            "right": {
+                                "exp": {
+                                    "args": [],
+                                    "function": "canRefuel",
+                                    "op": "call"
+                                },
+                                "op": "¬"
+                            }
+                        }
+                    },
+                    "location": "l"
+                }
+            ],
+            "initial-locations": [
+                "l"
+            ],
+            "locations": [
+                {
+                    "name": "l"
+                }
+            ],
+            "name": "tank",
+            "variables": []
+        },
+        {
+            "edges": [
+                {
+                    "action": "east",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "ax <- (min((ax + 1), (N - 1)))",
+                                    "ref": "ax",
+                                    "value": {
+                                        "left": {
+                                            "left": "ax",
+                                            "op": "+",
+                                            "right": 1
+                                        },
+                                        "op": "min",
+                                        "right": {
+                                            "left": "N",
+                                            "op": "-",
+                                            "right": 1
+                                        }
+                                    }
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(1 - 3/10)",
+                                "exp": 0.7
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "ax <- (min((ax + 2), (N - 1)))",
+                                    "ref": "ax",
+                                    "value": {
+                                        "left": {
+                                            "left": "ax",
+                                            "op": "+",
+                                            "right": 2
+                                        },
+                                        "op": "min",
+                                        "right": {
+                                            "left": "N",
+                                            "op": "-",
+                                            "right": 1
+                                        }
+                                    }
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "3/10",
+                                "exp": 0.3
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "southenabled",
+                        "exp": {
+                            "args": [],
+                            "function": "southenabled",
+                            "op": "call"
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "north",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "ay <- (max((ay - 1), 0))",
+                                    "ref": "ay",
+                                    "value": {
+                                        "left": {
+                                            "left": "ay",
+                                            "op": "-",
+                                            "right": 1
+                                        },
+                                        "op": "max",
+                                        "right": 0
+                                    }
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(1 - 3/10)",
+                                "exp": 0.7
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "ay <- (max((ay - 2), 0))",
+                                    "ref": "ay",
+                                    "value": {
+                                        "left": {
+                                            "left": "ay",
+                                            "op": "-",
+                                            "right": 2
+                                        },
+                                        "op": "max",
+                                        "right": 0
+                                    }
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "3/10",
+                                "exp": 0.3
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "westenabled",
+                        "exp": {
+                            "args": [],
+                            "function": "westenabled",
+                            "op": "call"
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "placement",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "ax <- 0",
+                                    "ref": "ax",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "ay <- 0",
+                                    "ref": "ay",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "location": "l"
+                },
+                {
+                    "action": "south",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "ay <- (min((ay + 1), (N - 1)))",
+                                    "ref": "ay",
+                                    "value": {
+                                        "left": {
+                                            "left": "ay",
+                                            "op": "+",
+                                            "right": 1
+                                        },
+                                        "op": "min",
+                                        "right": {
+                                            "left": "N",
+                                            "op": "-",
+                                            "right": 1
+                                        }
+                                    }
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(1 - 3/10)",
+                                "exp": 0.7
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "ay <- (min((ay + 2), (N - 1)))",
+                                    "ref": "ay",
+                                    "value": {
+                                        "left": {
+                                            "left": "ay",
+                                            "op": "+",
+                                            "right": 2
+                                        },
+                                        "op": "min",
+                                        "right": {
+                                            "left": "N",
+                                            "op": "-",
+                                            "right": 1
+                                        }
+                                    }
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "3/10",
+                                "exp": 0.3
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "eastenabled",
+                        "exp": {
+                            "args": [],
+                            "function": "eastenabled",
+                            "op": "call"
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "west",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "ax <- (max((ax - 1), 0))",
+                                    "ref": "ax",
+                                    "value": {
+                                        "left": {
+                                            "left": "ax",
+                                            "op": "-",
+                                            "right": 1
+                                        },
+                                        "op": "max",
+                                        "right": 0
+                                    }
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(1 - 3/10)",
+                                "exp": 0.7
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "ax <- (max((ax - 2), 0))",
+                                    "ref": "ax",
+                                    "value": {
+                                        "left": {
+                                            "left": "ax",
+                                            "op": "-",
+                                            "right": 2
+                                        },
+                                        "op": "max",
+                                        "right": 0
+                                    }
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "3/10",
+                                "exp": 0.3
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "northenabled",
+                        "exp": {
+                            "args": [],
+                            "function": "northenabled",
+                            "op": "call"
+                        }
+                    },
+                    "location": "l"
+                }
+            ],
+            "initial-locations": [
+                "l"
+            ],
+            "locations": [
+                {
+                    "name": "l"
+                }
+            ],
+            "name": "rover",
+            "variables": []
+        }
+    ],
+    "constants": [
+        {
+            "name": "N",
+            "type": "int"
+        },
+        {
+            "name": "ENERGY",
+            "type": "int"
+        },
+        {
+            "name": "RESOLUTION",
+            "type": "int",
+            "value": 2
+        },
+        {
+            "name": "fuelCAP",
+            "type": "int",
+            "value": "ENERGY"
+        },
+        {
+            "name": "axMAX",
+            "type": "int",
+            "value": {
+                "left": "N",
+                "op": "-",
+                "right": 1
+            }
+        },
+        {
+            "name": "ayMAX",
+            "type": "int",
+            "value": {
+                "left": "N",
+                "op": "-",
+                "right": 1
+            }
+        },
+        {
+            "name": "axMIN",
+            "type": "int",
+            "value": 0
+        },
+        {
+            "name": "ayMIN",
+            "type": "int",
+            "value": 0
+        },
+        {
+            "name": "slippery",
+            "type": "real",
+            "value": 0.3
+        },
+        {
+            "name": "ob1x",
+            "type": "int",
+            "value": {
+                "left": {
+                    "left": "N",
+                    "op": "-",
+                    "right": 1
+                },
+                "op": "-",
+                "right": 1
+            }
+        },
+        {
+            "name": "ob1y",
+            "type": "int",
+            "value": {
+                "left": {
+                    "left": "N",
+                    "op": "-",
+                    "right": 1
+                },
+                "op": "-",
+                "right": 1
+            }
+        },
+        {
+            "name": "rf1x",
+            "type": "int",
+            "value": 0
+        },
+        {
+            "name": "rf1y",
+            "type": "int",
+            "value": 0
+        },
+        {
+            "name": "rf2x",
+            "type": "int",
+            "value": {
+                "exp": {
+                    "left": "N",
+                    "op": "/",
+                    "right": 3
+                },
+                "op": "floor"
+            }
+        },
+        {
+            "name": "rf2y",
+            "type": "int",
+            "value": {
+                "exp": {
+                    "left": "N",
+                    "op": "/",
+                    "right": 3
+                },
+                "op": "floor"
+            }
+        },
+        {
+            "name": "rf3x",
+            "type": "int",
+            "value": {
+                "left": {
+                    "left": 2,
+                    "op": "*",
+                    "right": {
+                        "exp": {
+                            "left": "N",
+                            "op": "/",
+                            "right": 3
+                        },
+                        "op": "floor"
+                    }
+                },
+                "op": "-",
+                "right": 1
+            }
+        },
+        {
+            "name": "rf3y",
+            "type": "int",
+            "value": {
+                "left": {
+                    "left": 2,
+                    "op": "*",
+                    "right": {
+                        "exp": {
+                            "left": "N",
+                            "op": "/",
+                            "right": 3
+                        },
+                        "op": "floor"
+                    }
+                },
+                "op": "-",
+                "right": 1
+            }
+        }
+    ],
+    "features": [
+        "derived-operators",
+        "functions"
+    ],
+    "functions": [
+        {
+            "body": {
+                "left": "ax",
+                "op": "≠",
+                "right": 0
+            },
+            "name": "northenabled",
+            "parameters": [],
+            "type": "bool"
+        },
+        {
+            "body": {
+                "left": {
+                    "args": [],
+                    "function": "atStation",
+                    "op": "call"
+                },
+                "op": "∧",
+                "right": {
+                    "left": "fuel",
+                    "op": "<",
+                    "right": "ENERGY"
+                }
+            },
+            "name": "canRefuel",
+            "parameters": [],
+            "type": "bool"
+        },
+        {
+            "body": {
+                "left": "ax",
+                "op": "≠",
+                "right": {
+                    "left": "N",
+                    "op": "-",
+                    "right": 1
+                }
+            },
+            "name": "southenabled",
+            "parameters": [],
+            "type": "bool"
+        },
+        {
+            "body": {
+                "left": {
+                    "left": {
+                        "left": {
+                            "left": "ax",
+                            "op": "=",
+                            "right": 0
+                        },
+                        "op": "∧",
+                        "right": {
+                            "left": "ay",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "op": "∨",
+                    "right": {
+                        "left": {
+                            "left": "ax",
+                            "op": "=",
+                            "right": {
+                                "exp": {
+                                    "left": "N",
+                                    "op": "/",
+                                    "right": 3
+                                },
+                                "op": "floor"
+                            }
+                        },
+                        "op": "∧",
+                        "right": {
+                            "left": "ay",
+                            "op": "=",
+                            "right": {
+                                "exp": {
+                                    "left": "N",
+                                    "op": "/",
+                                    "right": 3
+                                },
+                                "op": "floor"
+                            }
+                        }
+                    }
+                },
+                "op": "∨",
+                "right": {
+                    "left": {
+                        "left": "ax",
+                        "op": "=",
+                        "right": {
+                            "left": {
+                                "left": 2,
+                                "op": "*",
+                                "right": {
+                                    "exp": {
+                                        "left": "N",
+                                        "op": "/",
+                                        "right": 3
+                                    },
+                                    "op": "floor"
+                                }
+                            },
+                            "op": "-",
+                            "right": 1
+                        }
+                    },
+                    "op": "∧",
+                    "right": {
+                        "left": "ay",
+                        "op": "=",
+                        "right": {
+                            "left": {
+                                "left": 2,
+                                "op": "*",
+                                "right": {
+                                    "exp": {
+                                        "left": "N",
+                                        "op": "/",
+                                        "right": 3
+                                    },
+                                    "op": "floor"
+                                }
+                            },
+                            "op": "-",
+                            "right": 1
+                        }
+                    }
+                }
+            },
+            "name": "atStation",
+            "parameters": [],
+            "type": "bool"
+        },
+        {
+            "body": {
+                "left": "ay",
+                "op": "≠",
+                "right": 0
+            },
+            "name": "westenabled",
+            "parameters": [],
+            "type": "bool"
+        },
+        {
+            "body": {
+                "left": "ay",
+                "op": "≠",
+                "right": {
+                    "left": "N",
+                    "op": "-",
+                    "right": 1
+                }
+            },
+            "name": "eastenabled",
+            "parameters": [],
+            "type": "bool"
+        },
+        {
+            "body": {
+                "left": {
+                    "left": "ax",
+                    "op": "=",
+                    "right": {
+                        "left": {
+                            "left": "N",
+                            "op": "-",
+                            "right": 1
+                        },
+                        "op": "-",
+                        "right": 1
+                    }
+                },
+                "op": "∧",
+                "right": {
+                    "left": "ay",
+                    "op": "=",
+                    "right": {
+                        "left": {
+                            "left": "N",
+                            "op": "-",
+                            "right": 1
+                        },
+                        "op": "-",
+                        "right": 1
+                    }
+                }
+            },
+            "name": "crash",
+            "parameters": [],
+            "type": "bool"
+        },
+        {
+            "body": {
+                "left": {
+                    "left": "start",
+                    "op": "∧",
+                    "right": {
+                        "left": "ax",
+                        "op": "=",
+                        "right": {
+                            "left": "N",
+                            "op": "-",
+                            "right": 1
+                        }
+                    }
+                },
+                "op": "∧",
+                "right": {
+                    "left": "ay",
+                    "op": "=",
+                    "right": {
+                        "left": "N",
+                        "op": "-",
+                        "right": 1
+                    }
+                }
+            },
+            "name": "target",
+            "parameters": [],
+            "type": "bool"
+        },
+        {
+            "body": {
+                "left": {
+                    "args": [],
+                    "function": "target",
+                    "op": "call"
+                },
+                "op": "∨",
+                "right": {
+                    "args": [],
+                    "function": "crash",
+                    "op": "call"
+                }
+            },
+            "name": "done",
+            "parameters": [],
+            "type": "bool"
+        }
+    ],
+    "jani-version": 1,
+    "name": "refuel-mdp",
+    "properties": [
+        {
+            "expression": {
+                "fun": "values",
+                "op": "filter",
+                "states": {
+                    "op": "initial"
+                },
+                "values": {
+                    "exp": {
+                        "left": true,
+                        "op": "U",
+                        "right": "goal"
+                    },
+                    "op": "Pmax"
+                }
+            },
+            "name": "reach_max"
+        }
+    ],
+    "restrict-initial": {
+        "exp": true
+    },
+    "system": {
+        "elements": [
+            {
+                "automaton": "master"
+            },
+            {
+                "automaton": "tank"
+            },
+            {
+                "automaton": "rover"
+            }
+        ],
+        "syncs": [
+            {
+                "result": "done",
+                "synchronise": [
+                    "done",
+                    null,
+                    null
+                ]
+            },
+            {
+                "result": "east",
+                "synchronise": [
+                    "east",
+                    "east",
+                    "east"
+                ]
+            },
+            {
+                "result": "empty",
+                "synchronise": [
+                    null,
+                    "empty",
+                    null
+                ]
+            },
+            {
+                "result": "north",
+                "synchronise": [
+                    "north",
+                    "north",
+                    "north"
+                ]
+            },
+            {
+                "result": "placement",
+                "synchronise": [
+                    "placement",
+                    null,
+                    "placement"
+                ]
+            },
+            {
+                "result": "refuel",
+                "synchronise": [
+                    null,
+                    "refuel",
+                    null
+                ]
+            },
+            {
+                "result": "south",
+                "synchronise": [
+                    "south",
+                    "south",
+                    "south"
+                ]
+            },
+            {
+                "result": "west",
+                "synchronise": [
+                    "west",
+                    "west",
+                    "west"
+                ]
+            }
+        ]
+    },
+    "type": "mdp",
+    "variables": [
+        {
+            "initial-value": false,
+            "name": "goal",
+            "transient": true,
+            "type": "bool"
+        },
+        {
+            "initial-value": false,
+            "name": "traps",
+            "transient": true,
+            "type": "bool"
+        },
+        {
+            "initial-value": false,
+            "name": "stationvisit",
+            "transient": true,
+            "type": "bool"
+        },
+        {
+            "initial-value": false,
+            "name": "notbad",
+            "transient": true,
+            "type": "bool"
+        },
+        {
+            "initial-value": 0.0,
+            "name": "steps",
+            "transient": true,
+            "type": "real"
+        },
+        {
+            "initial-value": 0.0,
+            "name": "refuels",
+            "transient": true,
+            "type": "real"
+        },
+        {
+            "initial-value": 0.0,
+            "name": "costs",
+            "transient": true,
+            "type": "real"
+        },
+        {
+            "initial-value": false,
+            "name": "start",
+            "type": "bool"
+        },
+        {
+            "initial-value": "ENERGY",
+            "name": "fuel",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": "ENERGY"
+            }
+        },
+        {
+            "initial-value": 0,
+            "name": "ax",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": {
+                    "left": "N",
+                    "op": "-",
+                    "right": 1
+                }
+            }
+        },
+        {
+            "initial-value": 0,
+            "name": "ay",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": {
+                    "left": "N",
+                    "op": "-",
+                    "right": 1
+                }
+            }
+        }
+    ]
+}

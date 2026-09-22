@@ -1,0 +1,3712 @@
+{
+    "actions": [
+        {
+            "name": "u1_cancel_comm"
+        },
+        {
+            "name": "u1_cancel_drive"
+        },
+        {
+            "name": "u1_deny_comm"
+        },
+        {
+            "name": "u1_deny_drive"
+        },
+        {
+            "name": "u1_grant_comm"
+        },
+        {
+            "name": "u1_grant_drive"
+        },
+        {
+            "name": "u1_request_comm"
+        },
+        {
+            "name": "u1_request_drive"
+        },
+        {
+            "name": "u1_rescind_drive"
+        },
+        {
+            "name": "u2_cancel_comm"
+        },
+        {
+            "name": "u2_cancel_drive"
+        },
+        {
+            "name": "u2_deny_comm"
+        },
+        {
+            "name": "u2_deny_drive"
+        },
+        {
+            "name": "u2_grant_comm"
+        },
+        {
+            "name": "u2_grant_drive"
+        },
+        {
+            "name": "u2_request_comm"
+        },
+        {
+            "name": "u2_request_drive"
+        },
+        {
+            "name": "u2_rescind_drive"
+        }
+    ],
+    "automata": [
+        {
+            "edges": [
+                {
+                    "destinations": [
+                        {
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(s = 1)",
+                        "exp": {
+                            "left": "s",
+                            "op": "=",
+                            "right": 1
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(s = 2)",
+                        "exp": {
+                            "left": "s",
+                            "op": "=",
+                            "right": 2
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "gc <- true",
+                                    "ref": "gc",
+                                    "value": true
+                                },
+                                {
+                                    "comment": "r <- 0",
+                                    "ref": "r",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((r != 0) & (driveUser = 0))",
+                        "exp": {
+                            "left": {
+                                "left": "r",
+                                "op": "≠",
+                                "right": 0
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "driveUser",
+                                "op": "=",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u1_cancel_comm",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "commUser <- 0",
+                                    "ref": "commUser",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(commUser = 1)",
+                        "exp": {
+                            "left": "commUser",
+                            "op": "=",
+                            "right": 1
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u1_cancel_drive",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "driveUser <- 0",
+                                    "ref": "driveUser",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(driveUser = 1)",
+                        "exp": {
+                            "left": "driveUser",
+                            "op": "=",
+                            "right": 1
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u1_deny_comm",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "dc <- false",
+                                    "ref": "dc",
+                                    "value": false
+                                },
+                                {
+                                    "comment": "s <- 0",
+                                    "ref": "s",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((s = 1) & dc)",
+                        "exp": {
+                            "left": {
+                                "left": "s",
+                                "op": "=",
+                                "right": 1
+                            },
+                            "op": "∧",
+                            "right": "dc"
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u1_deny_drive",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "dd <- false",
+                                    "ref": "dd",
+                                    "value": false
+                                },
+                                {
+                                    "comment": "s <- 0",
+                                    "ref": "s",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((s = 1) & dd)",
+                        "exp": {
+                            "left": {
+                                "left": "s",
+                                "op": "=",
+                                "right": 1
+                            },
+                            "op": "∧",
+                            "right": "dd"
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u1_grant_comm",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "gc <- false",
+                                    "ref": "gc",
+                                    "value": false
+                                },
+                                {
+                                    "comment": "s <- 0",
+                                    "ref": "s",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "commUser <- 1",
+                                    "ref": "commUser",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((((s = 1) & (commUser = 0)) & (driveUser = 0)) & gc) & !(gd))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": {
+                                        "exp": "gd",
+                                        "op": "¬"
+                                    },
+                                    "op": "∧",
+                                    "right": {
+                                        "left": "commUser",
+                                        "op": "=",
+                                        "right": 0
+                                    }
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "driveUser",
+                                    "op": "=",
+                                    "right": 0
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "gc",
+                                "op": "∧",
+                                "right": {
+                                    "left": "s",
+                                    "op": "=",
+                                    "right": 1
+                                }
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u1_grant_comm",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "gc <- false",
+                                    "ref": "gc",
+                                    "value": false
+                                },
+                                {
+                                    "comment": "s <- 0",
+                                    "ref": "s",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "commUser <- 1",
+                                    "ref": "commUser",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((s = -(1)) & gc)",
+                        "exp": {
+                            "left": {
+                                "left": "s",
+                                "op": "=",
+                                "right": -1
+                            },
+                            "op": "∧",
+                            "right": "gc"
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u1_grant_drive",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "gd <- false",
+                                    "ref": "gd",
+                                    "value": false
+                                },
+                                {
+                                    "comment": "s <- 0",
+                                    "ref": "s",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "driveUser <- 1",
+                                    "ref": "driveUser",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((s = 1) & (driveUser = 0)) & gd)",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "s",
+                                    "op": "=",
+                                    "right": 1
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "driveUser",
+                                    "op": "=",
+                                    "right": 0
+                                }
+                            },
+                            "op": "∧",
+                            "right": "gd"
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u1_request_comm",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "gc <- true",
+                                    "ref": "gc",
+                                    "value": true
+                                },
+                                {
+                                    "comment": "s <- 1",
+                                    "ref": "s",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((s = 0) & (commUser = 0)) & (driveUser = 0))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "s",
+                                    "op": "=",
+                                    "right": 0
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "commUser",
+                                    "op": "=",
+                                    "right": 0
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "driveUser",
+                                "op": "=",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u1_request_comm",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "dc <- true",
+                                    "ref": "dc",
+                                    "value": true
+                                },
+                                {
+                                    "comment": "s <- 1",
+                                    "ref": "s",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((s = 0) & (commUser != 0))",
+                        "exp": {
+                            "left": {
+                                "left": "s",
+                                "op": "=",
+                                "right": 0
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "commUser",
+                                "op": "≠",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u1_request_comm",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "s <- 1",
+                                    "ref": "s",
+                                    "value": 1
+                                },
+                                {
+                                    "comment": "r <- driveUser",
+                                    "ref": "r",
+                                    "value": "driveUser"
+                                },
+                                {
+                                    "comment": "k <- (k + 1)",
+                                    "ref": "k",
+                                    "value": {
+                                        "left": "k",
+                                        "op": "+",
+                                        "right": 1
+                                    }
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(1 - 1/5)",
+                                "exp": {
+                                    "left": 4.0,
+                                    "op": "/",
+                                    "right": 5.0
+                                }
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "gc <- true",
+                                    "ref": "gc",
+                                    "value": true
+                                },
+                                {
+                                    "comment": "s <- -1",
+                                    "ref": "s",
+                                    "value": -1
+                                },
+                                {
+                                    "comment": "k <- (k + 1)",
+                                    "ref": "k",
+                                    "value": {
+                                        "left": "k",
+                                        "op": "+",
+                                        "right": 1
+                                    }
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/5",
+                                "exp": {
+                                    "left": 1.0,
+                                    "op": "/",
+                                    "right": 5.0
+                                }
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((((s = 0) & (commUser = 0)) & (driveUser != 0)) & (k < n))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "k",
+                                    "op": "<",
+                                    "right": "n"
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "commUser",
+                                    "op": "=",
+                                    "right": 0
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": {
+                                    "left": "driveUser",
+                                    "op": "≠",
+                                    "right": 0
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "s",
+                                    "op": "=",
+                                    "right": 0
+                                }
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u1_request_comm",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "s <- 1",
+                                    "ref": "s",
+                                    "value": 1
+                                },
+                                {
+                                    "comment": "r <- driveUser",
+                                    "ref": "r",
+                                    "value": "driveUser"
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((((s = 0) & (commUser = 0)) & (driveUser != 0)) & (k = n))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "k",
+                                    "op": "=",
+                                    "right": "n"
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "commUser",
+                                    "op": "=",
+                                    "right": 0
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": {
+                                    "left": "driveUser",
+                                    "op": "≠",
+                                    "right": 0
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "s",
+                                    "op": "=",
+                                    "right": 0
+                                }
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u1_request_drive",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "gd <- true",
+                                    "ref": "gd",
+                                    "value": true
+                                },
+                                {
+                                    "comment": "s <- 1",
+                                    "ref": "s",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((s = 0) & (commUser = 0)) & (driveUser = 0))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "s",
+                                    "op": "=",
+                                    "right": 0
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "commUser",
+                                    "op": "=",
+                                    "right": 0
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "driveUser",
+                                "op": "=",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u1_request_drive",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "dd <- true",
+                                    "ref": "dd",
+                                    "value": true
+                                },
+                                {
+                                    "comment": "s <- 1",
+                                    "ref": "s",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((s = 0) & ((commUser != 0) | (driveUser != 0)))",
+                        "exp": {
+                            "left": {
+                                "left": "s",
+                                "op": "=",
+                                "right": 0
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": {
+                                    "left": "commUser",
+                                    "op": "≠",
+                                    "right": 0
+                                },
+                                "op": "∨",
+                                "right": {
+                                    "left": "driveUser",
+                                    "op": "≠",
+                                    "right": 0
+                                }
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u1_rescind_drive",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "gc <- true",
+                                    "ref": "gc",
+                                    "value": true
+                                },
+                                {
+                                    "comment": "r <- 0",
+                                    "ref": "r",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((r = 1) & (driveUser = 1))",
+                        "exp": {
+                            "left": {
+                                "left": "r",
+                                "op": "=",
+                                "right": 1
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "driveUser",
+                                "op": "=",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u2_cancel_comm",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "commUser <- 0",
+                                    "ref": "commUser",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(commUser = 2)",
+                        "exp": {
+                            "left": "commUser",
+                            "op": "=",
+                            "right": 2
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u2_cancel_drive",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "driveUser <- 0",
+                                    "ref": "driveUser",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(driveUser = 2)",
+                        "exp": {
+                            "left": "driveUser",
+                            "op": "=",
+                            "right": 2
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u2_deny_comm",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "dc <- false",
+                                    "ref": "dc",
+                                    "value": false
+                                },
+                                {
+                                    "comment": "s <- 0",
+                                    "ref": "s",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((s = 2) & dc)",
+                        "exp": {
+                            "left": {
+                                "left": "s",
+                                "op": "=",
+                                "right": 2
+                            },
+                            "op": "∧",
+                            "right": "dc"
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u2_deny_drive",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "dd <- false",
+                                    "ref": "dd",
+                                    "value": false
+                                },
+                                {
+                                    "comment": "s <- 0",
+                                    "ref": "s",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((s = 2) & dd)",
+                        "exp": {
+                            "left": {
+                                "left": "s",
+                                "op": "=",
+                                "right": 2
+                            },
+                            "op": "∧",
+                            "right": "dd"
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u2_grant_comm",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "gc <- false",
+                                    "ref": "gc",
+                                    "value": false
+                                },
+                                {
+                                    "comment": "s <- 0",
+                                    "ref": "s",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "commUser <- 2",
+                                    "ref": "commUser",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((((s = 2) & (commUser = 0)) & (driveUser = 0)) & gc) & !(gd))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": {
+                                        "exp": "gd",
+                                        "op": "¬"
+                                    },
+                                    "op": "∧",
+                                    "right": {
+                                        "left": "commUser",
+                                        "op": "=",
+                                        "right": 0
+                                    }
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "driveUser",
+                                    "op": "=",
+                                    "right": 0
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "gc",
+                                "op": "∧",
+                                "right": {
+                                    "left": "s",
+                                    "op": "=",
+                                    "right": 2
+                                }
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u2_grant_drive",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "gd <- false",
+                                    "ref": "gd",
+                                    "value": false
+                                },
+                                {
+                                    "comment": "s <- 0",
+                                    "ref": "s",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "driveUser <- 2",
+                                    "ref": "driveUser",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((s = 2) & (driveUser = 0)) & gd)",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "s",
+                                    "op": "=",
+                                    "right": 2
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "driveUser",
+                                    "op": "=",
+                                    "right": 0
+                                }
+                            },
+                            "op": "∧",
+                            "right": "gd"
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u2_request_comm",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "gc <- true",
+                                    "ref": "gc",
+                                    "value": true
+                                },
+                                {
+                                    "comment": "s <- 2",
+                                    "ref": "s",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((s = 0) & (commUser = 0)) & (driveUser = 0))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "s",
+                                    "op": "=",
+                                    "right": 0
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "commUser",
+                                    "op": "=",
+                                    "right": 0
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "driveUser",
+                                "op": "=",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u2_request_comm",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "dc <- true",
+                                    "ref": "dc",
+                                    "value": true
+                                },
+                                {
+                                    "comment": "s <- 2",
+                                    "ref": "s",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((s = 0) & (commUser != 0))",
+                        "exp": {
+                            "left": {
+                                "left": "s",
+                                "op": "=",
+                                "right": 0
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "commUser",
+                                "op": "≠",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u2_request_comm",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "s <- 2",
+                                    "ref": "s",
+                                    "value": 2
+                                },
+                                {
+                                    "comment": "r <- driveUser",
+                                    "ref": "r",
+                                    "value": "driveUser"
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((s = 0) & (commUser = 0)) & (driveUser != 0))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "s",
+                                    "op": "=",
+                                    "right": 0
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "commUser",
+                                    "op": "=",
+                                    "right": 0
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "driveUser",
+                                "op": "≠",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u2_request_drive",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "gd <- true",
+                                    "ref": "gd",
+                                    "value": true
+                                },
+                                {
+                                    "comment": "s <- 2",
+                                    "ref": "s",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((s = 0) & (commUser = 0)) & (driveUser = 0))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "s",
+                                    "op": "=",
+                                    "right": 0
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "commUser",
+                                    "op": "=",
+                                    "right": 0
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "driveUser",
+                                "op": "=",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u2_request_drive",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "dd <- true",
+                                    "ref": "dd",
+                                    "value": true
+                                },
+                                {
+                                    "comment": "s <- 2",
+                                    "ref": "s",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((s = 0) & ((commUser != 0) | (driveUser != 0)))",
+                        "exp": {
+                            "left": {
+                                "left": "s",
+                                "op": "=",
+                                "right": 0
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": {
+                                    "left": "commUser",
+                                    "op": "≠",
+                                    "right": 0
+                                },
+                                "op": "∨",
+                                "right": {
+                                    "left": "driveUser",
+                                    "op": "≠",
+                                    "right": 0
+                                }
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u2_rescind_drive",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "gc <- true",
+                                    "ref": "gc",
+                                    "value": true
+                                },
+                                {
+                                    "comment": "r <- 0",
+                                    "ref": "r",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((r = 2) & (driveUser = 2))",
+                        "exp": {
+                            "left": {
+                                "left": "r",
+                                "op": "=",
+                                "right": 2
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "driveUser",
+                                "op": "=",
+                                "right": 2
+                            }
+                        }
+                    },
+                    "location": "l"
+                }
+            ],
+            "initial-locations": [
+                "l"
+            ],
+            "locations": [
+                {
+                    "name": "l",
+                    "transient-values": [
+                        {
+                            "comment": "err_G <- (e = 3)",
+                            "ref": "err_G",
+                            "value": {
+                                "left": "e",
+                                "op": "=",
+                                "right": 3
+                            }
+                        }
+                    ]
+                }
+            ],
+            "name": "arbiter",
+            "variables": []
+        },
+        {
+            "edges": [
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "r1 <- 1",
+                                    "ref": "r1",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((s1 = 0) & (r1 = 0))",
+                        "exp": {
+                            "left": {
+                                "left": "s1",
+                                "op": "=",
+                                "right": 0
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "r1",
+                                "op": "=",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "r1 <- 2",
+                                    "ref": "r1",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((s1 = 0) & (r1 = 0))",
+                        "exp": {
+                            "left": {
+                                "left": "s1",
+                                "op": "=",
+                                "right": 0
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "r1",
+                                "op": "=",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "s1 <- 1",
+                                    "ref": "s1",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((s1 = 0) & (r1 = 1))",
+                        "exp": {
+                            "left": {
+                                "left": "s1",
+                                "op": "=",
+                                "right": 0
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "r1",
+                                "op": "=",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "s1 <- 1",
+                                    "ref": "s1",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((s1 = 0) & (r1 = 2))",
+                        "exp": {
+                            "left": {
+                                "left": "s1",
+                                "op": "=",
+                                "right": 0
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "r1",
+                                "op": "=",
+                                "right": 2
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "s1 <- 4",
+                                    "ref": "s1",
+                                    "value": 4
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "x",
+                                "exp": "x"
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "s1 <- 0",
+                                    "ref": "s1",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "r1 <- 0",
+                                    "ref": "r1",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(1 - x)",
+                                "exp": {
+                                    "left": 1,
+                                    "op": "-",
+                                    "right": "x"
+                                }
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((s1 = 3) & (r1 = 1))",
+                        "exp": {
+                            "left": {
+                                "left": "s1",
+                                "op": "=",
+                                "right": 3
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "r1",
+                                "op": "=",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "s1 <- 4",
+                                    "ref": "s1",
+                                    "value": 4
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "x",
+                                "exp": "x"
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "s1 <- 0",
+                                    "ref": "s1",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "r1 <- 0",
+                                    "ref": "r1",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(1 - x)",
+                                "exp": {
+                                    "left": 1,
+                                    "op": "-",
+                                    "right": "x"
+                                }
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((s1 = 3) & (r1 = 2)) & !(rescind1))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "s1",
+                                    "op": "=",
+                                    "right": 3
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "r1",
+                                    "op": "=",
+                                    "right": 2
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "exp": "rescind1",
+                                "op": "¬"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u1_cancel_comm",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "s1 <- 0",
+                                    "ref": "s1",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "r1 <- 0",
+                                    "ref": "r1",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((s1 = 2) & (r1 = 1))",
+                        "exp": {
+                            "left": {
+                                "left": "s1",
+                                "op": "=",
+                                "right": 2
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "r1",
+                                "op": "=",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u1_cancel_comm",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "s1 <- 0",
+                                    "ref": "s1",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "r1 <- 0",
+                                    "ref": "r1",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((s1 = 4) & (r1 = 1))",
+                        "exp": {
+                            "left": {
+                                "left": "s1",
+                                "op": "=",
+                                "right": 4
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "r1",
+                                "op": "=",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u1_cancel_drive",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "s1 <- 0",
+                                    "ref": "s1",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "r1 <- 0",
+                                    "ref": "r1",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((s1 = 2) & (r1 = 2))",
+                        "exp": {
+                            "left": {
+                                "left": "s1",
+                                "op": "=",
+                                "right": 2
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "r1",
+                                "op": "=",
+                                "right": 2
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u1_cancel_drive",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "rescind1 <- false",
+                                    "ref": "rescind1",
+                                    "value": false
+                                },
+                                {
+                                    "comment": "s1 <- 1",
+                                    "ref": "s1",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((s1 = 3) & (r1 = 2)) & rescind1)",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "s1",
+                                    "op": "=",
+                                    "right": 3
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "r1",
+                                    "op": "=",
+                                    "right": 2
+                                }
+                            },
+                            "op": "∧",
+                            "right": "rescind1"
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u1_cancel_drive",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "s1 <- 0",
+                                    "ref": "s1",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "r1 <- 0",
+                                    "ref": "r1",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((s1 = 4) & (r1 = 2))",
+                        "exp": {
+                            "left": {
+                                "left": "s1",
+                                "op": "=",
+                                "right": 4
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "r1",
+                                "op": "=",
+                                "right": 2
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u1_deny_comm",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "s1 <- 1",
+                                    "ref": "s1",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((s1 = 2) & (r1 = 1))",
+                        "exp": {
+                            "left": {
+                                "left": "s1",
+                                "op": "=",
+                                "right": 2
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "r1",
+                                "op": "=",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u1_deny_drive",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "s1 <- 1",
+                                    "ref": "s1",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((s1 = 2) & (r1 = 2))",
+                        "exp": {
+                            "left": {
+                                "left": "s1",
+                                "op": "=",
+                                "right": 2
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "r1",
+                                "op": "=",
+                                "right": 2
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u1_grant_comm",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "s1 <- 3",
+                                    "ref": "s1",
+                                    "value": 3
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((s1 = 2) & (r1 = 1))",
+                        "exp": {
+                            "left": {
+                                "left": "s1",
+                                "op": "=",
+                                "right": 2
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "r1",
+                                "op": "=",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u1_grant_drive",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "s1 <- 3",
+                                    "ref": "s1",
+                                    "value": 3
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((s1 = 2) & (r1 = 2))",
+                        "exp": {
+                            "left": {
+                                "left": "s1",
+                                "op": "=",
+                                "right": 2
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "r1",
+                                "op": "=",
+                                "right": 2
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u1_request_comm",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "s1 <- 2",
+                                    "ref": "s1",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((s1 = 1) & (r1 = 1))",
+                        "exp": {
+                            "left": {
+                                "left": "s1",
+                                "op": "=",
+                                "right": 1
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "r1",
+                                "op": "=",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u1_request_drive",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "s1 <- 2",
+                                    "ref": "s1",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((s1 = 1) & (r1 = 2))",
+                        "exp": {
+                            "left": {
+                                "left": "s1",
+                                "op": "=",
+                                "right": 1
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "r1",
+                                "op": "=",
+                                "right": 2
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u1_rescind_drive",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "rescind1 <- true",
+                                    "ref": "rescind1",
+                                    "value": true
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((s1 = 3) & (r1 = 2))",
+                        "exp": {
+                            "left": {
+                                "left": "s1",
+                                "op": "=",
+                                "right": 3
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "r1",
+                                "op": "=",
+                                "right": 2
+                            }
+                        }
+                    },
+                    "location": "l"
+                }
+            ],
+            "initial-locations": [
+                "l"
+            ],
+            "locations": [
+                {
+                    "name": "l"
+                }
+            ],
+            "name": "user1",
+            "variables": []
+        },
+        {
+            "edges": [
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "r2 <- 1",
+                                    "ref": "r2",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((s2 = 0) & (r2 = 0))",
+                        "exp": {
+                            "left": {
+                                "left": "s2",
+                                "op": "=",
+                                "right": 0
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "r2",
+                                "op": "=",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "r2 <- 2",
+                                    "ref": "r2",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((s2 = 0) & (r2 = 0))",
+                        "exp": {
+                            "left": {
+                                "left": "s2",
+                                "op": "=",
+                                "right": 0
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "r2",
+                                "op": "=",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "s2 <- 1",
+                                    "ref": "s2",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((s2 = 0) & (r2 = 1))",
+                        "exp": {
+                            "left": {
+                                "left": "s2",
+                                "op": "=",
+                                "right": 0
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "r2",
+                                "op": "=",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "s2 <- 1",
+                                    "ref": "s2",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((s2 = 0) & (r2 = 2))",
+                        "exp": {
+                            "left": {
+                                "left": "s2",
+                                "op": "=",
+                                "right": 0
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "r2",
+                                "op": "=",
+                                "right": 2
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "s2 <- 4",
+                                    "ref": "s2",
+                                    "value": 4
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "x",
+                                "exp": "x"
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "s2 <- 0",
+                                    "ref": "s2",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "r2 <- 0",
+                                    "ref": "r2",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(1 - x)",
+                                "exp": {
+                                    "left": 1,
+                                    "op": "-",
+                                    "right": "x"
+                                }
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((s2 = 3) & (r2 = 1))",
+                        "exp": {
+                            "left": {
+                                "left": "s2",
+                                "op": "=",
+                                "right": 3
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "r2",
+                                "op": "=",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "s2 <- 4",
+                                    "ref": "s2",
+                                    "value": 4
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "x",
+                                "exp": "x"
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "s2 <- 0",
+                                    "ref": "s2",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "r2 <- 0",
+                                    "ref": "r2",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(1 - x)",
+                                "exp": {
+                                    "left": 1,
+                                    "op": "-",
+                                    "right": "x"
+                                }
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((s2 = 3) & (r2 = 2)) & !(rescind2))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "s2",
+                                    "op": "=",
+                                    "right": 3
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "r2",
+                                    "op": "=",
+                                    "right": 2
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "exp": "rescind2",
+                                "op": "¬"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u2_cancel_comm",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "s2 <- 0",
+                                    "ref": "s2",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "r2 <- 0",
+                                    "ref": "r2",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((s2 = 2) & (r2 = 1))",
+                        "exp": {
+                            "left": {
+                                "left": "s2",
+                                "op": "=",
+                                "right": 2
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "r2",
+                                "op": "=",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u2_cancel_comm",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "s2 <- 0",
+                                    "ref": "s2",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "r2 <- 0",
+                                    "ref": "r2",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((s2 = 4) & (r2 = 1))",
+                        "exp": {
+                            "left": {
+                                "left": "s2",
+                                "op": "=",
+                                "right": 4
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "r2",
+                                "op": "=",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u2_cancel_drive",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "s2 <- 0",
+                                    "ref": "s2",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "r2 <- 0",
+                                    "ref": "r2",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((s2 = 2) & (r2 = 2))",
+                        "exp": {
+                            "left": {
+                                "left": "s2",
+                                "op": "=",
+                                "right": 2
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "r2",
+                                "op": "=",
+                                "right": 2
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u2_cancel_drive",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "rescind2 <- false",
+                                    "ref": "rescind2",
+                                    "value": false
+                                },
+                                {
+                                    "comment": "s2 <- 1",
+                                    "ref": "s2",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((s2 = 3) & (r2 = 2)) & rescind2)",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "s2",
+                                    "op": "=",
+                                    "right": 3
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "r2",
+                                    "op": "=",
+                                    "right": 2
+                                }
+                            },
+                            "op": "∧",
+                            "right": "rescind2"
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u2_cancel_drive",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "s2 <- 0",
+                                    "ref": "s2",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "r2 <- 0",
+                                    "ref": "r2",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((s2 = 4) & (r2 = 2))",
+                        "exp": {
+                            "left": {
+                                "left": "s2",
+                                "op": "=",
+                                "right": 4
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "r2",
+                                "op": "=",
+                                "right": 2
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u2_deny_comm",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "s2 <- 1",
+                                    "ref": "s2",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((s2 = 2) & (r2 = 1))",
+                        "exp": {
+                            "left": {
+                                "left": "s2",
+                                "op": "=",
+                                "right": 2
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "r2",
+                                "op": "=",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u2_deny_drive",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "s2 <- 1",
+                                    "ref": "s2",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((s2 = 2) & (r2 = 2))",
+                        "exp": {
+                            "left": {
+                                "left": "s2",
+                                "op": "=",
+                                "right": 2
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "r2",
+                                "op": "=",
+                                "right": 2
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u2_grant_comm",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "s2 <- 3",
+                                    "ref": "s2",
+                                    "value": 3
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((s2 = 2) & (r2 = 1))",
+                        "exp": {
+                            "left": {
+                                "left": "s2",
+                                "op": "=",
+                                "right": 2
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "r2",
+                                "op": "=",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u2_grant_drive",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "s2 <- 3",
+                                    "ref": "s2",
+                                    "value": 3
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((s2 = 2) & (r2 = 2))",
+                        "exp": {
+                            "left": {
+                                "left": "s2",
+                                "op": "=",
+                                "right": 2
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "r2",
+                                "op": "=",
+                                "right": 2
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u2_request_comm",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "s2 <- 2",
+                                    "ref": "s2",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((s2 = 1) & (r2 = 1))",
+                        "exp": {
+                            "left": {
+                                "left": "s2",
+                                "op": "=",
+                                "right": 1
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "r2",
+                                "op": "=",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u2_request_drive",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "s2 <- 2",
+                                    "ref": "s2",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((s2 = 1) & (r2 = 2))",
+                        "exp": {
+                            "left": {
+                                "left": "s2",
+                                "op": "=",
+                                "right": 1
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "r2",
+                                "op": "=",
+                                "right": 2
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u2_rescind_drive",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "rescind2 <- true",
+                                    "ref": "rescind2",
+                                    "value": true
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((s2 = 3) & (r2 = 2))",
+                        "exp": {
+                            "left": {
+                                "left": "s2",
+                                "op": "=",
+                                "right": 3
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "r2",
+                                "op": "=",
+                                "right": 2
+                            }
+                        }
+                    },
+                    "location": "l"
+                }
+            ],
+            "initial-locations": [
+                "l"
+            ],
+            "locations": [
+                {
+                    "name": "l"
+                }
+            ],
+            "name": "user2",
+            "variables": []
+        },
+        {
+            "edges": [
+                {
+                    "action": "u1_cancel_comm",
+                    "destinations": [
+                        {
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(e = 3)",
+                        "exp": {
+                            "left": "e",
+                            "op": "=",
+                            "right": 3
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u1_cancel_comm",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "e <- 0",
+                                    "ref": "e",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((e = 1) & (u = 1))",
+                        "exp": {
+                            "left": {
+                                "left": "e",
+                                "op": "=",
+                                "right": 1
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "u",
+                                "op": "=",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u1_cancel_comm",
+                    "destinations": [
+                        {
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(e = 2)",
+                        "exp": {
+                            "left": "e",
+                            "op": "=",
+                            "right": 2
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u1_cancel_comm",
+                    "destinations": [
+                        {
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(e = 0)",
+                        "exp": {
+                            "left": "e",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u1_cancel_drive",
+                    "destinations": [
+                        {
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(e = 3)",
+                        "exp": {
+                            "left": "e",
+                            "op": "=",
+                            "right": 3
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u1_cancel_drive",
+                    "destinations": [
+                        {
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(e = 1)",
+                        "exp": {
+                            "left": "e",
+                            "op": "=",
+                            "right": 1
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u1_cancel_drive",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "e <- 0",
+                                    "ref": "e",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((e = 2) & (u = 1))",
+                        "exp": {
+                            "left": {
+                                "left": "e",
+                                "op": "=",
+                                "right": 2
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "u",
+                                "op": "=",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u1_cancel_drive",
+                    "destinations": [
+                        {
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(e = 0)",
+                        "exp": {
+                            "left": "e",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u1_grant_comm",
+                    "destinations": [
+                        {
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(e = 3)",
+                        "exp": {
+                            "left": "e",
+                            "op": "=",
+                            "right": 3
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u1_grant_comm",
+                    "destinations": [
+                        {
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(e = 1)",
+                        "exp": {
+                            "left": "e",
+                            "op": "=",
+                            "right": 1
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u1_grant_comm",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "e <- 3",
+                                    "ref": "e",
+                                    "value": 3
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(e = 2)",
+                        "exp": {
+                            "left": "e",
+                            "op": "=",
+                            "right": 2
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u1_grant_comm",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "e <- 1",
+                                    "ref": "e",
+                                    "value": 1
+                                },
+                                {
+                                    "comment": "u <- 1",
+                                    "ref": "u",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(e = 0)",
+                        "exp": {
+                            "left": "e",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u1_grant_drive",
+                    "destinations": [
+                        {
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(e = 2)",
+                        "exp": {
+                            "left": "e",
+                            "op": "=",
+                            "right": 2
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u1_grant_drive",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "e <- 3",
+                                    "ref": "e",
+                                    "value": 3
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(e = 1)",
+                        "exp": {
+                            "left": "e",
+                            "op": "=",
+                            "right": 1
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u1_grant_drive",
+                    "destinations": [
+                        {
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(e = 3)",
+                        "exp": {
+                            "left": "e",
+                            "op": "=",
+                            "right": 3
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u1_grant_drive",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "e <- 2",
+                                    "ref": "e",
+                                    "value": 2
+                                },
+                                {
+                                    "comment": "u <- 1",
+                                    "ref": "u",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(e = 0)",
+                        "exp": {
+                            "left": "e",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u2_cancel_comm",
+                    "destinations": [
+                        {
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(e = 2)",
+                        "exp": {
+                            "left": "e",
+                            "op": "=",
+                            "right": 2
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u2_cancel_comm",
+                    "destinations": [
+                        {
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(e = 0)",
+                        "exp": {
+                            "left": "e",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u2_cancel_comm",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "e <- 0",
+                                    "ref": "e",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((e = 1) & (u = 2))",
+                        "exp": {
+                            "left": {
+                                "left": "e",
+                                "op": "=",
+                                "right": 1
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "u",
+                                "op": "=",
+                                "right": 2
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u2_cancel_comm",
+                    "destinations": [
+                        {
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(e = 3)",
+                        "exp": {
+                            "left": "e",
+                            "op": "=",
+                            "right": 3
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u2_cancel_drive",
+                    "destinations": [
+                        {
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(e = 0)",
+                        "exp": {
+                            "left": "e",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u2_cancel_drive",
+                    "destinations": [
+                        {
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(e = 1)",
+                        "exp": {
+                            "left": "e",
+                            "op": "=",
+                            "right": 1
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u2_cancel_drive",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "e <- 0",
+                                    "ref": "e",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((e = 2) & (u = 2))",
+                        "exp": {
+                            "left": {
+                                "left": "e",
+                                "op": "=",
+                                "right": 2
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "u",
+                                "op": "=",
+                                "right": 2
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u2_cancel_drive",
+                    "destinations": [
+                        {
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(e = 3)",
+                        "exp": {
+                            "left": "e",
+                            "op": "=",
+                            "right": 3
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u2_grant_comm",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "e <- 1",
+                                    "ref": "e",
+                                    "value": 1
+                                },
+                                {
+                                    "comment": "u <- 2",
+                                    "ref": "u",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(e = 0)",
+                        "exp": {
+                            "left": "e",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u2_grant_comm",
+                    "destinations": [
+                        {
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(e = 1)",
+                        "exp": {
+                            "left": "e",
+                            "op": "=",
+                            "right": 1
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u2_grant_comm",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "e <- 3",
+                                    "ref": "e",
+                                    "value": 3
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(e = 2)",
+                        "exp": {
+                            "left": "e",
+                            "op": "=",
+                            "right": 2
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u2_grant_comm",
+                    "destinations": [
+                        {
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(e = 3)",
+                        "exp": {
+                            "left": "e",
+                            "op": "=",
+                            "right": 3
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u2_grant_drive",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "e <- 2",
+                                    "ref": "e",
+                                    "value": 2
+                                },
+                                {
+                                    "comment": "u <- 2",
+                                    "ref": "u",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(e = 0)",
+                        "exp": {
+                            "left": "e",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u2_grant_drive",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "e <- 3",
+                                    "ref": "e",
+                                    "value": 3
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(e = 1)",
+                        "exp": {
+                            "left": "e",
+                            "op": "=",
+                            "right": 1
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u2_grant_drive",
+                    "destinations": [
+                        {
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(e = 2)",
+                        "exp": {
+                            "left": "e",
+                            "op": "=",
+                            "right": 2
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "u2_grant_drive",
+                    "destinations": [
+                        {
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(e = 3)",
+                        "exp": {
+                            "left": "e",
+                            "op": "=",
+                            "right": 3
+                        }
+                    },
+                    "location": "l"
+                }
+            ],
+            "initial-locations": [
+                "l"
+            ],
+            "locations": [
+                {
+                    "name": "l"
+                }
+            ],
+            "name": "property",
+            "variables": []
+        },
+        {
+            "edges": [
+                {
+                    "destinations": [
+                        {
+                            "location": "l"
+                        }
+                    ],
+                    "location": "l"
+                }
+            ],
+            "initial-locations": [
+                "l"
+            ],
+            "locations": [
+                {
+                    "name": "l"
+                }
+            ],
+            "name": "loops",
+            "variables": []
+        }
+    ],
+    "constants": [
+        {
+            "name": "p",
+            "type": "real",
+            "value": {
+                "left": 1.0,
+                "op": "/",
+                "right": 5.0
+            }
+        },
+        {
+            "name": "n",
+            "type": "int"
+        },
+        {
+            "name": "x",
+            "type": "real"
+        }
+    ],
+    "features": [
+        "derived-operators"
+    ],
+    "jani-version": 1,
+    "name": "mer",
+    "properties": [
+        {
+            "expression": {
+                "fun": "values",
+                "op": "filter",
+                "states": {
+                    "op": "initial"
+                },
+                "values": {
+                    "exp": {
+                        "left": true,
+                        "op": "U",
+                        "right": "err_G"
+                    },
+                    "op": "Pmax"
+                }
+            },
+            "name": "prob_max"
+        }
+    ],
+    "restrict-initial": {
+        "exp": true
+    },
+    "system": {
+        "elements": [
+            {
+                "automaton": "arbiter"
+            },
+            {
+                "automaton": "user1"
+            },
+            {
+                "automaton": "user2"
+            },
+            {
+                "automaton": "property"
+            },
+            {
+                "automaton": "loops"
+            }
+        ],
+        "syncs": [
+            {
+                "result": "u1_cancel_comm",
+                "synchronise": [
+                    "u1_cancel_comm",
+                    "u1_cancel_comm",
+                    null,
+                    "u1_cancel_comm",
+                    null
+                ]
+            },
+            {
+                "result": "u1_cancel_drive",
+                "synchronise": [
+                    "u1_cancel_drive",
+                    "u1_cancel_drive",
+                    null,
+                    "u1_cancel_drive",
+                    null
+                ]
+            },
+            {
+                "result": "u1_deny_comm",
+                "synchronise": [
+                    "u1_deny_comm",
+                    "u1_deny_comm",
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "result": "u1_deny_drive",
+                "synchronise": [
+                    "u1_deny_drive",
+                    "u1_deny_drive",
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "result": "u1_grant_comm",
+                "synchronise": [
+                    "u1_grant_comm",
+                    "u1_grant_comm",
+                    null,
+                    "u1_grant_comm",
+                    null
+                ]
+            },
+            {
+                "result": "u1_grant_drive",
+                "synchronise": [
+                    "u1_grant_drive",
+                    "u1_grant_drive",
+                    null,
+                    "u1_grant_drive",
+                    null
+                ]
+            },
+            {
+                "result": "u1_request_comm",
+                "synchronise": [
+                    "u1_request_comm",
+                    "u1_request_comm",
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "result": "u1_request_drive",
+                "synchronise": [
+                    "u1_request_drive",
+                    "u1_request_drive",
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "result": "u1_rescind_drive",
+                "synchronise": [
+                    "u1_rescind_drive",
+                    "u1_rescind_drive",
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "result": "u2_cancel_comm",
+                "synchronise": [
+                    "u2_cancel_comm",
+                    null,
+                    "u2_cancel_comm",
+                    "u2_cancel_comm",
+                    null
+                ]
+            },
+            {
+                "result": "u2_cancel_drive",
+                "synchronise": [
+                    "u2_cancel_drive",
+                    null,
+                    "u2_cancel_drive",
+                    "u2_cancel_drive",
+                    null
+                ]
+            },
+            {
+                "result": "u2_deny_comm",
+                "synchronise": [
+                    "u2_deny_comm",
+                    null,
+                    "u2_deny_comm",
+                    null,
+                    null
+                ]
+            },
+            {
+                "result": "u2_deny_drive",
+                "synchronise": [
+                    "u2_deny_drive",
+                    null,
+                    "u2_deny_drive",
+                    null,
+                    null
+                ]
+            },
+            {
+                "result": "u2_grant_comm",
+                "synchronise": [
+                    "u2_grant_comm",
+                    null,
+                    "u2_grant_comm",
+                    "u2_grant_comm",
+                    null
+                ]
+            },
+            {
+                "result": "u2_grant_drive",
+                "synchronise": [
+                    "u2_grant_drive",
+                    null,
+                    "u2_grant_drive",
+                    "u2_grant_drive",
+                    null
+                ]
+            },
+            {
+                "result": "u2_request_comm",
+                "synchronise": [
+                    "u2_request_comm",
+                    null,
+                    "u2_request_comm",
+                    null,
+                    null
+                ]
+            },
+            {
+                "result": "u2_request_drive",
+                "synchronise": [
+                    "u2_request_drive",
+                    null,
+                    "u2_request_drive",
+                    null,
+                    null
+                ]
+            },
+            {
+                "result": "u2_rescind_drive",
+                "synchronise": [
+                    "u2_rescind_drive",
+                    null,
+                    "u2_rescind_drive",
+                    null,
+                    null
+                ]
+            }
+        ]
+    },
+    "type": "mdp",
+    "variables": [
+        {
+            "initial-value": false,
+            "name": "err_G",
+            "transient": true,
+            "type": "bool"
+        },
+        {
+            "initial-value": 0,
+            "name": "s",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": -1,
+                "upper-bound": 2
+            }
+        },
+        {
+            "initial-value": 2,
+            "name": "r",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 2
+            }
+        },
+        {
+            "initial-value": 0,
+            "name": "k",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": "n"
+            }
+        },
+        {
+            "initial-value": 0,
+            "name": "commUser",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 2
+            }
+        },
+        {
+            "initial-value": 0,
+            "name": "driveUser",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 2
+            }
+        },
+        {
+            "initial-value": false,
+            "name": "gc",
+            "type": "bool"
+        },
+        {
+            "initial-value": false,
+            "name": "dc",
+            "type": "bool"
+        },
+        {
+            "initial-value": false,
+            "name": "gd",
+            "type": "bool"
+        },
+        {
+            "initial-value": false,
+            "name": "dd",
+            "type": "bool"
+        },
+        {
+            "initial-value": 0,
+            "name": "s1",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 4
+            }
+        },
+        {
+            "initial-value": 0,
+            "name": "r1",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 2
+            }
+        },
+        {
+            "initial-value": false,
+            "name": "rescind1",
+            "type": "bool"
+        },
+        {
+            "initial-value": 0,
+            "name": "s2",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 4
+            }
+        },
+        {
+            "initial-value": 0,
+            "name": "r2",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 2
+            }
+        },
+        {
+            "initial-value": false,
+            "name": "rescind2",
+            "type": "bool"
+        },
+        {
+            "initial-value": 0,
+            "name": "e",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 3
+            }
+        },
+        {
+            "initial-value": 0,
+            "name": "u",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 2
+            }
+        }
+    ]
+}

@@ -1,0 +1,4836 @@
+{
+    "actions": [
+        {
+            "name": "ack1_0"
+        },
+        {
+            "name": "ack1_1"
+        },
+        {
+            "name": "ack1_2"
+        },
+        {
+            "name": "ack2_0"
+        },
+        {
+            "name": "ack2_1"
+        },
+        {
+            "name": "ack2_2"
+        },
+        {
+            "name": "ack3_0"
+        },
+        {
+            "name": "ack3_1"
+        },
+        {
+            "name": "ack3_2"
+        },
+        {
+            "name": "ack4_0"
+        },
+        {
+            "name": "ack4_1"
+        },
+        {
+            "name": "ack4_2"
+        },
+        {
+            "name": "ack5_0"
+        },
+        {
+            "name": "ack5_1"
+        },
+        {
+            "name": "ack5_2"
+        },
+        {
+            "name": "alert"
+        },
+        {
+            "name": "crash"
+        },
+        {
+            "name": "data"
+        },
+        {
+            "name": "detect1"
+        },
+        {
+            "name": "detect2"
+        },
+        {
+            "name": "detect3"
+        },
+        {
+            "name": "detect4"
+        },
+        {
+            "name": "detect5"
+        },
+        {
+            "name": "done"
+        },
+        {
+            "name": "extract"
+        },
+        {
+            "name": "noack1"
+        },
+        {
+            "name": "noack2"
+        },
+        {
+            "name": "noack3"
+        },
+        {
+            "name": "noack4"
+        },
+        {
+            "name": "noack5"
+        },
+        {
+            "name": "process"
+        },
+        {
+            "name": "s1_to_c"
+        },
+        {
+            "name": "s2_to_c"
+        },
+        {
+            "name": "s3_to_c"
+        },
+        {
+            "name": "s4_to_c"
+        },
+        {
+            "name": "s5_to_c"
+        },
+        {
+            "name": "stop"
+        },
+        {
+            "name": "work"
+        }
+    ],
+    "automata": [
+        {
+            "edges": [
+                {
+                    "destinations": [
+                        {
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y1 = 6)",
+                        "exp": {
+                            "left": "y1",
+                            "op": "=",
+                            "right": 6
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack1_0",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y1 <- 0",
+                                    "ref": "y1",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y1 = 1)",
+                        "exp": {
+                            "left": "y1",
+                            "op": "=",
+                            "right": 1
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack1_1",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y1 <- 4",
+                                    "ref": "y1",
+                                    "value": 4
+                                },
+                                {
+                                    "comment": "msg1 <- 3",
+                                    "ref": "msg1",
+                                    "value": 3
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y1 = 3)",
+                        "exp": {
+                            "left": "y1",
+                            "op": "=",
+                            "right": 3
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack1_2",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y1 <- 6",
+                                    "ref": "y1",
+                                    "value": 6
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y1 = 5)",
+                        "exp": {
+                            "left": "y1",
+                            "op": "=",
+                            "right": 5
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "detect1",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y1 <- 2",
+                                    "ref": "y1",
+                                    "value": 2
+                                },
+                                {
+                                    "comment": "msg1 <- 2",
+                                    "ref": "msg1",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y1 = 0)",
+                        "exp": {
+                            "left": "y1",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "noack1",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y1 <- 0",
+                                    "ref": "y1",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y1 = 1)",
+                        "exp": {
+                            "left": "y1",
+                            "op": "=",
+                            "right": 1
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "noack1",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y1 <- 2",
+                                    "ref": "y1",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y1 <- 4",
+                                    "ref": "y1",
+                                    "value": 4
+                                },
+                                {
+                                    "comment": "msg1 <- 3",
+                                    "ref": "msg1",
+                                    "value": 3
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "0",
+                                "exp": 0
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y1 = 3)",
+                        "exp": {
+                            "left": "y1",
+                            "op": "=",
+                            "right": 3
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "noack1",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y1 <- 4",
+                                    "ref": "y1",
+                                    "value": 4
+                                }
+                            ],
+                            "location": "l"
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y1 <- 6",
+                                    "ref": "y1",
+                                    "value": 6
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "0",
+                                "exp": 0
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y1 = 5)",
+                        "exp": {
+                            "left": "y1",
+                            "op": "=",
+                            "right": 5
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "s1_to_c",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y1 <- 1",
+                                    "ref": "y1",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y1 = 0)",
+                        "exp": {
+                            "left": "y1",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "s1_to_c",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y1 <- 3",
+                                    "ref": "y1",
+                                    "value": 3
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y1 = 2)",
+                        "exp": {
+                            "left": "y1",
+                            "op": "=",
+                            "right": 2
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "s1_to_c",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y1 <- 5",
+                                    "ref": "y1",
+                                    "value": 5
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y1 = 4)",
+                        "exp": {
+                            "left": "y1",
+                            "op": "=",
+                            "right": 4
+                        }
+                    },
+                    "location": "l"
+                }
+            ],
+            "initial-locations": [
+                "l"
+            ],
+            "locations": [
+                {
+                    "name": "l"
+                }
+            ],
+            "name": "sensor1",
+            "variables": []
+        },
+        {
+            "edges": [
+                {
+                    "destinations": [
+                        {
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y2 = 6)",
+                        "exp": {
+                            "left": "y2",
+                            "op": "=",
+                            "right": 6
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack2_0",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y2 <- 0",
+                                    "ref": "y2",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y2 = 1)",
+                        "exp": {
+                            "left": "y2",
+                            "op": "=",
+                            "right": 1
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack2_1",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y2 <- 4",
+                                    "ref": "y2",
+                                    "value": 4
+                                },
+                                {
+                                    "comment": "msg2 <- 3",
+                                    "ref": "msg2",
+                                    "value": 3
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y2 = 3)",
+                        "exp": {
+                            "left": "y2",
+                            "op": "=",
+                            "right": 3
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack2_2",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y2 <- 6",
+                                    "ref": "y2",
+                                    "value": 6
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y2 = 5)",
+                        "exp": {
+                            "left": "y2",
+                            "op": "=",
+                            "right": 5
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "detect2",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y2 <- 2",
+                                    "ref": "y2",
+                                    "value": 2
+                                },
+                                {
+                                    "comment": "msg2 <- 2",
+                                    "ref": "msg2",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y2 = 0)",
+                        "exp": {
+                            "left": "y2",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "noack2",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y2 <- 0",
+                                    "ref": "y2",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y2 = 1)",
+                        "exp": {
+                            "left": "y2",
+                            "op": "=",
+                            "right": 1
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "noack2",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y2 <- 2",
+                                    "ref": "y2",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y2 <- 4",
+                                    "ref": "y2",
+                                    "value": 4
+                                },
+                                {
+                                    "comment": "msg2 <- 3",
+                                    "ref": "msg2",
+                                    "value": 3
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "0",
+                                "exp": 0
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y2 = 3)",
+                        "exp": {
+                            "left": "y2",
+                            "op": "=",
+                            "right": 3
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "noack2",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y2 <- 4",
+                                    "ref": "y2",
+                                    "value": 4
+                                }
+                            ],
+                            "location": "l"
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y2 <- 6",
+                                    "ref": "y2",
+                                    "value": 6
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "0",
+                                "exp": 0
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y2 = 5)",
+                        "exp": {
+                            "left": "y2",
+                            "op": "=",
+                            "right": 5
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "s2_to_c",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y2 <- 1",
+                                    "ref": "y2",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y2 = 0)",
+                        "exp": {
+                            "left": "y2",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "s2_to_c",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y2 <- 3",
+                                    "ref": "y2",
+                                    "value": 3
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y2 = 2)",
+                        "exp": {
+                            "left": "y2",
+                            "op": "=",
+                            "right": 2
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "s2_to_c",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y2 <- 5",
+                                    "ref": "y2",
+                                    "value": 5
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y2 = 4)",
+                        "exp": {
+                            "left": "y2",
+                            "op": "=",
+                            "right": 4
+                        }
+                    },
+                    "location": "l"
+                }
+            ],
+            "initial-locations": [
+                "l"
+            ],
+            "locations": [
+                {
+                    "name": "l"
+                }
+            ],
+            "name": "sensor2",
+            "variables": []
+        },
+        {
+            "edges": [
+                {
+                    "destinations": [
+                        {
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y3 = 6)",
+                        "exp": {
+                            "left": "y3",
+                            "op": "=",
+                            "right": 6
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack3_0",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y3 <- 0",
+                                    "ref": "y3",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y3 = 1)",
+                        "exp": {
+                            "left": "y3",
+                            "op": "=",
+                            "right": 1
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack3_1",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y3 <- 4",
+                                    "ref": "y3",
+                                    "value": 4
+                                },
+                                {
+                                    "comment": "msg3 <- 3",
+                                    "ref": "msg3",
+                                    "value": 3
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y3 = 3)",
+                        "exp": {
+                            "left": "y3",
+                            "op": "=",
+                            "right": 3
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack3_2",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y3 <- 6",
+                                    "ref": "y3",
+                                    "value": 6
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y3 = 5)",
+                        "exp": {
+                            "left": "y3",
+                            "op": "=",
+                            "right": 5
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "detect3",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y3 <- 2",
+                                    "ref": "y3",
+                                    "value": 2
+                                },
+                                {
+                                    "comment": "msg3 <- 2",
+                                    "ref": "msg3",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y3 = 0)",
+                        "exp": {
+                            "left": "y3",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "noack3",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y3 <- 0",
+                                    "ref": "y3",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y3 = 1)",
+                        "exp": {
+                            "left": "y3",
+                            "op": "=",
+                            "right": 1
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "noack3",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y3 <- 2",
+                                    "ref": "y3",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y3 <- 4",
+                                    "ref": "y3",
+                                    "value": 4
+                                },
+                                {
+                                    "comment": "msg3 <- 3",
+                                    "ref": "msg3",
+                                    "value": 3
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "0",
+                                "exp": 0
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y3 = 3)",
+                        "exp": {
+                            "left": "y3",
+                            "op": "=",
+                            "right": 3
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "noack3",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y3 <- 4",
+                                    "ref": "y3",
+                                    "value": 4
+                                }
+                            ],
+                            "location": "l"
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y3 <- 6",
+                                    "ref": "y3",
+                                    "value": 6
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "0",
+                                "exp": 0
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y3 = 5)",
+                        "exp": {
+                            "left": "y3",
+                            "op": "=",
+                            "right": 5
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "s3_to_c",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y3 <- 1",
+                                    "ref": "y3",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y3 = 0)",
+                        "exp": {
+                            "left": "y3",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "s3_to_c",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y3 <- 3",
+                                    "ref": "y3",
+                                    "value": 3
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y3 = 2)",
+                        "exp": {
+                            "left": "y3",
+                            "op": "=",
+                            "right": 2
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "s3_to_c",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y3 <- 5",
+                                    "ref": "y3",
+                                    "value": 5
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y3 = 4)",
+                        "exp": {
+                            "left": "y3",
+                            "op": "=",
+                            "right": 4
+                        }
+                    },
+                    "location": "l"
+                }
+            ],
+            "initial-locations": [
+                "l"
+            ],
+            "locations": [
+                {
+                    "name": "l"
+                }
+            ],
+            "name": "sensor3",
+            "variables": []
+        },
+        {
+            "edges": [
+                {
+                    "destinations": [
+                        {
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y4 = 6)",
+                        "exp": {
+                            "left": "y4",
+                            "op": "=",
+                            "right": 6
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack4_0",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y4 <- 0",
+                                    "ref": "y4",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y4 = 1)",
+                        "exp": {
+                            "left": "y4",
+                            "op": "=",
+                            "right": 1
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack4_1",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y4 <- 4",
+                                    "ref": "y4",
+                                    "value": 4
+                                },
+                                {
+                                    "comment": "msg4 <- 3",
+                                    "ref": "msg4",
+                                    "value": 3
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y4 = 3)",
+                        "exp": {
+                            "left": "y4",
+                            "op": "=",
+                            "right": 3
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack4_2",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y4 <- 6",
+                                    "ref": "y4",
+                                    "value": 6
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y4 = 5)",
+                        "exp": {
+                            "left": "y4",
+                            "op": "=",
+                            "right": 5
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "detect4",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y4 <- 2",
+                                    "ref": "y4",
+                                    "value": 2
+                                },
+                                {
+                                    "comment": "msg4 <- 2",
+                                    "ref": "msg4",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y4 = 0)",
+                        "exp": {
+                            "left": "y4",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "noack4",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y4 <- 0",
+                                    "ref": "y4",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y4 = 1)",
+                        "exp": {
+                            "left": "y4",
+                            "op": "=",
+                            "right": 1
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "noack4",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y4 <- 2",
+                                    "ref": "y4",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y4 <- 4",
+                                    "ref": "y4",
+                                    "value": 4
+                                },
+                                {
+                                    "comment": "msg4 <- 3",
+                                    "ref": "msg4",
+                                    "value": 3
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "0",
+                                "exp": 0
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y4 = 3)",
+                        "exp": {
+                            "left": "y4",
+                            "op": "=",
+                            "right": 3
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "noack4",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y4 <- 4",
+                                    "ref": "y4",
+                                    "value": 4
+                                }
+                            ],
+                            "location": "l"
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y4 <- 6",
+                                    "ref": "y4",
+                                    "value": 6
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "0",
+                                "exp": 0
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y4 = 5)",
+                        "exp": {
+                            "left": "y4",
+                            "op": "=",
+                            "right": 5
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "s4_to_c",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y4 <- 1",
+                                    "ref": "y4",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y4 = 0)",
+                        "exp": {
+                            "left": "y4",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "s4_to_c",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y4 <- 3",
+                                    "ref": "y4",
+                                    "value": 3
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y4 = 2)",
+                        "exp": {
+                            "left": "y4",
+                            "op": "=",
+                            "right": 2
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "s4_to_c",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y4 <- 5",
+                                    "ref": "y4",
+                                    "value": 5
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y4 = 4)",
+                        "exp": {
+                            "left": "y4",
+                            "op": "=",
+                            "right": 4
+                        }
+                    },
+                    "location": "l"
+                }
+            ],
+            "initial-locations": [
+                "l"
+            ],
+            "locations": [
+                {
+                    "name": "l"
+                }
+            ],
+            "name": "sensor4",
+            "variables": []
+        },
+        {
+            "edges": [
+                {
+                    "destinations": [
+                        {
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y5 = 6)",
+                        "exp": {
+                            "left": "y5",
+                            "op": "=",
+                            "right": 6
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack5_0",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y5 <- 0",
+                                    "ref": "y5",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y5 = 1)",
+                        "exp": {
+                            "left": "y5",
+                            "op": "=",
+                            "right": 1
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack5_1",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y5 <- 4",
+                                    "ref": "y5",
+                                    "value": 4
+                                },
+                                {
+                                    "comment": "msg5 <- 3",
+                                    "ref": "msg5",
+                                    "value": 3
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y5 = 3)",
+                        "exp": {
+                            "left": "y5",
+                            "op": "=",
+                            "right": 3
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack5_2",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y5 <- 6",
+                                    "ref": "y5",
+                                    "value": 6
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y5 = 5)",
+                        "exp": {
+                            "left": "y5",
+                            "op": "=",
+                            "right": 5
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "detect5",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y5 <- 2",
+                                    "ref": "y5",
+                                    "value": 2
+                                },
+                                {
+                                    "comment": "msg5 <- 2",
+                                    "ref": "msg5",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y5 = 0)",
+                        "exp": {
+                            "left": "y5",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "noack5",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y5 <- 0",
+                                    "ref": "y5",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y5 = 1)",
+                        "exp": {
+                            "left": "y5",
+                            "op": "=",
+                            "right": 1
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "noack5",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y5 <- 2",
+                                    "ref": "y5",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y5 <- 4",
+                                    "ref": "y5",
+                                    "value": 4
+                                },
+                                {
+                                    "comment": "msg5 <- 3",
+                                    "ref": "msg5",
+                                    "value": 3
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "0",
+                                "exp": 0
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y5 = 3)",
+                        "exp": {
+                            "left": "y5",
+                            "op": "=",
+                            "right": 3
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "noack5",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y5 <- 4",
+                                    "ref": "y5",
+                                    "value": 4
+                                }
+                            ],
+                            "location": "l"
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y5 <- 6",
+                                    "ref": "y5",
+                                    "value": 6
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "0",
+                                "exp": 0
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y5 = 5)",
+                        "exp": {
+                            "left": "y5",
+                            "op": "=",
+                            "right": 5
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "s5_to_c",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y5 <- 1",
+                                    "ref": "y5",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y5 = 0)",
+                        "exp": {
+                            "left": "y5",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "s5_to_c",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y5 <- 3",
+                                    "ref": "y5",
+                                    "value": 3
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y5 = 2)",
+                        "exp": {
+                            "left": "y5",
+                            "op": "=",
+                            "right": 2
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "s5_to_c",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y5 <- 5",
+                                    "ref": "y5",
+                                    "value": 5
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y5 = 4)",
+                        "exp": {
+                            "left": "y5",
+                            "op": "=",
+                            "right": 4
+                        }
+                    },
+                    "location": "l"
+                }
+            ],
+            "initial-locations": [
+                "l"
+            ],
+            "locations": [
+                {
+                    "name": "l"
+                }
+            ],
+            "name": "sensor5",
+            "variables": []
+        },
+        {
+            "edges": [
+                {
+                    "action": "ack1_0",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "cb1 <- msg1",
+                                    "ref": "cb1",
+                                    "value": "msg1"
+                                },
+                                {
+                                    "comment": "cbs <- 1",
+                                    "ref": "cbs",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((c = 1) & (who = 1)) & (cbs = 0))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "c",
+                                    "op": "=",
+                                    "right": 1
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "who",
+                                    "op": "=",
+                                    "right": 1
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "cbs",
+                                "op": "=",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack1_0",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "cb2 <- msg1",
+                                    "ref": "cb2",
+                                    "value": "msg1"
+                                },
+                                {
+                                    "comment": "cbs <- 2",
+                                    "ref": "cbs",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((c = 1) & (who = 1)) & (cbs = 1))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "c",
+                                    "op": "=",
+                                    "right": 1
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "who",
+                                    "op": "=",
+                                    "right": 1
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "cbs",
+                                "op": "=",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack1_1",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "cb1 <- msg1",
+                                    "ref": "cb1",
+                                    "value": "msg1"
+                                },
+                                {
+                                    "comment": "cbs <- 1",
+                                    "ref": "cbs",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((c = 1) & (who = 1)) & (cbs = 0))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "c",
+                                    "op": "=",
+                                    "right": 1
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "who",
+                                    "op": "=",
+                                    "right": 1
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "cbs",
+                                "op": "=",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack1_1",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "cb2 <- msg1",
+                                    "ref": "cb2",
+                                    "value": "msg1"
+                                },
+                                {
+                                    "comment": "cbs <- 2",
+                                    "ref": "cbs",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((c = 1) & (who = 1)) & (cbs = 1))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "c",
+                                    "op": "=",
+                                    "right": 1
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "who",
+                                    "op": "=",
+                                    "right": 1
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "cbs",
+                                "op": "=",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack1_2",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "cb1 <- msg1",
+                                    "ref": "cb1",
+                                    "value": "msg1"
+                                },
+                                {
+                                    "comment": "cbs <- 1",
+                                    "ref": "cbs",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((c = 1) & (who = 1)) & (cbs = 0))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "c",
+                                    "op": "=",
+                                    "right": 1
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "who",
+                                    "op": "=",
+                                    "right": 1
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "cbs",
+                                "op": "=",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack1_2",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "cb2 <- msg1",
+                                    "ref": "cb2",
+                                    "value": "msg1"
+                                },
+                                {
+                                    "comment": "cbs <- 2",
+                                    "ref": "cbs",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((c = 1) & (who = 1)) & (cbs = 1))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "c",
+                                    "op": "=",
+                                    "right": 1
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "who",
+                                    "op": "=",
+                                    "right": 1
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "cbs",
+                                "op": "=",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack2_0",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "cb1 <- msg2",
+                                    "ref": "cb1",
+                                    "value": "msg2"
+                                },
+                                {
+                                    "comment": "cbs <- 1",
+                                    "ref": "cbs",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((c = 1) & (who = 2)) & (cbs = 0))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "c",
+                                    "op": "=",
+                                    "right": 1
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "who",
+                                    "op": "=",
+                                    "right": 2
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "cbs",
+                                "op": "=",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack2_0",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "cb2 <- msg2",
+                                    "ref": "cb2",
+                                    "value": "msg2"
+                                },
+                                {
+                                    "comment": "cbs <- 2",
+                                    "ref": "cbs",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((c = 1) & (who = 2)) & (cbs = 1))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "c",
+                                    "op": "=",
+                                    "right": 1
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "who",
+                                    "op": "=",
+                                    "right": 2
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "cbs",
+                                "op": "=",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack2_1",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "cb1 <- msg2",
+                                    "ref": "cb1",
+                                    "value": "msg2"
+                                },
+                                {
+                                    "comment": "cbs <- 1",
+                                    "ref": "cbs",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((c = 1) & (who = 2)) & (cbs = 0))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "c",
+                                    "op": "=",
+                                    "right": 1
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "who",
+                                    "op": "=",
+                                    "right": 2
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "cbs",
+                                "op": "=",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack2_1",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "cb2 <- msg2",
+                                    "ref": "cb2",
+                                    "value": "msg2"
+                                },
+                                {
+                                    "comment": "cbs <- 2",
+                                    "ref": "cbs",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((c = 1) & (who = 2)) & (cbs = 1))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "c",
+                                    "op": "=",
+                                    "right": 1
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "who",
+                                    "op": "=",
+                                    "right": 2
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "cbs",
+                                "op": "=",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack2_2",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "cb1 <- msg2",
+                                    "ref": "cb1",
+                                    "value": "msg2"
+                                },
+                                {
+                                    "comment": "cbs <- 1",
+                                    "ref": "cbs",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((c = 1) & (who = 2)) & (cbs = 0))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "c",
+                                    "op": "=",
+                                    "right": 1
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "who",
+                                    "op": "=",
+                                    "right": 2
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "cbs",
+                                "op": "=",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack2_2",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "cb2 <- msg2",
+                                    "ref": "cb2",
+                                    "value": "msg2"
+                                },
+                                {
+                                    "comment": "cbs <- 2",
+                                    "ref": "cbs",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((c = 1) & (who = 2)) & (cbs = 1))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "c",
+                                    "op": "=",
+                                    "right": 1
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "who",
+                                    "op": "=",
+                                    "right": 2
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "cbs",
+                                "op": "=",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack3_0",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "cb1 <- msg3",
+                                    "ref": "cb1",
+                                    "value": "msg3"
+                                },
+                                {
+                                    "comment": "cbs <- 1",
+                                    "ref": "cbs",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((c = 1) & (who = 3)) & (cbs = 0))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "c",
+                                    "op": "=",
+                                    "right": 1
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "who",
+                                    "op": "=",
+                                    "right": 3
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "cbs",
+                                "op": "=",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack3_0",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "cb2 <- msg3",
+                                    "ref": "cb2",
+                                    "value": "msg3"
+                                },
+                                {
+                                    "comment": "cbs <- 2",
+                                    "ref": "cbs",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((c = 1) & (who = 3)) & (cbs = 1))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "c",
+                                    "op": "=",
+                                    "right": 1
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "who",
+                                    "op": "=",
+                                    "right": 3
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "cbs",
+                                "op": "=",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack3_1",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "cb1 <- msg3",
+                                    "ref": "cb1",
+                                    "value": "msg3"
+                                },
+                                {
+                                    "comment": "cbs <- 1",
+                                    "ref": "cbs",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((c = 1) & (who = 3)) & (cbs = 0))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "c",
+                                    "op": "=",
+                                    "right": 1
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "who",
+                                    "op": "=",
+                                    "right": 3
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "cbs",
+                                "op": "=",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack3_1",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "cb2 <- msg3",
+                                    "ref": "cb2",
+                                    "value": "msg3"
+                                },
+                                {
+                                    "comment": "cbs <- 2",
+                                    "ref": "cbs",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((c = 1) & (who = 3)) & (cbs = 1))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "c",
+                                    "op": "=",
+                                    "right": 1
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "who",
+                                    "op": "=",
+                                    "right": 3
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "cbs",
+                                "op": "=",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack3_2",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "cb1 <- msg3",
+                                    "ref": "cb1",
+                                    "value": "msg3"
+                                },
+                                {
+                                    "comment": "cbs <- 1",
+                                    "ref": "cbs",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((c = 1) & (who = 3)) & (cbs = 0))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "c",
+                                    "op": "=",
+                                    "right": 1
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "who",
+                                    "op": "=",
+                                    "right": 3
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "cbs",
+                                "op": "=",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack3_2",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "cb2 <- msg3",
+                                    "ref": "cb2",
+                                    "value": "msg3"
+                                },
+                                {
+                                    "comment": "cbs <- 2",
+                                    "ref": "cbs",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((c = 1) & (who = 3)) & (cbs = 1))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "c",
+                                    "op": "=",
+                                    "right": 1
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "who",
+                                    "op": "=",
+                                    "right": 3
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "cbs",
+                                "op": "=",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack4_0",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "cb1 <- msg4",
+                                    "ref": "cb1",
+                                    "value": "msg4"
+                                },
+                                {
+                                    "comment": "cbs <- 1",
+                                    "ref": "cbs",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((c = 1) & (who = 4)) & (cbs = 0))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "c",
+                                    "op": "=",
+                                    "right": 1
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "who",
+                                    "op": "=",
+                                    "right": 4
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "cbs",
+                                "op": "=",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack4_0",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "cb2 <- msg4",
+                                    "ref": "cb2",
+                                    "value": "msg4"
+                                },
+                                {
+                                    "comment": "cbs <- 2",
+                                    "ref": "cbs",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((c = 1) & (who = 4)) & (cbs = 1))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "c",
+                                    "op": "=",
+                                    "right": 1
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "who",
+                                    "op": "=",
+                                    "right": 4
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "cbs",
+                                "op": "=",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack4_1",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "cb1 <- msg4",
+                                    "ref": "cb1",
+                                    "value": "msg4"
+                                },
+                                {
+                                    "comment": "cbs <- 1",
+                                    "ref": "cbs",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((c = 1) & (who = 4)) & (cbs = 0))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "c",
+                                    "op": "=",
+                                    "right": 1
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "who",
+                                    "op": "=",
+                                    "right": 4
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "cbs",
+                                "op": "=",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack4_1",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "cb2 <- msg4",
+                                    "ref": "cb2",
+                                    "value": "msg4"
+                                },
+                                {
+                                    "comment": "cbs <- 2",
+                                    "ref": "cbs",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((c = 1) & (who = 4)) & (cbs = 1))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "c",
+                                    "op": "=",
+                                    "right": 1
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "who",
+                                    "op": "=",
+                                    "right": 4
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "cbs",
+                                "op": "=",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack4_2",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "cb2 <- msg4",
+                                    "ref": "cb2",
+                                    "value": "msg4"
+                                },
+                                {
+                                    "comment": "cbs <- 2",
+                                    "ref": "cbs",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((c = 1) & (who = 4)) & (cbs = 1))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "c",
+                                    "op": "=",
+                                    "right": 1
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "who",
+                                    "op": "=",
+                                    "right": 4
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "cbs",
+                                "op": "=",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack4_2",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "cb1 <- msg4",
+                                    "ref": "cb1",
+                                    "value": "msg4"
+                                },
+                                {
+                                    "comment": "cbs <- 1",
+                                    "ref": "cbs",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((c = 1) & (who = 4)) & (cbs = 0))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "c",
+                                    "op": "=",
+                                    "right": 1
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "who",
+                                    "op": "=",
+                                    "right": 4
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "cbs",
+                                "op": "=",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack5_0",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "cb1 <- msg5",
+                                    "ref": "cb1",
+                                    "value": "msg5"
+                                },
+                                {
+                                    "comment": "cbs <- 1",
+                                    "ref": "cbs",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((c = 1) & (who = 5)) & (cbs = 0))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "c",
+                                    "op": "=",
+                                    "right": 1
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "who",
+                                    "op": "=",
+                                    "right": 5
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "cbs",
+                                "op": "=",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack5_0",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "cb2 <- msg5",
+                                    "ref": "cb2",
+                                    "value": "msg5"
+                                },
+                                {
+                                    "comment": "cbs <- 2",
+                                    "ref": "cbs",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((c = 1) & (who = 5)) & (cbs = 1))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "c",
+                                    "op": "=",
+                                    "right": 1
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "who",
+                                    "op": "=",
+                                    "right": 5
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "cbs",
+                                "op": "=",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack5_1",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "cb1 <- msg5",
+                                    "ref": "cb1",
+                                    "value": "msg5"
+                                },
+                                {
+                                    "comment": "cbs <- 1",
+                                    "ref": "cbs",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((c = 1) & (who = 5)) & (cbs = 0))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "c",
+                                    "op": "=",
+                                    "right": 1
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "who",
+                                    "op": "=",
+                                    "right": 5
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "cbs",
+                                "op": "=",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack5_1",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "cb2 <- msg5",
+                                    "ref": "cb2",
+                                    "value": "msg5"
+                                },
+                                {
+                                    "comment": "cbs <- 2",
+                                    "ref": "cbs",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((c = 1) & (who = 5)) & (cbs = 1))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "c",
+                                    "op": "=",
+                                    "right": 1
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "who",
+                                    "op": "=",
+                                    "right": 5
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "cbs",
+                                "op": "=",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack5_2",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "cb1 <- msg5",
+                                    "ref": "cb1",
+                                    "value": "msg5"
+                                },
+                                {
+                                    "comment": "cbs <- 1",
+                                    "ref": "cbs",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((c = 1) & (who = 5)) & (cbs = 0))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "c",
+                                    "op": "=",
+                                    "right": 1
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "who",
+                                    "op": "=",
+                                    "right": 5
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "cbs",
+                                "op": "=",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack5_2",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "cb2 <- msg5",
+                                    "ref": "cb2",
+                                    "value": "msg5"
+                                },
+                                {
+                                    "comment": "cbs <- 2",
+                                    "ref": "cbs",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((c = 1) & (who = 5)) & (cbs = 1))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "c",
+                                    "op": "=",
+                                    "right": 1
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "who",
+                                    "op": "=",
+                                    "right": 5
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "cbs",
+                                "op": "=",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "alert",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((c = 3) & (what = 2))",
+                        "exp": {
+                            "left": {
+                                "left": "c",
+                                "op": "=",
+                                "right": 3
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "what",
+                                "op": "=",
+                                "right": 2
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "data",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((c = 3) & (what = 1))",
+                        "exp": {
+                            "left": {
+                                "left": "c",
+                                "op": "=",
+                                "right": 3
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "what",
+                                "op": "=",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "extract",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 3",
+                                    "ref": "c",
+                                    "value": 3
+                                },
+                                {
+                                    "comment": "what <- cb1",
+                                    "ref": "what",
+                                    "value": "cb1"
+                                },
+                                {
+                                    "comment": "cb1 <- 0",
+                                    "ref": "cb1",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "cbs <- 0",
+                                    "ref": "cbs",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "4/5",
+                                "exp": {
+                                    "left": 4.0,
+                                    "op": "/",
+                                    "right": 5.0
+                                }
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "cb1 <- 0",
+                                    "ref": "cb1",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "cbs <- 0",
+                                    "ref": "cbs",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/5",
+                                "exp": {
+                                    "left": 1.0,
+                                    "op": "/",
+                                    "right": 5.0
+                                }
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((c = 2) & (cbs = 1))",
+                        "exp": {
+                            "left": {
+                                "left": "c",
+                                "op": "=",
+                                "right": 2
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "cbs",
+                                "op": "=",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "extract",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 3",
+                                    "ref": "c",
+                                    "value": 3
+                                },
+                                {
+                                    "comment": "what <- cb1",
+                                    "ref": "what",
+                                    "value": "cb1"
+                                },
+                                {
+                                    "comment": "cb1 <- cb2",
+                                    "ref": "cb1",
+                                    "value": "cb2"
+                                },
+                                {
+                                    "comment": "cb2 <- 0",
+                                    "ref": "cb2",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "cbs <- 1",
+                                    "ref": "cbs",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "4/5",
+                                "exp": {
+                                    "left": 4.0,
+                                    "op": "/",
+                                    "right": 5.0
+                                }
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "cb1 <- cb2",
+                                    "ref": "cb1",
+                                    "value": "cb2"
+                                },
+                                {
+                                    "comment": "cb2 <- 0",
+                                    "ref": "cb2",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "cbs <- 1",
+                                    "ref": "cbs",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/5",
+                                "exp": {
+                                    "left": 1.0,
+                                    "op": "/",
+                                    "right": 5.0
+                                }
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((c = 2) & (cbs = 2))",
+                        "exp": {
+                            "left": {
+                                "left": "c",
+                                "op": "=",
+                                "right": 2
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "cbs",
+                                "op": "=",
+                                "right": 2
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "noack1",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((c = 1) & (who = 1)) & (cbs = 2))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "c",
+                                    "op": "=",
+                                    "right": 1
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "who",
+                                    "op": "=",
+                                    "right": 1
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "cbs",
+                                "op": "=",
+                                "right": 2
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "noack2",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((c = 1) & (who = 2)) & (cbs = 2))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "c",
+                                    "op": "=",
+                                    "right": 1
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "who",
+                                    "op": "=",
+                                    "right": 2
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "cbs",
+                                "op": "=",
+                                "right": 2
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "noack3",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((c = 1) & (who = 3)) & (cbs = 2))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "c",
+                                    "op": "=",
+                                    "right": 1
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "who",
+                                    "op": "=",
+                                    "right": 3
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "cbs",
+                                "op": "=",
+                                "right": 2
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "noack4",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((c = 1) & (who = 4)) & (cbs = 2))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "c",
+                                    "op": "=",
+                                    "right": 1
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "who",
+                                    "op": "=",
+                                    "right": 4
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "cbs",
+                                "op": "=",
+                                "right": 2
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "noack5",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((c = 1) & (who = 5)) & (cbs = 2))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "c",
+                                    "op": "=",
+                                    "right": 1
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "who",
+                                    "op": "=",
+                                    "right": 5
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "cbs",
+                                "op": "=",
+                                "right": 2
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "process",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 2",
+                                    "ref": "c",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((c = 0) & (cbs > 0))",
+                        "exp": {
+                            "left": {
+                                "left": "c",
+                                "op": "=",
+                                "right": 0
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "cbs",
+                                "op": ">",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "s1_to_c",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 1",
+                                    "ref": "c",
+                                    "value": 1
+                                },
+                                {
+                                    "comment": "who <- 1",
+                                    "ref": "who",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(c = 0)",
+                        "exp": {
+                            "left": "c",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "s2_to_c",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 1",
+                                    "ref": "c",
+                                    "value": 1
+                                },
+                                {
+                                    "comment": "who <- 2",
+                                    "ref": "who",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(c = 0)",
+                        "exp": {
+                            "left": "c",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "s3_to_c",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 1",
+                                    "ref": "c",
+                                    "value": 1
+                                },
+                                {
+                                    "comment": "who <- 3",
+                                    "ref": "who",
+                                    "value": 3
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(c = 0)",
+                        "exp": {
+                            "left": "c",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "s4_to_c",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 1",
+                                    "ref": "c",
+                                    "value": 1
+                                },
+                                {
+                                    "comment": "who <- 4",
+                                    "ref": "who",
+                                    "value": 4
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(c = 0)",
+                        "exp": {
+                            "left": "c",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "s5_to_c",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 1",
+                                    "ref": "c",
+                                    "value": 1
+                                },
+                                {
+                                    "comment": "who <- 5",
+                                    "ref": "who",
+                                    "value": 5
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(c = 0)",
+                        "exp": {
+                            "left": "c",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "stop",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((c = 3) & (what = 3))",
+                        "exp": {
+                            "left": {
+                                "left": "c",
+                                "op": "=",
+                                "right": 3
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "what",
+                                "op": "=",
+                                "right": 3
+                            }
+                        }
+                    },
+                    "location": "l"
+                }
+            ],
+            "initial-locations": [
+                "l"
+            ],
+            "locations": [
+                {
+                    "name": "l"
+                }
+            ],
+            "name": "channel",
+            "variables": []
+        },
+        {
+            "edges": [
+                {
+                    "action": "alert",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "count <- 0",
+                                    "ref": "count",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(x = 0)",
+                        "exp": {
+                            "left": "x",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "crash",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "failure <- 1",
+                                    "ref": "failure",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(x = 2)",
+                        "exp": {
+                            "left": "x",
+                            "op": "=",
+                            "right": 2
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "data",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "count <- 10",
+                                    "ref": "count",
+                                    "value": 10
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(x = 0)",
+                        "exp": {
+                            "left": "x",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "done",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "success <- 1",
+                                    "ref": "success",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(x = 1)",
+                        "exp": {
+                            "left": "x",
+                            "op": "=",
+                            "right": 1
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "stop",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "x <- 1",
+                                    "ref": "x",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "19/20",
+                                "exp": 0.95
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "x <- 2",
+                                    "ref": "x",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/20",
+                                "exp": {
+                                    "left": 1.0,
+                                    "op": "/",
+                                    "right": 20.0
+                                }
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((x = 0) & (count > 0))",
+                        "exp": {
+                            "left": {
+                                "left": "x",
+                                "op": "=",
+                                "right": 0
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "count",
+                                "op": ">",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "stop",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "x <- 1",
+                                    "ref": "x",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((x = 0) & (count = 0))",
+                        "exp": {
+                            "left": {
+                                "left": "x",
+                                "op": "=",
+                                "right": 0
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "count",
+                                "op": "=",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "work",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "count <- (count - 1)",
+                                    "ref": "count",
+                                    "value": {
+                                        "left": "count",
+                                        "op": "-",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "working <- 1",
+                                    "ref": "working",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((x = 0) & (count > 0))",
+                        "exp": {
+                            "left": {
+                                "left": "x",
+                                "op": "=",
+                                "right": 0
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "count",
+                                "op": ">",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                }
+            ],
+            "initial-locations": [
+                "l"
+            ],
+            "locations": [
+                {
+                    "name": "l"
+                }
+            ],
+            "name": "proc",
+            "variables": []
+        }
+    ],
+    "constants": [
+        {
+            "name": "p_succ",
+            "type": "real",
+            "value": {
+                "left": 4.0,
+                "op": "/",
+                "right": 5.0
+            }
+        },
+        {
+            "name": "q_succ",
+            "type": "real",
+            "value": {
+                "left": 1.0,
+                "op": "/",
+                "right": 5.0
+            }
+        },
+        {
+            "name": "p_succ1",
+            "type": "real",
+            "value": 1
+        },
+        {
+            "name": "q_succ1",
+            "type": "real",
+            "value": 0
+        },
+        {
+            "name": "K",
+            "type": "int",
+            "value": 10
+        }
+    ],
+    "features": [
+        "derived-operators"
+    ],
+    "jani-version": 1,
+    "name": "sensor.5",
+    "properties": [
+        {
+            "expression": {
+                "fun": "values",
+                "op": "filter",
+                "states": {
+                    "op": "initial"
+                },
+                "values": {
+                    "exp": {
+                        "left": true,
+                        "op": "U",
+                        "right": {
+                            "left": "x",
+                            "op": "=",
+                            "right": 1
+                        }
+                    },
+                    "op": "Pmax"
+                }
+            },
+            "name": "max_success"
+        }
+    ],
+    "restrict-initial": {
+        "exp": true
+    },
+    "system": {
+        "elements": [
+            {
+                "automaton": "sensor1"
+            },
+            {
+                "automaton": "sensor2"
+            },
+            {
+                "automaton": "sensor3"
+            },
+            {
+                "automaton": "sensor4"
+            },
+            {
+                "automaton": "sensor5"
+            },
+            {
+                "automaton": "channel"
+            },
+            {
+                "automaton": "proc"
+            }
+        ],
+        "syncs": [
+            {
+                "result": "ack1_0",
+                "synchronise": [
+                    "ack1_0",
+                    null,
+                    null,
+                    null,
+                    null,
+                    "ack1_0",
+                    null
+                ]
+            },
+            {
+                "result": "ack1_1",
+                "synchronise": [
+                    "ack1_1",
+                    null,
+                    null,
+                    null,
+                    null,
+                    "ack1_1",
+                    null
+                ]
+            },
+            {
+                "result": "ack1_2",
+                "synchronise": [
+                    "ack1_2",
+                    null,
+                    null,
+                    null,
+                    null,
+                    "ack1_2",
+                    null
+                ]
+            },
+            {
+                "result": "ack2_0",
+                "synchronise": [
+                    null,
+                    "ack2_0",
+                    null,
+                    null,
+                    null,
+                    "ack2_0",
+                    null
+                ]
+            },
+            {
+                "result": "ack2_1",
+                "synchronise": [
+                    null,
+                    "ack2_1",
+                    null,
+                    null,
+                    null,
+                    "ack2_1",
+                    null
+                ]
+            },
+            {
+                "result": "ack2_2",
+                "synchronise": [
+                    null,
+                    "ack2_2",
+                    null,
+                    null,
+                    null,
+                    "ack2_2",
+                    null
+                ]
+            },
+            {
+                "result": "ack3_0",
+                "synchronise": [
+                    null,
+                    null,
+                    "ack3_0",
+                    null,
+                    null,
+                    "ack3_0",
+                    null
+                ]
+            },
+            {
+                "result": "ack3_1",
+                "synchronise": [
+                    null,
+                    null,
+                    "ack3_1",
+                    null,
+                    null,
+                    "ack3_1",
+                    null
+                ]
+            },
+            {
+                "result": "ack3_2",
+                "synchronise": [
+                    null,
+                    null,
+                    "ack3_2",
+                    null,
+                    null,
+                    "ack3_2",
+                    null
+                ]
+            },
+            {
+                "result": "ack4_0",
+                "synchronise": [
+                    null,
+                    null,
+                    null,
+                    "ack4_0",
+                    null,
+                    "ack4_0",
+                    null
+                ]
+            },
+            {
+                "result": "ack4_1",
+                "synchronise": [
+                    null,
+                    null,
+                    null,
+                    "ack4_1",
+                    null,
+                    "ack4_1",
+                    null
+                ]
+            },
+            {
+                "result": "ack4_2",
+                "synchronise": [
+                    null,
+                    null,
+                    null,
+                    "ack4_2",
+                    null,
+                    "ack4_2",
+                    null
+                ]
+            },
+            {
+                "result": "ack5_0",
+                "synchronise": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    "ack5_0",
+                    "ack5_0",
+                    null
+                ]
+            },
+            {
+                "result": "ack5_1",
+                "synchronise": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    "ack5_1",
+                    "ack5_1",
+                    null
+                ]
+            },
+            {
+                "result": "ack5_2",
+                "synchronise": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    "ack5_2",
+                    "ack5_2",
+                    null
+                ]
+            },
+            {
+                "result": "alert",
+                "synchronise": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    "alert",
+                    "alert"
+                ]
+            },
+            {
+                "result": "crash",
+                "synchronise": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    "crash"
+                ]
+            },
+            {
+                "result": "data",
+                "synchronise": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    "data",
+                    "data"
+                ]
+            },
+            {
+                "result": "detect1",
+                "synchronise": [
+                    "detect1",
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "result": "detect2",
+                "synchronise": [
+                    null,
+                    "detect2",
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "result": "detect3",
+                "synchronise": [
+                    null,
+                    null,
+                    "detect3",
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "result": "detect4",
+                "synchronise": [
+                    null,
+                    null,
+                    null,
+                    "detect4",
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "result": "detect5",
+                "synchronise": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    "detect5",
+                    null,
+                    null
+                ]
+            },
+            {
+                "result": "done",
+                "synchronise": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    "done"
+                ]
+            },
+            {
+                "result": "extract",
+                "synchronise": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    "extract",
+                    null
+                ]
+            },
+            {
+                "result": "noack1",
+                "synchronise": [
+                    "noack1",
+                    null,
+                    null,
+                    null,
+                    null,
+                    "noack1",
+                    null
+                ]
+            },
+            {
+                "result": "noack2",
+                "synchronise": [
+                    null,
+                    "noack2",
+                    null,
+                    null,
+                    null,
+                    "noack2",
+                    null
+                ]
+            },
+            {
+                "result": "noack3",
+                "synchronise": [
+                    null,
+                    null,
+                    "noack3",
+                    null,
+                    null,
+                    "noack3",
+                    null
+                ]
+            },
+            {
+                "result": "noack4",
+                "synchronise": [
+                    null,
+                    null,
+                    null,
+                    "noack4",
+                    null,
+                    "noack4",
+                    null
+                ]
+            },
+            {
+                "result": "noack5",
+                "synchronise": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    "noack5",
+                    "noack5",
+                    null
+                ]
+            },
+            {
+                "result": "process",
+                "synchronise": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    "process",
+                    null
+                ]
+            },
+            {
+                "result": "s1_to_c",
+                "synchronise": [
+                    "s1_to_c",
+                    null,
+                    null,
+                    null,
+                    null,
+                    "s1_to_c",
+                    null
+                ]
+            },
+            {
+                "result": "s2_to_c",
+                "synchronise": [
+                    null,
+                    "s2_to_c",
+                    null,
+                    null,
+                    null,
+                    "s2_to_c",
+                    null
+                ]
+            },
+            {
+                "result": "s3_to_c",
+                "synchronise": [
+                    null,
+                    null,
+                    "s3_to_c",
+                    null,
+                    null,
+                    "s3_to_c",
+                    null
+                ]
+            },
+            {
+                "result": "s4_to_c",
+                "synchronise": [
+                    null,
+                    null,
+                    null,
+                    "s4_to_c",
+                    null,
+                    "s4_to_c",
+                    null
+                ]
+            },
+            {
+                "result": "s5_to_c",
+                "synchronise": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    "s5_to_c",
+                    "s5_to_c",
+                    null
+                ]
+            },
+            {
+                "result": "stop",
+                "synchronise": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    "stop",
+                    "stop"
+                ]
+            },
+            {
+                "result": "work",
+                "synchronise": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    "work"
+                ]
+            }
+        ]
+    },
+    "type": "mdp",
+    "variables": [
+        {
+            "initial-value": 0.0,
+            "name": "working",
+            "transient": true,
+            "type": "real"
+        },
+        {
+            "initial-value": 0.0,
+            "name": "success",
+            "transient": true,
+            "type": "real"
+        },
+        {
+            "initial-value": 0.0,
+            "name": "failure",
+            "transient": true,
+            "type": "real"
+        },
+        {
+            "initial-value": 0,
+            "name": "y1",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 6
+            }
+        },
+        {
+            "initial-value": 1,
+            "name": "msg1",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 1,
+                "upper-bound": 3
+            }
+        },
+        {
+            "initial-value": 0,
+            "name": "y2",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 6
+            }
+        },
+        {
+            "initial-value": 1,
+            "name": "msg2",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 1,
+                "upper-bound": 3
+            }
+        },
+        {
+            "initial-value": 0,
+            "name": "y3",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 6
+            }
+        },
+        {
+            "initial-value": 1,
+            "name": "msg3",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 1,
+                "upper-bound": 3
+            }
+        },
+        {
+            "initial-value": 0,
+            "name": "y4",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 6
+            }
+        },
+        {
+            "initial-value": 1,
+            "name": "msg4",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 1,
+                "upper-bound": 3
+            }
+        },
+        {
+            "initial-value": 0,
+            "name": "y5",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 6
+            }
+        },
+        {
+            "initial-value": 1,
+            "name": "msg5",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 1,
+                "upper-bound": 3
+            }
+        },
+        {
+            "initial-value": 0,
+            "name": "c",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 3
+            }
+        },
+        {
+            "initial-value": 1,
+            "name": "who",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 1,
+                "upper-bound": 5
+            }
+        },
+        {
+            "initial-value": 0,
+            "name": "what",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 3
+            }
+        },
+        {
+            "initial-value": 0,
+            "name": "cb1",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 3
+            }
+        },
+        {
+            "initial-value": 0,
+            "name": "cb2",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 3
+            }
+        },
+        {
+            "initial-value": 0,
+            "name": "cbs",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 2
+            }
+        },
+        {
+            "initial-value": 0,
+            "name": "x",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 2
+            }
+        },
+        {
+            "initial-value": 0,
+            "name": "count",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 10
+            }
+        }
+    ]
+}

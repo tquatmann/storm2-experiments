@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Generate the list of tool invocations (configuration x benchmark x repetition).
 
-Reads models/index.json and scripts/configurations.json and writes a JSON array with one
+Reads benchmarks/index.json and scripts/configurations.json and writes a JSON array with one
 entry per invocation.
 """
 
@@ -11,10 +11,12 @@ import random
 import sys
 from pathlib import Path
 
+from commands import pick_command
+
 SCRIPT_DIR = Path(__file__).resolve().parent
 ROOT = SCRIPT_DIR.parent
 CONFIGS_FILE = SCRIPT_DIR / "configurations.json"
-INDEX_FILE = ROOT / "models" / "index.json"
+INDEX_FILE = ROOT / "benchmarks" / "index.json"
 
 # Keys of an index.json entry that are not relevant for running it.
 BENCHMARK_SKIP_KEYS = {"reference-result"}
@@ -86,8 +88,14 @@ def main():
         sys.exit(f"cannot create log directory {logdir}: {e}")
 
     invocations = []
+    skipped = 0
     for config_id, config in configs:
         for benchmark_id, benchmark in benchmarks:
+            # Skip combinations the configuration cannot be run on, e.g. a tool
+            # invoked on a PRISM program for a benchmark that only has a jani file.
+            if pick_command(config, benchmark) is None:
+                skipped += 1
+                continue
             for repetition in range(1, args.repetitions + 1):
                 name = f"{config_id}_{benchmark_id}"
                 if args.repetitions > 1:
@@ -114,6 +122,9 @@ def main():
     print(f"wrote {len(invocations)} invocations "
           f"({len(configs)} configurations x {len(benchmarks)} benchmarks "
           f"x {args.repetitions} repetition(s)) to {args.out}")
+    if skipped:
+        print(f"  skipped:     {skipped} configuration/benchmark pairs "
+              f"the configuration is not applicable to")
     print(f"  time limit:  {args.timelimit}s")
     print(f"  log dir:     {logdir}{' (created)' if created else ''}")
     print(f"  repetitions: {args.repetitions}")

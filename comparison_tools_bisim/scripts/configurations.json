@@ -12,11 +12,21 @@
   "storm-default-bisim": {
     "bin": "bin/storm",
     "cmd": "--jani %jani --janiproperty %property --constants %constants --bisimulation",
-    "description": "Storm with default settings."
+    "description": "Storm with default settings and strong bisimulation preprocessing."
   },
   "storm-exact-bisim": {
     "bin": "bin/storm",
     "cmd": "--jani %jani --janiproperty %property --constants %constants --exact --bisimulation",
-    "description": "Storm with exact computations."
+    "description": "Storm with exact computations and strong bisimulation preprocessing."
+  },
+  "mcsta-default": {
+    "bin": "bin/modest",
+    "cmd": "mcsta %jani --props %property --experiment %constants --unsafe --store-mode Memory",
+    "description": "mcsta with default settings. Omit runtime checks. Have everything in memory (no disk)"
+  },
+  "prism-default": {
+    "bin": "bin/prism",
+    "cmd": "%prism %prism-property --prop %property -const %constants",
+    "description": ""
   }
 }

@@ -9,7 +9,6 @@ stderr) of the command is written to the log file of the invocation.
 import argparse
 import json
 import os
-import re
 import shlex
 import shutil
 import signal
@@ -19,43 +18,18 @@ import tempfile
 import time
 from pathlib import Path
 
+from commands import CMD_KEYS, FILE_KEYS, PLACEHOLDER, pick_command, placeholders
+
 SCRIPT_DIR = Path(__file__).resolve().parent
 ROOT = SCRIPT_DIR.parent
-MODEL_DIR = ROOT / "models"
-
-# Benchmark keys whose value is the path of a model file (relative to MODEL_DIR).
-# Such files are copied into the temporary directory of the invocation.
-FILE_KEYS = {"jani", "prism", "prism-property"}
-
-# Configuration keys holding a command line, in the order in which they are tried.
-# The first one whose model file placeholders the benchmark provides is used, so
-# input specific variants (e.g. a "cmdprism") can simply be added here.
-CMD_KEYS = ["cmd"]
-
-PLACEHOLDER = re.compile(r"%([A-Za-z][A-Za-z0-9-]*)")
+BENCHMARK_DIR = ROOT / "benchmarks"
 
 # Seconds to wait for a killed process to actually terminate.
 KILL_GRACE = 5
 
 
-def placeholders(cmd):
-    """The placeholder names occurring in a command line, in order of appearance."""
-    result = []
-    for name in PLACEHOLDER.findall(cmd):
-        if name not in result:
-            result.append(name)
-    return result
-
-
-def pick_command(config, benchmark):
-    """The command line of the configuration that the benchmark provides all files for."""
-    for key in CMD_KEYS:
-        if key not in config:
-            continue
-        needed = [p for p in placeholders(config[key]) if p in FILE_KEYS]
-        if all(p in benchmark for p in needed):
-            return config[key]
-    return None
+class NotApplicable(Exception):
+    """The configuration cannot be run on the benchmark, so there is nothing to do."""
 
 
 def substitute(cmd, values):
@@ -91,20 +65,21 @@ def resolve_binary(bin):
 def prepare(invocation):
     """The binary, the command line and the model files of an invocation.
 
-    Returns (binary, cmd, files) or raises ValueError if the invocation cannot be run.
+    Raises NotApplicable if the configuration does not fit the benchmark and
+    ValueError if the invocation is broken in some other way.
     """
     config, benchmark = invocation["config"], invocation["benchmark"]
     cmd = pick_command(config, benchmark)
     if cmd is None:
-        raise ValueError(f"no usable command in configuration '{config['id']}' "
-                         f"for benchmark '{benchmark['id']}'")
+        raise NotApplicable(f"configuration '{config['id']}' is not applicable to "
+                            f"benchmark '{benchmark['id']}'")
     binary = resolve_binary(config["bin"])
     if not binary.is_file():
         raise ValueError(f"binary not found: {binary}")
     files = {}
     for name in placeholders(cmd):
         if name in FILE_KEYS and name in benchmark:
-            source = MODEL_DIR / benchmark[name]
+            source = BENCHMARK_DIR / benchmark[name]
             if not source.is_file():
                 raise ValueError(f"model file not found: {source}")
             files[name] = source
@@ -158,15 +133,17 @@ def run(invocation):
     """Run a single invocation and write its log file. Returns a status string."""
     config, benchmark = invocation["config"], invocation["benchmark"]
     log = Path(invocation["log"])
-    log.parent.mkdir(parents=True, exist_ok=True)
     timelimit = invocation["timelimit"]
 
     try:
         binary, cmd, files = prepare(invocation)
+    except NotApplicable as e:
+        return "skipped", 0.0, str(e)
     except ValueError as e:
         log.write_text(f"Error:\t{e}\n")
         return "error", 0.0, str(e)
 
+    log.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory(prefix="invocation-") as tmp:
         values = {k: v for k, v in benchmark.items() if k not in ("id", "type")}
         for name, source in files.items():
@@ -219,6 +196,9 @@ def main():
         for _, invocation in selected:
             try:
                 binary, cmd, files = prepare(invocation)
+            except NotApplicable as e:
+                print(f"skipped: {e}")
+                continue
             except ValueError as e:
                 print(f"! {e}")
                 continue
@@ -227,7 +207,7 @@ def main():
             print(f"{invocation['log']}: {shlex.join([str(binary)] + substitute(cmd, values))}")
         return
 
-    counts = {"ok": 0, "timeout": 0, "error": 0}
+    counts = {"ok": 0, "timeout": 0, "error": 0, "skipped": 0}
     width = len(str(len(invocations)))
     for number, invocation in selected:
         label = f"{invocation['config']['id']} {invocation['benchmark']['id']}"
@@ -243,7 +223,8 @@ def main():
         print(f"{status} ({wall_time:.1f}s)" + (f": {note}" if note else ""), flush=True)
 
     print(f"\n{len(selected)} invocations: "
-          f"{counts['ok']} ok, {counts['timeout']} timeout, {counts['error']} error")
+          f"{counts['ok']} ok, {counts['timeout']} timeout, {counts['error']} error, "
+          f"{counts['skipped']} skipped")
 
 
 if __name__ == "__main__":

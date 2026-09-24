@@ -40,8 +40,9 @@
 \setlength{\scatterplotsize}{0.30\linewidth}
 
 %% A quantile plot spanning the full text width.
-%% #1: comma separated list of column/colour/legend-entry triples
-\newcommand{\quantileplot}[1]{%
+%% #1: csv file, relative to \resultsdir
+%% #2: comma separated list of column/colour/legend-entry triples
+\newcommand{\quantileplot}[2]{%
   \begin{tikzpicture}
     \begin{axis}[
       width=\linewidth,
@@ -69,9 +70,9 @@
       every axis plot/.append style={ultra thick},
       legend cell align={left},
     ]
-      \foreach \col/\colour/\name in {#1}{%
+      \foreach \col/\colour/\name in {#2}{%
         \edef\plotline{\noexpand\addplot[\colour]
-          table [x=i, y=\col, col sep=comma] {\resultsdir/quantile.csv};
+          table [x=i, y=\col, col sep=comma] {\resultsdir/#1};
           \noexpand\addlegendentry{\name}}%
         \plotline
       }
@@ -80,8 +81,9 @@
 }
 
 %% A runtime scatter plot.
-%% #1: x column  #2: x label  #3: y column  #4: y label  #5: show legend (true/false)
-\newcommand{\scatterplot}[5]{%
+%% #1: csv file, relative to \resultsdir
+%% #2: x column  #3: x label  #4: y column  #5: y label  #6: show legend (true/false)
+\newcommand{\scatterplot}[6]{%
   \begin{tikzpicture}
     \begin{axis}[
       width=\scatterplotsize,
@@ -102,7 +104,7 @@
       extra y ticks={\plottimeout,\plotincorrect,\plotna},
       extra y tick labels={TO,inc,n/a},
       extra y tick style={grid=major, ticklabel style={font=\tiny}},
-      xlabel={#2}, ylabel={#4},
+      xlabel={#3}, ylabel={#5},
       xlabel style={font=\scriptsize, yshift=5pt},
       ylabel style={font=\scriptsize, yshift=-9pt},
       xticklabel style={font=\scriptsize},
@@ -125,8 +127,8 @@
           unknown={mark=x,tolgrey,mark size=1.5}
         },
         scatter src=explicit symbolic,
-      ] table [col sep=comma, x=#1, y=#3, meta=type] {\resultsdir/scatter.csv};
-      \ifthenelse{\equal{#5}{true}}{%
+      ] table [col sep=comma, x=#2, y=#4, meta=type] {\resultsdir/#1};
+      \ifthenelse{\equal{#6}{true}}{%
         \legend{MA,PTA,MDP$_\mathit{qvbs}$,MDP$^\mathit{mec}$,MDP$_\mathit{grid}$,MDP$_\mathit{grid}^\mathit{mec}$}}{}
       \addplot[no marks] coordinates {(0.01,0.01) (900,900)};
       \addplot[no marks, densely dotted] coordinates {(0.01,0.1) (90,900)};
@@ -136,8 +138,9 @@
 }
 
 %% A scatter plot comparing two state counts.
-%% #1: x column  #2: x label  #3: y column  #4: y label
-\newcommand{\statesscatterplot}[4]{%
+%% #1: csv file, relative to \resultsdir
+%% #2: x column  #3: x label  #4: y column  #5: y label
+\newcommand{\statesscatterplot}[5]{%
   \begin{tikzpicture}
     \begin{axis}[
       width=\scatterplotsize,
@@ -152,7 +155,7 @@
       ytick={1e2,1e4,1e6,1e8},
       grid=major,
       unbounded coords=discard, filter discard warning=false,
-      xlabel={#2}, ylabel={#4},
+      xlabel={#3}, ylabel={#5},
       xlabel style={font=\scriptsize, yshift=5pt},
       ylabel style={font=\scriptsize, yshift=2pt},
       xticklabel style={font=\scriptsize},
@@ -171,7 +174,7 @@
           unknown={mark=x,tolgrey,mark size=1.5}
         },
         scatter src=explicit symbolic,
-      ] table [col sep=comma, x=#1, y=#3, meta=type] {\resultsdir/scatter.csv};
+      ] table [col sep=comma, x=#2, y=#4, meta=type] {\resultsdir/#1};
       \addplot[no marks] coordinates {(10,10) (1e9,1e9)};
       \addplot[no marks, densely dotted] coordinates {(10,1) (1e9,1e8)};
       \addplot[no marks, densely dotted] coordinates {(100,1) (1e9,1e7)};

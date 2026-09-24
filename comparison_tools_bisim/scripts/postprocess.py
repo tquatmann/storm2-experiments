@@ -7,7 +7,9 @@ Reads a directory of log files and writes
                     numeric so that it can be read by pgfplots: statuses become
                     the sentinel values below and runtimes are clamped to the
                     plotted range,
-  quantile.csv      the sorted median runtimes of each configuration.
+  quantile.csv      the sorted median runtimes of each configuration,
+  quantile-intersect.csv  the same, but restricted to the benchmarks that every
+                    configuration supports.
 """
 
 import argparse
@@ -542,7 +544,7 @@ def main():
                     worst_status({r["status"] for r in repetitions.values()})
             else:
                 cells[benchmark_id, configuration] = median
-                medians.setdefault(configuration, []).append(median)
+                medians.setdefault(configuration, []).append((benchmark_id, median))
 
     def states_row(benchmark_id):
         return [benchmark_id,
@@ -570,16 +572,25 @@ def main():
             writer.writerow(row)
 
     # Per configuration the median runtimes in ascending order, padded with nan.
-    with open(outdir / "quantile.csv", "w", newline="") as f:
-        writer = csv.writer(f)
-        writer.writerow(["i"] + configurations)
-        columns = {c: sorted(medians.get(c, [])) for c in configurations}
-        for i in range(max((len(v) for v in columns.values()), default=0)):
-            row = [i + 1]
-            for configuration in configurations:
-                values = columns[configuration]
-                row.append(f"{values[i]:.3f}" if i < len(values) else "nan")
-            writer.writerow(row)
+    def write_quantile(name, selection):
+        with open(outdir / name, "w", newline="") as f:
+            writer = csv.writer(f)
+            writer.writerow(["i"] + configurations)
+            sorted_times = {c: sorted(t for b, t in medians.get(c, [])
+                                      if b in selection) for c in configurations}
+            for i in range(max((len(v) for v in sorted_times.values()), default=0)):
+                row = [i + 1]
+                for configuration in configurations:
+                    values = sorted_times[configuration]
+                    row.append(f"{values[i]:.3f}" if i < len(values) else "nan")
+                writer.writerow(row)
+
+    write_quantile("quantile.csv", set(benchmarks))
+    # A configuration that cannot be run on a benchmark has no execution for it,
+    # for example PRISM on a benchmark that only comes as a jani file.
+    supported = {b for b in benchmarks
+                 if all(results[c].get(b) for c in configurations)}
+    write_quantile("quantile-intersect.csv", supported)
 
     executions = sum(len(r) for c in results.values() for r in c.values())
     print(f"read {executions} executions of {len(benchmarks)} benchmarks "
@@ -613,7 +624,10 @@ def main():
         print(f"  state counts after preprocessing for: {', '.join(reducing)}")
     tabledir = write_table(outdir, index, results, configurations, benchmarks,
                            cells, states, quotient, reducing)
-    print(f"wrote results.json, scatter.csv and quantile.csv to {outdir}")
+    print(f"  {len(supported)} of {len(benchmarks)} benchmarks are supported by "
+          f"every configuration")
+    print(f"wrote results.json, scatter.csv, quantile.csv and "
+          f"quantile-intersect.csv to {outdir}")
     print(f"wrote the html table to {tabledir / 'index.html'}")
 
 

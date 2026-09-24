@@ -4,6 +4,21 @@
     "cmd": "--jani %jani --janiproperty %property --constants %constants",
     "description": "Storm with default settings."
   },
+  "storm-sound": {
+    "bin": "bin/storm",
+    "cmd": "--jani %jani --janiproperty %property --constants %constants --sound",
+    "description": "Storm with sound computations."
+  },
+  "storm-hybrid": {
+    "bin": "bin/storm",
+    "cmd": "--jani %jani --janiproperty %property --constants %constants --engine hybrid",
+    "description": "Storm with hybrid engine."
+  },
+  "storm-hybrid-sound": {
+    "bin": "bin/storm",
+    "cmd": "--jani %jani --janiproperty %property --constants %constants --engine hybrid --sound",
+    "description": "Storm with hybrid engine and sound computations."
+  },
   "storm-exact": {
     "bin": "bin/storm",
     "cmd": "--jani %jani --janiproperty %property --constants %constants --exact",
@@ -24,9 +39,19 @@
     "cmd": "mcsta %jani --props %property --experiment %constants --unsafe --store-mode Memory",
     "description": "mcsta with default settings. Omit runtime checks. Have everything in memory (no disk)"
   },
+  "mcsta-sound": {
+    "bin": "bin/modest",
+    "cmd": "mcsta %jani --props %property --experiment %constants --unsafe --store-mode Memory --alg OptimisticValueIteration",
+    "description": "mcsta with optimistic value iteration. Omit runtime checks. Have everything in memory (no disk)"
+  },
   "prism-default": {
     "bin": "bin/prism",
     "cmd": "%prism %prism-property --prop %property -const %constants -maxiters 1000000",
-    "description": ""
+    "description": "Prism with default settings."
+  },
+  "prism-sound": {
+    "bin": "bin/prism",
+    "cmd": "%prism %prism-property --prop %property -const %constants -maxiters 1000000 -intervaliter",
+    "description": "Prism with interval iteration"
   }
 }

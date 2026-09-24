@@ -16,7 +16,7 @@
 
 \begin{figure}[t]
     \centering
-    \quantileplot{%
+    \quantileplot{quantile.csv}{%
         storm-default/colstorm/\cfgstorm,
         storm-exact/colstormexact/\cfgstormexact,
         mcsta-default/colmcsta/\cfgmcsta,
@@ -24,9 +24,9 @@
 
     \medskip
 
-    \scatterplot{storm-default}{\cfgstorm}{mcsta-default}{\cfgmcsta}{true}\hfill
-    \scatterplot{storm-default}{\cfgstorm}{prism-default}{\cfgprism}{false}\hfill
-    \scatterplot{storm-default}{\cfgstorm}{storm-exact}{\cfgstormexact}{false}
+    \scatterplot{scatter.csv}{storm-default}{\cfgstorm}{mcsta-default}{\cfgmcsta}{true}\hfill
+    \scatterplot{scatter.csv}{storm-default}{\cfgstorm}{prism-default}{\cfgprism}{false}\hfill
+    \scatterplot{scatter.csv}{storm-default}{\cfgstorm}{storm-exact}{\cfgstormexact}{false}
 
     \caption{Comparison of \cfgstorm, \cfgstormexact, \cfgmcsta{} and \cfgprism.
     Top: quantile plot of the runtimes. Bottom: runtime of the other
@@ -38,7 +38,7 @@
 
 \begin{figure}[t]
     \centering
-    \quantileplot{%
+    \quantileplot{quantile.csv}{%
         storm-default/colstorm/\cfgstorm,
         storm-default-bisim/colstormbisim/\cfgstormbisim,
         storm-exact/colstormexact/\cfgstormexact,
@@ -46,9 +46,9 @@
 
     \medskip
 
-    \scatterplot{storm-default}{\cfgstorm}{storm-default-bisim}{\cfgstormbisim}{true}\hfill
-    \scatterplot{storm-exact}{\cfgstormexact}{storm-exact-bisim}{\cfgstormexactbisim}{false}\hfill
-    \statesscatterplot{states}{states of the input model}{states-storm-default-bisim}{states of the quotient}
+    \scatterplot{scatter.csv}{storm-default}{\cfgstorm}{storm-default-bisim}{\cfgstormbisim}{true}\hfill
+    \scatterplot{scatter.csv}{storm-exact}{\cfgstormexact}{storm-exact-bisim}{\cfgstormexactbisim}{false}\hfill
+    \statesscatterplot{scatter.csv}{states}{states of the input model}{states-storm-default-bisim}{states of the quotient}
 
     \caption{Effect of bisimulation minimisation. Top: quantile plot of the
     runtimes with and without minimisation. Bottom left and middle: runtime

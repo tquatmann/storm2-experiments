@@ -41,7 +41,7 @@
   },
   "mcsta-sound": {
     "bin": "bin/modest",
-    "cmd": "mcsta %jani --props %property --experiment %constants --unsafe --store-mode Memory --alg OptimisticValueIteration",
+    "cmd": "mcsta %jani --props %property --experiment %constants --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width",
     "description": "mcsta with optimistic value iteration. Omit runtime checks. Have everything in memory (no disk)"
   },
   "prism-default": {

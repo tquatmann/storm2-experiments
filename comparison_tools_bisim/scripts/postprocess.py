@@ -44,6 +44,11 @@ PLOT_TIMEOUT = 1200.0
 PLOT_INCORRECT = 2400.0
 PLOT_NA = 4800.0
 
+# Configurations whose model size after preprocessing is reported. Others also
+# print a reduced model, for example PRISM collapsing end components with its
+# sound engine, but those sizes are not of interest here.
+QUOTIENT_CONFIGURATIONS = ["storm-default-bisim", "storm-exact-bisim"]
+
 # Statuses in decreasing order of severity; the worst one of the repetitions is
 # what the csv files report for a benchmark.
 STATUSES = ["incorrect", "no-result", "memout", "timeout", "ok"]
@@ -273,6 +278,7 @@ table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666
                  font-weight: normal; vertical-align: top; }
 table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
                  word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
 """
 
 TABLE_STYLE = """
@@ -358,6 +364,12 @@ highlight();
 """
 
 
+def exponent_format(value):
+    """A number as a short power of ten, e.g. 1e-3 rather than 0.001."""
+    mantissa, _, exponent = f"{float(value):.0e}".partition("e")
+    return f"{mantissa}e{int(exponent)}"
+
+
 def escape(text):
     """The text with the characters that are special in html replaced."""
     return (str(text).replace("&", "&amp;").replace("<", "&lt;")
@@ -380,6 +392,10 @@ def write_log_page(path, configuration, benchmark_id, benchmark, repetitions):
     if reference:
         parts.append(f"<p class=\"sub\">reference result: "
                      f"<code>{escape(reference)}</code></p>")
+        value = to_number(reference)
+        if value is not None:
+            parts.append(f"<p class=\"sub\">reference result: "
+                         f"<code>{escape(f'{float(value):.10g}')}</code></p>")
     for repetition in sorted(repetitions, key=int):
         data = repetitions[repetition]
         rows = [("status", data["status"])]
@@ -388,14 +404,20 @@ def write_log_page(path, configuration, benchmark_id, benchmark, repetitions):
         if "mcresult" in data:
             rows.append(("result", data["mcresult"]))
         if "result-diff" in data:
-            rows.append(("relative difference", f"{data['result-diff']:.3g}"))
+            difference = f"{data['result-diff']:.3g}"
+            if data["status"] == "incorrect":
+                difference = (f"<span class=\"bad\">{escape(difference)} &gt; "
+                              f"{escape(exponent_format(GOAL_PRECISION))}</span>")
+            rows.append(("relative difference", difference))
         if "states" in data:
             rows.append(("states", f"{data['states']:,}"))
         if "states-after" in data:
             rows.append(("states after preprocessing", f"{data['states-after']:,}"))
-        parts.append(f"<h2>Repetition {escape(repetition)}</h2>")
+        if len(repetitions) > 1:
+            parts.append(f"<h2>Repetition {escape(repetition)}</h2>")
         parts.append("<table class=\"meta\">" + "".join(
-            f"<tr><th>{escape(k)}</th><td>{escape(v)}</td></tr>" for k, v in rows)
+            f"<tr><th>{escape(k)}</th><td>{v if k == 'relative difference' else escape(v)}"
+            f"</td></tr>" for k, v in rows)
             + "</table>")
         log = Path(data["log"])
         text = log.read_text(errors="replace") if log.is_file() else \
@@ -406,11 +428,27 @@ def write_log_page(path, configuration, benchmark_id, benchmark, repetitions):
     path.write_text("\n".join(parts))
 
 
+def distinct_quotients(reducing, quotient):
+    """The reducing configurations, without those an earlier one already covers.
+
+    The bisimulation configurations compute the same quotient, so showing the size
+    once is enough; a configuration that reduced differently would be kept.
+    """
+    shown = []
+    for configuration in reducing:
+        sizes = quotient[configuration]
+        if any(all(sizes.get(b) == quotient[s].get(b) for b in sizes) for s in shown):
+            continue
+        shown.append(configuration)
+    return shown
+
+
 def write_table(outdir, index, results, configurations, benchmarks, cells,
                 states, quotient, reducing):
     """An interactive html version of the scatter table, with a page per cell."""
     tabledir = outdir / "table"
     tabledir.mkdir(parents=True, exist_ok=True)
+    reducing = distinct_quotients(reducing, quotient)
 
     header = ["benchmark", "type", "states"] + [f"states-{c}" for c in reducing]
     head = "".join(f"<th data-kind=\"{'text' if i < 2 else 'number'}\" "
@@ -529,7 +567,8 @@ def main():
         f.write("\n")
 
     # For each benchmark and configuration either the median runtime or the status.
-    reducing = [c for c in configurations if c in quotient]
+    reducing = [c for c in configurations
+                if c in quotient and c in QUOTIENT_CONFIGURATIONS]
     columns = ["benchmark", "type", "states"] + [f"states-{c}" for c in reducing]
     medians = {}
     cells = {}        # (benchmark, configuration) -> median runtime or status

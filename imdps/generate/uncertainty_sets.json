@@ -1,0 +1,14 @@
+{
+  "sets": [
+    {
+      "id": "absolute-005",
+      "type": "absolute",
+      "delta": 0.05
+    },
+    {
+      "id": "absolute-25",
+      "type": "absolute",
+      "delta": 0.25
+    }
+  ]
+}

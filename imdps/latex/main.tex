@@ -1,0 +1,38 @@
+\documentclass[a4paper]{article}
+
+\usepackage[margin=2cm]{geometry}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{ifthen}
+\usepackage{amsmath}
+\pgfplotsset{compat=1.18}
+
+\input{plots}
+
+\begin{document}
+
+\section*{Interval MDPs}
+
+\begin{figure}[t]
+    \centering
+    \quantileplot{quantile.csv}{%
+        storm-default/colstorm/\cfgstorm,
+        prism-default/colprism/\cfgprism,
+        intervalmdp-default/colintervalmdp/\cfgintervalmdp}
+
+    \medskip
+
+    \scatterplot{scatter.csv}{storm-default}{\cfgstorm}{prism-default}{\cfgprism}{true}\hfill
+    \scatterplot{scatter.csv}{storm-default}{\cfgstorm}{intervalmdp-default}{\cfgintervalmdp}{false}\hfill
+    \scatterplot{scatter.csv}{prism-default}{\cfgprism}{intervalmdp-default}{\cfgintervalmdp}{false}
+
+    \caption{Comparison of \cfgstorm, \cfgprism{} and \cfgintervalmdp{} on interval
+    MDPs with interval width $\delta$. Top: quantile plot of the runtimes. Bottom:
+    runtimes of pairs of tools. Points marked \emph{TO} ran out of time or memory,
+    \emph{inc} disagree with the result most tools agree on, and \emph{n/a}
+    produced no result or were not applicable, e.g.\ \cfgintervalmdp{} on reward
+    benchmarks.}
+    \label{fig:imdps}
+\end{figure}
+
+\end{document}

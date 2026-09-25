@@ -13,9 +13,9 @@ from pathlib import Path
 
 from commands import pick_command
 
-SCRIPT_DIR = Path(__file__).resolve().parent
-ROOT = SCRIPT_DIR.parent
-CONFIGS_FILE = SCRIPT_DIR / "configurations.json"
+# The experiment directory, e.g. comparison_tools_bisim; the scripts are run from there.
+ROOT = Path.cwd()
+CONFIGS_FILE = ROOT / "scripts" / "configurations.json"
 INDEX_FILE = ROOT / "benchmarks" / "index.json"
 
 # Keys of an index.json entry that are not relevant for running it.
@@ -72,6 +72,8 @@ def main():
     if args.repetitions < 1:
         sys.exit("--repetitions must be at least 1")
 
+    if not CONFIGS_FILE.is_file():
+        sys.exit(f"{CONFIGS_FILE} not found; run this script from an experiment directory")
     all_configs = load_dict(CONFIGS_FILE)
     invalid = [i for i in all_configs if "_" in i]
     if invalid:

@@ -29,6 +29,11 @@
     "cmd": "--jani %jani --janiproperty %property --constants %constants --bisimulation",
     "description": "Storm with default settings and strong bisimulation preprocessing."
   },
+  "storm-sound-bisim": {
+    "bin": "bin/storm",
+    "cmd": "--jani %jani --janiproperty %property --constants %constants --sound --bisimulation",
+    "description": "Storm with default settings and strong bisimulation preprocessing."
+  },
   "storm-exact-bisim": {
     "bin": "bin/storm",
     "cmd": "--jani %jani --janiproperty %property --constants %constants --exact --bisimulation",

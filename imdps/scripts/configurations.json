@@ -1,0 +1,18 @@
+{
+  "storm-default": {
+    "bin": "bin/storm",
+    "cmd": "--explicit-drn %bundle.drn --prop %bundle.storm.props --uncertainty-resolution robust",
+    "description": "Storm with default settings, nature resolving the intervals adversarially. --sound is not supported for interval models."
+  },
+  "prism-default": {
+    "bin": "bin/prism",
+    "cmd": "-importmodel %bundle.%prism-import %bundle.pctl -maxiters 1000000",
+    "description": "Prism with default settings. -intervaliter is not supported for interval models."
+  },
+  "intervalmdp-default": {
+    "bin": "scripts/intervalmdp.sh",
+    "cmd": "%bundle",
+    "requires": ["intervalmdp"],
+    "description": "IntervalMDP.jl with default settings. It cannot import reachability rewards."
+  }
+}

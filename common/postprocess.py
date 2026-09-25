@@ -26,8 +26,8 @@ from pathlib import Path
 # thousands of digits, well beyond the limit python applies by default.
 sys.set_int_max_str_digits(0)
 
-SCRIPT_DIR = Path(__file__).resolve().parent
-ROOT = SCRIPT_DIR.parent
+# The experiment directory, e.g. comparison_tools_bisim; the scripts are run from there.
+ROOT = Path.cwd()
 INDEX_FILE = ROOT / "benchmarks" / "index.json"
 
 # Relative precision a result has to meet to count as correct.
@@ -72,6 +72,7 @@ RESULT_PATTERNS = [
     re.compile(r"^Result \(for initial states\):\s*(\S+)", re.M),   # storm
     re.compile(r"^Result:\s*([^\s(]+)", re.M),                      # prism
     re.compile(r"^\s+(?:Probability|Value):\s*(\S+)", re.M),        # mcsta
+    re.compile(r"^Initial state \d+:\s*(\S+)", re.M),                # IntervalMDP.jl
 ]
 
 # The size of the model reported by the tool. Storm prints this once per model
@@ -251,6 +252,40 @@ def promote_references(entries, index):
             json.dump(index, f, indent="\t", ensure_ascii=False)
             f.write("\n")
     return promoted
+
+
+def agreed_references(entries, index):
+    """Reference results for the benchmarks without one, from the agreeing configurations.
+
+    Two results agree if they are within GOAL_PRECISION of each other. If at least two
+    and more than half of the configurations with a result for a benchmark agree, the
+    median of their results is the reference. Returns the references and the
+    benchmarks for which the configurations disagree.
+    """
+    results = {}    # benchmark -> configuration -> results of the repetitions
+    for entry in entries:
+        benchmark_id = entry["benchmark"]
+        if "reference-result" in index.get(benchmark_id, {}):
+            continue
+        if entry["timeout"] or entry.get("return-code") != 0:
+            continue
+        result = to_number(entry.get("mcresult"))
+        if result is not None:
+            results.setdefault(benchmark_id, {}).setdefault(entry["configuration"], []).append(result)
+
+    def agree(a, b):
+        difference = relative_difference(a, b)
+        return difference <= GOAL_PRECISION or both_near_zero(a, b)
+
+    references, disputed = {}, []
+    for benchmark_id, configurations in sorted(results.items()):
+        values = [statistics.median(v) for v in configurations.values()]
+        largest = max(([w for w in values if agree(v, w)] for v in values), key=len)
+        if len(largest) >= 2 and 2 * len(largest) > len(values):
+            references[benchmark_id] = statistics.median(largest)
+        elif len(values) >= 2:
+            disputed.append(benchmark_id)
+    return references, disputed
 
 
 HTML_HEAD = """<!DOCTYPE html>
@@ -508,6 +543,9 @@ def main():
     parser.add_argument("--promote-references", action="store_true",
                         help="store the result of an exact configuration as the reference "
                              "result of a benchmark that does not have one yet")
+    parser.add_argument("--agreement", action="store_true",
+                        help="compare the results for a benchmark without a reference result "
+                             "against those most configurations agree on")
     args = parser.parse_args()
 
     logdir, outdir = Path(args.logs), Path(args.out)
@@ -531,12 +569,15 @@ def main():
         entries.append(entry)
 
     promoted = promote_references(entries, index) if args.promote_references else []
+    agreed, disputed = agreed_references(entries, index) if args.agreement else ({}, [])
 
     for entry in entries:
         benchmark_id = entry["benchmark"]
         if benchmark_id not in index:
             unknown.add(benchmark_id)
         reference = to_number(index.get(benchmark_id, {}).get("reference-result"))
+        if reference is None:
+            reference = agreed.get(benchmark_id)
         status, difference = evaluate(entry, reference)
 
         data = {"status": status, "log": entry["log"]}
@@ -655,6 +696,12 @@ def main():
     if promoted:
         print(f"  promoted {len(promoted)} result(s) of an exact configuration to a "
               f"reference result in {INDEX_FILE.name}: {', '.join(promoted)}")
+    if args.agreement:
+        print(f"  compared {len(agreed)} benchmark(s) against the result most configurations "
+              f"agree on")
+    if disputed:
+        print(f"  no majority among the configurations for {len(disputed)} benchmark(s): "
+              f"{', '.join(disputed[:3])}{' ...' if len(disputed) > 3 else ''}")
     missing = [b for b in benchmarks if b not in states]
     if missing:
         print(f"  no state count from {STATES_CONFIGURATION} for {len(missing)} benchmark(s): "

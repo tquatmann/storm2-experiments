@@ -7,11 +7,18 @@ Storm 2 paper.
 
 | Path | Description |
 | --- | --- |
+| `benchmarks/` | The model and property files, plus `index.json` describing every benchmark |
+| `common/` | Scripts to generate, run and post-process the experiments, shared by all of them |
 | `comparison_tools_bisim/` | Comparison of Storm, mcsta and PRISM, with and without bisimulation minimisation |
-| `comparison_tools_bisim/benchmarks/` | The model and property files, plus `index.json` describing every benchmark |
-| `comparison_tools_bisim/scripts/` | Scripts to generate, run and post-process the experiments |
+| `comparison_tools_bisim/benchmarks/` | A link to `benchmarks/` |
+| `comparison_tools_bisim/scripts/` | The configurations compared, in `configurations.json` |
 | `comparison_tools_bisim/experiments/` | The logs of the recorded run and the results derived from them |
 | `comparison_tools_bisim/latex/` | The figures, built with pgfplots from the post-processed data |
+| `imdps/` | Comparison of Storm, PRISM and IntervalMDP.jl on interval MDPs derived from `benchmarks/`; see [imdps/README.md](imdps/README.md) |
+
+Every experiment directory has the same layout: `benchmarks/index.json` lists its
+benchmarks, `scripts/configurations.json` the configurations, and `bin/` holds the
+tools. The scripts in `common/` are run from the experiment directory.
 
 ## Running the experiments
 
@@ -38,14 +45,14 @@ defined in `scripts/configurations.json`.
 cd comparison_tools_bisim
 
 # 1. build the list of invocations (configuration x benchmark x repetition)
-python3 scripts/generate_invocations.py --out inv.json --timelimit 900 \
+python3 ../common/generate_invocations.py --out inv.json --timelimit 900 \
     --logdir experiments/logs
 
 # 2. run them; each invocation gets its own temporary directory and log file
-python3 scripts/run.py inv.json
+python3 ../common/run.py inv.json
 
 # 3. turn the logs into results.json, scatter.csv, quantile.csv and an html table
-python3 scripts/postprocess.py experiments/logs experiments/results
+python3 ../common/postprocess.py experiments/logs experiments/results
 
 # 4. build the figures
 cd latex && latexmk -pdf main.tex
@@ -73,5 +80,5 @@ options with `--help`.
 The contents of this repository are licensed under
 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/); see [LICENSE](LICENSE).
 
-This does not extend to the tools in `comparison_tools_bisim/bin/`, which are not
-part of this repository.
+This does not extend to the tools in the `bin/` directories of the experiments,
+which are not part of this repository.

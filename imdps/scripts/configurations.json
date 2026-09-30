@@ -1,0 +1,18 @@
+{
+  "storm-default": {
+    "bin": "bin/storm",
+    "cmd": "--explicit-drn %bundle.drn --prop %bundle.storm.props --uncertainty-resolution robust --precision 1e-6 --absolute",
+    "description": "Storm with default settings, nature resolving the intervals adversarially, and an absolute precision of 1e-6 like IntervalMDP.jl. --sound is not supported for interval models."
+  },
+  "prism-default": {
+    "bin": "bin/prism",
+    "cmd": "-importmodel %bundle.%prism-import %bundle.pctl -maxiters 1000000 -epsilon 1e-6 -absolute",
+    "description": "Prism with default settings and an absolute precision of 1e-6 like IntervalMDP.jl. -intervaliter is not supported for interval models."
+  },
+  "intervalmdp-default": {
+    "bin": "scripts/intervalmdp.sh",
+    "cmd": "--precision 1e-6 %bundle",
+    "requires": ["intervalmdp"],
+    "description": "IntervalMDP.jl with default settings and an absolute precision of 1e-6. It cannot import reachability rewards; those that count steps are solved as expected exit times."
+  }
+}

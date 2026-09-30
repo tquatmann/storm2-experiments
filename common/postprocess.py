@@ -10,6 +10,10 @@ Reads a directory of log files and writes
   quantile.csv      the sorted median runtimes of each configuration,
   quantile-intersect.csv  the same, but restricted to the benchmarks that every
                     configuration supports.
+The runtime is the wallclock time of the whole tool call. The csv files with the
+suffix -checking (e.g. scatter-checking.csv) use the model checking time the tool
+reports instead, i.e. without reading and building the model; results.json holds
+both, as checking-time and construction-time.
 """
 
 import argparse
@@ -26,12 +30,16 @@ from pathlib import Path
 # thousands of digits, well beyond the limit python applies by default.
 sys.set_int_max_str_digits(0)
 
-SCRIPT_DIR = Path(__file__).resolve().parent
-ROOT = SCRIPT_DIR.parent
+# The experiment directory, e.g. comparison_tools_bisim; the scripts are run from there.
+ROOT = Path.cwd()
 INDEX_FILE = ROOT / "benchmarks" / "index.json"
 
 # Relative precision a result has to meet to count as correct.
 GOAL_PRECISION = Fraction(1, 1000)
+
+# With --absolute, GOAL_PRECISION is an absolute precision instead, for tools that only
+# guarantee an absolute error (e.g. value iteration with an absolute stopping criterion).
+ABSOLUTE_PRECISION = False
 
 # Results below this are considered to be zero, so that a tiny absolute deviation
 # from a zero reference result is not reported as an infinite relative error.
@@ -72,6 +80,7 @@ RESULT_PATTERNS = [
     re.compile(r"^Result \(for initial states\):\s*(\S+)", re.M),   # storm
     re.compile(r"^Result:\s*([^\s(]+)", re.M),                      # prism
     re.compile(r"^\s+(?:Probability|Value):\s*(\S+)", re.M),        # mcsta
+    re.compile(r"^Initial state \d+:\s*(\S+)", re.M),                # IntervalMDP.jl
 ]
 
 # The size of the model reported by the tool. Storm prints this once per model
@@ -81,6 +90,21 @@ STATES_PATTERNS = [
     re.compile(r"^States:[ \t]+(\d+)", re.M),      # storm, prism
     re.compile(r"^[ \t]+States:[ \t]+(\d+)", re.M),  # mcsta
 ]
+
+# The time a tool reports for reading and building the model, and for checking it.
+# The first group is the time in seconds.
+CONSTRUCTION_PATTERNS = [
+    re.compile(r"^Time for model construction:\s*([0-9.]+)", re.M),     # storm, prism
+    re.compile(r"^Time for reading:\s*([0-9.eE+-]+)s", re.M),           # IntervalMDP.jl
+]
+CHECKING_PATTERNS = [
+    re.compile(r"^Time for model checking:\s*([0-9.]+)", re.M),         # storm, prism
+    re.compile(r"^Time for solving:\s*([0-9.eE+-]+)s", re.M),           # IntervalMDP.jl
+]
+
+# The runtimes the csv files are written for, with the suffix of their names: the
+# whole tool call, and only the model checking part of it.
+TIMINGS = [("wallclock-time", ""), ("checking-time", "-checking")]
 
 HEADER = re.compile(r"^(?P<key>[A-Za-z ]+):\t(?P<value>.*)$", re.M)
 FOOTER = re.compile(r"^Wallclock time:\t(?P<time>[0-9.]+)\nReturn code:\t(?P<code>.*)$", re.M)
@@ -127,6 +151,25 @@ def both_near_zero(reference, result):
     return abs(reference) < ZERO_THRESHOLD and abs(result) < ZERO_THRESHOLD
 
 
+def absolute_difference(reference, result):
+    """The absolute difference between a reference result and a tool result."""
+    if reference is None or result is None:
+        return None
+    if math.isinf(reference) or math.isinf(result):
+        return Fraction(0) if reference == result else math.inf
+    return abs(reference - result)
+
+
+def difference_and_agreement(reference, result):
+    """The difference of a result to a reference, and whether it meets GOAL_PRECISION."""
+    if ABSOLUTE_PRECISION:
+        difference = absolute_difference(reference, result)
+        return difference, difference is not None and difference <= GOAL_PRECISION
+    difference = relative_difference(reference, result)
+    return difference, difference is not None and (difference <= GOAL_PRECISION
+                                                   or both_near_zero(reference, result))
+
+
 def parse_log(path):
     """The contents of one log file, or None if it is not a log written by run.py."""
     text = path.read_text(errors="replace")
@@ -157,6 +200,13 @@ def parse_log(path):
         if match:
             entry["mcresult"] = match.group(1)
             break
+    for key, patterns in (("construction-time", CONSTRUCTION_PATTERNS),
+                          ("checking-time", CHECKING_PATTERNS)):
+        for pattern in patterns:
+            match = pattern.search(output)
+            if match:
+                entry[key] = float(match.group(1))
+                break
     for pattern in STATES_PATTERNS:
         found = pattern.findall(output)
         if found:
@@ -179,10 +229,10 @@ def evaluate(entry, reference):
     result = to_number(entry.get("mcresult"))
     if result is None:
         return "no-result", None
-    difference = relative_difference(reference, result)
+    difference, agrees = difference_and_agreement(reference, result)
     if difference is None:
         return "ok", None          # nothing to compare against
-    if difference > GOAL_PRECISION and not both_near_zero(reference, result):
+    if not agrees:
         return "incorrect", difference
     return "ok", difference
 
@@ -213,12 +263,12 @@ def worst_status(statuses):
     return "no-result"
 
 
-def median_runtime(repetitions):
-    """The median wallclock time of the repetitions, if all of them are ok."""
+def median_runtime(repetitions, key="wallclock-time"):
+    """The median of a time (by default the wallclock time) of the repetitions, if all are ok."""
     statuses = {r["status"] for r in repetitions.values()}
     if statuses != {"ok"}:
         return None
-    times = [r["wallclock-time"] for r in repetitions.values() if "wallclock-time" in r]
+    times = [r[key] for r in repetitions.values() if key in r]
     return statistics.median(times) if times else None
 
 
@@ -251,6 +301,39 @@ def promote_references(entries, index):
             json.dump(index, f, indent="\t", ensure_ascii=False)
             f.write("\n")
     return promoted
+
+
+def agreed_references(entries, index):
+    """Reference results for the benchmarks without one, from the agreeing configurations.
+
+    Two results agree if they are within GOAL_PRECISION of each other. If at least two
+    and more than half of the configurations with a result for a benchmark agree, the
+    median of their results is the reference. Returns the references and the
+    benchmarks for which the configurations disagree.
+    """
+    results = {}    # benchmark -> configuration -> results of the repetitions
+    for entry in entries:
+        benchmark_id = entry["benchmark"]
+        if "reference-result" in index.get(benchmark_id, {}):
+            continue
+        if entry["timeout"] or entry.get("return-code") != 0:
+            continue
+        result = to_number(entry.get("mcresult"))
+        if result is not None:
+            results.setdefault(benchmark_id, {}).setdefault(entry["configuration"], []).append(result)
+
+    def agree(a, b):
+        return difference_and_agreement(a, b)[1]
+
+    references, disputed = {}, []
+    for benchmark_id, configurations in sorted(results.items()):
+        values = [statistics.median(v) for v in configurations.values()]
+        largest = max(([w for w in values if agree(v, w)] for v in values), key=len)
+        if len(largest) >= 2 and 2 * len(largest) > len(values):
+            references[benchmark_id] = statistics.median(largest)
+        elif len(values) >= 2:
+            disputed.append(benchmark_id)
+    return references, disputed
 
 
 HTML_HEAD = """<!DOCTYPE html>
@@ -408,7 +491,7 @@ def write_log_page(path, configuration, benchmark_id, benchmark, repetitions):
             if data["status"] == "incorrect":
                 difference = (f"<span class=\"bad\">{escape(difference)} &gt; "
                               f"{escape(exponent_format(GOAL_PRECISION))}</span>")
-            rows.append(("relative difference", difference))
+            rows.append(("difference" if ABSOLUTE_PRECISION else "relative difference", difference))
         if "states" in data:
             rows.append(("states", f"{data['states']:,}"))
         if "states-after" in data:
@@ -416,7 +499,7 @@ def write_log_page(path, configuration, benchmark_id, benchmark, repetitions):
         if len(repetitions) > 1:
             parts.append(f"<h2>Repetition {escape(repetition)}</h2>")
         parts.append("<table class=\"meta\">" + "".join(
-            f"<tr><th>{escape(k)}</th><td>{v if k == 'relative difference' else escape(v)}"
+            f"<tr><th>{escape(k)}</th><td>{v if k.endswith('difference') else escape(v)}"
             f"</td></tr>" for k, v in rows)
             + "</table>")
         log = Path(data["log"])
@@ -508,7 +591,15 @@ def main():
     parser.add_argument("--promote-references", action="store_true",
                         help="store the result of an exact configuration as the reference "
                              "result of a benchmark that does not have one yet")
+    parser.add_argument("--agreement", action="store_true",
+                        help="compare the results for a benchmark without a reference result "
+                             "against those most configurations agree on")
+    parser.add_argument("--absolute", action="store_true",
+                        help=f"compare results with the absolute precision "
+                             f"{exponent_format(GOAL_PRECISION)} instead of the relative one")
     args = parser.parse_args()
+    global ABSOLUTE_PRECISION
+    ABSOLUTE_PRECISION = args.absolute
 
     logdir, outdir = Path(args.logs), Path(args.out)
     if not logdir.is_dir():
@@ -531,17 +622,23 @@ def main():
         entries.append(entry)
 
     promoted = promote_references(entries, index) if args.promote_references else []
+    agreed, disputed = agreed_references(entries, index) if args.agreement else ({}, [])
 
     for entry in entries:
         benchmark_id = entry["benchmark"]
         if benchmark_id not in index:
             unknown.add(benchmark_id)
         reference = to_number(index.get(benchmark_id, {}).get("reference-result"))
+        if reference is None:
+            reference = agreed.get(benchmark_id)
         status, difference = evaluate(entry, reference)
 
         data = {"status": status, "log": entry["log"]}
         if "wallclock-time" in entry:
             data["wallclock-time"] = entry["wallclock-time"]
+        for key in ("construction-time", "checking-time"):
+            if key in entry:
+                data[key] = entry[key]
         if "mcresult" in entry:
             data["mcresult"] = entry["mcresult"]
         if difference is not None:
@@ -566,24 +663,9 @@ def main():
         json.dump(results, f, indent="\t")
         f.write("\n")
 
-    # For each benchmark and configuration either the median runtime or the status.
     reducing = [c for c in configurations
                 if c in quotient and c in QUOTIENT_CONFIGURATIONS]
     columns = ["benchmark", "type", "states"] + [f"states-{c}" for c in reducing]
-    medians = {}
-    cells = {}        # (benchmark, configuration) -> median runtime or status
-    for benchmark_id in benchmarks:
-        for configuration in configurations:
-            repetitions = results[configuration].get(benchmark_id)
-            if not repetitions:
-                continue
-            median = median_runtime(repetitions)
-            if median is None:
-                cells[benchmark_id, configuration] = \
-                    worst_status({r["status"] for r in repetitions.values()})
-            else:
-                cells[benchmark_id, configuration] = median
-                medians.setdefault(configuration, []).append((benchmark_id, median))
 
     def states_row(benchmark_id):
         return [benchmark_id,
@@ -591,45 +673,65 @@ def main():
                 states.get(benchmark_id, "")] + \
                [quotient[c].get(benchmark_id, "") for c in reducing]
 
-    # Every cell is a number that pgfplots can plot.
-    with open(outdir / "scatter.csv", "w", newline="") as f:
-        writer = csv.writer(f)
-        writer.writerow(columns + configurations)
-        for benchmark_id in benchmarks:
-            row = [str(v) if v != "" else "nan" for v in states_row(benchmark_id)]
-            row[1] = index.get(benchmark_id, {}).get("type", "unknown")   # the mark class
-            for configuration in configurations:
-                cell = cells.get((benchmark_id, configuration), "")
-                if isinstance(cell, float):
-                    row.append(f"{min(max(cell, PLOT_MIN), PLOT_TIMEOUT - 1):.3f}")
-                elif cell in ("timeout", "memout"):
-                    row.append(f"{PLOT_TIMEOUT:.0f}")   # out of time or memory
-                elif cell == "incorrect":
-                    row.append(f"{PLOT_INCORRECT:.0f}")
-                else:
-                    row.append(f"{PLOT_NA:.0f}")   # no result or not run
-            writer.writerow(row)
-
-    # Per configuration the median runtimes in ascending order, padded with nan.
-    def write_quantile(name, selection):
-        with open(outdir / name, "w", newline="") as f:
-            writer = csv.writer(f)
-            writer.writerow(["i"] + configurations)
-            sorted_times = {c: sorted(t for b, t in medians.get(c, [])
-                                      if b in selection) for c in configurations}
-            for i in range(max((len(v) for v in sorted_times.values()), default=0)):
-                row = [i + 1]
-                for configuration in configurations:
-                    values = sorted_times[configuration]
-                    row.append(f"{values[i]:.3f}" if i < len(values) else "nan")
-                writer.writerow(row)
-
-    write_quantile("quantile.csv", set(benchmarks))
     # A configuration that cannot be run on a benchmark has no execution for it,
     # for example PRISM on a benchmark that only comes as a jani file.
     supported = {b for b in benchmarks
                  if all(results[c].get(b) for c in configurations)}
-    write_quantile("quantile-intersect.csv", supported)
+
+    for time_key, suffix in TIMINGS:
+        # For each benchmark and configuration either the median runtime or the status.
+        medians = {}
+        cells = {}        # (benchmark, configuration) -> median runtime or status
+        for benchmark_id in benchmarks:
+            for configuration in configurations:
+                repetitions = results[configuration].get(benchmark_id)
+                if not repetitions:
+                    continue
+                median = median_runtime(repetitions, time_key)
+                if median is None:
+                    cells[benchmark_id, configuration] = \
+                        worst_status({r["status"] for r in repetitions.values()})
+                else:
+                    cells[benchmark_id, configuration] = median
+                    medians.setdefault(configuration, []).append((benchmark_id, median))
+        if time_key == "wallclock-time":
+            table_cells = cells
+
+        # Every cell is a number that pgfplots can plot.
+        with open(outdir / f"scatter{suffix}.csv", "w", newline="") as f:
+            writer = csv.writer(f)
+            writer.writerow(columns + configurations)
+            for benchmark_id in benchmarks:
+                row = [str(v) if v != "" else "nan" for v in states_row(benchmark_id)]
+                row[1] = index.get(benchmark_id, {}).get("type", "unknown")   # the mark class
+                for configuration in configurations:
+                    cell = cells.get((benchmark_id, configuration), "")
+                    if isinstance(cell, float):
+                        row.append(f"{min(max(cell, PLOT_MIN), PLOT_TIMEOUT - 1):.3f}")
+                    elif cell in ("timeout", "memout"):
+                        row.append(f"{PLOT_TIMEOUT:.0f}")   # out of time or memory
+                    elif cell == "incorrect":
+                        row.append(f"{PLOT_INCORRECT:.0f}")
+                    else:
+                        row.append(f"{PLOT_NA:.0f}")   # no result or not run
+                writer.writerow(row)
+
+        # Per configuration the median runtimes in ascending order, padded with nan.
+        def write_quantile(name, selection):
+            with open(outdir / name, "w", newline="") as f:
+                writer = csv.writer(f)
+                writer.writerow(["i"] + configurations)
+                sorted_times = {c: sorted(t for b, t in medians.get(c, [])
+                                          if b in selection) for c in configurations}
+                for i in range(max((len(v) for v in sorted_times.values()), default=0)):
+                    row = [i + 1]
+                    for configuration in configurations:
+                        values = sorted_times[configuration]
+                        row.append(f"{values[i]:.3f}" if i < len(values) else "nan")
+                    writer.writerow(row)
+
+        write_quantile(f"quantile{suffix}.csv", set(benchmarks))
+        write_quantile(f"quantile{suffix}-intersect.csv", supported)
 
     executions = sum(len(r) for c in results.values() for r in c.values())
     print(f"read {executions} executions of {len(benchmarks)} benchmarks "
@@ -655,6 +757,12 @@ def main():
     if promoted:
         print(f"  promoted {len(promoted)} result(s) of an exact configuration to a "
               f"reference result in {INDEX_FILE.name}: {', '.join(promoted)}")
+    if args.agreement:
+        print(f"  compared {len(agreed)} benchmark(s) against the result most configurations "
+              f"agree on")
+    if disputed:
+        print(f"  no majority among the configurations for {len(disputed)} benchmark(s): "
+              f"{', '.join(disputed[:3])}{' ...' if len(disputed) > 3 else ''}")
     missing = [b for b in benchmarks if b not in states]
     if missing:
         print(f"  no state count from {STATES_CONFIGURATION} for {len(missing)} benchmark(s): "
@@ -662,11 +770,12 @@ def main():
     if reducing:
         print(f"  state counts after preprocessing for: {', '.join(reducing)}")
     tabledir = write_table(outdir, index, results, configurations, benchmarks,
-                           cells, states, quotient, reducing)
+                           table_cells, states, quotient, reducing)
     print(f"  {len(supported)} of {len(benchmarks)} benchmarks are supported by "
           f"every configuration")
     print(f"wrote results.json, scatter.csv, quantile.csv and "
-          f"quantile-intersect.csv to {outdir}")
+          f"quantile-intersect.csv to {outdir}, and the same csv files for the model "
+          f"checking time only with the suffix -checking")
     print(f"wrote the html table to {tabledir / 'index.html'}")
 
 

@@ -9,7 +9,12 @@ import re
 
 # Benchmark keys whose value is the path of a model file. Such files are copied
 # into the temporary directory of an invocation.
-FILE_KEYS = {"jani", "prism", "prism-property"}
+FILE_KEYS = {"jani", "prism", "prism-property", "bundle"}
+
+# File keys whose value is the common prefix of several files, e.g. the .drn, .tra
+# and .lab files of an explicit model. These files are linked rather than copied,
+# as they can be large; the placeholder is replaced by the prefix.
+BUNDLE_KEYS = {"bundle"}
 
 # Configuration keys holding a command line, in the order in which they are tried.
 # The first one whose model file placeholders the benchmark provides is used, so
@@ -32,8 +37,11 @@ def pick_command(config, benchmark):
     """The command line of the configuration that the benchmark provides all files for.
 
     Returns None if the configuration is not applicable to the benchmark, i.e. if it
-    needs a model file (say a PRISM program) that the benchmark does not have.
+    needs a model file (say a PRISM program) that the benchmark does not have, or if
+    the benchmark does not set a key listed in the "requires" of the configuration.
     """
+    if not all(benchmark.get(key) for key in config.get("requires", [])):
+        return None
     for key in CMD_KEYS:
         if key not in config:
             continue

@@ -1,0 +1,129 @@
+%% Plot styles for the tool comparison figures.
+%% The data is produced by common/postprocess.py. Adapted from
+%% comparison_tools_bisim/latex/plots.tex: the benchmark classes are the interval widths.
+
+%% Colours: Paul Tol's "bright" scheme, which is colourblind safe.
+\definecolor{tolblue}{HTML}{4477AA}
+\definecolor{tolcyan}{HTML}{66CCEE}
+\definecolor{tolgreen}{HTML}{228833}
+\definecolor{tolyellow}{HTML}{CCBB44}
+\definecolor{tolred}{HTML}{EE6677}
+\definecolor{tolpurple}{HTML}{AA3377}
+\definecolor{tolgrey}{HTML}{BBBBBB}
+
+\colorlet{colstorm}{tolblue}
+\colorlet{colprism}{tolyellow}
+\colorlet{colintervalmdp}{tolgreen}
+
+%% Readable configuration names.
+\newcommand{\cfgstorm}{Storm}
+\newcommand{\cfgprism}{PRISM}
+\newcommand{\cfgintervalmdp}{IntervalMDP.jl}
+
+%% Where the csv files written by postprocess.py live.
+\newcommand{\resultsdir}{../experiments/results}
+
+%% Sentinel positions; these must match PLOT_TIMEOUT and PLOT_NA in postprocess.py.
+\newcommand{\plottimeout}{1200}
+\newcommand{\plotincorrect}{2400}
+\newcommand{\plotna}{4800}
+\newcommand{\plotmax}{6400}
+
+\newlength{\quantileplotheight}
+\setlength{\quantileplotheight}{0.30\linewidth}
+\newlength{\scatterplotsize}
+\setlength{\scatterplotsize}{0.30\linewidth}
+
+%% A quantile plot spanning the full text width.
+%% #1: csv file, relative to \resultsdir
+%% #2: comma separated list of column/colour/legend-entry triples
+\newcommand{\quantileplot}[2]{%
+  \begin{tikzpicture}
+    \begin{axis}[
+      width=\linewidth,
+      height=\quantileplotheight,
+      scale only axis,
+      xmin=0, xmax=120,
+      ymin=0.1, ymax=1000,
+      ymode=log,
+      ymajorgrids,
+      axis x line=bottom,
+      axis y line=left,
+      unbounded coords=discard, filter discard warning=false,
+      xlabel={solved benchmarks},
+      ylabel={runtime},
+      xlabel style={font=\scriptsize, yshift=4pt},
+      ylabel style={font=\scriptsize, yshift=-7pt},
+      log ticks with fixed point,
+      xticklabel style={font=\scriptsize},
+      yticklabel style={font=\scriptsize},
+      legend pos=north west,
+      legend columns=2,
+      legend style={nodes={scale=0.75, transform shape}, inner sep=1pt},
+      /pgfplots/legend image code/.code={%
+        \draw[mark repeat=2, mark phase=2, ##1] plot coordinates {(0cm,0cm) (0.3cm,0cm)};},
+      every axis plot/.append style={ultra thick},
+      legend cell align={left},
+    ]
+      \foreach \col/\colour/\name in {#2}{%
+        \edef\plotline{\noexpand\addplot[\colour]
+          table [x=i, y=\col, col sep=comma] {\resultsdir/#1};
+          \noexpand\addlegendentry{\name}}%
+        \plotline
+      }
+    \end{axis}
+  \end{tikzpicture}%
+}
+
+%% A runtime scatter plot.
+%% #1: csv file, relative to \resultsdir
+%% #2: x column  #3: x label  #4: y column  #5: y label  #6: show legend (true/false)
+\newcommand{\scatterplot}[6]{%
+  \begin{tikzpicture}
+    \begin{axis}[
+      width=\scatterplotsize,
+      height=\scatterplotsize,
+      scale only axis,
+      axis equal image,
+      xmin=1, xmax=\plotmax, ymin=1, ymax=\plotmax,
+      xmode=log, ymode=log,
+      axis x line=bottom,
+      axis y line=left,
+      xtick={1,2,4,8,16,32,64,128,256,512},
+      xticklabels={${\le}1$,2,4,8,16,,64,,256,},
+      extra x ticks={\plottimeout,\plotincorrect,\plotna},
+      extra x tick labels={TO,inc,n/a},
+      extra x tick style={grid=major, ticklabel style={font=\tiny, rotate=90, anchor=east}},
+      ytick={1,2,4,8,16,32,64,128,256,512},
+      yticklabels={${\le}1$,2,4,8,16,32,64,,256,},
+      extra y ticks={\plottimeout,\plotincorrect,\plotna},
+      extra y tick labels={TO,inc,n/a},
+      extra y tick style={grid=major, ticklabel style={font=\tiny}},
+      xlabel={#3}, ylabel={#5},
+      xlabel style={font=\scriptsize, yshift=5pt},
+      ylabel style={font=\scriptsize, yshift=-9pt},
+      xticklabel style={font=\scriptsize},
+      yticklabel style={font=\scriptsize},
+      legend pos=north west,
+      legend columns=2,
+      legend style={nodes={scale=0.7, transform shape}, inner sep=1.5pt,
+                    at={(0.0,1.42)}, anchor=north west},
+      set layers, mark layer=axis background,
+    ]
+      \addplot[
+        scatter, only marks,
+        scatter/classes={
+          absolute-005={mark=*,tolblue,mark size=1.5},
+          absolute-25={mark=triangle*,tolred,mark size=1.5},
+          unknown={mark=x,tolgrey,mark size=1.5}
+        },
+        scatter src=explicit symbolic,
+      ] table [col sep=comma, x=#2, y=#4, meta=type] {\resultsdir/#1};
+      \ifthenelse{\equal{#6}{true}}{%
+        \legend{$\delta=0.05$,$\delta=0.25$}}{}
+      \addplot[no marks] coordinates {(0.01,0.01) (900,900)};
+      \addplot[no marks, densely dotted] coordinates {(0.01,0.1) (90,900)};
+      \addplot[no marks, densely dotted] coordinates {(0.1,0.01) (900,90)};
+    \end{axis}
+  \end{tikzpicture}%
+}

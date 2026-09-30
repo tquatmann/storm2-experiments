@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>prism-sound - airport-mdp.130-130.time_min</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>airport-mdp.130-130.time_min</h1>
+<p class="sub">prism-sound &middot; mdpgrid &middot; <a href="index.html">back to the table</a></p>
+<p class="sub">reference result: <code>69361519025671746727049573861995588980274563293144165520237565541813099350419189860833278359751429195464570012568647896244385841813350065672781322612015750092655388486873975437900570737415092912284069616849030238071070929944317078277070842165556583602367457588341/228620085710960318381663764284439716858238387162104935839618176113948280945047137682814784170260465719384334476591047178926002085000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</code></p>
+<p class="sub">reference result: <code>303.3920612</code></p>
+<table class="meta"><tr><th>status</th><td>no-result</td></tr><tr><th>wallclock time</th><td>17.275 s</td></tr><tr><th>states</th><td>499,720</td></tr></table>
+<p class="sub">prism-sound_airport-mdp.130-130.time_min.log</p>
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism airport-mdp.prism airport-mdp.props --prop time_min -const DMAX=130,PMAX=130 -maxiters 1000000 -intervaliter
+Benchmark:	airport-mdp.130-130.time_min
+Configuration:	prism-sound
+Repetition:	1
+Time limit:	900
+Output:
+Picked up JAVA_TOOL_OPTIONS: -Xmx16g
+PRISM
+=====
+
+Version: 4.10.1
+Date: Sat Sep 26 01:01:18 GMT+02:00 2026
+Hostname: r23m0058.hpc.itc.rwth-aachen.de
+Memory limits: cudd=1g, java(heap)=16g
+Command line: prism airport-mdp.prism airport-mdp.props --prop time_min -const 'DMAX=130,PMAX=130' -maxiters 1000000 -intervaliter
+
+Parsing PRISM model file &quot;airport-mdp.prism&quot;...
+
+Type:        MDP
+Modules:     plane gv sensor sensorqual master
+Actions:     [approach] [stay] [measure]
+Variables:   d p pobs mode turn
+Labels:      &quot;crash&quot;
+Rewards:     &quot;time&quot;
+
+Parsing properties file &quot;airport-mdp.props&quot;...
+
+1 property:
+(1) &quot;time_min&quot;: R{&quot;time&quot;}min=? [ F p=0&amp;d=0 ]
+
+---------------------------------------------------------------------
+
+Model checking: &quot;time_min&quot;: R{&quot;time&quot;}min=? [ F p=0&amp;d=0 ]
+Model constants: DMAX=130,PMAX=130
+
+Warning: Switching to explicit engine to allow interval iteration on Rmin operator.
+
+Building model (engine:explicit)...
+Model constants: DMAX=130,PMAX=130
+
+Computing reachable states... 499720 states
+Reachable states exploration and model construction done in 2.446 secs.
+Sorting reachable states list...
+
+Time for model construction: 2.943 seconds.
+
+Warning: Deadlocks detected and fixed in 8 states
+
+Type:        MDP
+States:      499720 (1 initial)
+Transitions: 3721684
+Choices:     737624
+Max/avg:     6/1.48
+Building reward structure...
+
+Starting expected reachability (min)...
+Starting Prob1 (max)...
+Prob1 (max) took 259 iterations and 2.38 seconds.
+target=18, inf=0, rest=499702
+For Rmin, checking for zero-reward ECs...
+Time for checking for zero-reward ECs: 0.062 seconds, no zero-reward ECs found, proceeding normally.
+Computing upper bound(s) for Rmin using the Dijkstra Sweep for Monotone Pessimistic Initialization algorithm...
+Calculating incoming choices relation for Markov decision process...  done (0.06 seconds)
+Time for computing upper bound(s) for Rmin using the DSI-MP algorithm: 1.679 seconds.
+Upper bound for min expectation (Dijkstra Sweep MPI): 1237.058560102693
+Starting Prob1 (min)...
+Prob1 (min) took 1026 iterations and 9.54 seconds.
+
+Error: Interval iteration for Rmin and non-contracting MDP currently not supported.
+
+---------------------------------------------------------------------
+
+Note: There were 2 warnings during computation.
+
+
+----------------------------------------
+Wallclock time:	17.275
+Return code:	0
+</pre>
+</body></html>

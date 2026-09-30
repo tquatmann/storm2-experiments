@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>prism-sound - mer.100-0.1.prob_max</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>mer.100-0.1.prob_max</h1>
+<p class="sub">prism-sound &middot; mdpmec &middot; <a href="index.html">back to the table</a></p>
+<p class="sub">reference result: <code>2705658816461365959627853936426140974169674855965724840478746354256390797406688452688671662228571137807376778012329313957344827531573790663/12446030555722283414288128107560248481180504337442334266202233229579397668070766882367889646251427233913933179110244964249432086944580078125</code></p>
+<p class="sub">reference result: <code>0.2173913043</code></p>
+<table class="meta"><tr><th>status</th><td>no-result</td></tr><tr><th>wallclock time</th><td>126.181 s</td></tr><tr><th>states</th><td>592,264</td></tr></table>
+<p class="sub">prism-sound_mer.100-0.1.prob_max.log</p>
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism mer.prism mer.props --prop prob_max -const n=100,x=0.1 -maxiters 1000000 -intervaliter
+Benchmark:	mer.100-0.1.prob_max
+Configuration:	prism-sound
+Repetition:	1
+Time limit:	900
+Output:
+Picked up JAVA_TOOL_OPTIONS: -Xmx16g
+PRISM
+=====
+
+Version: 4.10.1
+Date: Sat Sep 26 00:58:43 GMT+02:00 2026
+Hostname: n23m0171.hpc.itc.rwth-aachen.de
+Memory limits: cudd=1g, java(heap)=16g
+Command line: prism mer.prism mer.props --prop prob_max -const 'n=100,x=0.1' -maxiters 1000000 -intervaliter
+
+Parsing PRISM model file &quot;mer.prism&quot;...
+
+Type:        MDP
+Modules:     arbiter user1 user2 property loops
+Actions:     [] [u1_request_comm] [u1_grant_comm] [u1_deny_comm] [u2_request_comm] [u2_grant_comm] [u2_deny_comm] [u1_rescind_drive] [u2_rescind_drive] [u1_request_drive] [u1_grant_drive] [u1_deny_drive] [u2_request_drive] [u2_grant_drive] [u2_deny_drive] [u1_cancel_comm] [u2_cancel_comm] [u1_cancel_drive] [u2_cancel_drive]
+Variables:   s r k commUser driveUser gc dc gd dd s1 r1 rescind1 s2 r2 rescind2 e u
+Labels:      &quot;err_G&quot;
+
+Parsing properties file &quot;mer.props&quot;...
+
+1 property:
+(1) &quot;prob_max&quot;: Pmax=? [ F &quot;err_G&quot; ]
+
+---------------------------------------------------------------------
+
+Model checking: &quot;prob_max&quot;: Pmax=? [ F &quot;err_G&quot; ]
+Model constants: n=100,x=0.1
+
+Building model (engine:symbolic)...
+Model constants: n=100,x=0.1
+
+Computing reachable states...
+
+Reachability (BFS): 1029 iterations in 2.95 seconds (average 0.002867, setup 0.00)
+
+Time for model construction: 3.04 seconds.
+
+Type:        MDP
+States:      592264 (1 initial)
+Transitions: 2333054
+
+Transition matrix: 28827 nodes (6 terminal), 2333054 minterms, vars: 35r/35c/22nd
+
+Prob0A: 14 iterations in 0.09 seconds (average 0.006429, setup 0.00)
+
+Prob1E: 38 iterations in 0.22 seconds (average 0.005789, setup 0.00)
+
+yes = 378522, no = 111496, maybe = 102246
+
+Computing remaining probabilities...
+Engine: Hybrid
+
+Building quotient MDP, collapsing maximal end components as well as yes and no states...
+Time for computing maximal end components: 63.801 seconds, found 93446 MECs.
+
+Error: Not enough extra action variables preallocated, please increase using -ddextraactionvars switch!.
+
+Warning: CUDD reports 534250 non-zero references.
+
+
+----------------------------------------
+Wallclock time:	126.181
+Return code:	0
+</pre>
+</body></html>

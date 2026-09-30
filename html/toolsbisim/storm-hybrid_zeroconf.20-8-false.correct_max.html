@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>storm-hybrid - zeroconf.20-8-false.correct_max</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>zeroconf.20-8-false.correct_max</h1>
+<p class="sub">storm-hybrid &middot; mdpqvbs &middot; <a href="index.html">back to the table</a></p>
+<p class="sub">reference result: <code>2840810748552740279694928513142000863365232359679800085379472902667574085309048020135761868039647573461067228959176815764668923310585051589104065280176703779807146020406965667529812280290489677709787360818206244936956391217134097637438886859966191043793623483790104465593873559121156447826680835906538964773285601061080008518088560193737478197873361157279597996465923712642745166188551293827884733670169400134426534581495003598366746377292908623904714500266657760388702565269047947842610042489938676584500706648415374125500124850587550741116894561042794690410137909010366958825165707221050453349866618677249552401311775610443165106927696973651709552624581153878268178003642170950274029085511750624413606368139766048061736089062147504345964572393890534364938482866043866926754769962831/3003620130846700935142995665916801926400554684851878984955756869483485402777472742451853239803832753463766532527467026689258061040573995945045234722568165531989575271860745348021388676627669082255879057205406630912976146424854290475933260580414808337261495220134538082872213381060726238995044818984719961714160517416953923076697225447987305871297310257950585135502306039640746967120322603799240090428376231688795351889114479198047020271064760914794725216206545086828661466576765563376393103295341609148554897591799927601850890452562693902320517807686832074086119793466144924449643167143146954425515557427208163544214300893571196078188639327953565459641936090657367989357992788710089162787606206004048111054383078415978928995191785201236087970724198227044295089673548205838532266926754769962831</code></p>
+<p class="sub">reference result: <code>9.457956149e-10</code></p>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>11.655 s</td></tr><tr><th>result</th><td>9.457956149e-10</td></tr><tr><th>relative difference</th><td>9.66e-12</td></tr><tr><th>states</th><td>1,868,787</td></tr></table>
+<p class="sub">storm-hybrid_zeroconf.20-8-false.correct_max.log</p>
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/storm --jani zeroconf.jani --janiproperty correct_max --constants N=20,K=8,reset=false --engine hybrid
+Benchmark:	zeroconf.20-8-false.correct_max
+Configuration:	storm-hybrid
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Sat Sep 26 00:56:08 2026
+Command line arguments: --jani zeroconf.jani --janiproperty correct_max --constants 'N=20,K=8,reset=false' --engine hybrid
+Current working directory: /w0/tmp/slurm_tq429871.4466144/invocation-rndfxeae
+
+Time for model input parsing: 0.002s.
+
+WARN  (threads.cpp:21): Detected thread limitation via Slurm (max. 4 threads.)
+Using Sylvan with 4 parallel threads.
+Time for model construction: 4.974s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (symbolic)
+States: 	1868787 (21643 nodes)
+Transitions: 	4224736 (150440 nodes)
+Choices: 	3430379
+Reward Models:  none
+Variables: 	rows: 24 meta variables (60 DD variables), columns: 24 meta variables (60 DD variables), nondeterminism: 7 meta variables (7 DD variables)
+Labels: 	2
+   * deadlock -&gt; 0 state(s) (1 nodes)
+   * init -&gt; 1 state(s) (61 nodes)
+-------------------------------------------------------------- 
+
+Model checking property &quot;correct_max&quot;: Pmax=? [F ((l = 4) &amp; (ip = 1))] ...
+Result (for initial states): 9.457956149e-10
+Time for model checking: 6.572s.
+
+----------------------------------------
+Wallclock time:	11.655
+Return code:	0
+</pre>
+</body></html>

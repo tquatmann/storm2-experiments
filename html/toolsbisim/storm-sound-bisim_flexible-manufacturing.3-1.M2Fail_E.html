@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>storm-sound-bisim - flexible-manufacturing.3-1.M2Fail_E</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>flexible-manufacturing.3-1.M2Fail_E</h1>
+<p class="sub">storm-sound-bisim &middot; maqvbs &middot; <a href="index.html">back to the table</a></p>
+<p class="sub">reference result: <code>412446354890621946790685547847108982138811240861544902807262491473465487297116230653343387842366699718017500593636769778926628856571617593905695486654107592079235541642930590949757267153003518233397596776666114028466540170238742711971062960475022917339465475002860876273201662753661623231767700446965616659474718731893150714297650876020943275266867651019880912828735525950872726843470109833999574791399097272802660443730750217378102754001043120399543213004752040460465619173950514435628089697578338900106169879192299508586773093937725375734393497329661169755550545079699893134612515523455157365598914267797597912999239153815130537055903494261775501886748414737218971632488342220345294305241886385606247440118267148606339279343524880780796084655290264702571811113475580761889414839373307704147177292090955167540450153703184794673471041227015469682646588604192945907444263220754196307862263729751571514454069779573136960771273077947/84305864922519099845499884965796443916226816853783027962643762170725565594060758664027910067391635010800944399296217786660756381891891105598002598999486228316104479556585366797540668242584099154138711900866312300352289338234079188210696933687057351302860164339193718391938641008044965317798006778870603945907386079640064082479154688939183800170864060139342462577556800181318157265626758493862440288453211423866661050041422568537580852789614108339684701802426414216659737328541425466797061780617212076114476552336350647194090321329368192838473352500097716012876312776596989890139323843701689438844457591177788301621851563427021987019887682539535796095256347702078043735946278005282936755460477615763225383571201621745375373093403972788590452718587946142041911728294349530579035248416947916295134928830771762963122607130269606826802357373010416282601310310186918013001440735415349876284087420192155136003681148221508275642216</code></p>
+<p class="sub">reference result: <code>4892261.71</code></p>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>116.090 s</td></tr><tr><th>result</th><td>4892257.24</td></tr><tr><th>relative difference</th><td>9.14e-07</td></tr><tr><th>states</th><td>1,636</td></tr><tr><th>states after preprocessing</th><td>1,167</td></tr></table>
+<p class="sub">storm-sound-bisim_flexible-manufacturing.3-1.M2Fail_E.log</p>
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/storm --jani flexible-manufacturing.3.jani --janiproperty M2Fail_E --constants T=1 --sound --bisimulation
+Benchmark:	flexible-manufacturing.3-1.M2Fail_E
+Configuration:	storm-sound-bisim
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Sat Sep 26 00:57:10 2026
+Command line arguments: --jani flexible-manufacturing.3.jani --janiproperty M2Fail_E --constants T=1 --sound --bisimulation
+Current working directory: /w0/tmp/slurm_tq429871.4466194/invocation-jf0f10dt
+
+Time for model input parsing: 0.002s.
+
+Time for model construction: 0.017s.
+
+-------------------------------------------------------------- 
+Model type: 	Markov Automaton (sparse)
+States: 	1636
+Transitions: 	3269
+Choices: 	1636
+Markovian St.: 	675
+Max. Rate: 	5.59
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -&gt; 0 item(s)
+   * init -&gt; 1 item(s)
+   * (((M2on &gt; 0) &amp; (M2go = 0)) &amp; (Spares = 0)) -&gt; 65 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 0.001s.
+
+-------------------------------------------------------------- 
+Model type: 	Markov Automaton (sparse)
+States: 	1167
+Transitions: 	2697
+Choices: 	1167
+Markovian St.: 	611
+Max. Rate: 	5.59
+Reward Models:  none
+State Labels: 	2 labels
+   * (((M2on &gt; 0) &amp; (M2go = 0)) &amp; (Spares = 0)) -&gt; 1 item(s)
+   * init -&gt; 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property &quot;M2Fail_E&quot;: Tmin=? [F (((M2on &gt; 0) &amp; (M2go = 0)) &amp; (Spares = 0))] ...
+WARN  (OptimisticValueIterationHelper.cpp:230): Optimistic Value Iteration did not terminate after 20 refinements. It might be stuck.
+Result (for initial states): 4892257.24
+Time for model checking: 116.043s.
+
+----------------------------------------
+Wallclock time:	116.090
+Return code:	0
+</pre>
+</body></html>

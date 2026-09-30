@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>storm-exact - flexible-manufacturing.21-1.M3Fail_E</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>flexible-manufacturing.21-1.M3Fail_E</h1>
+<p class="sub">storm-exact &middot; maqvbs &middot; <a href="index.html">back to the table</a></p>
+<table class="meta"><tr><th>status</th><td>timeout</td></tr><tr><th>wallclock time</th><td>903.219 s</td></tr><tr><th>states</th><td>838,951</td></tr><tr><th>states after preprocessing</th><td>838,951</td></tr></table>
+<p class="sub">storm-exact_flexible-manufacturing.21-1.M3Fail_E.log</p>
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/storm --jani flexible-manufacturing.21.jani --janiproperty M3Fail_E --constants T=1 --exact
+Benchmark:	flexible-manufacturing.21-1.M3Fail_E
+Configuration:	storm-exact
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Sat Sep 26 01:14:45 2026
+Command line arguments: --jani flexible-manufacturing.21.jani --janiproperty M3Fail_E --constants T=1 --exact
+Current working directory: /w0/tmp/slurm_tq429871.4466931/invocation-yx2flbjb
+
+Time for model input parsing: 0.002s.
+
+Time for model construction: 27.051s.
+
+-------------------------------------------------------------- 
+Model type: 	Markov Automaton (sparse)
+States: 	838951
+Transitions: 	1823858
+Choices: 	838951
+Markovian St.: 	314479
+Max. Rate: 	1279/100
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -&gt; 0 item(s)
+   * init -&gt; 1 item(s)
+   * ((M3on &gt; 0) &amp; (M3go = 0)) -&gt; 143451 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 0.000s.
+
+-------------------------------------------------------------- 
+Model type: 	Markov Automaton (sparse)
+States: 	838951
+Transitions: 	1823858
+Choices: 	838951
+Markovian St.: 	314479
+Max. Rate: 	1279/100
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -&gt; 0 item(s)
+   * init -&gt; 1 item(s)
+   * ((M3on &gt; 0) &amp; (M3go = 0)) -&gt; 143451 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property &quot;M3Fail_E&quot;: Tmin=? [F ((M3on &gt; 0) &amp; (M3go = 0))] ...
+ERROR: The program received signal 15 and will be aborted in 3s.
+Received signal 14
+
+----------------------------------------
+Wallclock time:	903.219
+Return code:	None
+Computation aborted after 903.219 seconds since the time limit of 900 seconds was exceeded.
+</pre>
+</body></html>

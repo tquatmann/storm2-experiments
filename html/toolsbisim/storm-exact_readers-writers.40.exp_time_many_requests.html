@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>storm-exact - readers-writers.40.exp_time_many_requests</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>readers-writers.40.exp_time_many_requests</h1>
+<p class="sub">storm-exact &middot; maqvbs &middot; <a href="index.html">back to the table</a></p>
+<table class="meta"><tr><th>status</th><td>memout</td></tr><tr><th>wallclock time</th><td>70.103 s</td></tr><tr><th>states</th><td>1,884,366</td></tr><tr><th>states after preprocessing</th><td>1,884,366</td></tr></table>
+<p class="sub">storm-exact_readers-writers.40.exp_time_many_requests.log</p>
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/storm --jani readers-writers.40.jani --janiproperty exp_time_many_requests --exact
+Benchmark:	readers-writers.40.exp_time_many_requests
+Configuration:	storm-exact
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Sat Sep 26 01:12:10 2026
+Command line arguments: --jani readers-writers.40.jani --janiproperty exp_time_many_requests --exact
+Current working directory: /w0/tmp/slurm_tq429871.4466830/invocation-xnybkt8b
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 54.820s.
+
+-------------------------------------------------------------- 
+Model type: 	Markov Automaton (sparse)
+States: 	1884366
+Transitions: 	3815040
+Choices: 	1884366
+Markovian St.: 	372594
+Max. Rate: 	400
+Reward Models:  none
+State Labels: 	3 labels
+   * init -&gt; 1 item(s)
+   * deadlock -&gt; 0 item(s)
+   * (((p_lan_w + p_w) + (p_lan_r + p_r)) &gt; (320 / 10)) -&gt; 56038 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 0.000s.
+
+-------------------------------------------------------------- 
+Model type: 	Markov Automaton (sparse)
+States: 	1884366
+Transitions: 	3815040
+Choices: 	1884366
+Markovian St.: 	372594
+Max. Rate: 	400
+Reward Models:  none
+State Labels: 	3 labels
+   * init -&gt; 1 item(s)
+   * deadlock -&gt; 0 item(s)
+   * (((p_lan_w + p_w) + (p_lan_r + p_r)) &gt; (320 / 10)) -&gt; 56038 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property &quot;exp_time_many_requests&quot;: Tmin=? [F (((p_lan_w + p_w) + (p_lan_r + p_r)) &gt; (320 / 10))] ...
+
+----------------------------------------
+Wallclock time:	70.103
+Return code:	-9
+</pre>
+</body></html>

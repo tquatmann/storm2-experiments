@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>prism-default - wlan.5-0.num_collisions</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>wlan.5-0.num_collisions</h1>
+<p class="sub">prism-default &middot; mdpqvbs &middot; <a href="index.html">back to the table</a></p>
+<p class="sub">reference result: <code>5508217626823953517/4584682012849209344</code></p>
+<p class="sub">reference result: <code>1.201439404</code></p>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>42.683 s</td></tr><tr><th>result</th><td>1.2014394043862073</td></tr><tr><th>relative difference</th><td>1.13e-12</td></tr><tr><th>states</th><td>1,295,218</td></tr></table>
+<p class="sub">prism-default_wlan.5-0.num_collisions.log</p>
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism wlan.5.prism wlan.props --prop num_collisions -const COL=0 -maxiters 1000000
+Benchmark:	wlan.5-0.num_collisions
+Configuration:	prism-default
+Repetition:	1
+Time limit:	900
+Output:
+Picked up JAVA_TOOL_OPTIONS: -Xmx16g
+PRISM
+=====
+
+Version: 4.10.1
+Date: Sat Sep 26 00:57:41 GMT+02:00 2026
+Hostname: n23m0246.hpc.itc.rwth-aachen.de
+Memory limits: cudd=1g, java(heap)=16g
+Command line: prism wlan.5.prism wlan.props --prop num_collisions -const COL=0 -maxiters 1000000
+
+Parsing PRISM model file &quot;wlan.5.prism&quot;...
+
+Type:        MDP
+Modules:     medium station1 station2
+Actions:     [] [send1] [send2] [finish1] [finish2] [time]
+Variables:   col c1 c2 x1 s1 slot1 backoff1 bc1 x2 s2 slot2 backoff2 bc2
+Rewards:     &quot;collisions&quot; &quot;time&quot; &quot;cost&quot;
+
+Parsing properties file &quot;wlan.props&quot;...
+
+7 properties:
+(1) &quot;collisions&quot;: Pmax=? [ F col=COL ]
+(2) &quot;cost_max&quot;: R{&quot;cost&quot;}max=? [ F s1=12&amp;s2=12 ]
+(3) &quot;cost_min&quot;: R{&quot;cost&quot;}min=? [ F s1=12&amp;s2=12 ]
+(4) &quot;num_collisions&quot;: R{&quot;collisions&quot;}max=? [ F s1=12&amp;s2=12 ]
+(5) &quot;sent&quot;: P&gt;=1 [ F s1=12&amp;s2=12 ]
+(6) &quot;time_max&quot;: R{&quot;time&quot;}max=? [ F s1=12&amp;s2=12 ]
+(7) &quot;time_min&quot;: R{&quot;time&quot;}min=? [ F s1=12&amp;s2=12 ]
+
+---------------------------------------------------------------------
+
+Model checking: &quot;num_collisions&quot;: R{&quot;collisions&quot;}max=? [ F s1=12&amp;s2=12 ]
+Model constants: COL=0
+
+Building model (engine:symbolic)...
+Model constants: COL=0
+
+Computing reachable states...
+
+Reachability (BFS): 170 iterations in 0.18 seconds (average 0.001059, setup 0.00)
+
+Time for model construction: 0.24 seconds.
+
+Type:        MDP
+States:      1295218 (1 initial)
+Transitions: 2929960
+
+Transition matrix: 17250 nodes (7 terminal), 2929960 minterms, vars: 45r/45c/7nd
+
+Prob0E: 1622 iterations in 11.70 seconds (average 0.007213, setup 0.00)
+
+Prob1A: 1 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+
+goal = 1, inf = 0, maybe = 1295217
+
+Computing remaining rewards...
+Switching engine since hybrid engine does yet support this computation...
+Engine: Sparse
+
+Building sparse matrix (transitions)... [n=1295218, nc=1646073, nnz=2929959, k=3] [44.8 MB]
+Building sparse matrix (transition rewards)... [n=1295218, nc=1646073, nnz=36, k=3] [11.2 MB]
+Creating vector for state rewards... [9.9 MB]
+Creating vector for inf... [9.9 MB]
+Allocating iteration vectors... [2 x 9.9 MB]
+TOTAL: [95.5 MB]
+
+Starting iterations...
+Iteration 543: max relative diff=inf, 5.01 sec so far
+Iteration 1084: max relative diff=inf, 10.02 sec so far
+Iteration 1627: max relative diff=0.000008, 15.03 sec so far
+Iteration 2172: max relative diff=0.000008, 20.04 sec so far
+Iteration 2711: max relative diff=0.000008, 25.05 sec so far
+
+Iterative method: 3101 iterations in 30.17 seconds (average 0.009239, setup 1.52)
+
+Value in the initial state: 1.2014394043862073
+
+Time for model checking: 41.951 seconds.
+
+Result: 1.2014394043862073 (+/- 1.3025437858385958E-6 estimated; rel err 1.084152709727413E-6)
+
+
+----------------------------------------
+Wallclock time:	42.683
+Return code:	0
+</pre>
+</body></html>

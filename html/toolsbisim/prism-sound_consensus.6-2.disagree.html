@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>prism-sound - consensus.6-2.disagree</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>consensus.6-2.disagree</h1>
+<p class="sub">prism-sound &middot; mdpqvbs &middot; <a href="index.html">back to the table</a></p>
+<p class="sub">reference result: <code>37101798760906709/102027593703751680</code></p>
+<p class="sub">reference result: <code>0.3636447496</code></p>
+<table class="meta"><tr><th>status</th><td>no-result</td></tr><tr><th>wallclock time</th><td>16.588 s</td></tr><tr><th>states</th><td>1,258,240</td></tr></table>
+<p class="sub">prism-sound_consensus.6-2.disagree.log</p>
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism consensus.6.prism consensus.props --prop disagree -const K=2 -maxiters 1000000 -intervaliter
+Benchmark:	consensus.6-2.disagree
+Configuration:	prism-sound
+Repetition:	1
+Time limit:	900
+Output:
+Picked up JAVA_TOOL_OPTIONS: -Xmx16g
+PRISM
+=====
+
+Version: 4.10.1
+Date: Sat Sep 26 01:14:45 GMT+02:00 2026
+Hostname: n23m0213.hpc.itc.rwth-aachen.de
+Memory limits: cudd=1g, java(heap)=16g
+Command line: prism consensus.6.prism consensus.props --prop disagree -const K=2 -maxiters 1000000 -intervaliter
+
+Parsing PRISM model file &quot;consensus.6.prism&quot;...
+
+Type:        MDP
+Modules:     process1 process2 process3 process4 process5 process6
+Actions:     [] [done]
+Variables:   counter pc1 coin1 pc2 coin2 pc3 coin3 pc4 coin4 pc5 coin5 pc6 coin6
+Labels:      &quot;finished&quot; &quot;all_coins_equal_0&quot; &quot;all_coins_equal_1&quot; &quot;agree&quot;
+Rewards:     &quot;steps&quot;
+
+Parsing properties file &quot;consensus.props&quot;...
+
+5 properties:
+(1) &quot;c1&quot;: P&gt;=1 [ F &quot;finished&quot; ]
+(2) &quot;c2&quot;: Pmin=? [ F &quot;finished&quot;&amp;&quot;all_coins_equal_1&quot; ]
+(3) &quot;disagree&quot;: Pmax=? [ F &quot;finished&quot;&amp;!&quot;agree&quot; ]
+(4) &quot;steps_max&quot;: R{&quot;steps&quot;}max=? [ F &quot;finished&quot; ]
+(5) &quot;steps_min&quot;: R{&quot;steps&quot;}min=? [ F &quot;finished&quot; ]
+
+---------------------------------------------------------------------
+
+Model checking: &quot;disagree&quot;: Pmax=? [ F &quot;finished&quot;&amp;!&quot;agree&quot; ]
+Model constants: K=2
+
+Building model (engine:symbolic)...
+Model constants: K=2
+
+Computing reachable states...
+
+Reachability (BFS): 149 iterations in 0.05 seconds (average 0.000336, setup 0.00)
+
+Time for model construction: 0.082 seconds.
+
+Type:        MDP
+States:      1258240 (1 initial)
+Transitions: 6236736
+
+Transition matrix: 7075 nodes (3 terminal), 6236736 minterms, vars: 24r/24c/6nd
+
+Prob0A: 115 iterations in 0.50 seconds (average 0.004348, setup 0.00)
+
+Prob1E: 1925 iterations in 14.30 seconds (average 0.007429, setup 0.00)
+
+yes = 583956, no = 27270, maybe = 647014
+
+Computing remaining probabilities...
+Engine: Hybrid
+
+Building quotient MDP, collapsing maximal end components as well as yes and no states...
+Time for computing maximal end components: 1.116 seconds, found 0 MECs.
+
+Error: Not enough extra action variables preallocated, please increase using -ddextraactionvars switch!.
+
+Warning: CUDD reports 10761 non-zero references.
+
+
+----------------------------------------
+Wallclock time:	16.588
+Return code:	0
+</pre>
+</body></html>

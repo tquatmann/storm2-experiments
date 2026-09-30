@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>prism-sound - wlan.6-0.time_max</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>wlan.6-0.time_max</h1>
+<p class="sub">prism-sound &middot; mdpqvbs &middot; <a href="index.html">back to the table</a></p>
+<p class="sub">reference result: <code>37448939728860673819103673575/9643090804763889235918848</code></p>
+<p class="sub">reference result: <code>3883.499646</code></p>
+<table class="meta"><tr><th>status</th><td>no-result</td></tr><tr><th>wallclock time</th><td>189.169 s</td></tr><tr><th>states</th><td>5,007,548</td></tr></table>
+<p class="sub">prism-sound_wlan.6-0.time_max.log</p>
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism wlan.6.prism wlan.props --prop time_max -const COL=0 -maxiters 1000000 -intervaliter
+Benchmark:	wlan.6-0.time_max
+Configuration:	prism-sound
+Repetition:	1
+Time limit:	900
+Output:
+Picked up JAVA_TOOL_OPTIONS: -Xmx16g
+PRISM
+=====
+
+Version: 4.10.1
+Date: Sat Sep 26 01:16:18 GMT+02:00 2026
+Hostname: n23m0134.hpc.itc.rwth-aachen.de
+Memory limits: cudd=1g, java(heap)=16g
+Command line: prism wlan.6.prism wlan.props --prop time_max -const COL=0 -maxiters 1000000 -intervaliter
+
+Parsing PRISM model file &quot;wlan.6.prism&quot;...
+
+Type:        MDP
+Modules:     medium station1 station2
+Actions:     [] [send1] [send2] [finish1] [finish2] [time]
+Variables:   col c1 c2 x1 s1 slot1 backoff1 bc1 x2 s2 slot2 backoff2 bc2
+Rewards:     &quot;collisions&quot; &quot;time&quot; &quot;cost&quot;
+
+Parsing properties file &quot;wlan.props&quot;...
+
+7 properties:
+(1) &quot;collisions&quot;: Pmax=? [ F col=COL ]
+(2) &quot;cost_max&quot;: R{&quot;cost&quot;}max=? [ F s1=12&amp;s2=12 ]
+(3) &quot;cost_min&quot;: R{&quot;cost&quot;}min=? [ F s1=12&amp;s2=12 ]
+(4) &quot;num_collisions&quot;: R{&quot;collisions&quot;}max=? [ F s1=12&amp;s2=12 ]
+(5) &quot;sent&quot;: P&gt;=1 [ F s1=12&amp;s2=12 ]
+(6) &quot;time_max&quot;: R{&quot;time&quot;}max=? [ F s1=12&amp;s2=12 ]
+(7) &quot;time_min&quot;: R{&quot;time&quot;}min=? [ F s1=12&amp;s2=12 ]
+
+---------------------------------------------------------------------
+
+Model checking: &quot;time_max&quot;: R{&quot;time&quot;}max=? [ F s1=12&amp;s2=12 ]
+Model constants: COL=0
+
+Building model (engine:symbolic)...
+Model constants: COL=0
+
+Computing reachable states...
+
+Reachability (BFS): 195 iterations in 0.29 seconds (average 0.001487, setup 0.00)
+
+Time for model construction: 0.35 seconds.
+
+Type:        MDP
+States:      5007548 (1 initial)
+Transitions: 11475748
+
+Transition matrix: 20377 nodes (8 terminal), 11475748 minterms, vars: 47r/47c/7nd
+
+Prob0E: 3158 iterations in 51.01 seconds (average 0.016153, setup 0.00)
+
+Prob1A: 1 iterations in 0.01 seconds (average 0.010000, setup 0.00)
+
+goal = 1, inf = 0, maybe = 5007547
+
+CUDD internal error detected, from the following stack trace:
+  jdd.JDD.ptrToNode(JDD.java:1840)
+  jdd.JDD.And(JDD.java:528)
+  symbolic.comp.ProbModelChecker.computeReachRewardsUpperBoundVariant2(ProbModelChecker.java:2208)
+  symbolic.comp.ProbModelChecker.computeReachRewardsUpperBound(ProbModelChecker.java:1931)
+  symbolic.comp.NondetModelChecker.computeReachRewards(NondetModelChecker.java:2575)
+  symbolic.comp.NondetModelChecker.checkRewardReach(NondetModelChecker.java:1487)
+  symbolic.comp.NondetModelChecker.checkRewardPathFormula(NondetModelChecker.java:1445)
+  symbolic.comp.NondetModelChecker.checkExpressionReward(NondetModelChecker.java:368)
+  symbolic.comp.NondetModelChecker.checkExpressionReward(NondetModelChecker.java:326)
+  symbolic.comp.NondetModelChecker.checkExpression(NondetModelChecker.java:189)
+  symbolic.comp.StateModelChecker.checkExpressionFilter(StateModelChecker.java:1192)
+  symbolic.comp.StateModelChecker.checkExpression(StateModelChecker.java:312)
+  symbolic.comp.NonProbModelChecker.checkExpression(NonProbModelChecker.java:88)
+  symbolic.comp.NondetModelChecker.checkExpression(NondetModelChecker.java:204)
+  symbolic.comp.StateModelChecker.check(StateModelChecker.java:238)
+  prism.Prism.modelCheck(Prism.java:3466)
+  prism.PrismCL.run(PrismCL.java:426)
+  prism.PrismCL.go(PrismCL.java:227)
+  prism.PrismCL.main(PrismCL.java:3008)
+
+Error: Out of memory (or other internal error) in the CUDD library.
+Tip: Try using the -cuddmaxmem switch to increase the memory available to CUDD.
+
+----------------------------------------
+Wallclock time:	189.169
+Return code:	1
+</pre>
+</body></html>

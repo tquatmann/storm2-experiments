@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>mcsta-ii - consensus.4-4.disagree</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>consensus.4-4.disagree</h1>
+<p class="sub">mcsta-ii &middot; mdpqvbs &middot; <a href="index.html">back to the table</a></p>
+<p class="sub">reference result: <code>45666330762076479/292595849630842880</code></p>
+<p class="sub">reference result: <code>0.156073064</code></p>
+<table class="meta"><tr><th>status</th><td>no-result</td></tr><tr><th>wallclock time</th><td>0.520 s</td></tr></table>
+<p class="sub">mcsta-ii_consensus.4-4.disagree.log</p>
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/modest mcsta consensus.4.jani --props disagree --experiment K=4 --unsafe --store-mode Memory --alg IntervalIteration --width 1e-6 --relative-width
+Benchmark:	consensus.4-4.disagree
+Configuration:	mcsta-ii
+Repetition:	1
+Time limit:	900
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.311-g14c460466+14c4604667cea0a04631c853eb09e474e24dc368.
+Command: modest mcsta consensus.4.jani --props disagree --experiment K=4 --unsafe --store-mode Memory --alg IntervalIteration --width 1e-6 --relative-width
+
+
+
+
+consensus.4.jani:model: info: consensus.4 is an MDP model.
+consensus.4.jani:variables[6]: info: Expanding variable &quot;pc1&quot; into 4 locations in automaton &quot;process1&quot;.
+consensus.4.jani:variables[8]: info: Expanding variable &quot;pc2&quot; into 4 locations in automaton &quot;process2&quot;.
+consensus.4.jani:variables[10]: info: Expanding variable &quot;pc3&quot; into 4 locations in automaton &quot;process3&quot;.
+consensus.4.jani:variables[12]: info: Expanding variable &quot;pc4&quot; into 4 locations in automaton &quot;process4&quot;.
+consensus.4.jani: info: Need 16 bytes per state.
+consensus.4.jani: info: Explored 43136 states for K=4.
+consensus.4.jani: info: Identified 41793 maximal end components.
+Unhandled exception. System.NullReferenceException: Object reference not set to an instance of an object.
+   at Modest.ModelChecking.EndComponents.CollapseEndComponents(PropertyAnalysisTask task, StateSpace stateSpace, AnalysisDataSet dataSet, String statusFormat, LocationErrorHandler leh, OperationState operationState)
+   at Modest.ModelChecking.MAModelChecker`1.CheckProperty(StateSpace stateSpace, ReachabilityPropertyInfo prop, String avoidStatesKey, String targetStatesKey, StateSet`1 stateSet, IDisposable&amp; previousBoundedIterationInfo, Func`3 onProbabilityNotZeroOrOne, String propertyStatusString, AnalysisDataSet info, OperationState operationState, ComponentErrorHandler ceh)
+   at Modest.ModelChecking.MAModelChecker`1.CheckProperties(StateSpace ss, StateSet`1 states, Boolean[] reachAndInvariantPropertyResults, String experimentStatusString, OperationState operationState, ComponentErrorHandler ceh)
+   at Modest.ModelChecking.MAModelChecker`1.ModelCheck(String experimentString, OperationState operationState, ComponentErrorHandler ceh)
+   at Modest.ModelChecking.ModelCheckingAnalysisEngine.ModelCheckGeneric[T](Network`1 network, UmbModel umbModel, Object expInfoObj, String experimentString, Object propertiesObj, Object parametersObj, ILocation documentLocation, OperationState operationState, ComponentErrorHandler ceh)
+   at invoke Modest.Exploration.Network`1__CompiledAutomata.State1\, CompiledAutomata-20260926090433-1260049751\, Version=0.0.0.0\, Culture=neutral\, PublicKeyToken=null__ : Modest.StateSpace.UmbModel : System.Object : System.String : System.Object : System.Object : Modest.Modularity.ILocation : Modest.Modularity.OperationState : Modest.Modularity.ComponentErrorHandler : Modest.Modularity.AnalysisDataSet.GeneratedClass.DoInvoke(Object, Object[], MethodInfo)
+   at Modest.ModelChecking.ModelCheckingAnalysisEngine.ModelCheck(IModel model, CompilationParameters compilationParams, Object parametersObj, OperationState operationState, IErrorHandler errors)
+   at Modest.ModelChecking.ModelCheckingAnalysisEngine.Analyze(AnalysisParams analysisParameters, IModel[] models, Int32 index, Boolean isLast, Boolean useDtmcSemantics, Boolean isContinuousTimeMarkovModel, OperationState operationState, IErrorHandler errors)
+   at Modest.ModelChecking.AnalysisEngine`1.Analyze(AP analysisParameters, IModel model, Int32 index, Boolean isLast, IExperiment[] modelParameters, OperationState operationState, IErrorHandler errors)
+   at Modest.ModelChecking.AnalysisEngine`1.Analyze(IParameterObject analysisParameters, IModel[] models, IExperiment[][] experiments, OperationState operationState, IErrorHandler errors)
+   at Modest.Executable.ModelChecker.Run(IParameterObject parameterObj, Stopwatch time, IOutputHandler outputHandler, CancellationToken cancellationToken)
+   at Modest.Executable.Program.Main(String[] args)
+
+----------------------------------------
+Wallclock time:	0.520
+Return code:	-6
+</pre>
+</body></html>

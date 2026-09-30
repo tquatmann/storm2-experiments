@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>mcsta-default - polling-system.3-3-5.TmaxBothFull</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>polling-system.3-3-5.TmaxBothFull</h1>
+<p class="sub">mcsta-default &middot; maqvbs &middot; <a href="index.html">back to the table</a></p>
+<p class="sub">reference result: <code>656520718285914541189633/104245454153608704</code></p>
+<p class="sub">reference result: <code>6297835.466</code></p>
+<table class="meta"><tr><th>status</th><td>incorrect</td></tr><tr><th>wallclock time</th><td>58.702 s</td></tr><tr><th>result</th><td>1039204.2942845579</td></tr><tr><th>relative difference</th><td><span class="bad">0.835 &gt; 1e-3</span></td></tr><tr><th>states</th><td>10,934</td></tr></table>
+<p class="sub">mcsta-default_polling-system.3-3-5.TmaxBothFull.log</p>
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/modest mcsta polling-system.3.jani --props TmaxBothFull --experiment C=3,TIME_BOUND=5 --unsafe --store-mode Memory
+Benchmark:	polling-system.3-3-5.TmaxBothFull
+Configuration:	mcsta-default
+Repetition:	1
+Time limit:	900
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.311-g14c460466+14c4604667cea0a04631c853eb09e474e24dc368.
+Command: modest mcsta polling-system.3.jani --props TmaxBothFull --experiment C=3,TIME_BOUND=5 --unsafe --store-mode Memory
+
+
+
+
+polling-system.3.jani:model: info: polling-system is an MA model.
+polling-system.3.jani: info: Need at least 56 bytes per state.
+polling-system.3.jani: info: Explored 10934 states for C=3, TIME_BOUND=5.0.
+
+Peak memory usage: 52 MB
+Analysis results for polling-system.3.jani
+Experiment C=3, TIME_BOUND=5.0
+
++ State space exploration
+  Min. state size: 56 bytes
+  States:          10934
+  Choices:         19870
+  Branches:        23312
+  Rate:            147757 states/s
+  Time:            0.1 s
+
++ Property TmaxBothFull
+  Value:  1039204.2942845579
+  Bounds: [1039204.2942845579, infinity)
+  Time:   58.4 s
+
+  + Precomputations
+    Min. prob. 0 states:          0
+    Time for min. prob. 0 states: 0.0 s
+    Min. prob. 1 states:          10934
+    Time for min. prob. 1 states: 0.0 s
+
+  + Value iteration
+    Final error: 9.999997422794456E-07
+    Iterations:  912550
+    Time:        58.4 s
+
+
+----------------------------------------
+Wallclock time:	58.702
+Return code:	0
+</pre>
+</body></html>

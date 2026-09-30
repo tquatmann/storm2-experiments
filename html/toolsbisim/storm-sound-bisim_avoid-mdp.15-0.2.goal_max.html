@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>storm-sound-bisim - avoid-mdp.15-0.2.goal_max</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>avoid-mdp.15-0.2.goal_max</h1>
+<p class="sub">storm-sound-bisim &middot; mdpgridmec &middot; <a href="index.html">back to the table</a></p>
+<p class="sub">reference result: <code>3458086116029131165265024/8138022036054083916015625</code></p>
+<p class="sub">reference result: <code>0.4249295591</code></p>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>1.793 s</td></tr><tr><th>result</th><td>0.4249295594</td></tr><tr><th>relative difference</th><td>6.18e-10</td></tr><tr><th>states</th><td>272,701</td></tr><tr><th>states after preprocessing</th><td>211,334</td></tr></table>
+<p class="sub">storm-sound-bisim_avoid-mdp.15-0.2.goal_max.log</p>
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/storm --jani avoid-mdp.jani --janiproperty goal_max --constants N=15,slippery=0.2 --sound --bisimulation
+Benchmark:	avoid-mdp.15-0.2.goal_max
+Configuration:	storm-sound-bisim
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Sat Sep 26 01:01:49 2026
+Command line arguments: --jani avoid-mdp.jani --janiproperty goal_max --constants 'N=15,slippery=0.2' --sound --bisimulation
+Current working directory: /w0/tmp/slurm_tq429871.4466391/invocation-1j5zmnx4
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 0.836s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	272701
+Transitions: 	1350803
+Choices: 	599131
+Reward Models:  none
+State Labels: 	4 labels
+   * deadlock -&gt; 0 item(s)
+   * init -&gt; 1 item(s)
+   * notbad -&gt; 243271 item(s)
+   * goal -&gt; 540 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 0.527s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	211334
+Transitions: 	1152206
+Choices: 	505872
+Reward Models:  none
+State Labels: 	3 labels
+   * goal -&gt; 1 item(s)
+   * notbad -&gt; 211333 item(s)
+   * init -&gt; 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property &quot;goal_max&quot;: Pmax=? [&quot;notbad&quot; U &quot;goal&quot;] ...
+Result (for initial states): 0.4249295594
+Time for model checking: 0.399s.
+
+----------------------------------------
+Wallclock time:	1.793
+Return code:	0
+</pre>
+</body></html>

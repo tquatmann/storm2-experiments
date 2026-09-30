@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>mcsta-ii - airport-mdp.250-250.time_min</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>airport-mdp.250-250.time_min</h1>
+<p class="sub">mcsta-ii &middot; mdpgrid &middot; <a href="index.html">back to the table</a></p>
+<p class="sub">reference result: <code>150604139209324853546227970120359814179290615495600914253576344393896862504621948676961510324096102775956913676037493726641485954655476328638386859513311839762556670543717098593053323901136309200728572963276189875672343229809253428918020357236914158775705113463983504805850550865619616102898520127922950743522693075145876483867066123533682000927855144260448048112538580268381985830289111277012900542455839617088976217310045698414847704593728115625949394129058568709758493109942311049330588354523883485209310776012611491561774310483410757570359744484266939094812728550747701686536794636999798389620630808938086895052902953548251928651316566680621437/258776524586883188853654887825780311454611075869252080737549318573558400257361506872194437247713634405299175624465381762560157354554928806331436229795329367174712678352510332633817222001044779215709644502388725852847759572857881178355039487107970572025449318148976810713772555981056279217372555229946863989795912780338488514702405181576500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</code></p>
+<p class="sub">reference result: <code>581.9853229</code></p>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>21.886 s</td></tr><tr><th>result</th><td>581.9853228563138</td></tr><tr><th>relative difference</th><td>4.77e-14</td></tr><tr><th>states</th><td>1,860,992</td></tr></table>
+<p class="sub">mcsta-ii_airport-mdp.250-250.time_min.log</p>
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/modest mcsta airport-mdp.jani --props time_min --experiment DMAX=250,PMAX=250 --unsafe --store-mode Memory --alg IntervalIteration --width 1e-6 --relative-width
+Benchmark:	airport-mdp.250-250.time_min
+Configuration:	mcsta-ii
+Repetition:	1
+Time limit:	900
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.311-g14c460466+14c4604667cea0a04631c853eb09e474e24dc368.
+Command: modest mcsta airport-mdp.jani --props time_min --experiment DMAX=250,PMAX=250 --unsafe --store-mode Memory --alg IntervalIteration --width 1e-6 --relative-width
+
+
+
+
+airport-mdp.jani:model: info: airport-mdp is an MDP model.
+airport-mdp.jani:variables[5]: info: Expanding variable &quot;turn&quot; into 2 locations in automaton &quot;master&quot;.
+airport-mdp.jani: info: Need 16 bytes per state.
+airport-mdp.jani: warning: The probabilities for a transition do not sum up to 1. Results will likely be affected by floating-point errors.
+airport-mdp.jani: info: Explored 1860992 states for DMAX=250, PMAX=250.
+airport-mdp.jani:properties[0]: warning: Computing minimum expected reward in property &quot;time_min&quot; without checking for zero-reward end components.
+
+Peak memory usage: 2000 MB
+Analysis results for airport-mdp.jani
+Experiment DMAX=250, PMAX=250
+
++ State space exploration
+  State size: 16 bytes
+  States:     1860992
+  Choices:    2738496
+  Branches:   13907976
+  Rate:       694659 states/s
+  Time:       2.9 s
+
++ Property time_min
+  Value:  581.9853228563138
+  Bounds: [581.9853228562665, 581.985322856361]
+  Time:   18.8 s
+
+  + Precomputations
+    Max. prob. 1 states:          1860992
+    Time for max. prob. 1 states: 2.4 s
+
+  + Interval iteration
+    Iterations: 294
+    Time:       16.4 s
+
+
+----------------------------------------
+Wallclock time:	21.886
+Return code:	0
+</pre>
+</body></html>

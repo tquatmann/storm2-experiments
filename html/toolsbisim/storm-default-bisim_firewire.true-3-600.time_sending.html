@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>storm-default-bisim - firewire.true-3-600.time_sending</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>firewire.true-3-600.time_sending</h1>
+<p class="sub">storm-default-bisim &middot; mdpqvbs &middot; <a href="index.html">back to the table</a></p>
+<p class="sub">reference result: <code>18</code></p>
+<p class="sub">reference result: <code>18</code></p>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>5.263 s</td></tr><tr><th>result</th><td>17.99997729</td></tr><tr><th>relative difference</th><td>1.26e-06</td></tr><tr><th>states</th><td>1,078,299</td></tr><tr><th>states after preprocessing</th><td>1,919</td></tr></table>
+<p class="sub">storm-default-bisim_firewire.true-3-600.time_sending.log</p>
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/storm --jani firewire.true.jani --janiproperty time_sending --constants delay=3,deadline=600 --bisimulation
+Benchmark:	firewire.true-3-600.time_sending
+Configuration:	storm-default-bisim
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Sat Sep 26 00:58:12 2026
+Command line arguments: --jani firewire.true.jani --janiproperty time_sending --constants 'delay=3,deadline=600' --bisimulation
+Current working directory: /w0/tmp/slurm_tq429871.4466243/invocation-1mjzgktk
+
+Time for model input parsing: 0.003s.
+
+Time for model construction: 4.430s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	1078299
+Transitions: 	1473698
+Choices: 	1453092
+Reward Models:  time_sending
+State Labels: 	3 labels
+   * deadlock -&gt; 0 item(s)
+   * init -&gt; 1 item(s)
+   * done -&gt; 656 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 0.798s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	1919
+Transitions: 	2346
+Choices: 	2325
+Reward Models:  time_sending
+State Labels: 	2 labels
+   * done -&gt; 1 item(s)
+   * init -&gt; 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property &quot;time_sending&quot;: R{&quot;time_sending&quot;}max=? [F &quot;done&quot;] ...
+Result (for initial states): 17.99997729
+Time for model checking: 0.000s.
+
+----------------------------------------
+Wallclock time:	5.263
+Return code:	0
+</pre>
+</body></html>

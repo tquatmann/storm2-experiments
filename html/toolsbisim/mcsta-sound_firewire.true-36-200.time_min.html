@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>mcsta-sound - firewire.true-36-200.time_min</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>firewire.true-36-200.time_min</h1>
+<p class="sub">mcsta-sound &middot; mdpqvbs &middot; <a href="index.html">back to the table</a></p>
+<p class="sub">reference result: <code>553/4</code></p>
+<p class="sub">reference result: <code>138.25</code></p>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>16.193 s</td></tr><tr><th>result</th><td>138.25</td></tr><tr><th>relative difference</th><td>0</td></tr><tr><th>states</th><td>6,931,981</td></tr></table>
+<p class="sub">mcsta-sound_firewire.true-36-200.time_min.log</p>
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/modest mcsta firewire.true.jani --props time_min --experiment delay=36,deadline=200 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+Benchmark:	firewire.true-36-200.time_min
+Configuration:	mcsta-sound
+Repetition:	1
+Time limit:	900
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.311-g14c460466+14c4604667cea0a04631c853eb09e474e24dc368.
+Command: modest mcsta firewire.true.jani --props time_min --experiment delay=36,deadline=200 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+
+
+
+
+firewire.true.jani:model: info: firewire.true is an MDP model.
+firewire.true.jani:variables[7]: info: Expanding variable &quot;s1&quot; into 9 locations in automaton &quot;node1&quot;.
+firewire.true.jani:variables[8]: info: Expanding variable &quot;w21&quot; into 10 locations in automaton &quot;wire21&quot;.
+firewire.true.jani:variables[12]: info: Expanding variable &quot;s2&quot; into 9 locations in automaton &quot;node2&quot;.
+firewire.true.jani: info: Need 16 bytes per state.
+firewire.true.jani: info: Explored 6931981 states for delay=36, deadline=200.
+firewire.true.jani:properties[2]: warning: Computing minimum expected reward in property &quot;time_min&quot; without checking for zero-reward end components.
+
+Peak memory usage: 2978 MB
+Analysis results for firewire.true.jani
+Experiment delay=36, deadline=200
+
++ State space exploration
+  State size: 16 bytes
+  States:     6931981
+  Choices:    15669366
+  Branches:   15782932
+  Rate:       863906 states/s
+  Time:       8.4 s
+
++ Property time_min
+  Value:  138.25
+  Bounds: [138.25, 138.25]
+  Time:   7.6 s
+
+  + Precomputations
+    Max. prob. 1 states:          6931981
+    Time for max. prob. 1 states: 2.3 s
+
+  + Optimistic value iteration
+    Total iterations:  117
+    Verif. attempts:   1
+    Verif. iterations: 1
+    Final epsilon:     1E-06
+    Time:              5.3 s
+
+
+----------------------------------------
+Wallclock time:	16.193
+Return code:	0
+</pre>
+</body></html>

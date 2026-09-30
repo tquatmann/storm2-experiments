@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>mcsta-default - wlan-mec.3-0.cost_min</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>wlan-mec.3-0.cost_min</h1>
+<p class="sub">mcsta-default &middot; mdpmec &middot; <a href="index.html">back to the table</a></p>
+<p class="sub">reference result: <code>7625</code></p>
+<p class="sub">reference result: <code>7625</code></p>
+<table class="meta"><tr><th>status</th><td>incorrect</td></tr><tr><th>wallclock time</th><td>2.286 s</td></tr><tr><th>result</th><td>0</td></tr><tr><th>relative difference</th><td><span class="bad">1 &gt; 1e-3</span></td></tr><tr><th>states</th><td>963,020</td></tr></table>
+<p class="sub">mcsta-default_wlan-mec.3-0.cost_min.log</p>
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/modest mcsta wlan-mec.3.jani --props cost_min --experiment COL=0 --unsafe --store-mode Memory
+Benchmark:	wlan-mec.3-0.cost_min
+Configuration:	mcsta-default
+Repetition:	1
+Time limit:	900
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.311-g14c460466+14c4604667cea0a04631c853eb09e474e24dc368.
+Command: modest mcsta wlan-mec.3.jani --props cost_min --experiment COL=0 --unsafe --store-mode Memory
+
+
+
+
+wlan-mec.3.jani:model: info: wlan-mec.3 is an MDP model.
+wlan-mec.3.jani:variables[5]: info: Expanding variable &quot;s1&quot; into 12 locations in automaton &quot;station1&quot;.
+wlan-mec.3.jani:variables[7]: info: Expanding variable &quot;s2&quot; into 12 locations in automaton &quot;station2&quot;.
+wlan-mec.3.jani: info: Need 24 bytes per state.
+wlan-mec.3.jani: info: Explored 963020 states for COL=0.
+wlan-mec.3.jani:properties[0]: warning: Computing minimum expected reward in property &quot;cost_min&quot; without checking for zero-reward end components.
+
+Peak memory usage: 689 MB
+Analysis results for wlan-mec.3.jani
+Experiment COL=0
+
++ State space exploration
+  State size: 24 bytes
+  States:     963020
+  Choices:    2200310
+  Branches:   3971780
+  Rate:       816811 states/s
+  Time:       1.2 s
+
++ Property cost_min
+  Value:  0
+  Bounds: [0, infinity)
+  Time:   0.8 s
+
+  + Precomputations
+    Max. prob. 1 states:          963020
+    Time for max. prob. 1 states: 0.8 s
+
+  + Value iteration
+    Final error: 0
+    Iterations:  1
+    Time:        0.0 s
+
+
+----------------------------------------
+Wallclock time:	2.286
+Return code:	0
+</pre>
+</body></html>

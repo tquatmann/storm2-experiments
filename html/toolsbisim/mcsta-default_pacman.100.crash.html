@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>mcsta-default - pacman.100.crash</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>pacman.100.crash</h1>
+<p class="sub">mcsta-default &middot; mdpqvbs &middot; <a href="index.html">back to the table</a></p>
+<p class="sub">reference result: <code>1313966804662347402769527668654523365697477609795114866381329103063979977073091760291649198435534147/2384185791015625000000000000000000000000000000000000000000000000000000000000000000000000000000000000</code></p>
+<p class="sub">reference result: <code>0.5511176225</code></p>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>31.652 s</td></tr><tr><th>result</th><td>0.5511176224662503</td></tr><tr><th>relative difference</th><td>1.16e-16</td></tr><tr><th>states</th><td>16,115,358</td></tr></table>
+<p class="sub">mcsta-default_pacman.100.crash.log</p>
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/modest mcsta pacman.jani --props crash --experiment MAXSTEPS=100 --unsafe --store-mode Memory
+Benchmark:	pacman.100.crash
+Configuration:	mcsta-default
+Repetition:	1
+Time limit:	900
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.311-g14c460466+14c4604667cea0a04631c853eb09e474e24dc368.
+Command: modest mcsta pacman.jani --props crash --experiment MAXSTEPS=100 --unsafe --store-mode Memory
+
+
+
+
+pacman.jani:model: info: pacman is an MDP model.
+pacman.jani:variables[1]: info: Expanding variable &quot;pMove&quot; into 3 locations in automaton &quot;arbiter&quot;.
+pacman.jani: info: Need 16 bytes per state.
+pacman.jani: info: Explored 16115358 states for MAXSTEPS=100.
+
+Peak memory usage: 3838 MB
+Analysis results for pacman.jani
+Experiment MAXSTEPS=100
+
++ State space exploration
+  State size: 16 bytes
+  States:     16115358
+  Choices:    20214527
+  Branches:   22140403
+  Rate:       528407 states/s
+  Time:       30.9 s
+
++ Property crash
+  Probability: 0.5511176224662503
+  Bounds:      [0.5511176224662503, 0.5511176224662503]
+  Time:        0.4 s
+
+  + Value iteration
+    Final error: 0
+    Iterations:  2
+    Time:        0.4 s
+
+
+----------------------------------------
+Wallclock time:	31.652
+Return code:	0
+</pre>
+</body></html>

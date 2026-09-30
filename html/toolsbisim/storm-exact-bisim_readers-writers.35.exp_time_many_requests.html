@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>storm-exact-bisim - readers-writers.35.exp_time_many_requests</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>readers-writers.35.exp_time_many_requests</h1>
+<p class="sub">storm-exact-bisim &middot; maqvbs &middot; <a href="index.html">back to the table</a></p>
+<table class="meta"><tr><th>status</th><td>timeout</td></tr><tr><th>wallclock time</th><td>903.190 s</td></tr><tr><th>states</th><td>1,128,974</td></tr><tr><th>states after preprocessing</th><td>1,053,825</td></tr></table>
+<p class="sub">storm-exact-bisim_readers-writers.35.exp_time_many_requests.log</p>
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/storm --jani readers-writers.35.jani --janiproperty exp_time_many_requests --exact --bisimulation
+Benchmark:	readers-writers.35.exp_time_many_requests
+Configuration:	storm-exact-bisim
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Sat Sep 26 01:05:57 2026
+Command line arguments: --jani readers-writers.35.jani --janiproperty exp_time_many_requests --exact --bisimulation
+Current working directory: /w0/tmp/slurm_tq429871.4466550/invocation-yt16fcy2
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 30.677s.
+
+-------------------------------------------------------------- 
+Model type: 	Markov Automaton (sparse)
+States: 	1128974
+Transitions: 	2280981
+Choices: 	1128974
+Markovian St.: 	228553
+Max. Rate: 	350
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -&gt; 0 item(s)
+   * init -&gt; 1 item(s)
+   * (((p_lan_w + p_w) + (p_lan_r + p_r)) &gt; (280 / 10)) -&gt; 37918 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 6.795s.
+
+-------------------------------------------------------------- 
+Model type: 	Markov Automaton (sparse)
+States: 	1053825
+Transitions: 	2185151
+Choices: 	1053825
+Markovian St.: 	190552
+Max. Rate: 	350
+Reward Models:  none
+State Labels: 	2 labels
+   * (((p_lan_w + p_w) + (p_lan_r + p_r)) &gt; (280 / 10)) -&gt; 1 item(s)
+   * init -&gt; 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property &quot;exp_time_many_requests&quot;: Tmin=? [F (((p_lan_w + p_w) + (p_lan_r + p_r)) &gt; (280 / 10))] ...
+ERROR: The program received signal 15 and will be aborted in 3s.
+Received signal 14
+
+----------------------------------------
+Wallclock time:	903.190
+Return code:	None
+Computation aborted after 903.190 seconds since the time limit of 900 seconds was exceeded.
+</pre>
+</body></html>

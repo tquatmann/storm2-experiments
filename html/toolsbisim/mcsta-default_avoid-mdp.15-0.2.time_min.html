@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>mcsta-default - avoid-mdp.15-0.2.time_min</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>avoid-mdp.15-0.2.time_min</h1>
+<p class="sub">mcsta-default &middot; mdpgrid &middot; <a href="index.html">back to the table</a></p>
+<p class="sub">reference result: <code>71</code></p>
+<p class="sub">reference result: <code>71</code></p>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>2.064 s</td></tr><tr><th>result</th><td>70.9999999929566</td></tr><tr><th>relative difference</th><td>9.92e-11</td></tr><tr><th>states</th><td>404,101</td></tr></table>
+<p class="sub">mcsta-default_avoid-mdp.15-0.2.time_min.log</p>
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/modest mcsta avoid-mdp.jani --props time_min --experiment N=15,slippery=0.2 --unsafe --store-mode Memory
+Benchmark:	avoid-mdp.15-0.2.time_min
+Configuration:	mcsta-default
+Repetition:	1
+Time limit:	900
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.311-g14c460466+14c4604667cea0a04631c853eb09e474e24dc368.
+Command: modest mcsta avoid-mdp.jani --props time_min --experiment N=15,slippery=0.2 --unsafe --store-mode Memory
+
+
+
+
+avoid-mdp.jani:model: info: avoid-mdp is an MDP model.
+avoid-mdp.jani: info: Need 16 bytes per state.
+avoid-mdp.jani: info: Explored 404101 states for N=15, slippery=0.2.
+avoid-mdp.jani:properties[1]: warning: Computing minimum expected reward in property &quot;time_min&quot; without checking for zero-reward end components.
+
+Peak memory usage: 438 MB
+Analysis results for avoid-mdp.jani
+Experiment N=15, slippery=0.2
+
++ State space exploration
+  State size: 16 bytes
+  States:     404101
+  Choices:    956701
+  Branches:   2262837
+  Rate:       409424 states/s
+  Time:       1.0 s
+
++ Property time_min
+  Value:  70.9999999929566
+  Bounds: [70.9999999929566, infinity)
+  Time:   0.2 s
+
+  + Precomputations
+    Max. prob. 1 states:          404101
+    Time for max. prob. 1 states: 0.0 s
+
+  + Value iteration
+    Final error: 2.1876607486608758E-07
+    Iterations:  25
+    Time:        0.2 s
+
+
+----------------------------------------
+Wallclock time:	2.064
+Return code:	0
+</pre>
+</body></html>

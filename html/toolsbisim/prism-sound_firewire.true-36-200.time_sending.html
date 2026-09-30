@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>prism-sound - firewire.true-36-200.time_sending</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>firewire.true-36-200.time_sending</h1>
+<p class="sub">prism-sound &middot; mdpqvbs &middot; <a href="index.html">back to the table</a></p>
+<p class="sub">reference result: <code>809/4</code></p>
+<p class="sub">reference result: <code>202.25</code></p>
+<table class="meta"><tr><th>status</th><td>no-result</td></tr><tr><th>wallclock time</th><td>180.352 s</td></tr><tr><th>states</th><td>6,932,041</td></tr></table>
+<p class="sub">prism-sound_firewire.true-36-200.time_sending.log</p>
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism firewire.true.prism firewire.true.props --prop time_sending -const delay=36,deadline=200 -maxiters 1000000 -intervaliter
+Benchmark:	firewire.true-36-200.time_sending
+Configuration:	prism-sound
+Repetition:	1
+Time limit:	900
+Output:
+Picked up JAVA_TOOL_OPTIONS: -Xmx16g
+PRISM
+=====
+
+Version: 4.10.1
+Date: Sat Sep 26 01:09:35 GMT+02:00 2026
+Hostname: r23m0058.hpc.itc.rwth-aachen.de
+Memory limits: cudd=1g, java(heap)=16g
+Command line: prism firewire.true.prism firewire.true.props --prop time_sending -const 'delay=36,deadline=200' -maxiters 1000000 -intervaliter
+
+Parsing PRISM model file &quot;firewire.true.prism&quot;...
+
+Type:        MDP
+Modules:     wire12 node1 wire21 node2 timer
+Actions:     [] [snd_req12] [snd_ack12] [snd_idle12] [time] [rec_req12] [rec_ack12] [rec_idle12] [rec_idle21] [rec_req21] [rec_ack21] [snd_req21] [snd_ack21] [snd_idle21]
+Variables:   w12 y1 y2 x1 s1 w21 z1 z2 x2 s2 t
+Labels:      &quot;done&quot;
+Rewards:     &quot;time&quot; &quot;time_sending&quot;
+
+Parsing properties file &quot;firewire.true.props&quot;...
+
+5 properties:
+(1) &quot;elected&quot;: P&gt;=1 [ F &quot;done&quot; ]
+(2) &quot;time_max&quot;: R{&quot;time&quot;}max=? [ F &quot;done&quot; ]
+(3) &quot;time_min&quot;: R{&quot;time&quot;}min=? [ F &quot;done&quot; ]
+(4) &quot;time_sending&quot;: R{&quot;time_sending&quot;}max=? [ F &quot;done&quot; ]
+(5) &quot;deadline&quot;: Pmin=? [ F (((s1=8)&amp;(s2=7))|((s1=7)&amp;(s2=8)))&amp;(t&lt;=deadline) ]
+
+---------------------------------------------------------------------
+
+Model checking: &quot;time_sending&quot;: R{&quot;time_sending&quot;}max=? [ F &quot;done&quot; ]
+Model constants: deadline=200,delay=36
+
+Building model (engine:symbolic)...
+Model constants: deadline=200,delay=36
+
+Computing reachable states...
+
+Reachability (BFS): 287 iterations in 34.35 seconds (average 0.119686, setup 0.00)
+
+Time for model construction: 46.943 seconds.
+
+Type:        MDP
+States:      6932041 (1 initial)
+Transitions: 15783496
+
+Transition matrix: 817685 nodes (3 terminal), 15783496 minterms, vars: 64r/64c/14nd
+
+Prob0E: 421 iterations in 72.48 seconds (average 0.172162, setup 0.00)
+
+Prob1A: 1 iterations in 0.17 seconds (average 0.170000, setup 0.00)
+
+goal = 252, inf = 0, maybe = 6931789
+
+CUDD internal error detected, from the following stack trace:
+  jdd.JDD.ptrToNode(JDD.java:1840)
+  jdd.JDD.And(JDD.java:528)
+  symbolic.comp.ProbModelChecker.computeReachRewardsUpperBoundVariant2(ProbModelChecker.java:2208)
+  symbolic.comp.ProbModelChecker.computeReachRewardsUpperBound(ProbModelChecker.java:1931)
+  symbolic.comp.NondetModelChecker.computeReachRewards(NondetModelChecker.java:2575)
+  symbolic.comp.NondetModelChecker.checkRewardReach(NondetModelChecker.java:1487)
+  symbolic.comp.NondetModelChecker.checkRewardPathFormula(NondetModelChecker.java:1445)
+  symbolic.comp.NondetModelChecker.checkExpressionReward(NondetModelChecker.java:368)
+  symbolic.comp.NondetModelChecker.checkExpressionReward(NondetModelChecker.java:326)
+  symbolic.comp.NondetModelChecker.checkExpression(NondetModelChecker.java:189)
+  symbolic.comp.StateModelChecker.checkExpressionFilter(StateModelChecker.java:1192)
+  symbolic.comp.StateModelChecker.checkExpression(StateModelChecker.java:312)
+  symbolic.comp.NonProbModelChecker.checkExpression(NonProbModelChecker.java:88)
+  symbolic.comp.NondetModelChecker.checkExpression(NondetModelChecker.java:204)
+  symbolic.comp.StateModelChecker.check(StateModelChecker.java:238)
+  prism.Prism.modelCheck(Prism.java:3466)
+  prism.PrismCL.run(PrismCL.java:426)
+  prism.PrismCL.go(PrismCL.java:227)
+  prism.PrismCL.main(PrismCL.java:3008)
+
+Error: Out of memory (or other internal error) in the CUDD library.
+Tip: Try using the -cuddmaxmem switch to increase the memory available to CUDD.
+
+----------------------------------------
+Wallclock time:	180.352
+Return code:	1
+</pre>
+</body></html>

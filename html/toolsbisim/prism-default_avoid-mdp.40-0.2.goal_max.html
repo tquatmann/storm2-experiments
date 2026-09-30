@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>prism-default - avoid-mdp.40-0.2.goal_max</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>avoid-mdp.40-0.2.goal_max</h1>
+<p class="sub">prism-default &middot; mdpgridmec &middot; <a href="index.html">back to the table</a></p>
+<p class="sub">reference result: <code>207593292217354101801791165698914236543199149466244717912662620398157824/238418579101562535960004535106360707297156330707340840995311737060546875</code></p>
+<p class="sub">reference result: <code>0.8707093759</code></p>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>218.141 s</td></tr><tr><th>result</th><td>0.8707093754663282</td></tr><tr><th>relative difference</th><td>5.22e-10</td></tr><tr><th>states</th><td>20,473,601</td></tr></table>
+<p class="sub">prism-default_avoid-mdp.40-0.2.goal_max.log</p>
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism avoid-mdp.prism avoid-mdp.props --prop goal_max -const N=40,slippery=0.2 -maxiters 1000000
+Benchmark:	avoid-mdp.40-0.2.goal_max
+Configuration:	prism-default
+Repetition:	1
+Time limit:	900
+Output:
+Picked up JAVA_TOOL_OPTIONS: -Xmx16g
+PRISM
+=====
+
+Version: 4.10.1
+Date: Sat Sep 26 01:16:19 GMT+02:00 2026
+Hostname: n23m0131.hpc.itc.rwth-aachen.de
+Memory limits: cudd=1g, java(heap)=16g
+Command line: prism avoid-mdp.prism avoid-mdp.props --prop goal_max -const 'N=40,slippery=0.2' -maxiters 1000000
+
+Parsing PRISM model file &quot;avoid-mdp.prism&quot;...
+
+Type:        MDP
+Modules:     master drone agent agent2
+Actions:     [placement] [north] [south] [east] [west] [adv] [done]
+Variables:   start turn dx dy ax ay dir ax2 ay2 dir2
+Labels:      &quot;goal&quot; &quot;traps&quot; &quot;notbad&quot;
+Rewards:     &quot;time&quot;
+
+Parsing properties file &quot;avoid-mdp.props&quot;...
+
+2 properties:
+(1) &quot;goal_max&quot;: Pmax=? [ &quot;notbad&quot; U &quot;goal&quot; ]
+(2) &quot;time_min&quot;: R{&quot;time&quot;}min=? [ F &quot;goal&quot; ]
+
+---------------------------------------------------------------------
+
+Model checking: &quot;goal_max&quot;: Pmax=? [ &quot;notbad&quot; U &quot;goal&quot; ]
+Model constants: N=40,slippery=0.2
+
+Building model (engine:symbolic)...
+Model constants: N=40,slippery=0.2
+
+Computing reachable states...
+
+Reachability (BFS): 172 iterations in 0.50 seconds (average 0.002907, setup 0.00)
+
+Time for model construction: 0.539 seconds.
+
+Type:        MDP
+States:      20473601 (1 initial)
+Transitions: 118766065
+
+Transition matrix: 858 nodes (6 terminal), 118766065 minterms, vars: 30r/30c/7nd
+
+Prob0A: 158 iterations in 0.56 seconds (average 0.003544, setup 0.00)
+
+Prob1E: 7646 iterations in 43.70 seconds (average 0.005715, setup 0.00)
+
+yes = 6400, no = 7032720, maybe = 13434481
+
+Computing remaining probabilities...
+Engine: Hybrid
+
+Building hybrid MTBDD matrices... [nm=6, levels=30, nodes=197893] [9.1 MB]
+Adding sparse bits... [levels=8-29, num=4053, compact=6/6] [3.1 MB]
+Creating vector for yes... [dist=2, compact] [39.1 MB]
+Allocating iteration vectors... [3 x 156.2 MB]
+TOTAL: [519.8 MB]
+
+Starting iterations...
+Iteration 10: max relative diff=inf, 5.31 sec so far
+Iteration 20: max relative diff=inf, 10.56 sec so far
+Iteration 30: max relative diff=inf, 15.88 sec so far
+Iteration 40: max relative diff=inf, 21.24 sec so far
+Iteration 50: max relative diff=inf, 26.55 sec so far
+Iteration 60: max relative diff=inf, 31.89 sec so far
+Iteration 70: max relative diff=inf, 37.18 sec so far
+Iteration 80: max relative diff=inf, 42.48 sec so far
+Iteration 90: max relative diff=inf, 47.80 sec so far
+Iteration 100: max relative diff=inf, 53.15 sec so far
+Iteration 110: max relative diff=inf, 58.50 sec so far
+Iteration 120: max relative diff=inf, 63.77 sec so far
+Iteration 130: max relative diff=inf, 69.03 sec so far
+Iteration 140: max relative diff=inf, 74.41 sec so far
+Iteration 150: max relative diff=inf, 79.82 sec so far
+Iteration 160: max relative diff=43.533886, 85.07 sec so far
+Iteration 170: max relative diff=10.194014, 90.39 sec so far
+Iteration 180: max relative diff=4.517298, 95.64 sec so far
+Iteration 190: max relative diff=2.505257, 100.92 sec so far
+Iteration 200: max relative diff=1.450836, 106.29 sec so far
+Iteration 210: max relative diff=0.915860, 111.65 sec so far
+Iteration 220: max relative diff=0.573755, 116.95 sec so far
+Iteration 230: max relative diff=0.353150, 122.17 sec so far
+Iteration 240: max relative diff=0.199646, 127.45 sec so far
+Iteration 250: max relative diff=0.099605, 132.77 sec so far
+Iteration 260: max relative diff=0.041547, 138.10 sec so far
+Iteration 270: max relative diff=0.013837, 143.42 sec so far
+Iteration 280: max relative diff=0.003528, 148.67 sec so far
+Iteration 290: max relative diff=0.000687, 153.92 sec so far
+Iteration 300: max relative diff=0.000105, 159.30 sec so far
+Iteration 310: max relative diff=0.000013, 164.64 sec so far
+Iteration 320: max relative diff=0.000001, 169.99 sec so far
+
+Iterative method: 321 iterations in 172.10 seconds (average 0.531371, setup 1.53)
+
+Value in the initial state: 0.8707093754663282
+
+Time for model checking: 217.077 seconds.
+
+Result: 0.8707093754663282 (+/- 7.353990868514426E-6 estimated; rel err 8.445976436828682E-6)
+
+
+----------------------------------------
+Wallclock time:	218.141
+Return code:	0
+</pre>
+</body></html>

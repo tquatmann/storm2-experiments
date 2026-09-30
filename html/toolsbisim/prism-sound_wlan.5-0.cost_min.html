@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>prism-sound - wlan.5-0.cost_min</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>wlan.5-0.cost_min</h1>
+<p class="sub">prism-sound &middot; mdpqvbs &middot; <a href="index.html">back to the table</a></p>
+<p class="sub">reference result: <code>7625</code></p>
+<p class="sub">reference result: <code>7625</code></p>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>124.509 s</td></tr><tr><th>result</th><td>7625.0</td></tr><tr><th>relative difference</th><td>0</td></tr><tr><th>states</th><td>1,295,218</td></tr></table>
+<p class="sub">prism-sound_wlan.5-0.cost_min.log</p>
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism wlan.5.prism wlan.props --prop cost_min -const COL=0 -maxiters 1000000 -intervaliter
+Benchmark:	wlan.5-0.cost_min
+Configuration:	prism-sound
+Repetition:	1
+Time limit:	900
+Output:
+Picked up JAVA_TOOL_OPTIONS: -Xmx16g
+PRISM
+=====
+
+Version: 4.10.1
+Date: Sat Sep 26 01:04:24 GMT+02:00 2026
+Hostname: r23m0122.hpc.itc.rwth-aachen.de
+Memory limits: cudd=1g, java(heap)=16g
+Command line: prism wlan.5.prism wlan.props --prop cost_min -const COL=0 -maxiters 1000000 -intervaliter
+
+Parsing PRISM model file &quot;wlan.5.prism&quot;...
+
+Type:        MDP
+Modules:     medium station1 station2
+Actions:     [] [send1] [send2] [finish1] [finish2] [time]
+Variables:   col c1 c2 x1 s1 slot1 backoff1 bc1 x2 s2 slot2 backoff2 bc2
+Rewards:     &quot;collisions&quot; &quot;time&quot; &quot;cost&quot;
+
+Parsing properties file &quot;wlan.props&quot;...
+
+7 properties:
+(1) &quot;collisions&quot;: Pmax=? [ F col=COL ]
+(2) &quot;cost_max&quot;: R{&quot;cost&quot;}max=? [ F s1=12&amp;s2=12 ]
+(3) &quot;cost_min&quot;: R{&quot;cost&quot;}min=? [ F s1=12&amp;s2=12 ]
+(4) &quot;num_collisions&quot;: R{&quot;collisions&quot;}max=? [ F s1=12&amp;s2=12 ]
+(5) &quot;sent&quot;: P&gt;=1 [ F s1=12&amp;s2=12 ]
+(6) &quot;time_max&quot;: R{&quot;time&quot;}max=? [ F s1=12&amp;s2=12 ]
+(7) &quot;time_min&quot;: R{&quot;time&quot;}min=? [ F s1=12&amp;s2=12 ]
+
+---------------------------------------------------------------------
+
+Model checking: &quot;cost_min&quot;: R{&quot;cost&quot;}min=? [ F s1=12&amp;s2=12 ]
+Model constants: COL=0
+
+Warning: Switching to explicit engine to allow interval iteration on Rmin operator.
+
+Building model (engine:explicit)...
+Model constants: COL=0
+
+Computing reachable states... 632151 1295218 states
+Reachable states exploration and model construction done in 5.18 secs.
+Sorting reachable states list...
+
+Time for model construction: 6.28 seconds.
+
+Type:        MDP
+States:      1295218 (1 initial)
+Transitions: 2929960
+Choices:     1646074
+Max/avg:     3/1.27
+Building reward structure...
+
+Starting expected reachability (min)...
+Starting Prob1 (max)...
+Prob1 (max) took 1565 iterations and 23.163 seconds.
+target=1, inf=0, rest=1295217
+For Rmin, checking for zero-reward ECs...
+Time for checking for zero-reward ECs: 0.322 seconds, no zero-reward ECs found, proceeding normally.
+Computing upper bound(s) for Rmin using the Dijkstra Sweep for Monotone Pessimistic Initialization algorithm...
+Calculating incoming choices relation for Markov decision process...  done (0.087 seconds)
+Time for computing upper bound(s) for Rmin using the DSI-MP algorithm: 2.019 seconds.
+Upper bound for min expectation (Dijkstra Sweep MPI): 424604.2917251587
+Starting Prob1 (min)...
+Prob1 (min) took 1622 iterations and 23.691 seconds.
+Relevant sub-MDP is contracting, proceed...
+Starting interval iteration (min, with Power method)...
+Iteration 114: max relative diff=228.515833365, 5.01 sec so far
+Iteration 230: max relative diff=110.737971507, 10.04 sec so far
+Iteration 349: max relative diff=72.8442246479, 15.08 sec so far
+Iteration 468: max relative diff=53.7876505452, 20.09 sec so far
+Iteration 587: max relative diff=42.5491581257, 25.10 sec so far
+Iteration 706: max relative diff=35.2909651047, 30.11 sec so far
+Iteration 824: max relative diff=29.9930139945, 35.15 sec so far
+Iteration 940: max relative diff=26.2182238285, 40.19 sec so far
+Iteration 1058: max relative diff=23.125243848, 45.21 sec so far
+Iteration 1177: max relative diff=20.7188896023, 50.23 sec so far
+Iteration 1296: max relative diff=18.7032153933, 55.23 sec so far
+Iteration 1415: max relative diff=17.0299062304, 60.25 sec so far
+Iteration 1533: max relative diff=15.6511486951, 65.29 sec so far
+Max relative diff between upper and lower bound on convergence: 1.27176250361e-07
+Interval iteration (min, with Power method) took 1587 iterations, 9299689866 multiplications and 67.795 seconds.
+Maximum finite value in solution vector at end of interval iteration: 424442.02728271484
+Expected reachability took 117.03 seconds.
+
+Value in the initial state: 7625.0
+
+Time for model checking: 117.469 seconds.
+
+Result: 7625.0 (+/- 9.697189090029495E-4; rel err 1.2717625036104256E-7)
+
+---------------------------------------------------------------------
+
+Note: There was 1 warning during computation.
+
+
+----------------------------------------
+Wallclock time:	124.509
+Return code:	0
+</pre>
+</body></html>

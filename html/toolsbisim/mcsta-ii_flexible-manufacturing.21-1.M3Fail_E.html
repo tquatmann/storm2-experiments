@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>mcsta-ii - flexible-manufacturing.21-1.M3Fail_E</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>flexible-manufacturing.21-1.M3Fail_E</h1>
+<p class="sub">mcsta-ii &middot; maqvbs &middot; <a href="index.html">back to the table</a></p>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>8.979 s</td></tr><tr><th>result</th><td>26.19788068060418</td></tr><tr><th>states</th><td>838,951</td></tr></table>
+<p class="sub">mcsta-ii_flexible-manufacturing.21-1.M3Fail_E.log</p>
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/modest mcsta flexible-manufacturing.21.jani --props M3Fail_E --experiment T=1 --unsafe --store-mode Memory --alg IntervalIteration --width 1e-6 --relative-width
+Benchmark:	flexible-manufacturing.21-1.M3Fail_E
+Configuration:	mcsta-ii
+Repetition:	1
+Time limit:	900
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.311-g14c460466+14c4604667cea0a04631c853eb09e474e24dc368.
+Command: modest mcsta flexible-manufacturing.21.jani --props M3Fail_E --experiment T=1 --unsafe --store-mode Memory --alg IntervalIteration --width 1e-6 --relative-width
+
+
+
+
+flexible-manufacturing.21.jani:model: info: flexible-manufacturing.21 is an MA model.
+flexible-manufacturing.21.jani: info: Need 24 bytes per state.
+flexible-manufacturing.21.jani: info: Explored 838951 states for T=1.0.
+flexible-manufacturing.21.jani:properties[3]: warning: Computing minimum expected reward in property &quot;M3Fail_E&quot; without checking for zero-reward end components.
+
+Peak memory usage: 432 MB
+Analysis results for flexible-manufacturing.21.jani
+Experiment T=1.0
+
++ State space exploration
+  State size: 24 bytes
+  States:     838951
+  Choices:    838951
+  Branches:   1823858
+  Rate:       838113 states/s
+  Time:       1.1 s
+
++ Property M3Fail_E
+  Value:  26.19788068060418
+  Bounds: [26.197855072435274, 26.197906288773083]
+  Time:   7.7 s
+
+  + Precomputations
+    Max. prob. 1 states:          838951
+    Time for max. prob. 1 states: 0.0 s
+
+  + Interval iteration
+    Iterations: 1150
+    Time:       7.7 s
+
+
+----------------------------------------
+Wallclock time:	8.979
+Return code:	0
+</pre>
+</body></html>

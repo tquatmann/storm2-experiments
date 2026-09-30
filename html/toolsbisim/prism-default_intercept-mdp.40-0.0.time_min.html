@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>prism-default - intercept-mdp.40-0.0.time_min</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>intercept-mdp.40-0.0.time_min</h1>
+<p class="sub">prism-default &middot; mdpgrid &middot; <a href="index.html">back to the table</a></p>
+<p class="sub">reference result: <code>33216733803506143699002008416808197886343660321541089652663275590364515869723186640407428565452527640150932325006902228594027152006853613637593523823711834355413570111557676539449669779567671904624073678373514727560903014436279477944639424845486289921482011276320724252064529166958393685841897068991704363891439072534610952024323547653922263032853268868547233058118868932567956444332501786003553677643197659513100115034598371061924145193495745459348468406441462100172236520720103142955067370580663209644561661106725176860237313986638613402514237476328822387369435747607418268046920208617699106594297458357766699226450105383206470206174137826686017828299025764236474835321842722133305179775102164987586562374112332442147215195645143404892573918525093974540969101349311113853891732769373065133907476818284738031201821745677112694183159480187905545867086228331836727036359383362725166515710741061451942405736647042671230902664736643636108743912267245899242518904159995861393318962830687689490368518889447944674419383619759451613062762665371283449328429085760730313789631436389590444681871784820585325446806953501389704699057281612309921628869630942511846000863535795421802869119496777998229697498242908337171014684543270017961301600587457944737737445807242889137234809734811990370669374021300451361/244892901861778573207427479540490196252469074597117785059552808110375762095332469866437391670337655159018574151574876349758192328281741376055051070581480741516080331776475503051894722156745228634343051284012889418722966705162633638186921659203299868931242957262175521050953142595727778536453318155870675694504948939340854510886345090377732738370844225040175865227242489549424076447544443387114648179123310019232432710459307276352946052643165432182788647675947042714665043854665041755067178966661416199648715634760783164781839127117583087839471767441745379459559240521615648743012354520395768765855991277488101307986790315076738432055676486507116013437647206003029074000354707726041257685868274271737685594416389567530883940860387972905876456215809429658145494231265804556409416738727960698190547742118055895424856301935800005442166972629404278377277175249033649996877199944885174068975672706938544429618034368506706807053751807144915580635678850641779148125312174685937548469329268060849618888958425279150981783894624670877651296196510077840113842545383951957054640572548422470421230646724088353597015371304011407851636567042829039586955994996392645484681906070530367677721124477277825214362667643224620157575274648308928839745212851410382624835059580928000000000000000000000000000000000000000</code></p>
+<p class="sub">reference result: <code>135.6377974</code></p>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>537.115 s</td></tr><tr><th>result</th><td>135.63767155633877</td></tr><tr><th>relative difference</th><td>9.28e-07</td></tr><tr><th>states</th><td>5,119,921</td></tr></table>
+<p class="sub">prism-default_intercept-mdp.40-0.0.time_min.log</p>
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism intercept-mdp.prism intercept-mdp.props --prop time_min -const N=40,slippery=0.0 -maxiters 1000000
+Benchmark:	intercept-mdp.40-0.0.time_min
+Configuration:	prism-default
+Repetition:	1
+Time limit:	900
+Output:
+Picked up JAVA_TOOL_OPTIONS: -Xmx16g
+PRISM
+=====
+
+Version: 4.10.1
+Date: Sat Sep 26 00:58:13 GMT+02:00 2026
+Hostname: n23m0237.hpc.itc.rwth-aachen.de
+Memory limits: cudd=1g, java(heap)=16g
+Command line: prism intercept-mdp.prism intercept-mdp.props --prop time_min -const 'N=40,slippery=0.0' -maxiters 1000000
+
+Parsing PRISM model file &quot;intercept-mdp.prism&quot;...
+
+Type:        MDP
+Modules:     master drone agent
+Actions:     [placement] [north] [south] [east] [west] [adv] [finished]
+Variables:   start turn dx dy ax ay
+Labels:      &quot;goal&quot; &quot;notbad&quot; &quot;exits&quot;
+Rewards:     &quot;time&quot;
+
+Parsing properties file &quot;intercept-mdp.props&quot;...
+
+1 property:
+(1) &quot;time_min&quot;: R{&quot;time&quot;}min=? [ F &quot;goal&quot; ]
+
+---------------------------------------------------------------------
+
+Model checking: &quot;time_min&quot;: R{&quot;time&quot;}min=? [ F &quot;goal&quot; ]
+Model constants: N=40,slippery=0
+
+Building model (engine:symbolic)...
+Model constants: N=40,slippery=0
+
+Warning: Update 2 of command 4 of module &quot;drone&quot; doesn't do anything (line 56, column 70)
+
+Warning: Update 2 of command 3 of module &quot;drone&quot; doesn't do anything (line 55, column 70)
+
+Warning: Update 2 of command 2 of module &quot;drone&quot; doesn't do anything (line 54, column 68)
+
+Warning: Update 2 of command 1 of module &quot;drone&quot; doesn't do anything (line 53, column 68)
+
+Warning: Guard for command 2 of module &quot;agent&quot; is never satisfied.
+
+Computing reachable states...
+
+Reachability (BFS): 157 iterations in 2.13 seconds (average 0.013567, setup 0.00)
+
+Time for model construction: 2.405 seconds.
+
+Type:        MDP
+States:      5119921 (1 initial)
+Transitions: 20449535
+
+Transition matrix: 59728 nodes (4 terminal), 20449535 minterms, vars: 26r/26c/7nd
+
+Prob0A: 79 iterations in 5.21 seconds (average 0.065949, setup 0.00)
+
+Prob1E: 6160 iterations in 516.58 seconds (average 0.083860, setup 0.00)
+
+Warning: PRISM hasn't checked for zero-reward loops.
+Your minimum rewards may be too low...
+
+goal = 3196, inf = 3766049, maybe = 1350676
+
+Computing remaining rewards...
+Switching engine since hybrid engine does yet support this computation...
+Engine: Sparse
+
+Building sparse matrix (transitions)... [n=5119921, nc=3443323, nnz=5401069, k=4] [94.5 MB]
+Building sparse matrix (transition rewards)... [n=5119921, nc=3443323, nnz=0, k=4] [32.7 MB]
+Creating vector for state rewards... [39.1 MB]
+Creating vector for inf... [39.1 MB]
+Allocating iteration vectors... [2 x 39.1 MB]
+TOTAL: [283.4 MB]
+
+Starting iterations...
+Iteration 126: max relative diff=0.007457, 5.01 sec so far
+
+Iterative method: 178 iterations in 8.81 seconds (average 0.039551, setup 1.77)
+
+Value in the initial state: 135.63767155633877
+
+Time for model checking: 534.002 seconds.
+
+Result: 135.63767155633877 (+/- 0.0011915739222813403 estimated; rel err 8.784977717539226E-6)
+
+---------------------------------------------------------------------
+
+Note: There were 6 warnings during computation.
+
+
+----------------------------------------
+Wallclock time:	537.115
+Return code:	0
+</pre>
+</body></html>

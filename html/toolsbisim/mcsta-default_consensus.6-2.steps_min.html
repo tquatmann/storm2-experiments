@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>mcsta-default - consensus.6-2.steps_min</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>consensus.6-2.steps_min</h1>
+<p class="sub">mcsta-default &middot; mdpqvbs &middot; <a href="index.html">back to the table</a></p>
+<p class="sub">reference result: <code>432</code></p>
+<p class="sub">reference result: <code>432</code></p>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>17.623 s</td></tr><tr><th>result</th><td>431.977936330692</td></tr><tr><th>relative difference</th><td>5.11e-05</td></tr><tr><th>states</th><td>1,258,240</td></tr></table>
+<p class="sub">mcsta-default_consensus.6-2.steps_min.log</p>
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/modest mcsta consensus.6.jani --props steps_min --experiment K=2 --unsafe --store-mode Memory
+Benchmark:	consensus.6-2.steps_min
+Configuration:	mcsta-default
+Repetition:	1
+Time limit:	900
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.311-g14c460466+14c4604667cea0a04631c853eb09e474e24dc368.
+Command: modest mcsta consensus.6.jani --props steps_min --experiment K=2 --unsafe --store-mode Memory
+
+
+
+
+consensus.6.jani:model: info: consensus.6 is an MDP model.
+consensus.6.jani:variables[6]: info: Expanding variable &quot;pc1&quot; into 4 locations in automaton &quot;process1&quot;.
+consensus.6.jani:variables[8]: info: Expanding variable &quot;pc2&quot; into 4 locations in automaton &quot;process2&quot;.
+consensus.6.jani:variables[10]: info: Expanding variable &quot;pc3&quot; into 4 locations in automaton &quot;process3&quot;.
+consensus.6.jani:variables[12]: info: Expanding variable &quot;pc4&quot; into 4 locations in automaton &quot;process4&quot;.
+consensus.6.jani:variables[14]: info: Expanding variable &quot;pc5&quot; into 4 locations in automaton &quot;process5&quot;.
+consensus.6.jani:variables[16]: info: Expanding variable &quot;pc6&quot; into 4 locations in automaton &quot;process6&quot;.
+consensus.6.jani: info: Need 24 bytes per state.
+consensus.6.jani: info: Explored 1258240 states for K=2.
+consensus.6.jani:properties[4]: warning: Computing minimum expected reward in property &quot;steps_min&quot; without checking for zero-reward end components.
+
+Peak memory usage: 1020 MB
+Analysis results for consensus.6.jani
+Experiment K=2
+
++ State space exploration
+  State size: 24 bytes
+  States:     1258240
+  Choices:    5008128
+  Branches:   6236736
+  Rate:       282497 states/s
+  Time:       4.6 s
+
++ Property steps_min
+  Value:  431.977936330692
+  Bounds: [431.977936330692, infinity)
+  Time:   12.4 s
+
+  + Precomputations
+    Max. prob. 1 states:          1258240
+    Time for max. prob. 1 states: 0.1 s
+
+  + Value iteration
+    Final error: 9.975954657548069E-07
+    Iterations:  576
+    Time:        12.3 s
+
+
+----------------------------------------
+Wallclock time:	17.623
+Return code:	0
+</pre>
+</body></html>

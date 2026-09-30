@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>mcsta-default - refuel-mdp.80-40.reach_max</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>refuel-mdp.80-40.reach_max</h1>
+<p class="sub">mcsta-default &middot; mdpgridmec &middot; <a href="index.html">back to the table</a></p>
+<p class="sub">reference result: <code>3653380653778819704498802052281330342937979832521752121999684138390592205782461/3681807200483612150698388711959446722028150995086913681600000000000000000000000</code></p>
+<p class="sub">reference result: <code>0.9922791865</code></p>
+<table class="meta"><tr><th>status</th><td>incorrect</td></tr><tr><th>wallclock time</th><td>131.550 s</td></tr><tr><th>result</th><td>0.9351250170959239</td></tr><tr><th>relative difference</th><td><span class="bad">0.0576 &gt; 1e-3</span></td></tr><tr><th>states</th><td>161,070</td></tr></table>
+<p class="sub">mcsta-default_refuel-mdp.80-40.reach_max.log</p>
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/modest mcsta refuel-mdp.jani --props reach_max --experiment N=80,ENERGY=40 --unsafe --store-mode Memory
+Benchmark:	refuel-mdp.80-40.reach_max
+Configuration:	mcsta-default
+Repetition:	1
+Time limit:	900
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.311-g14c460466+14c4604667cea0a04631c853eb09e474e24dc368.
+Command: modest mcsta refuel-mdp.jani --props reach_max --experiment N=80,ENERGY=40 --unsafe --store-mode Memory
+
+
+
+
+refuel-mdp.jani:model: info: refuel-mdp is an MDP model.
+refuel-mdp.jani: info: Need 8 bytes per state.
+refuel-mdp.jani: warning: The probabilities for a transition do not sum up to 1. Results will likely be affected by floating-point errors.
+refuel-mdp.jani: info: Explored 161070 states for N=80, ENERGY=40.
+
+Peak memory usage: 313 MB
+Analysis results for refuel-mdp.jani
+Experiment N=80, ENERGY=40
+
++ State space exploration
+  State size: 8 bytes
+  States:     161070
+  Choices:    619178
+  Branches:   2457092
+  Rate:       226540 states/s
+  Time:       0.7 s
+
++ Property reach_max
+  Probability: 0.9351250170959239
+  Bounds:      [0.9351250170959239, 1]
+  Time:        130.6 s
+
+  + Value iteration
+    Final error: 9.999556049605022E-07
+    Iterations:  26052
+    Time:        130.6 s
+
+
+----------------------------------------
+Wallclock time:	131.550
+Return code:	0
+</pre>
+</body></html>

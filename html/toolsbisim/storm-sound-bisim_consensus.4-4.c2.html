@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>storm-sound-bisim - consensus.4-4.c2</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>consensus.4-4.c2</h1>
+<p class="sub">storm-sound-bisim &middot; mdpqvbs &middot; <a href="index.html">back to the table</a></p>
+<p class="sub">reference result: <code>852021/2097152</code></p>
+<p class="sub">reference result: <code>0.4062752724</code></p>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>0.192 s</td></tr><tr><th>result</th><td>0.4062752785</td></tr><tr><th>relative difference</th><td>1.51e-08</td></tr><tr><th>states</th><td>43,136</td></tr><tr><th>states after preprocessing</th><td>2,189</td></tr></table>
+<p class="sub">storm-sound-bisim_consensus.4-4.c2.log</p>
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/storm --jani consensus.4.jani --janiproperty c2 --constants K=4 --sound --bisimulation
+Benchmark:	consensus.4-4.c2
+Configuration:	storm-sound-bisim
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Sat Sep 26 00:57:10 2026
+Command line arguments: --jani consensus.4.jani --janiproperty c2 --constants K=4 --sound --bisimulation
+Current working directory: /w0/tmp/slurm_tq429871.4466195/invocation-2ghbhoov
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 0.123s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	43136
+Transitions: 	144352
+Choices: 	115840
+Reward Models:  none
+State Labels: 	4 labels
+   * deadlock -&gt; 0 item(s)
+   * init -&gt; 1 item(s)
+   * finished -&gt; 64 item(s)
+   * all_coins_equal_1 -&gt; 497 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 0.032s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	2189
+Transitions: 	5619
+Choices: 	4486
+Reward Models:  none
+State Labels: 	3 labels
+   * finished -&gt; 1 item(s)
+   * all_coins_equal_1 -&gt; 123 item(s)
+   * init -&gt; 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property &quot;c2&quot;: Pmin=? [F (&quot;finished&quot; &amp; &quot;all_coins_equal_1&quot;)] ...
+Result (for initial states): 0.4062752785
+Time for model checking: 0.009s.
+
+----------------------------------------
+Wallclock time:	0.192
+Return code:	0
+</pre>
+</body></html>

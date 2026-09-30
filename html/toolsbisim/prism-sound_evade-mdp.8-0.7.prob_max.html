@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>prism-sound - evade-mdp.8-0.7.prob_max</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>evade-mdp.8-0.7.prob_max</h1>
+<p class="sub">prism-sound &middot; mdpgridmec &middot; <a href="index.html">back to the table</a></p>
+<table class="meta"><tr><th>status</th><td>no-result</td></tr><tr><th>wallclock time</th><td>3.473 s</td></tr><tr><th>states</th><td>398,273</td></tr></table>
+<p class="sub">prism-sound_evade-mdp.8-0.7.prob_max.log</p>
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism evade-mdp.prism evade-mdp.props --prop prob_max -const N=8,slippery=0.7 -maxiters 1000000 -intervaliter
+Benchmark:	evade-mdp.8-0.7.prob_max
+Configuration:	prism-sound
+Repetition:	1
+Time limit:	900
+Output:
+Picked up JAVA_TOOL_OPTIONS: -Xmx16g
+PRISM
+=====
+
+Version: 4.10.1
+Date: Sat Sep 26 00:59:46 GMT+02:00 2026
+Hostname: r23m0075.hpc.itc.rwth-aachen.de
+Memory limits: cudd=1g, java(heap)=16g
+Command line: prism evade-mdp.prism evade-mdp.props --prop prob_max -const 'N=8,slippery=0.7' -maxiters 1000000 -intervaliter
+
+Parsing PRISM model file &quot;evade-mdp.prism&quot;...
+
+Type:        MDP
+Modules:     master drone agent agent2
+Actions:     [placement] [north] [south] [east] [west] [adv] [scan]
+Variables:   start turn dx dy ax ay ax2 ay2
+Labels:      &quot;goal&quot; &quot;traps&quot; &quot;notbad&quot;
+
+Parsing properties file &quot;evade-mdp.props&quot;...
+
+1 property:
+(1) &quot;prob_max&quot;: Pmax=? [ &quot;notbad&quot; U &quot;goal&quot; ]
+
+---------------------------------------------------------------------
+
+Model checking: &quot;prob_max&quot;: Pmax=? [ &quot;notbad&quot; U &quot;goal&quot; ]
+Model constants: N=8,slippery=0.7
+
+Building model (engine:symbolic)...
+Model constants: N=8,slippery=0.7
+
+Computing reachable states...
+
+Reachability (BFS): 30 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+
+Time for model construction: 0.178 seconds.
+
+Warning: Deadlocks detected and fixed in 3136 states
+
+Type:        MDP
+States:      398273 (1 initial)
+Transitions: 4736369
+
+Transition matrix: 613 nodes (7 terminal), 4736369 minterms, vars: 20r/20c/7nd
+
+Prob0A: 30 iterations in 0.01 seconds (average 0.000333, setup 0.00)
+
+Prob1E: 539 iterations in 1.12 seconds (average 0.002078, setup 0.00)
+
+yes = 3136, no = 12210, maybe = 382927
+
+Computing remaining probabilities...
+Engine: Hybrid
+
+Building quotient MDP, collapsing maximal end components as well as yes and no states...
+Time for computing maximal end components: 0.303 seconds, found 1 MECs.
+
+Error: Not enough extra action variables preallocated, please increase using -ddextraactionvars switch!.
+
+Warning: CUDD reports 5951 non-zero references.
+
+---------------------------------------------------------------------
+
+Note: There was 1 warning during computation.
+
+
+----------------------------------------
+Wallclock time:	3.473
+Return code:	0
+</pre>
+</body></html>

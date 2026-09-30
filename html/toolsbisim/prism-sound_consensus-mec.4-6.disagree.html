@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>prism-sound - consensus-mec.4-6.disagree</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>consensus-mec.4-6.disagree</h1>
+<p class="sub">prism-sound &middot; mdpmec &middot; <a href="index.html">back to the table</a></p>
+<p class="sub">reference result: <code>2302120529738341426816867/22100608869361422843248640</code></p>
+<p class="sub">reference result: <code>0.1041654799</code></p>
+<table class="meta"><tr><th>status</th><td>no-result</td></tr><tr><th>wallclock time</th><td>56.358 s</td></tr><tr><th>states</th><td>636,160</td></tr></table>
+<p class="sub">prism-sound_consensus-mec.4-6.disagree.log</p>
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism consensus-mec.4.prism consensus-mec.props --prop disagree -const K=6 -maxiters 1000000 -intervaliter
+Benchmark:	consensus-mec.4-6.disagree
+Configuration:	prism-sound
+Repetition:	1
+Time limit:	900
+Output:
+Picked up JAVA_TOOL_OPTIONS: -Xmx16g
+PRISM
+=====
+
+Version: 4.10.1
+Date: Sat Sep 26 01:15:17 GMT+02:00 2026
+Hostname: n23m0131.hpc.itc.rwth-aachen.de
+Memory limits: cudd=1g, java(heap)=16g
+Command line: prism consensus-mec.4.prism consensus-mec.props --prop disagree -const K=6 -maxiters 1000000 -intervaliter
+
+Parsing PRISM model file &quot;consensus-mec.4.prism&quot;...
+
+Type:        MDP
+Modules:     mecs process1 process2 process3 process4
+Actions:     [] [done]
+Variables:   counter mecs_circle pc1 coin1 pc2 coin2 pc3 coin3 pc4 coin4
+Labels:      &quot;finished&quot; &quot;all_coins_equal_0&quot; &quot;all_coins_equal_1&quot; &quot;agree&quot;
+Rewards:     &quot;steps&quot;
+
+Parsing properties file &quot;consensus-mec.props&quot;...
+
+1 property:
+(1) &quot;disagree&quot;: Pmax=? [ F &quot;finished&quot;&amp;!&quot;agree&quot; ]
+
+---------------------------------------------------------------------
+
+Model checking: &quot;disagree&quot;: Pmax=? [ F &quot;finished&quot;&amp;!&quot;agree&quot; ]
+Model constants: K=6
+
+Building model (engine:symbolic)...
+Model constants: K=6
+
+Computing reachable states...
+
+Reachability (BFS): 300 iterations in 0.07 seconds (average 0.000233, setup 0.00)
+
+Time for model construction: 0.106 seconds.
+
+Type:        MDP
+States:      636160 (1 initial)
+Transitions: 3343424
+
+Transition matrix: 4395 nodes (3 terminal), 3343424 minterms, vars: 22r/22c/5nd
+
+Prob0A: 221 iterations in 0.21 seconds (average 0.000950, setup 0.00)
+
+Prob1E: 5148 iterations in 5.64 seconds (average 0.001096, setup 0.00)
+
+yes = 154800, no = 9100, maybe = 472260
+
+Computing remaining probabilities...
+Engine: Hybrid
+
+Building quotient MDP, collapsing maximal end components as well as yes and no states...
+Time for computing maximal end components: 43.327 seconds, found 47226 MECs.
+
+Error: Not enough extra action variables preallocated, please increase using -ddextraactionvars switch!.
+
+Warning: CUDD reports 118321 non-zero references.
+
+
+----------------------------------------
+Wallclock time:	56.358
+Return code:	0
+</pre>
+</body></html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>prism-default - refuel-mdp.80-40.reach_max</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>refuel-mdp.80-40.reach_max</h1>
+<p class="sub">prism-default &middot; mdpgridmec &middot; <a href="index.html">back to the table</a></p>
+<p class="sub">reference result: <code>3653380653778819704498802052281330342937979832521752121999684138390592205782461/3681807200483612150698388711959446722028150995086913681600000000000000000000000</code></p>
+<p class="sub">reference result: <code>0.9922791865</code></p>
+<table class="meta"><tr><th>status</th><td>incorrect</td></tr><tr><th>wallclock time</th><td>188.665 s</td></tr><tr><th>result</th><td>0.8765462885659991</td></tr><tr><th>relative difference</th><td><span class="bad">0.117 &gt; 1e-3</span></td></tr><tr><th>states</th><td>161,070</td></tr></table>
+<p class="sub">prism-default_refuel-mdp.80-40.reach_max.log</p>
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism refuel-mdp.prism refuel-mdp.props --prop reach_max -const N=80,ENERGY=40 -maxiters 1000000
+Benchmark:	refuel-mdp.80-40.reach_max
+Configuration:	prism-default
+Repetition:	1
+Time limit:	900
+Output:
+Picked up JAVA_TOOL_OPTIONS: -Xmx16g
+PRISM
+=====
+
+Version: 4.10.1
+Date: Sat Sep 26 01:01:18 GMT+02:00 2026
+Hostname: r23m0075.hpc.itc.rwth-aachen.de
+Memory limits: cudd=1g, java(heap)=16g
+Command line: prism refuel-mdp.prism refuel-mdp.props --prop reach_max -const 'N=80,ENERGY=40' -maxiters 1000000
+
+Parsing PRISM model file &quot;refuel-mdp.prism&quot;...
+
+Type:        MDP
+Modules:     master tank rover
+Actions:     [placement] [north] [south] [east] [west] [done] [refuel] [empty]
+Variables:   start fuel ax ay
+Labels:      &quot;goal&quot; &quot;traps&quot; &quot;stationvisit&quot; &quot;notbad&quot;
+Rewards:     &quot;steps&quot; &quot;refuels&quot; &quot;costs&quot;
+
+Parsing properties file &quot;refuel-mdp.props&quot;...
+
+1 property:
+(1) &quot;reach_max&quot;: Pmax=? [ F &quot;goal&quot; ]
+
+---------------------------------------------------------------------
+
+Model checking: &quot;reach_max&quot;: Pmax=? [ F &quot;goal&quot; ]
+Model constants: N=80,ENERGY=40
+
+Building model (engine:symbolic)...
+Model constants: N=80,ENERGY=40
+
+Computing reachable states...
+
+Reachability (BFS): 96 iterations in 0.04 seconds (average 0.000417, setup 0.00)
+
+Time for model construction: 0.105 seconds.
+
+Type:        MDP
+States:      161070 (1 initial)
+Transitions: 1226247
+
+Transition matrix: 24786 nodes (4 terminal), 1226247 minterms, vars: 21r/21c/8nd
+
+Prob0A: 97 iterations in 0.38 seconds (average 0.003918, setup 0.00)
+
+Prob1E: 1875 iterations in 8.69 seconds (average 0.004635, setup 0.00)
+
+yes = 1458, no = 76597, maybe = 83015
+
+Computing remaining probabilities...
+Engine: Hybrid
+
+Building hybrid MTBDD matrices... [nm=6, levels=21, nodes=87574] [4.0 MB]
+Adding sparse bits... [levels=21-21, num=6, compact=6/6] [3.4 MB]
+Creating vector for yes... [dist=2, compact] [314.6 KB]
+Allocating iteration vectors... [3 x 1.2 MB]
+TOTAL: [11.4 MB]
+
+Starting iterations...
+Iteration 1288: max relative diff=0.000296, 5.01 sec so far
+Iteration 2571: max relative diff=0.000113, 10.02 sec so far
+Iteration 3848: max relative diff=0.000050, 15.03 sec so far
+Iteration 5112: max relative diff=0.000032, 20.04 sec so far
+Iteration 6366: max relative diff=0.000024, 25.05 sec so far
+Iteration 7647: max relative diff=0.000020, 30.06 sec so far
+Iteration 8927: max relative diff=0.000017, 35.07 sec so far
+Iteration 10208: max relative diff=0.000014, 40.08 sec so far
+Iteration 11497: max relative diff=0.000012, 45.09 sec so far
+Iteration 12744: max relative diff=0.000009, 50.10 sec so far
+Iteration 13994: max relative diff=0.000008, 55.11 sec so far
+Iteration 15282: max relative diff=0.000007, 60.12 sec so far
+Iteration 16565: max relative diff=0.000006, 65.13 sec so far
+Iteration 17854: max relative diff=0.000005, 70.14 sec so far
+Iteration 19141: max relative diff=0.000005, 75.15 sec so far
+Iteration 20406: max relative diff=0.000004, 80.16 sec so far
+Iteration 21617: max relative diff=0.000004, 85.17 sec so far
+Iteration 22907: max relative diff=0.000003, 90.18 sec so far
+Iteration 24182: max relative diff=0.000003, 95.19 sec so far
+Iteration 25465: max relative diff=0.000003, 100.20 sec so far
+Iteration 26767: max relative diff=0.000003, 105.21 sec so far
+Iteration 28052: max relative diff=0.000002, 110.22 sec so far
+Iteration 29291: max relative diff=0.000002, 115.23 sec so far
+Iteration 30565: max relative diff=0.000002, 120.24 sec so far
+Iteration 31841: max relative diff=0.000002, 125.25 sec so far
+Iteration 33119: max relative diff=0.000002, 130.26 sec so far
+Iteration 34411: max relative diff=0.000002, 135.27 sec so far
+Iteration 35693: max relative diff=0.000002, 140.28 sec so far
+Iteration 36926: max relative diff=0.000002, 145.29 sec so far
+Iteration 38204: max relative diff=0.000001, 150.30 sec so far
+Iteration 39484: max relative diff=0.000001, 155.31 sec so far
+Iteration 40771: max relative diff=0.000001, 160.32 sec so far
+Iteration 42067: max relative diff=0.000001, 165.33 sec so far
+Iteration 43360: max relative diff=0.000001, 170.34 sec so far
+Iteration 44599: max relative diff=0.000001, 175.35 sec so far
+
+Iterative method: 45182 iterations in 178.28 seconds (average 0.003935, setup 0.50)
+
+Value in the initial state: 0.8765462885659991
+
+Time for model checking: 188.006 seconds.
+
+Result: 0.8765462885659991 (+/- 8.765289209282868E-6 estimated; rel err 9.999801862857228E-6)
+
+
+----------------------------------------
+Wallclock time:	188.665
+Return code:	0
+</pre>
+</body></html>

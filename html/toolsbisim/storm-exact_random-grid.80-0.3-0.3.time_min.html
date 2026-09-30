@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>storm-exact - random-grid.80-0.3-0.3.time_min</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>random-grid.80-0.3-0.3.time_min</h1>
+<p class="sub">storm-exact &middot; mdpgrid &middot; <a href="index.html">back to the table</a></p>
+<p class="sub">reference result: <code>1377652241508664232478352792476482442252855071422105499708659759729200/5790887942449198118866552301288096257267888893001726249456064921143</code></p>
+<p class="sub">reference result: <code>237.9</code></p>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>464.418 s</td></tr><tr><th>result</th><td>1377652241508664232478352792476482442252855071422105499708659759729200/5790887942449198118866552301288096257267888893001726249456064921143</td></tr><tr><th>relative difference</th><td>0</td></tr><tr><th>states</th><td>512,000</td></tr></table>
+<p class="sub">storm-exact_random-grid.80-0.3-0.3.time_min.log</p>
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/storm --jani random-grid.jani --janiproperty time_min --constants N=80,pover=0.3,pstay=0.3 --exact
+Benchmark:	random-grid.80-0.3-0.3.time_min
+Configuration:	storm-exact
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Sat Sep 26 00:59:45 2026
+Command line arguments: --jani random-grid.jani --janiproperty time_min --constants 'N=80,pover=0.3,pstay=0.3' --exact
+Current working directory: /w0/tmp/slurm_tq429871.4466309/invocation-vho2hjf7
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 9.780s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	512000
+Transitions: 	9100789
+Choices: 	3071995
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -&gt; 0 item(s)
+   * init -&gt; 1 item(s)
+   * (((x = 80) &amp; (y = 80)) &amp; (z = 80)) -&gt; 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property &quot;time_min&quot;: Tmin=? [F (((x = 80) &amp; (y = 80)) &amp; (z = 80))] ...
+Result (for initial states): 1377652241508664232478352792476482442252855071422105499708659759729200/5790887942449198118866552301288096257267888893001726249456064921143 (approx. 237.9)
+Time for model checking: 454.245s.
+
+----------------------------------------
+Wallclock time:	464.418
+Return code:	0
+</pre>
+</body></html>

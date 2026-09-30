@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>prism-default - zeroconf.20-8-false.correct_max</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>zeroconf.20-8-false.correct_max</h1>
+<p class="sub">prism-default &middot; mdpqvbs &middot; <a href="index.html">back to the table</a></p>
+<p class="sub">reference result: <code>2840810748552740279694928513142000863365232359679800085379472902667574085309048020135761868039647573461067228959176815764668923310585051589104065280176703779807146020406965667529812280290489677709787360818206244936956391217134097637438886859966191043793623483790104465593873559121156447826680835906538964773285601061080008518088560193737478197873361157279597996465923712642745166188551293827884733670169400134426534581495003598366746377292908623904714500266657760388702565269047947842610042489938676584500706648415374125500124850587550741116894561042794690410137909010366958825165707221050453349866618677249552401311775610443165106927696973651709552624581153878268178003642170950274029085511750624413606368139766048061736089062147504345964572393890534364938482866043866926754769962831/3003620130846700935142995665916801926400554684851878984955756869483485402777472742451853239803832753463766532527467026689258061040573995945045234722568165531989575271860745348021388676627669082255879057205406630912976146424854290475933260580414808337261495220134538082872213381060726238995044818984719961714160517416953923076697225447987305871297310257950585135502306039640746967120322603799240090428376231688795351889114479198047020271064760914794725216206545086828661466576765563376393103295341609148554897591799927601850890452562693902320517807686832074086119793466144924449643167143146954425515557427208163544214300893571196078188639327953565459641936090657367989357992788710089162787606206004048111054383078415978928995191785201236087970724198227044295089673548205838532266926754769962831</code></p>
+<p class="sub">reference result: <code>9.457956149e-10</code></p>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>141.155 s</td></tr><tr><th>result</th><td>9.45795614890867E-10</td></tr><tr><th>relative difference</th><td>5.72e-16</td></tr><tr><th>states</th><td>1,870,338</td></tr></table>
+<p class="sub">prism-default_zeroconf.20-8-false.correct_max.log</p>
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism zeroconf.prism zeroconf.props --prop correct_max -const N=20,K=8,reset=false -maxiters 1000000
+Benchmark:	zeroconf.20-8-false.correct_max
+Configuration:	prism-default
+Repetition:	1
+Time limit:	900
+Output:
+Picked up JAVA_TOOL_OPTIONS: -Xmx16g
+PRISM
+=====
+
+Version: 4.10.1
+Date: Sat Sep 26 01:13:43 GMT+02:00 2026
+Hostname: r23m0122.hpc.itc.rwth-aachen.de
+Memory limits: cudd=1g, java(heap)=16g
+Command line: prism zeroconf.prism zeroconf.props --prop correct_max -const 'N=20,K=8,reset=false' -maxiters 1000000
+
+Parsing PRISM model file &quot;zeroconf.prism&quot;...
+
+Type:        MDP
+Modules:     environment host0
+Actions:     [] [reset] [time] [send] [rec]
+Variables:   b_ip7 b_ip6 b_ip5 b_ip4 b_ip3 b_ip2 b_ip1 b_ip0 n n0 n1 b z ip_mess x y coll probes mess defend ip l
+
+Parsing properties file &quot;zeroconf.props&quot;...
+
+2 properties:
+(1) &quot;correct_max&quot;: Pmax=? [ F (l=4&amp;ip=1) ]
+(2) &quot;correct_min&quot;: Pmin=? [ F (l=4&amp;ip=1) ]
+
+---------------------------------------------------------------------
+
+Model checking: &quot;correct_max&quot;: Pmax=? [ F (l=4&amp;ip=1) ]
+Model constants: reset=false,N=20,K=8
+
+Building model (engine:symbolic)...
+Model constants: reset=false,N=20,K=8
+
+Computing reachable states...
+
+Reachability (BFS): 592 iterations in 52.16 seconds (average 0.088108, setup 0.00)
+
+Time for model construction: 52.718 seconds.
+
+Type:        MDP
+States:      1870338 (1 initial)
+Transitions: 4245554
+
+Transition matrix: 154038 nodes (6 terminal), 4245554 minterms, vars: 58r/58c/7nd
+
+Prob0A: 131 iterations in 2.98 seconds (average 0.022748, setup 0.00)
+
+Prob1E: 2127 iterations in 71.74 seconds (average 0.033728, setup 0.00)
+
+yes = 171749, no = 611330, maybe = 1087259
+
+Computing remaining probabilities...
+Engine: Hybrid
+
+Building hybrid MTBDD matrices... [nm=9, levels=58, nodes=272480] [12.5 MB]
+Adding sparse bits... [levels=24-43, num=4846, compact=9/9] [8.0 MB]
+Creating vector for yes... [dist=2, compact] [3.6 MB]
+Allocating iteration vectors... [3 x 14.3 MB]
+TOTAL: [66.8 MB]
+
+Starting iterations...
+Iteration 108: max relative diff=inf, 5.05 sec so far
+Iteration 215: max relative diff=0.000019, 10.09 sec so far
+
+Iterative method: 241 iterations in 12.90 seconds (average 0.046929, setup 1.59)
+
+Value in the initial state: 9.45795614890867E-10
+
+Time for model checking: 87.861 seconds.
+
+Result: 9.45795614890867E-10 (+/- 7.784786084571637E-15 estimated; rel err 8.230939076060217E-6)
+
+
+----------------------------------------
+Wallclock time:	141.155
+Return code:	0
+</pre>
+</body></html>

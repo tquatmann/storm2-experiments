@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>mcsta-ii - mer.250-0.1.prob_max</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>mer.250-0.1.prob_max</h1>
+<p class="sub">mcsta-ii &middot; mdpmec &middot; <a href="index.html">back to the table</a></p>
+<p class="sub">reference result: <code>1328233201521567253066077997049398999908435974161881158214614743165778968054226285957329232655658794894293544649387159632746892794697514769450057875739529517230749748058162109661754603834579079869920221159969643255614636256494370659289121270740052189236992213573516281827008443725868599037759882837135959461592322307209979859225441749798468479956087/6109872726999209364103958786427235399578805481144653327787227818562583253049440915403714470216030456513750305387180934310635706855608567939470266228401835779261448841067545704444071177639063767401633017335860358975827326779874105032729957845404240070490164182438174896404239202989274422186806159710153565673036724081867987479199655354022979736328125</code></p>
+<p class="sub">reference result: <code>0.2173913043</code></p>
+<table class="meta"><tr><th>status</th><td>no-result</td></tr><tr><th>wallclock time</th><td>1.914 s</td></tr></table>
+<p class="sub">mcsta-ii_mer.250-0.1.prob_max.log</p>
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/modest mcsta mer.jani --props prob_max --experiment n=250,x=0.1 --unsafe --store-mode Memory --alg IntervalIteration --width 1e-6 --relative-width
+Benchmark:	mer.250-0.1.prob_max
+Configuration:	mcsta-ii
+Repetition:	1
+Time limit:	900
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.311-g14c460466+14c4604667cea0a04631c853eb09e474e24dc368.
+Command: modest mcsta mer.jani --props prob_max --experiment n=250,x=0.1 --unsafe --store-mode Memory --alg IntervalIteration --width 1e-6 --relative-width
+
+
+
+
+mer.jani:model: info: mer is an MDP model.
+mer.jani:variables[10]: info: Expanding variable &quot;s1&quot; into 5 locations in automaton &quot;user1&quot;.
+mer.jani:variables[13]: info: Expanding variable &quot;s2&quot; into 5 locations in automaton &quot;user2&quot;.
+mer.jani:variables[16]: info: Expanding variable &quot;e&quot; into 4 locations in automaton &quot;property&quot;.
+mer.jani: info: Need 24 bytes per state.
+mer.jani: info: Explored 555642 states for n=250, x=0.1.
+mer.jani: info: Identified 237038 maximal end components.
+Unhandled exception. System.NullReferenceException: Object reference not set to an instance of an object.
+   at Modest.ModelChecking.EndComponents.CollapseEndComponents(PropertyAnalysisTask task, StateSpace stateSpace, AnalysisDataSet dataSet, String statusFormat, LocationErrorHandler leh, OperationState operationState)
+   at Modest.ModelChecking.MAModelChecker`1.CheckProperty(StateSpace stateSpace, ReachabilityPropertyInfo prop, String avoidStatesKey, String targetStatesKey, StateSet`1 stateSet, IDisposable&amp; previousBoundedIterationInfo, Func`3 onProbabilityNotZeroOrOne, String propertyStatusString, AnalysisDataSet info, OperationState operationState, ComponentErrorHandler ceh)
+   at Modest.ModelChecking.MAModelChecker`1.CheckProperties(StateSpace ss, StateSet`1 states, Boolean[] reachAndInvariantPropertyResults, String experimentStatusString, OperationState operationState, ComponentErrorHandler ceh)
+   at Modest.ModelChecking.MAModelChecker`1.ModelCheck(String experimentString, OperationState operationState, ComponentErrorHandler ceh)
+   at Modest.ModelChecking.ModelCheckingAnalysisEngine.ModelCheckGeneric[T](Network`1 network, UmbModel umbModel, Object expInfoObj, String experimentString, Object propertiesObj, Object parametersObj, ILocation documentLocation, OperationState operationState, ComponentErrorHandler ceh)
+   at invoke Modest.Exploration.Network`1__CompiledAutomata.State1\, CompiledAutomata-20260926090230-1205605947\, Version=0.0.0.0\, Culture=neutral\, PublicKeyToken=null__ : Modest.StateSpace.UmbModel : System.Object : System.String : System.Object : System.Object : Modest.Modularity.ILocation : Modest.Modularity.OperationState : Modest.Modularity.ComponentErrorHandler : Modest.Modularity.AnalysisDataSet.GeneratedClass.DoInvoke(Object, Object[], MethodInfo)
+   at Modest.ModelChecking.ModelCheckingAnalysisEngine.ModelCheck(IModel model, CompilationParameters compilationParams, Object parametersObj, OperationState operationState, IErrorHandler errors)
+   at Modest.ModelChecking.ModelCheckingAnalysisEngine.Analyze(AnalysisParams analysisParameters, IModel[] models, Int32 index, Boolean isLast, Boolean useDtmcSemantics, Boolean isContinuousTimeMarkovModel, OperationState operationState, IErrorHandler errors)
+   at Modest.ModelChecking.AnalysisEngine`1.Analyze(AP analysisParameters, IModel model, Int32 index, Boolean isLast, IExperiment[] modelParameters, OperationState operationState, IErrorHandler errors)
+   at Modest.ModelChecking.AnalysisEngine`1.Analyze(IParameterObject analysisParameters, IModel[] models, IExperiment[][] experiments, OperationState operationState, IErrorHandler errors)
+   at Modest.Executable.ModelChecker.Run(IParameterObject parameterObj, Stopwatch time, IOutputHandler outputHandler, CancellationToken cancellationToken)
+   at Modest.Executable.Program.Main(String[] args)
+
+----------------------------------------
+Wallclock time:	1.914
+Return code:	-6
+</pre>
+</body></html>

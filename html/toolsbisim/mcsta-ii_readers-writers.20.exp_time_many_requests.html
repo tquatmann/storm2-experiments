@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>mcsta-ii - readers-writers.20.exp_time_many_requests</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>readers-writers.20.exp_time_many_requests</h1>
+<p class="sub">mcsta-ii &middot; maqvbs &middot; <a href="index.html">back to the table</a></p>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>6.692 s</td></tr><tr><th>result</th><td>15.446149061418549</td></tr><tr><th>states</th><td>137,070</td></tr></table>
+<p class="sub">mcsta-ii_readers-writers.20.exp_time_many_requests.log</p>
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/modest mcsta readers-writers.20.jani --props exp_time_many_requests --unsafe --store-mode Memory --alg IntervalIteration --width 1e-6 --relative-width
+Benchmark:	readers-writers.20.exp_time_many_requests
+Configuration:	mcsta-ii
+Repetition:	1
+Time limit:	900
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.311-g14c460466+14c4604667cea0a04631c853eb09e474e24dc368.
+Command: modest mcsta readers-writers.20.jani --props exp_time_many_requests --unsafe --store-mode Memory --alg IntervalIteration --width 1e-6 --relative-width
+
+
+
+
+readers-writers.20.jani:model: info: ReadersWriters is an MA model.
+readers-writers.20.jani: info: Need 16 bytes per state.
+readers-writers.20.jani: info: Explored 137070 states.
+readers-writers.20.jani:properties[1]: warning: Computing minimum expected reward in property &quot;exp_time_many_requests&quot; without checking for zero-reward end components.
+
+Peak memory usage: 168 MB
+Analysis results for readers-writers.20.jani
+
++ State space exploration
+  State size: 16 bytes
+  States:     137070
+  Choices:    137070
+  Branches:   273580
+  Rate:       427009 states/s
+  Time:       0.3 s
+
++ Property exp_time_many_requests
+  Value:  15.446149061418549
+  Bounds: [15.446133620150794, 15.446164502686301]
+  Time:   6.2 s
+
+  + Precomputations
+    Max. prob. 1 states:          137070
+    Time for max. prob. 1 states: 0.0 s
+
+  + Interval iteration
+    Iterations: 6213
+    Time:       6.2 s
+
+
+----------------------------------------
+Wallclock time:	6.692
+Return code:	0
+</pre>
+</body></html>

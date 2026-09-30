@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>mcsta-ii - brp-pta.64-12-32-256.Emin</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>brp-pta.64-12-32-256.Emin</h1>
+<p class="sub">mcsta-ii &middot; ptaqvbs &middot; <a href="index.html">back to the table</a></p>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>254.081 s</td></tr><tr><th>result</th><td>127.77571362533712</td></tr><tr><th>states</th><td>56,784,036</td></tr></table>
+<p class="sub">mcsta-ii_brp-pta.64-12-32-256.Emin.log</p>
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/modest mcsta brp-pta-mdp.jani --props Emin --experiment N=64,MAX=12,TD=32,TIME_BOUND=256 --unsafe --store-mode Memory --alg IntervalIteration --width 1e-6 --relative-width
+Benchmark:	brp-pta.64-12-32-256.Emin
+Configuration:	mcsta-ii
+Repetition:	1
+Time limit:	900
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.311-g14c460466+14c4604667cea0a04631c853eb09e474e24dc368.
+Command: modest mcsta brp-pta-mdp.jani --props Emin --experiment N=64,MAX=12,TD=32,TIME_BOUND=256 --unsafe --store-mode Memory --alg IntervalIteration --width 1e-6 --relative-width
+
+
+
+
+brp-pta-mdp.jani:model: info: brp-pta is an MDP model.
+brp-pta-mdp.jani: info: Need 40 bytes per state.
+brp-pta-mdp.jani: info: Explored 56784036 states for N=64, MAX=12, TD=32, TIME_BOUND=256.
+brp-pta-mdp.jani:properties[19]: warning: Computing minimum expected reward in property &quot;Emin&quot; without checking for zero-reward end components.
+
+Peak memory usage: 14836 MB
+Analysis results for brp-pta-mdp.jani
+Experiment N=64, MAX=12, TD=32, TIME_BOUND=256
+
++ State space exploration
+  State size: 40 bytes
+  States:     56784036
+  Choices:    63799460
+  Branches:   64044036
+  Rate:       1320528 states/s
+  Time:       44.5 s
+
++ Property Emin
+  Value:  127.77571362533712
+  Bounds: [127.77571090352937, 127.77571634714485]
+  Time:   209.4 s
+
+  + Precomputations
+    Max. prob. 1 states:          56784036
+    Time for max. prob. 1 states: 2.9 s
+
+  + Interval iteration
+    Iterations: 67
+    Time:       206.4 s
+
+
+----------------------------------------
+Wallclock time:	254.081
+Return code:	0
+</pre>
+</body></html>

@@ -34,6 +34,11 @@
     "cmd": "--jani %jani --janiproperty %property --constants %constants --sound --bisimulation",
     "description": "Storm with default settings and strong bisimulation preprocessing."
   },
+  "storm-sound-ddbisim": {
+    "bin": "bin/storm",
+    "cmd": "--jani %jani --janiproperty %property --constants %constants --sound --bisimulation --engine dd-to-sparse",
+    "description": "Storm with symbolic (strong) bisimulation"
+  },
   "storm-exact-bisim": {
     "bin": "bin/storm",
     "cmd": "--jani %jani --janiproperty %property --constants %constants --exact --bisimulation",
@@ -56,12 +61,22 @@
   },
   "prism-default": {
     "bin": "bin/prism",
-    "cmd": "%prism %prism-property --prop %property -const %constants -maxiters 1000000",
+    "cmd": "%prism %prism-property --prop %property -const %constants -maxiters 1000000 -cuddmaxmem 4g",
     "description": "Prism with default settings."
   },
   "prism-sound": {
     "bin": "bin/prism",
-    "cmd": "%prism %prism-property --prop %property -const %constants -maxiters 1000000 -intervaliter",
+    "cmd": "%prism %prism-property --prop %property -const %constants -maxiters 1000000 -intervaliter -ddextraactionvars 40 -cuddmaxmem 4g",
+    "description": "Prism with interval iteration"
+  },
+  "prism-sound2": {
+    "bin": "bin/prism",
+    "cmd": "%prism %prism-property --prop %property -const %constants -maxiters 1000000 -intervaliter -ddextraactionvars 80 -cuddmaxmem 4g",
+    "description": "Prism with interval iteration"
+  },
+  "prism-sound-explicit": {
+    "bin": "bin/prism",
+    "cmd": "%prism %prism-property --prop %property -const %constants -maxiters 1000000 -intervaliter -explicit",
     "description": "Prism with interval iteration"
   }
 }

@@ -66,17 +66,12 @@
   },
   "prism-sound": {
     "bin": "bin/prism",
-    "cmd": "%prism %prism-property --prop %property -const %constants -maxiters 1000000 -intervaliter -ddextraactionvars 40 -cuddmaxmem 4g",
-    "description": "Prism with interval iteration"
-  },
-  "prism-sound2": {
-    "bin": "bin/prism",
-    "cmd": "%prism %prism-property --prop %property -const %constants -maxiters 1000000 -intervaliter -ddextraactionvars 80 -cuddmaxmem 4g",
+    "cmd": "%prism %prism-property --prop %property -const %constants -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 4g",
     "description": "Prism with interval iteration"
   },
   "prism-sound-explicit": {
     "bin": "bin/prism",
-    "cmd": "%prism %prism-property --prop %property -const %constants -maxiters 1000000 -intervaliter -explicit",
+    "cmd": "%prism %prism-property --prop %property -const %constants -maxiters 1000000 -intervaliter -heuristic speed -explicit",
     "description": "Prism with interval iteration"
   }
 }

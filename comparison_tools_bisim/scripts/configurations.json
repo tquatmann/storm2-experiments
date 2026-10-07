@@ -11,12 +11,12 @@
   },
   "storm-hybrid": {
     "bin": "bin/storm",
-    "cmd": "--jani %jani --janiproperty %property --constants %constants --engine hybrid",
+    "cmd": "--jani %jani --janiproperty %property --constants %constants --engine hybrid --sylvan:threads 4 --sylvan:maxmem 4096",
     "description": "Storm with hybrid engine."
   },
   "storm-hybrid-sound": {
     "bin": "bin/storm",
-    "cmd": "--jani %jani --janiproperty %property --constants %constants --engine hybrid --sound",
+    "cmd": "--jani %jani --janiproperty %property --constants %constants --engine hybrid --sound --sylvan:threads 4 --sylvan:maxmem 4096",
     "description": "Storm with hybrid engine and sound computations."
   },
   "storm-exact": {
@@ -36,7 +36,7 @@
   },
   "storm-sound-ddbisim": {
     "bin": "bin/storm",
-    "cmd": "--jani %jani --janiproperty %property --constants %constants --sound --bisimulation --engine dd-to-sparse",
+    "cmd": "--jani %jani --janiproperty %property --constants %constants --sound --bisimulation --engine dd-to-sparse  --sylvan:threads 4 --sylvan:maxmem 4096",
     "description": "Storm with symbolic (strong) bisimulation"
   },
   "storm-exact-bisim": {

@@ -27,7 +27,7 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">mcsta-default &middot; mdpqvbs &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>809/4</code></p>
 <p class="sub">reference result: <code>202.25</code></p>
-<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>56.389 s</td></tr><tr><th>result</th><td>202.24960667359346</td></tr><tr><th>relative difference</th><td>1.94e-06</td></tr><tr><th>states</th><td>6,931,981</td></tr></table>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>60.406 s</td></tr><tr><th>result</th><td>202.24960667359346</td></tr><tr><th>relative difference</th><td>1.94e-06</td></tr><tr><th>states</th><td>6,931,981</td></tr></table>
 <p class="sub">mcsta-default_firewire.true-36-200.time_sending.log</p>
 <pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/modest mcsta firewire.true.jani --props time_sending --experiment delay=36,deadline=200 --unsafe --store-mode Memory
 Benchmark:	firewire.true-36-200.time_sending
@@ -48,7 +48,7 @@ firewire.true.jani:variables[12]: info: Expanding variable &quot;s2&quot; into 9
 firewire.true.jani: info: Need 16 bytes per state.
 firewire.true.jani: info: Explored 6931981 states for delay=36, deadline=200.
 
-Peak memory usage: 2773 MB
+Peak memory usage: 2910 MB
 Analysis results for firewire.true.jani
 Experiment delay=36, deadline=200
 
@@ -57,28 +57,28 @@ Experiment delay=36, deadline=200
   States:     6931981
   Choices:    15669366
   Branches:   15782932
-  Rate:       961707 states/s
-  Time:       7.5 s
+  Rate:       901662 states/s
+  Time:       8.0 s
 
 + Property time_sending
   Value:  202.24960667359346
   Bounds: [202.24960667359346, infinity)
-  Time:   48.3 s
+  Time:   52.2 s
 
   + Precomputations
     Min. prob. 0 states:          0
-    Time for min. prob. 0 states: 4.5 s
+    Time for min. prob. 0 states: 4.8 s
     Min. prob. 1 states:          6931981
     Time for min. prob. 1 states: 0.0 s
 
   + Value iteration
     Final error: 9.164664720496925E-07
     Iterations:  868
-    Time:        43.8 s
+    Time:        47.4 s
 
 
 ----------------------------------------
-Wallclock time:	56.389
+Wallclock time:	60.406
 Return code:	0
 </pre>
 </body></html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>prism-sound-explicit - wlan-mec.3-0.cost_min</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>wlan-mec.3-0.cost_min</h1>
+<p class="sub">prism-sound-explicit &middot; mdpmec &middot; <a href="index.html">back to the table</a></p>
+<p class="sub">reference result: <code>7625</code></p>
+<p class="sub">reference result: <code>7625</code></p>
+<table class="meta"><tr><th>status</th><td>memout</td></tr><tr><th>wallclock time</th><td>36.883 s</td></tr><tr><th>states</th><td>963,020</td></tr></table>
+<p class="sub">prism-sound-explicit_wlan-mec.3-0.cost_min.log</p>
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism wlan-mec.3.prism wlan-mec.props --prop cost_min -const COL=0 -maxiters 1000000 -intervaliter -heuristic speed -explicit
+Benchmark:	wlan-mec.3-0.cost_min
+Configuration:	prism-sound-explicit
+Repetition:	1
+Time limit:	900
+Output:
+Picked up JAVA_TOOL_OPTIONS: -Xmx32g
+PRISM
+=====
+
+Version: 4.10.1
+Date: Tue Oct 06 16:54:50 GMT+02:00 2026
+Hostname: n23m0129.hpc.itc.rwth-aachen.de
+Memory limits: cudd=1g, java(heap)=32g
+Command line: prism wlan-mec.3.prism wlan-mec.props --prop cost_min -const COL=0 -maxiters 1000000 -intervaliter -heuristic speed -explicit
+
+Parsing PRISM model file &quot;wlan-mec.3.prism&quot;...
+
+Type:        MDP
+Modules:     mecs medium station1 station2
+Actions:     [] [send1] [send2] [finish1] [finish2] [time]
+Variables:   mecs_circle col c1 c2 x1 s1 slot1 backoff1 bc1 x2 s2 slot2 backoff2 bc2
+Rewards:     &quot;collisions&quot; &quot;time&quot; &quot;cost&quot;
+
+Parsing properties file &quot;wlan-mec.props&quot;...
+
+2 properties:
+(1) &quot;cost_min&quot;: R{&quot;cost&quot;}min=? [ F s1=12&amp;s2=12 ]
+(2) &quot;time_min&quot;: R{&quot;time&quot;}min=? [ F s1=12&amp;s2=12 ]
+
+---------------------------------------------------------------------
+
+Model checking: &quot;cost_min&quot;: R{&quot;cost&quot;}min=? [ F s1=12&amp;s2=12 ]
+Model constants: COL=0
+
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
+Warning: Switching to explicit engine to allow interval iteration on Rmin operator.
+
+Building model (engine:explicit)...
+Model constants: COL=0
+
+Computing reachable states... 501667 963020 states
+Reachable states exploration and model construction done in 5.519 secs.
+Sorting reachable states list...
+
+Time for model construction: 6.727 seconds.
+
+Type:        MDP
+States:      963020 (1 initial)
+Transitions: 3875498
+Choices:     2200320
+Max/avg:     4/2.28
+Building reward structure...
+
+Starting expected reachability (min)...
+Starting Prob1 (max)...
+Prob1 (max) took 413 iterations and 6.369 seconds.
+target=10, inf=0, rest=963010
+For Rmin, checking for zero-reward ECs...
+
+----------------------------------------
+Wallclock time:	36.883
+Return code:	-9
+</pre>
+</body></html>

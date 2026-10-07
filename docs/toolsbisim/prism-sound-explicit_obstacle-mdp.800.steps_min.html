@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>prism-sound-explicit - obstacle-mdp.800.steps_min</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>obstacle-mdp.800.steps_min</h1>
+<p class="sub">prism-sound-explicit &middot; mdpgrid &middot; <a href="index.html">back to the table</a></p>
+<p class="sub">reference result: <code>217869793388429752066115702479338842975206611570247933884297520661157024793388429752066115702479338842975206611570247933884297520661157024793388429752066115702479338842975206611570247933884297520661157024793388429752066115702479338842975206611570247933884297520661157024793388429752066115702479338842975206611570247933884297520661157024793388429752066115702479338842975206611570247933884297520661157024793388429752066115702479338842975206611570247933884297520661157024793388429752066115702479338842975206611570247933884297520661157024793388429752066115702479338842975206611570247933884297520661157024793388429752066115702479338842975206611570247933884297520661157024793388429752066115702479338842975206611570247933884297520661157024793388429752066115702479338842975206611570247933884297520661157024793/200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</code></p>
+<p class="sub">reference result: <code>1089.348967</code></p>
+<table class="meta"><tr><th>status</th><td>no-result</td></tr><tr><th>wallclock time</th><td>21.196 s</td></tr><tr><th>states</th><td>640,001</td></tr></table>
+<p class="sub">prism-sound-explicit_obstacle-mdp.800.steps_min.log</p>
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism obstacle-mdp.prism obstacle-mdp.props --prop steps_min -const N=800 -maxiters 1000000 -intervaliter -heuristic speed -explicit
+Benchmark:	obstacle-mdp.800.steps_min
+Configuration:	prism-sound-explicit
+Repetition:	1
+Time limit:	900
+Output:
+Picked up JAVA_TOOL_OPTIONS: -Xmx32g
+PRISM
+=====
+
+Version: 4.10.1
+Date: Tue Oct 06 16:19:16 GMT+02:00 2026
+Hostname: n23m0114.hpc.itc.rwth-aachen.de
+Memory limits: cudd=1g, java(heap)=32g
+Command line: prism obstacle-mdp.prism obstacle-mdp.props --prop steps_min -const N=800 -maxiters 1000000 -intervaliter -heuristic speed -explicit
+
+Parsing PRISM model file &quot;obstacle-mdp.prism&quot;...
+
+Type:        MDP
+Modules:     master robot
+Actions:     [placement] [north] [south] [east] [west]
+Variables:   start ax ay slipped
+Labels:      &quot;goal&quot; &quot;traps&quot; &quot;notbad&quot;
+Rewards:     &quot;time&quot;
+
+Parsing properties file &quot;obstacle-mdp.props&quot;...
+
+1 property:
+(1) &quot;steps_min&quot;: R{&quot;time&quot;}min=? [ F &quot;goal&quot; ]
+
+---------------------------------------------------------------------
+
+Model checking: &quot;steps_min&quot;: R{&quot;time&quot;}min=? [ F &quot;goal&quot; ]
+Model constants: N=800
+
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
+Warning: Switching to explicit engine to allow interval iteration on Rmin operator.
+
+Building model (engine:explicit)...
+Model constants: N=800
+
+Computing reachable states... 326893 640001 states
+Reachable states exploration and model construction done in 5.668 secs.
+Sorting reachable states list...
+
+Time for model construction: 8.212 seconds.
+
+Warning: Deadlocks detected and fixed in 1 states
+
+Type:        MDP
+States:      640001 (1 initial)
+Transitions: 5113599
+Choices:     2559998
+Max/avg:     4/4.00
+Building reward structure...
+
+Starting expected reachability (min)...
+Starting Prob1 (max)...
+Prob1 (max) took 801 iterations and 9.266 seconds.
+target=1, inf=0, rest=640000
+For Rmin, checking for zero-reward ECs...
+Time for checking for zero-reward ECs: 0.086 seconds, no zero-reward ECs found, proceeding normally.
+Computing upper bound(s) for Rmin using the Dijkstra Sweep for Monotone Pessimistic Initialization algorithm...
+Calculating incoming choices relation for Markov decision process...  done (0.371 seconds)
+Time for computing upper bound(s) for Rmin using the DSI-MP algorithm: 1.863 seconds.
+Upper bound for min expectation (Dijkstra Sweep MPI): 1452.892561983514
+Starting Prob1 (min)...
+Prob1 (min) took 2 iterations and 0.028 seconds.
+
+Error: Interval iteration for Rmin and non-contracting MDP currently not supported.
+
+---------------------------------------------------------------------
+
+Note: There were 3 warnings during computation.
+
+
+----------------------------------------
+Wallclock time:	21.196
+Return code:	0
+</pre>
+</body></html>

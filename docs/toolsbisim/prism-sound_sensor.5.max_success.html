@@ -27,23 +27,23 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">prism-sound &middot; mdpmec &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>3124/3125</code></p>
 <p class="sub">reference result: <code>0.99968</code></p>
-<table class="meta"><tr><th>status</th><td>timeout</td></tr><tr><th>wallclock time</th><td>900.145 s</td></tr><tr><th>states</th><td>3,565,990</td></tr></table>
+<table class="meta"><tr><th>status</th><td>timeout</td></tr><tr><th>wallclock time</th><td>900.156 s</td></tr><tr><th>states</th><td>3,565,990</td></tr></table>
 <p class="sub">prism-sound_sensor.5.max_success.log</p>
-<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism sensor.5.prism sensor.props --prop max_success -maxiters 1000000 -intervaliter
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism sensor.5.prism sensor.props --prop max_success -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 4g
 Benchmark:	sensor.5.max_success
 Configuration:	prism-sound
 Repetition:	1
 Time limit:	900
 Output:
-Picked up JAVA_TOOL_OPTIONS: -Xmx16g
+Picked up JAVA_TOOL_OPTIONS: -Xmx32g
 PRISM
 =====
 
 Version: 4.10.1
-Date: Sat Sep 26 00:55:38 GMT+02:00 2026
-Hostname: n23m0171.hpc.itc.rwth-aachen.de
-Memory limits: cudd=1g, java(heap)=16g
-Command line: prism sensor.5.prism sensor.props --prop max_success -maxiters 1000000 -intervaliter
+Date: Tue Oct 06 16:31:42 GMT+02:00 2026
+Hostname: n23m0070.hpc.itc.rwth-aachen.de
+Memory limits: cudd=4g, java(heap)=32g
+Command line: prism sensor.5.prism sensor.props --prop max_success -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 4g
 
 Parsing PRISM model file &quot;sensor.5.prism&quot;...
 
@@ -61,6 +61,8 @@ Parsing properties file &quot;sensor.props&quot;...
 ---------------------------------------------------------------------
 
 Model checking: &quot;max_success&quot;: Pmax=? [ F x=1 ]
+
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
 
 Building model (engine:symbolic)...
 
@@ -86,9 +88,9 @@ Warning: Update 2 of command 10 of module &quot;sensor5&quot; doesn't do anythin
 
 Computing reachable states...
 
-Reachability (BFS): 61 iterations in 1.46 seconds (average 0.023934, setup 0.00)
+Reachability (BFS): 61 iterations in 1.33 seconds (average 0.021803, setup 0.00)
 
-Time for model construction: 1.885 seconds.
+Time for model construction: 1.498 seconds.
 
 Type:        MDP
 States:      3565990 (1 initial)
@@ -96,20 +98,20 @@ Transitions: 19736435
 
 Transition matrix: 82134 nodes (6 terminal), 19736435 minterms, vars: 44r/44c/42nd
 
-Prob0A: 16 iterations in 0.58 seconds (average 0.036250, setup 0.00)
+Prob0A: 16 iterations in 0.34 seconds (average 0.021250, setup 0.00)
 
-Prob1E: 98 iterations in 5.71 seconds (average 0.058265, setup 0.00)
+Prob1E: 98 iterations in 5.06 seconds (average 0.051633, setup 0.00)
 
 yes = 1011725, no = 816715, maybe = 1737550
 
 Computing remaining probabilities...
-Engine: Hybrid
+Engine: Sparse
 
 Building quotient MDP, collapsing maximal end components as well as yes and no states...
 
 ----------------------------------------
-Wallclock time:	900.145
+Wallclock time:	900.156
 Return code:	None
-Computation aborted after 900.145 seconds since the time limit of 900 seconds was exceeded.
+Computation aborted after 900.156 seconds since the time limit of 900 seconds was exceeded.
 </pre>
 </body></html>

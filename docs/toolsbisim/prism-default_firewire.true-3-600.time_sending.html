@@ -27,23 +27,23 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">prism-default &middot; mdpqvbs &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>18</code></p>
 <p class="sub">reference result: <code>18</code></p>
-<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>29.349 s</td></tr><tr><th>result</th><td>17.99965893715972</td></tr><tr><th>relative difference</th><td>1.89e-05</td></tr><tr><th>states</th><td>1,078,695</td></tr></table>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>26.939 s</td></tr><tr><th>result</th><td>17.99965893715972</td></tr><tr><th>relative difference</th><td>1.89e-05</td></tr><tr><th>states</th><td>1,078,695</td></tr></table>
 <p class="sub">prism-default_firewire.true-3-600.time_sending.log</p>
-<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism firewire.true.prism firewire.true.props --prop time_sending -const delay=3,deadline=600 -maxiters 1000000
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism firewire.true.prism firewire.true.props --prop time_sending -const delay=3,deadline=600 -maxiters 1000000 -cuddmaxmem 4g
 Benchmark:	firewire.true-3-600.time_sending
 Configuration:	prism-default
 Repetition:	1
 Time limit:	900
 Output:
-Picked up JAVA_TOOL_OPTIONS: -Xmx16g
+Picked up JAVA_TOOL_OPTIONS: -Xmx32g
 PRISM
 =====
 
 Version: 4.10.1
-Date: Sat Sep 26 01:02:51 GMT+02:00 2026
-Hostname: r23m0122.hpc.itc.rwth-aachen.de
-Memory limits: cudd=1g, java(heap)=16g
-Command line: prism firewire.true.prism firewire.true.props --prop time_sending -const 'delay=3,deadline=600' -maxiters 1000000
+Date: Tue Oct 06 16:35:55 GMT+02:00 2026
+Hostname: n23m0058.hpc.itc.rwth-aachen.de
+Memory limits: cudd=4g, java(heap)=32g
+Command line: prism firewire.true.prism firewire.true.props --prop time_sending -const 'delay=3,deadline=600' -maxiters 1000000 -cuddmaxmem 4g
 
 Parsing PRISM model file &quot;firewire.true.prism&quot;...
 
@@ -73,9 +73,9 @@ Model constants: deadline=600,delay=3
 
 Computing reachable states...
 
-Reachability (BFS): 669 iterations in 10.27 seconds (average 0.015351, setup 0.00)
+Reachability (BFS): 669 iterations in 8.05 seconds (average 0.012033, setup 0.00)
 
-Time for model construction: 10.653 seconds.
+Time for model construction: 8.4 seconds.
 
 Type:        MDP
 States:      1078695 (1 initial)
@@ -83,7 +83,7 @@ Transitions: 1476198
 
 Transition matrix: 68250 nodes (3 terminal), 1476198 minterms, vars: 54r/54c/14nd
 
-Prob0E: 355 iterations in 1.93 seconds (average 0.005437, setup 0.00)
+Prob0E: 355 iterations in 1.59 seconds (average 0.004479, setup 0.00)
 
 Prob1A: 1 iterations in 0.00 seconds (average 0.000000, setup 0.00)
 
@@ -101,21 +101,21 @@ Allocating iteration vectors... [2 x 8.2 MB]
 TOTAL: [71.1 MB]
 
 Starting iterations...
-Iteration 681: max relative diff=0.002272, 5.01 sec so far
-Iteration 1362: max relative diff=0.000066, 10.02 sec so far
-Iteration 2036: max relative diff=0.000002, 15.03 sec so far
+Iteration 673: max relative diff=0.003489, 5.01 sec so far
+Iteration 1349: max relative diff=0.000071, 10.02 sec so far
+Iteration 2022: max relative diff=0.000002, 15.03 sec so far
 
-Iterative method: 2133 iterations in 16.17 seconds (average 0.007389, setup 0.41)
+Iterative method: 2133 iterations in 16.24 seconds (average 0.007431, setup 0.39)
 
 Value in the initial state: 17.99965893715972
 
-Time for model checking: 18.186 seconds.
+Time for model checking: 17.936 seconds.
 
 Result: 17.99965893715972 (+/- 1.7275932774043993E-4 estimated; rel err 9.597922290837624E-6)
 
 
 ----------------------------------------
-Wallclock time:	29.349
+Wallclock time:	26.939
 Return code:	0
 </pre>
 </body></html>

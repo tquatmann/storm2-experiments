@@ -27,7 +27,7 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">storm-default &middot; mdpgridmec &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>3653380653778819704498802052281330342937979832521752121999684138390592205782461/3681807200483612150698388711959446722028150995086913681600000000000000000000000</code></p>
 <p class="sub">reference result: <code>0.9922791865</code></p>
-<table class="meta"><tr><th>status</th><td>incorrect</td></tr><tr><th>wallclock time</th><td>15.448 s</td></tr><tr><th>result</th><td>0.9351250171</td></tr><tr><th>relative difference</th><td><span class="bad">0.0576 &gt; 1e-3</span></td></tr><tr><th>states</th><td>161,070</td></tr></table>
+<table class="meta"><tr><th>status</th><td>incorrect</td></tr><tr><th>wallclock time</th><td>16.569 s</td></tr><tr><th>result</th><td>0.9351250171</td></tr><tr><th>relative difference</th><td><span class="bad">0.0576 &gt; 1e-3</span></td></tr><tr><th>states</th><td>161,070</td></tr></table>
 <p class="sub">storm-default_refuel-mdp.80-40.reach_max.log</p>
 <pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/storm --jani refuel-mdp.jani --janiproperty reach_max --constants N=80,ENERGY=40
 Benchmark:	refuel-mdp.80-40.reach_max
@@ -37,13 +37,13 @@ Time limit:	900
 Output:
 Storm 1.14.0 (dev)
 
-Date: Sat Sep 26 00:56:39 2026
+Date: Tue Oct  6 16:21:04 2026
 Command line arguments: --jani refuel-mdp.jani --janiproperty reach_max --constants 'N=80,ENERGY=40'
-Current working directory: /w0/tmp/slurm_tq429871.4466170/invocation-hblxpe4t
+Current working directory: /w0/tmp/slurm_tq429871.4818201/invocation-ajr0g8wr
 
 Time for model input parsing: 0.001s.
 
-Time for model construction: 1.062s.
+Time for model construction: 1.145s.
 
 -------------------------------------------------------------- 
 Model type: 	MDP (sparse)
@@ -60,10 +60,10 @@ Choice Labels: 	none
 
 Model checking property &quot;reach_max&quot;: Pmax=? [F &quot;goal&quot;] ...
 Result (for initial states): 0.9351250171
-Time for model checking: 14.353s.
+Time for model checking: 15.394s.
 
 ----------------------------------------
-Wallclock time:	15.448
+Wallclock time:	16.569
 Return code:	0
 </pre>
 </body></html>

@@ -27,23 +27,23 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">prism-sound &middot; mdpmec &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>7625</code></p>
 <p class="sub">reference result: <code>7625</code></p>
-<table class="meta"><tr><th>status</th><td>memout</td></tr><tr><th>wallclock time</th><td>17.579 s</td></tr><tr><th>states</th><td>963,020</td></tr></table>
+<table class="meta"><tr><th>status</th><td>memout</td></tr><tr><th>wallclock time</th><td>34.925 s</td></tr><tr><th>states</th><td>963,020</td></tr></table>
 <p class="sub">prism-sound_wlan-mec.3-0.cost_min.log</p>
-<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism wlan-mec.3.prism wlan-mec.props --prop cost_min -const COL=0 -maxiters 1000000 -intervaliter
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism wlan-mec.3.prism wlan-mec.props --prop cost_min -const COL=0 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 4g
 Benchmark:	wlan-mec.3-0.cost_min
 Configuration:	prism-sound
 Repetition:	1
 Time limit:	900
 Output:
-Picked up JAVA_TOOL_OPTIONS: -Xmx16g
+Picked up JAVA_TOOL_OPTIONS: -Xmx32g
 PRISM
 =====
 
 Version: 4.10.1
-Date: Sat Sep 26 01:14:15 GMT+02:00 2026
-Hostname: n23m0134.hpc.itc.rwth-aachen.de
-Memory limits: cudd=1g, java(heap)=16g
-Command line: prism wlan-mec.3.prism wlan-mec.props --prop cost_min -const COL=0 -maxiters 1000000 -intervaliter
+Date: Tue Oct 06 16:27:57 GMT+02:00 2026
+Hostname: n23m0110.hpc.itc.rwth-aachen.de
+Memory limits: cudd=4g, java(heap)=32g
+Command line: prism wlan-mec.3.prism wlan-mec.props --prop cost_min -const COL=0 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 4g
 
 Parsing PRISM model file &quot;wlan-mec.3.prism&quot;...
 
@@ -64,16 +64,18 @@ Parsing properties file &quot;wlan-mec.props&quot;...
 Model checking: &quot;cost_min&quot;: R{&quot;cost&quot;}min=? [ F s1=12&amp;s2=12 ]
 Model constants: COL=0
 
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
 Warning: Switching to explicit engine to allow interval iteration on Rmin operator.
 
 Building model (engine:explicit)...
 Model constants: COL=0
 
-Computing reachable states... 536129 963020 states
-Reachable states exploration and model construction done in 5.132 secs.
+Computing reachable states... 496865 963020 states
+Reachable states exploration and model construction done in 5.594 secs.
 Sorting reachable states list...
 
-Time for model construction: 6.069 seconds.
+Time for model construction: 6.599 seconds.
 
 Type:        MDP
 States:      963020 (1 initial)
@@ -84,12 +86,12 @@ Building reward structure...
 
 Starting expected reachability (min)...
 Starting Prob1 (max)...
-Prob1 (max) took 413 iterations and 5.346 seconds.
+Prob1 (max) took 413 iterations and 6.138 seconds.
 target=10, inf=0, rest=963010
 For Rmin, checking for zero-reward ECs...
 
 ----------------------------------------
-Wallclock time:	17.579
+Wallclock time:	34.925
 Return code:	-9
 </pre>
 </body></html>

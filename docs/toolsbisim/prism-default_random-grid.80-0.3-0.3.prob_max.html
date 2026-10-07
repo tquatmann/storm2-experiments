@@ -27,23 +27,23 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">prism-default &middot; mdpgridmec &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>9/49</code></p>
 <p class="sub">reference result: <code>0.1836734694</code></p>
-<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>5.559 s</td></tr><tr><th>result</th><td>0.18367212953662643</td></tr><tr><th>relative difference</th><td>7.29e-06</td></tr><tr><th>states</th><td>512,000</td></tr></table>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>7.676 s</td></tr><tr><th>result</th><td>0.18367212953662643</td></tr><tr><th>relative difference</th><td>7.29e-06</td></tr><tr><th>states</th><td>512,000</td></tr></table>
 <p class="sub">prism-default_random-grid.80-0.3-0.3.prob_max.log</p>
-<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism random-grid.prism random-grid.props --prop prob_max -const N=80,pover=0.3,pstay=0.3 -maxiters 1000000
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism random-grid.prism random-grid.props --prop prob_max -const N=80,pover=0.3,pstay=0.3 -maxiters 1000000 -cuddmaxmem 4g
 Benchmark:	random-grid.80-0.3-0.3.prob_max
 Configuration:	prism-default
 Repetition:	1
 Time limit:	900
 Output:
-Picked up JAVA_TOOL_OPTIONS: -Xmx16g
+Picked up JAVA_TOOL_OPTIONS: -Xmx32g
 PRISM
 =====
 
 Version: 4.10.1
-Date: Sat Sep 26 01:18:21 GMT+02:00 2026
-Hostname: r23m0122.hpc.itc.rwth-aachen.de
-Memory limits: cudd=1g, java(heap)=16g
-Command line: prism random-grid.prism random-grid.props --prop prob_max -const 'N=80,pover=0.3,pstay=0.3' -maxiters 1000000
+Date: Tue Oct 06 16:22:27 GMT+02:00 2026
+Hostname: r23m0212.hpc.itc.rwth-aachen.de
+Memory limits: cudd=4g, java(heap)=32g
+Command line: prism random-grid.prism random-grid.props --prop prob_max -const 'N=80,pover=0.3,pstay=0.3' -maxiters 1000000 -cuddmaxmem 4g
 
 Parsing PRISM model file &quot;random-grid.prism&quot;...
 
@@ -71,7 +71,7 @@ Computing reachable states...
 
 Reachability (BFS): 121 iterations in 0.01 seconds (average 0.000083, setup 0.00)
 
-Time for model construction: 0.04 seconds.
+Time for model construction: 0.076 seconds.
 
 Type:        MDP
 States:      512000 (1 initial)
@@ -79,7 +79,7 @@ Transitions: 9100800
 
 Transition matrix: 597 nodes (5 terminal), 9100800 minterms, vars: 21r/21c/3nd
 
-Prob0A: 121 iterations in 0.03 seconds (average 0.000248, setup 0.00)
+Prob0A: 121 iterations in 0.04 seconds (average 0.000331, setup 0.00)
 
 Prob1E: 86 iterations in 0.01 seconds (average 0.000116, setup 0.00)
 
@@ -95,18 +95,19 @@ Allocating iteration vectors... [3 x 3.9 MB]
 TOTAL: [16.2 MB]
 
 Starting iterations...
+Iteration 215: max relative diff=0.000336, 5.01 sec so far
 
-Iterative method: 265 iterations in 5.01 seconds (average 0.018830, setup 0.02)
+Iterative method: 265 iterations in 6.18 seconds (average 0.023208, setup 0.03)
 
 Value in the initial state: 0.18367212953662643
 
-Time for model checking: 5.074 seconds.
+Time for model checking: 6.281 seconds.
 
 Result: 0.18367212953662643 (+/- 1.735951663605486E-6 estimated; rel err 9.451361336012148E-6)
 
 
 ----------------------------------------
-Wallclock time:	5.559
+Wallclock time:	7.676
 Return code:	0
 </pre>
 </body></html>

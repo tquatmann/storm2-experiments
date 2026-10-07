@@ -27,7 +27,7 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">storm-sound-bisim &middot; mdpqvbs &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>5508217626823953517/4584682012849209344</code></p>
 <p class="sub">reference result: <code>1.201439404</code></p>
-<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>6.217 s</td></tr><tr><th>result</th><td>1.201439404</td></tr><tr><th>relative difference</th><td>3.23e-10</td></tr><tr><th>states</th><td>1,295,218</td></tr><tr><th>states after preprocessing</th><td>463,123</td></tr></table>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>5.389 s</td></tr><tr><th>result</th><td>1.201439404</td></tr><tr><th>relative difference</th><td>3.23e-10</td></tr><tr><th>states</th><td>1,295,218</td></tr><tr><th>states after preprocessing</th><td>463,123</td></tr></table>
 <p class="sub">storm-sound-bisim_wlan.5-0.num_collisions.log</p>
 <pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/storm --jani wlan.5.jani --janiproperty num_collisions --constants COL=0 --sound --bisimulation
 Benchmark:	wlan.5-0.num_collisions
@@ -37,13 +37,13 @@ Time limit:	900
 Output:
 Storm 1.14.0 (dev)
 
-Date: Sat Sep 26 01:05:57 2026
+Date: Tue Oct  6 16:27:18 2026
 Command line arguments: --jani wlan.5.jani --janiproperty num_collisions --constants COL=0 --sound --bisimulation
-Current working directory: /w0/tmp/slurm_tq429871.4466561/invocation-yxf4g849
+Current working directory: /w0/tmp/slurm_tq429871.4818640/invocation-2i7q2auh
 
-Time for model input parsing: 0.009s.
+Time for model input parsing: 0.007s.
 
-Time for model construction: 3.892s.
+Time for model construction: 3.546s.
 
 -------------------------------------------------------------- 
 Model type: 	MDP (sparse)
@@ -58,7 +58,7 @@ State Labels: 	3 labels
 Choice Labels: 	none
 -------------------------------------------------------------- 
 
-Time for model preprocessing: 2.027s.
+Time for model preprocessing: 1.581s.
 
 -------------------------------------------------------------- 
 Model type: 	MDP (sparse)
@@ -74,10 +74,10 @@ Choice Labels: 	none
 
 Model checking property &quot;num_collisions&quot;: R{&quot;collisions&quot;}max=? [F ((s1 = 12) &amp; (s2 = 12))] ...
 Result (for initial states): 1.201439404
-Time for model checking: 0.251s.
+Time for model checking: 0.216s.
 
 ----------------------------------------
-Wallclock time:	6.217
+Wallclock time:	5.389
 Return code:	0
 </pre>
 </body></html>

@@ -27,23 +27,23 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">prism-default &middot; mdpmec &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>1/2</code></p>
 <p class="sub">reference result: <code>0.5</code></p>
-<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>41.254 s</td></tr><tr><th>result</th><td>0.4999761113420298</td></tr><tr><th>relative difference</th><td>4.78e-05</td></tr><tr><th>states</th><td>30,002</td></tr></table>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>52.968 s</td></tr><tr><th>result</th><td>0.4999761113420298</td></tr><tr><th>relative difference</th><td>4.78e-05</td></tr><tr><th>states</th><td>30,002</td></tr></table>
 <p class="sub">prism-default_manymecs.10000.prob_max.log</p>
-<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism manymecs.prism manymecs.props --prop prob_max -const N=10000 -maxiters 1000000
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism manymecs.prism manymecs.props --prop prob_max -const N=10000 -maxiters 1000000 -cuddmaxmem 4g
 Benchmark:	manymecs.10000.prob_max
 Configuration:	prism-default
 Repetition:	1
 Time limit:	900
 Output:
-Picked up JAVA_TOOL_OPTIONS: -Xmx16g
+Picked up JAVA_TOOL_OPTIONS: -Xmx32g
 PRISM
 =====
 
 Version: 4.10.1
-Date: Sat Sep 26 01:08:02 GMT+02:00 2026
-Hostname: n23m0128.hpc.itc.rwth-aachen.de
-Memory limits: cudd=1g, java(heap)=16g
-Command line: prism manymecs.prism manymecs.props --prop prob_max -const N=10000 -maxiters 1000000
+Date: Tue Oct 06 16:35:56 GMT+02:00 2026
+Hostname: n23m0048.hpc.itc.rwth-aachen.de
+Memory limits: cudd=4g, java(heap)=32g
+Command line: prism manymecs.prism manymecs.props --prop prob_max -const N=10000 -maxiters 1000000 -cuddmaxmem 4g
 
 Parsing PRISM model file &quot;manymecs.prism&quot;...
 
@@ -68,9 +68,9 @@ Model constants: N=10000
 
 Computing reachable states...
 
-Reachability (BFS): 20001 iterations in 0.29 seconds (average 0.000014, setup 0.00)
+Reachability (BFS): 20001 iterations in 0.30 seconds (average 0.000015, setup 0.00)
 
-Time for model construction: 4.774 seconds.
+Time for model construction: 14.35 seconds.
 
 Type:        MDP
 States:      30002 (1 initial)
@@ -78,7 +78,7 @@ Transitions: 90002
 
 Transition matrix: 388 nodes (5 terminal), 90002 minterms, vars: 17r/17c/4nd
 
-Prob0A: 20001 iterations in 0.56 seconds (average 0.000028, setup 0.00)
+Prob0A: 20001 iterations in 0.59 seconds (average 0.000029, setup 0.00)
 
 Prob1E: 4 iterations in 0.00 seconds (average 0.000000, setup 0.00)
 
@@ -94,25 +94,25 @@ Allocating iteration vectors... [3 x 234.4 KB]
 TOTAL: [1.2 MB]
 
 Starting iterations...
-Iteration 9895: max relative diff=2.000000, 5.01 sec so far
-Iteration 17205: max relative diff=inf, 10.02 sec so far
-Iteration 22937: max relative diff=inf, 15.03 sec so far
-Iteration 27725: max relative diff=inf, 20.04 sec so far
-Iteration 32362: max relative diff=0.500000, 25.05 sec so far
-Iteration 40416: max relative diff=0.187963, 30.06 sec so far
-Iteration 51097: max relative diff=0.000038, 35.07 sec so far
+Iteration 9564: max relative diff=inf, 5.01 sec so far
+Iteration 16783: max relative diff=2.000000, 10.02 sec so far
+Iteration 22354: max relative diff=inf, 15.03 sec so far
+Iteration 26972: max relative diff=3.000000, 20.04 sec so far
+Iteration 31172: max relative diff=0.500000, 25.05 sec so far
+Iteration 37469: max relative diff=0.287028, 30.06 sec so far
+Iteration 47308: max relative diff=0.040133, 35.07 sec so far
 
-Iterative method: 51527 iterations in 35.28 seconds (average 0.000685, setup 0.00)
+Iterative method: 51527 iterations in 37.28 seconds (average 0.000724, setup 0.00)
 
 Value in the initial state: 0.4999761113420298
 
-Time for model checking: 35.947 seconds.
+Time for model checking: 38.003 seconds.
 
 Result: 0.4999761113420298 (+/- 4.915114998893522E-6 estimated; rel err 9.830699682231677E-6)
 
 
 ----------------------------------------
-Wallclock time:	41.254
+Wallclock time:	52.968
 Return code:	0
 </pre>
 </body></html>

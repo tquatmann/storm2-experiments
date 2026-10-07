@@ -27,23 +27,23 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">prism-default &middot; mdpmec &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>1/2</code></p>
 <p class="sub">reference result: <code>0.5</code></p>
-<table class="meta"><tr><th>status</th><td>timeout</td></tr><tr><th>wallclock time</th><td>900.428 s</td></tr></table>
+<table class="meta"><tr><th>status</th><td>timeout</td></tr><tr><th>wallclock time</th><td>900.426 s</td></tr></table>
 <p class="sub">prism-default_bigmec.100000.prob_max.log</p>
-<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism bigmec.prism bigmec.props --prop prob_max -const N=100000 -maxiters 1000000
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism bigmec.prism bigmec.props --prop prob_max -const N=100000 -maxiters 1000000 -cuddmaxmem 4g
 Benchmark:	bigmec.100000.prob_max
 Configuration:	prism-default
 Repetition:	1
 Time limit:	900
 Output:
-Picked up JAVA_TOOL_OPTIONS: -Xmx16g
+Picked up JAVA_TOOL_OPTIONS: -Xmx32g
 PRISM
 =====
 
 Version: 4.10.1
-Date: Sat Sep 26 01:02:51 GMT+02:00 2026
-Hostname: r23m0058.hpc.itc.rwth-aachen.de
-Memory limits: cudd=1g, java(heap)=16g
-Command line: prism bigmec.prism bigmec.props --prop prob_max -const N=100000 -maxiters 1000000
+Date: Tue Oct 06 16:17:51 GMT+02:00 2026
+Hostname: n23m0135.hpc.itc.rwth-aachen.de
+Memory limits: cudd=4g, java(heap)=32g
+Command line: prism bigmec.prism bigmec.props --prop prob_max -const N=100000 -maxiters 1000000 -cuddmaxmem 4g
 
 Parsing PRISM model file &quot;bigmec.prism&quot;...
 
@@ -67,8 +67,8 @@ Building model (engine:symbolic)...
 Model constants: N=100000
 
 ----------------------------------------
-Wallclock time:	900.428
+Wallclock time:	900.426
 Return code:	None
-Computation aborted after 900.428 seconds since the time limit of 900 seconds was exceeded.
+Computation aborted after 900.426 seconds since the time limit of 900 seconds was exceeded.
 </pre>
 </body></html>

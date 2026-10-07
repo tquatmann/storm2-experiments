@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>prism-sound-explicit - manymecs.10000.prob_max</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>manymecs.10000.prob_max</h1>
+<p class="sub">prism-sound-explicit &middot; mdpmec &middot; <a href="index.html">back to the table</a></p>
+<p class="sub">reference result: <code>1/2</code></p>
+<p class="sub">reference result: <code>0.5</code></p>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>27.099 s</td></tr><tr><th>result</th><td>0.5000000000000694</td></tr><tr><th>relative difference</th><td>1.39e-13</td></tr><tr><th>states</th><td>30,002</td></tr><tr><th>states after preprocessing</th><td>10,002</td></tr></table>
+<p class="sub">prism-sound-explicit_manymecs.10000.prob_max.log</p>
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism manymecs.prism manymecs.props --prop prob_max -const N=10000 -maxiters 1000000 -intervaliter -heuristic speed -explicit
+Benchmark:	manymecs.10000.prob_max
+Configuration:	prism-sound-explicit
+Repetition:	1
+Time limit:	900
+Output:
+Picked up JAVA_TOOL_OPTIONS: -Xmx32g
+PRISM
+=====
+
+Version: 4.10.1
+Date: Tue Oct 06 16:22:27 GMT+02:00 2026
+Hostname: r23m0212.hpc.itc.rwth-aachen.de
+Memory limits: cudd=1g, java(heap)=32g
+Command line: prism manymecs.prism manymecs.props --prop prob_max -const N=10000 -maxiters 1000000 -intervaliter -heuristic speed -explicit
+
+Parsing PRISM model file &quot;manymecs.prism&quot;...
+
+Type:        MDP
+Modules:     player1
+Actions:     [] [a11] [a12] [a21] [a22]
+Variables:   state i
+Labels:      &quot;done&quot; &quot;p1win&quot; &quot;p2win&quot;
+
+Parsing properties file &quot;manymecs.props&quot;...
+
+1 property:
+(1) &quot;prob_max&quot;: Pmax=? [ F &quot;p1win&quot; ]
+
+---------------------------------------------------------------------
+
+Model checking: &quot;prob_max&quot;: Pmax=? [ F &quot;p1win&quot; ]
+Model constants: N=10000
+
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
+Building model (engine:symbolic)...
+Model constants: N=10000
+
+Computing reachable states...
+
+Reachability (BFS): 20001 iterations in 0.45 seconds (average 0.000022, setup 0.00)
+
+Time for model construction: 8.595 seconds.
+
+Type:        MDP
+States:      30002 (1 initial)
+Transitions: 90002
+
+Transition matrix: 388 nodes (5 terminal), 90002 minterms, vars: 17r/17c/4nd
+
+Prob0A: 20001 iterations in 0.81 seconds (average 0.000040, setup 0.00)
+
+Prob1E: 4 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+
+yes = 1, no = 1, maybe = 30000
+
+Computing remaining probabilities...
+Engine: Sparse
+
+Building quotient MDP, collapsing maximal end components as well as yes and no states...
+Time for computing maximal end components: 3.988 seconds, found 10000 MECs.
+Time for building MEC quotient: 7.943 seconds.
+
+Quotient MDP:
+States:      10002 (1 initial)
+Transitions: 40002
+
+Transition matrix: 192978 nodes (5 terminal), 40002 minterms, vars: 17r/17c/22nd
+Note: Interval iteration is configured to enforce monotonicity from below.
+
+Building sparse matrix... [n=10002, nc=20000, nnz=40000, k=2] [498.0 KB]
+Creating vector for yes... [78.1 KB]
+Creating vector for maybe... [78.1 KB]
+Allocating iteration vectors... [4 x 78.1 KB]
+TOTAL: [966.9 KB]
+
+Starting iterations (interval iteration)...
+Max relative diff between upper and lower bound on convergence: 9.88264E-07
+Iterative method (interval iteration): 25961 iterations in 4.38 seconds (average 0.000153, setup 0.40)
+
+Value in the initial state: 0.5000000000000694
+
+Time for model checking: 17.216 seconds.
+
+Result: 0.5000000000000694
+
+---------------------------------------------------------------------
+
+Note: There was 1 warning during computation.
+
+
+----------------------------------------
+Wallclock time:	27.099
+Return code:	0
+</pre>
+</body></html>

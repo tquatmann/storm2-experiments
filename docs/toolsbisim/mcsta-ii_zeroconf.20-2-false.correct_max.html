@@ -27,7 +27,7 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">mcsta-ii &middot; mdpqvbs &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>186137901729174268511065209171497320718694252975935739961231141070383297312458181231689761539699331000803/9251581321152439541256848521142356863865506387898411218420846883518125316026037895599741228066506366352800803</code></p>
 <p class="sub">reference result: <code>2.011957689e-05</code></p>
-<table class="meta"><tr><th>status</th><td>no-result</td></tr><tr><th>wallclock time</th><td>0.536 s</td></tr></table>
+<table class="meta"><tr><th>status</th><td>no-result</td></tr><tr><th>wallclock time</th><td>1.134 s</td></tr></table>
 <p class="sub">mcsta-ii_zeroconf.20-2-false.correct_max.log</p>
 <pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/modest mcsta zeroconf.jani --props correct_max --experiment N=20,K=2,reset=false --unsafe --store-mode Memory --alg IntervalIteration --width 1e-6 --relative-width
 Benchmark:	zeroconf.20-2-false.correct_max
@@ -52,7 +52,7 @@ Unhandled exception. System.NullReferenceException: Object reference not set to 
    at Modest.ModelChecking.MAModelChecker`1.CheckProperties(StateSpace ss, StateSet`1 states, Boolean[] reachAndInvariantPropertyResults, String experimentStatusString, OperationState operationState, ComponentErrorHandler ceh)
    at Modest.ModelChecking.MAModelChecker`1.ModelCheck(String experimentString, OperationState operationState, ComponentErrorHandler ceh)
    at Modest.ModelChecking.ModelCheckingAnalysisEngine.ModelCheckGeneric[T](Network`1 network, UmbModel umbModel, Object expInfoObj, String experimentString, Object propertiesObj, Object parametersObj, ILocation documentLocation, OperationState operationState, ComponentErrorHandler ceh)
-   at invoke Modest.Exploration.Network`1__CompiledAutomata.State1\, CompiledAutomata-20260926090331-1587964978\, Version=0.0.0.0\, Culture=neutral\, PublicKeyToken=null__ : Modest.StateSpace.UmbModel : System.Object : System.String : System.Object : System.Object : Modest.Modularity.ILocation : Modest.Modularity.OperationState : Modest.Modularity.ComponentErrorHandler : Modest.Modularity.AnalysisDataSet.GeneratedClass.DoInvoke(Object, Object[], MethodInfo)
+   at invoke Modest.Exploration.Network`1__CompiledAutomata.State1\, CompiledAutomata-20261006162226-1543367374\, Version=0.0.0.0\, Culture=neutral\, PublicKeyToken=null__ : Modest.StateSpace.UmbModel : System.Object : System.String : System.Object : System.Object : Modest.Modularity.ILocation : Modest.Modularity.OperationState : Modest.Modularity.ComponentErrorHandler : Modest.Modularity.AnalysisDataSet.GeneratedClass.DoInvoke(Object, Object[], MethodInfo)
    at Modest.ModelChecking.ModelCheckingAnalysisEngine.ModelCheck(IModel model, CompilationParameters compilationParams, Object parametersObj, OperationState operationState, IErrorHandler errors)
    at Modest.ModelChecking.ModelCheckingAnalysisEngine.Analyze(AnalysisParams analysisParameters, IModel[] models, Int32 index, Boolean isLast, Boolean useDtmcSemantics, Boolean isContinuousTimeMarkovModel, OperationState operationState, IErrorHandler errors)
    at Modest.ModelChecking.AnalysisEngine`1.Analyze(AP analysisParameters, IModel model, Int32 index, Boolean isLast, IExperiment[] modelParameters, OperationState operationState, IErrorHandler errors)
@@ -61,7 +61,7 @@ Unhandled exception. System.NullReferenceException: Object reference not set to 
    at Modest.Executable.Program.Main(String[] args)
 
 ----------------------------------------
-Wallclock time:	0.536
+Wallclock time:	1.134
 Return code:	-6
 </pre>
 </body></html>

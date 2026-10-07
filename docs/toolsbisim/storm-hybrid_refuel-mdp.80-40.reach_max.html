@@ -27,7 +27,7 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">storm-hybrid &middot; mdpgridmec &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>3653380653778819704498802052281330342937979832521752121999684138390592205782461/3681807200483612150698388711959446722028150995086913681600000000000000000000000</code></p>
 <p class="sub">reference result: <code>0.9922791865</code></p>
-<table class="meta"><tr><th>status</th><td>incorrect</td></tr><tr><th>wallclock time</th><td>21.757 s</td></tr><tr><th>result</th><td>0.8814608774</td></tr><tr><th>relative difference</th><td><span class="bad">0.112 &gt; 1e-3</span></td></tr><tr><th>states</th><td>161,070</td></tr></table>
+<table class="meta"><tr><th>status</th><td>incorrect</td></tr><tr><th>wallclock time</th><td>24.067 s</td></tr><tr><th>result</th><td>0.8814608774</td></tr><tr><th>relative difference</th><td><span class="bad">0.112 &gt; 1e-3</span></td></tr><tr><th>states</th><td>161,070</td></tr></table>
 <p class="sub">storm-hybrid_refuel-mdp.80-40.reach_max.log</p>
 <pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/storm --jani refuel-mdp.jani --janiproperty reach_max --constants N=80,ENERGY=40 --engine hybrid
 Benchmark:	refuel-mdp.80-40.reach_max
@@ -37,15 +37,15 @@ Time limit:	900
 Output:
 Storm 1.14.0 (dev)
 
-Date: Sat Sep 26 01:12:10 2026
+Date: Tue Oct  6 16:21:45 2026
 Command line arguments: --jani refuel-mdp.jani --janiproperty reach_max --constants 'N=80,ENERGY=40' --engine hybrid
-Current working directory: /w0/tmp/slurm_tq429871.4466819/invocation-dbq7oj1w
+Current working directory: /w0/tmp/slurm_tq429871.4818249/invocation-v7lynfbf
 
-Time for model input parsing: 0.001s.
+Time for model input parsing: 0.002s.
 
 WARN  (threads.cpp:21): Detected thread limitation via Slurm (max. 4 threads.)
 Using Sylvan with 4 parallel threads.
-Time for model construction: 0.416s.
+Time for model construction: 0.472s.
 
 -------------------------------------------------------------- 
 Model type: 	MDP (symbolic)
@@ -62,10 +62,10 @@ Labels: 	3
 
 Model checking property &quot;reach_max&quot;: Pmax=? [F &quot;goal&quot;] ...
 Result (for initial states): 0.8814608774
-Time for model checking: 21.245s.
+Time for model checking: 22.769s.
 
 ----------------------------------------
-Wallclock time:	21.757
+Wallclock time:	24.067
 Return code:	0
 </pre>
 </body></html>

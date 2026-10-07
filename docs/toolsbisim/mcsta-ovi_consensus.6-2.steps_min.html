@@ -27,7 +27,7 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">mcsta-ovi &middot; mdpqvbs &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>432</code></p>
 <p class="sub">reference result: <code>432</code></p>
-<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>17.795 s</td></tr><tr><th>result</th><td>431.9999603635837</td></tr><tr><th>relative difference</th><td>9.18e-08</td></tr><tr><th>states</th><td>1,258,240</td></tr></table>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>20.586 s</td></tr><tr><th>result</th><td>431.9999603635837</td></tr><tr><th>relative difference</th><td>9.18e-08</td></tr><tr><th>states</th><td>1,258,240</td></tr></table>
 <p class="sub">mcsta-ovi_consensus.6-2.steps_min.log</p>
 <pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/modest mcsta consensus.6.jani --props steps_min --experiment K=2 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
 Benchmark:	consensus.6-2.steps_min
@@ -52,7 +52,7 @@ consensus.6.jani: info: Need 24 bytes per state.
 consensus.6.jani: info: Explored 1258240 states for K=2.
 consensus.6.jani:properties[4]: warning: Computing minimum expected reward in property &quot;steps_min&quot; without checking for zero-reward end components.
 
-Peak memory usage: 1138 MB
+Peak memory usage: 932 MB
 Analysis results for consensus.6.jani
 Experiment K=2
 
@@ -61,13 +61,13 @@ Experiment K=2
   States:     1258240
   Choices:    5008128
   Branches:   6236736
-  Rate:       308846 states/s
-  Time:       4.2 s
+  Rate:       260559 states/s
+  Time:       5.0 s
 
 + Property steps_min
   Value:  431.9999603635837
   Bounds: [431.9995687977187, 432.00035192944864]
-  Time:   13.4 s
+  Time:   15.4 s
 
   + Precomputations
     Max. prob. 1 states:          1258240
@@ -78,11 +78,11 @@ Experiment K=2
     Verif. attempts:   5
     Verif. iterations: 58
     Final epsilon:     2.0315572525700342E-08
-    Time:              13.3 s
+    Time:              15.3 s
 
 
 ----------------------------------------
-Wallclock time:	17.795
+Wallclock time:	20.586
 Return code:	0
 </pre>
 </body></html>

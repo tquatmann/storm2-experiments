@@ -27,7 +27,7 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">mcsta-ii &middot; ptaqvbs &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>33961997/1008</code></p>
 <p class="sub">reference result: <code>33692.45734</code></p>
-<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>35.861 s</td></tr><tr><th>result</th><td>33692.49003133041</td></tr><tr><th>relative difference</th><td>9.7e-07</td></tr><tr><th>states</th><td>3,189,783</td></tr></table>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>40.078 s</td></tr><tr><th>result</th><td>33692.49003133041</td></tr><tr><th>relative difference</th><td>9.7e-07</td></tr><tr><th>states</th><td>3,189,783</td></tr></table>
 <p class="sub">mcsta-ii_wlan-large.2.E_or.log</p>
 <pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/modest mcsta wlan-large-mdp.jani --props E_or --experiment K=2 --unsafe --store-mode Memory --alg IntervalIteration --width 1e-6 --relative-width
 Benchmark:	wlan-large.2.E_or
@@ -45,7 +45,7 @@ wlan-large-mdp.jani:model: info: wlan-large is an MDP model.
 wlan-large-mdp.jani: info: Need 16 bytes per state.
 wlan-large-mdp.jani: info: Explored 3189783 states for K=2.
 
-Peak memory usage: 1398 MB
+Peak memory usage: 1394 MB
 Analysis results for wlan-large-mdp.jani
 Experiment K=2
 
@@ -54,27 +54,27 @@ Experiment K=2
   States:     3189783
   Choices:    6045235
   Branches:   6065855
-  Rate:       788769 states/s
-  Time:       4.2 s
+  Rate:       688938 states/s
+  Time:       4.8 s
 
 + Property E_or
   Value:  33692.49003133041
   Bounds: [33692.45724910479, 33692.52281355604]
-  Time:   31.0 s
+  Time:   34.8 s
 
   + Precomputations
     Min. prob. 0 states:          0
-    Time for min. prob. 0 states: 0.5 s
+    Time for min. prob. 0 states: 0.6 s
     Min. prob. 1 states:          3189783
     Time for min. prob. 1 states: 0.0 s
 
   + Interval iteration
     Iterations: 345
-    Time:       30.4 s
+    Time:       34.2 s
 
 
 ----------------------------------------
-Wallclock time:	35.861
+Wallclock time:	40.078
 Return code:	0
 </pre>
 </body></html>

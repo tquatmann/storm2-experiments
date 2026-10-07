@@ -27,7 +27,7 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">mcsta-ii &middot; mdpqvbs &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>2840810748552740279694928513142000863365232359679800085379472902667574085309048020135761868039647573461067228959176815764668923310585051589104065280176703779807146020406965667529812280290489677709787360818206244936956391217134097637438886859966191043793623483790104465593873559121156447826680835906538964773285601061080008518088560193737478197873361157279597996465923712642745166188551293827884733670169400134426534581495003598366746377292908623904714500266657760388702565269047947842610042489938676584500706648415374125500124850587550741116894561042794690410137909010366958825165707221050453349866618677249552401311775610443165106927696973651709552624581153878268178003642170950274029085511750624413606368139766048061736089062147504345964572393890534364938482866043866926754769962831/3003620130846700935142995665916801926400554684851878984955756869483485402777472742451853239803832753463766532527467026689258061040573995945045234722568165531989575271860745348021388676627669082255879057205406630912976146424854290475933260580414808337261495220134538082872213381060726238995044818984719961714160517416953923076697225447987305871297310257950585135502306039640746967120322603799240090428376231688795351889114479198047020271064760914794725216206545086828661466576765563376393103295341609148554897591799927601850890452562693902320517807686832074086119793466144924449643167143146954425515557427208163544214300893571196078188639327953565459641936090657367989357992788710089162787606206004048111054383078415978928995191785201236087970724198227044295089673548205838532266926754769962831</code></p>
 <p class="sub">reference result: <code>9.457956149e-10</code></p>
-<table class="meta"><tr><th>status</th><td>no-result</td></tr><tr><th>wallclock time</th><td>2.784 s</td></tr></table>
+<table class="meta"><tr><th>status</th><td>no-result</td></tr><tr><th>wallclock time</th><td>2.659 s</td></tr></table>
 <p class="sub">mcsta-ii_zeroconf.20-8-false.correct_max.log</p>
 <pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/modest mcsta zeroconf.jani --props correct_max --experiment N=20,K=8,reset=false --unsafe --store-mode Memory --alg IntervalIteration --width 1e-6 --relative-width
 Benchmark:	zeroconf.20-8-false.correct_max
@@ -52,7 +52,7 @@ Unhandled exception. System.NullReferenceException: Object reference not set to 
    at Modest.ModelChecking.MAModelChecker`1.CheckProperties(StateSpace ss, StateSet`1 states, Boolean[] reachAndInvariantPropertyResults, String experimentStatusString, OperationState operationState, ComponentErrorHandler ceh)
    at Modest.ModelChecking.MAModelChecker`1.ModelCheck(String experimentString, OperationState operationState, ComponentErrorHandler ceh)
    at Modest.ModelChecking.ModelCheckingAnalysisEngine.ModelCheckGeneric[T](Network`1 network, UmbModel umbModel, Object expInfoObj, String experimentString, Object propertiesObj, Object parametersObj, ILocation documentLocation, OperationState operationState, ComponentErrorHandler ceh)
-   at invoke Modest.Exploration.Network`1__CompiledAutomata.State1\, CompiledAutomata-20260926090605-2146123329\, Version=0.0.0.0\, Culture=neutral\, PublicKeyToken=null__ : Modest.StateSpace.UmbModel : System.Object : System.String : System.Object : System.Object : Modest.Modularity.ILocation : Modest.Modularity.OperationState : Modest.Modularity.ComponentErrorHandler : Modest.Modularity.AnalysisDataSet.GeneratedClass.DoInvoke(Object, Object[], MethodInfo)
+   at invoke Modest.Exploration.Network`1__CompiledAutomata.State1\, CompiledAutomata-20261006163555-507496180\, Version=0.0.0.0\, Culture=neutral\, PublicKeyToken=null__ : Modest.StateSpace.UmbModel : System.Object : System.String : System.Object : System.Object : Modest.Modularity.ILocation : Modest.Modularity.OperationState : Modest.Modularity.ComponentErrorHandler : Modest.Modularity.AnalysisDataSet.GeneratedClass.DoInvoke(Object, Object[], MethodInfo)
    at Modest.ModelChecking.ModelCheckingAnalysisEngine.ModelCheck(IModel model, CompilationParameters compilationParams, Object parametersObj, OperationState operationState, IErrorHandler errors)
    at Modest.ModelChecking.ModelCheckingAnalysisEngine.Analyze(AnalysisParams analysisParameters, IModel[] models, Int32 index, Boolean isLast, Boolean useDtmcSemantics, Boolean isContinuousTimeMarkovModel, OperationState operationState, IErrorHandler errors)
    at Modest.ModelChecking.AnalysisEngine`1.Analyze(AP analysisParameters, IModel model, Int32 index, Boolean isLast, IExperiment[] modelParameters, OperationState operationState, IErrorHandler errors)
@@ -61,7 +61,7 @@ Unhandled exception. System.NullReferenceException: Object reference not set to 
    at Modest.Executable.Program.Main(String[] args)
 
 ----------------------------------------
-Wallclock time:	2.784
+Wallclock time:	2.659
 Return code:	-6
 </pre>
 </body></html>

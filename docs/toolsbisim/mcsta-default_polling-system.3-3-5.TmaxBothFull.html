@@ -27,7 +27,7 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">mcsta-default &middot; maqvbs &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>656520718285914541189633/104245454153608704</code></p>
 <p class="sub">reference result: <code>6297835.466</code></p>
-<table class="meta"><tr><th>status</th><td>incorrect</td></tr><tr><th>wallclock time</th><td>58.702 s</td></tr><tr><th>result</th><td>1039204.2942845579</td></tr><tr><th>relative difference</th><td><span class="bad">0.835 &gt; 1e-3</span></td></tr><tr><th>states</th><td>10,934</td></tr></table>
+<table class="meta"><tr><th>status</th><td>incorrect</td></tr><tr><th>wallclock time</th><td>68.706 s</td></tr><tr><th>result</th><td>1039204.2942845579</td></tr><tr><th>relative difference</th><td><span class="bad">0.835 &gt; 1e-3</span></td></tr><tr><th>states</th><td>10,934</td></tr></table>
 <p class="sub">mcsta-default_polling-system.3-3-5.TmaxBothFull.log</p>
 <pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/modest mcsta polling-system.3.jani --props TmaxBothFull --experiment C=3,TIME_BOUND=5 --unsafe --store-mode Memory
 Benchmark:	polling-system.3-3-5.TmaxBothFull
@@ -54,13 +54,13 @@ Experiment C=3, TIME_BOUND=5.0
   States:          10934
   Choices:         19870
   Branches:        23312
-  Rate:            147757 states/s
+  Rate:            131735 states/s
   Time:            0.1 s
 
 + Property TmaxBothFull
   Value:  1039204.2942845579
   Bounds: [1039204.2942845579, infinity)
-  Time:   58.4 s
+  Time:   68.4 s
 
   + Precomputations
     Min. prob. 0 states:          0
@@ -71,11 +71,11 @@ Experiment C=3, TIME_BOUND=5.0
   + Value iteration
     Final error: 9.999997422794456E-07
     Iterations:  912550
-    Time:        58.4 s
+    Time:        68.4 s
 
 
 ----------------------------------------
-Wallclock time:	58.702
+Wallclock time:	68.706
 Return code:	0
 </pre>
 </body></html>

@@ -27,23 +27,23 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">prism-sound &middot; mdpqvbs &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>553/4</code></p>
 <p class="sub">reference result: <code>138.25</code></p>
-<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>181.417 s</td></tr><tr><th>result</th><td>138.25</td></tr><tr><th>relative difference</th><td>0</td></tr><tr><th>states</th><td>6,932,041</td></tr></table>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>164.565 s</td></tr><tr><th>result</th><td>138.25</td></tr><tr><th>relative difference</th><td>0</td></tr><tr><th>states</th><td>6,932,041</td></tr></table>
 <p class="sub">prism-sound_firewire.true-36-200.time_min.log</p>
-<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism firewire.true.prism firewire.true.props --prop time_min -const delay=36,deadline=200 -maxiters 1000000 -intervaliter
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism firewire.true.prism firewire.true.props --prop time_min -const delay=36,deadline=200 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 4g
 Benchmark:	firewire.true-36-200.time_min
 Configuration:	prism-sound
 Repetition:	1
 Time limit:	900
 Output:
-Picked up JAVA_TOOL_OPTIONS: -Xmx16g
+Picked up JAVA_TOOL_OPTIONS: -Xmx32g
 PRISM
 =====
 
 Version: 4.10.1
-Date: Sat Sep 26 01:10:37 GMT+02:00 2026
-Hostname: n23m0358.hpc.itc.rwth-aachen.de
-Memory limits: cudd=1g, java(heap)=16g
-Command line: prism firewire.true.prism firewire.true.props --prop time_min -const 'delay=36,deadline=200' -maxiters 1000000 -intervaliter
+Date: Tue Oct 06 16:21:44 GMT+02:00 2026
+Hostname: n23m0118.hpc.itc.rwth-aachen.de
+Memory limits: cudd=4g, java(heap)=32g
+Command line: prism firewire.true.prism firewire.true.props --prop time_min -const 'delay=36,deadline=200' -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 4g
 
 Parsing PRISM model file &quot;firewire.true.prism&quot;...
 
@@ -68,16 +68,18 @@ Parsing properties file &quot;firewire.true.props&quot;...
 Model checking: &quot;time_min&quot;: R{&quot;time&quot;}min=? [ F &quot;done&quot; ]
 Model constants: deadline=200,delay=36
 
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
 Warning: Switching to explicit engine to allow interval iteration on Rmin operator.
 
 Building model (engine:explicit)...
 Model constants: deadline=200,delay=36
 
-Computing reachable states... 479844 971357 1444756 1900982 2395272 2863380 3259808 3633831 4045787 4421998 4766385 5134525 5531785 5897310 6231214 6570534 6932041 states
-Reachable states exploration and model construction done in 51.018 secs.
+Computing reachable states... 511755 975870 1424624 1883415 2428042 2919083 3380096 3838316 4282665 4704194 5118894 5571428 5964223 6413264 6795227 6932041 states
+Reachable states exploration and model construction done in 45.909 secs.
 Sorting reachable states list...
 
-Time for model construction: 62.048 seconds.
+Time for model construction: 56.595 seconds.
 
 Type:        MDP
 States:      6932041 (1 initial)
@@ -88,46 +90,45 @@ Building reward structure...
 
 Starting expected reachability (min)...
 Starting Prob1 (max)...
-Prob1 (max) took 168 iterations and 13.819 seconds.
+Prob1 (max) took 168 iterations and 13.608 seconds.
 target=252, inf=0, rest=6931789
 For Rmin, checking for zero-reward ECs...
-Time for checking for zero-reward ECs: 1.552 seconds, no zero-reward ECs found, proceeding normally.
+Time for checking for zero-reward ECs: 1.371 seconds, no zero-reward ECs found, proceeding normally.
 Computing upper bound(s) for Rmin using the Dijkstra Sweep for Monotone Pessimistic Initialization algorithm...
-Calculating incoming choices relation for Markov decision process...  done (0.568 seconds)
-Time for computing upper bound(s) for Rmin using the DSI-MP algorithm: 10.311 seconds.
+Calculating incoming choices relation for Markov decision process...  done (0.48 seconds)
+Time for computing upper bound(s) for Rmin using the DSI-MP algorithm: 10.047 seconds.
 Upper bound for min expectation (Dijkstra Sweep MPI): 159.0
 Starting Prob1 (min)...
-Prob1 (min) took 421 iterations and 35.175 seconds.
+Prob1 (min) took 421 iterations and 28.815 seconds.
 Relevant sub-MDP is contracting, proceed...
 Starting interval iteration (min, with Power method)...
-Iteration 15: max relative diff=16.6666666667, 5.13 sec so far
-Iteration 31: max relative diff=5.36, 10.40 sec so far
-Iteration 46: max relative diff=2.975, 15.44 sec so far
-Iteration 61: max relative diff=1.89090909091, 20.46 sec so far
-Iteration 77: max relative diff=1.23943661972, 25.78 sec so far
-Iteration 92: max relative diff=0.827586206897, 30.83 sec so far
-Iteration 107: max relative diff=0.558823529412, 35.90 sec so far
-Iteration 122: max relative diff=0.358974358974, 40.94 sec so far
-Iteration 137: max relative diff=0.218390804598, 45.96 sec so far
-Iteration 153: max relative diff=0.0853242320819, 51.27 sec so far
+Iteration 17: max relative diff=13.4545454545, 5.11 sec so far
+Iteration 34: max relative diff=4.67857142857, 10.31 sec so far
+Iteration 51: max relative diff=2.53333333333, 15.39 sec so far
+Iteration 68: max relative diff=1.56451612903, 20.54 sec so far
+Iteration 85: max relative diff=1.05825242718, 25.72 sec so far
+Iteration 102: max relative diff=0.639175257732, 30.83 sec so far
+Iteration 119: max relative diff=0.394736842105, 36.05 sec so far
+Iteration 136: max relative diff=0.227799227799, 41.15 sec so far
+Iteration 153: max relative diff=0.0853242320819, 46.25 sec so far
 Max relative diff between upper and lower bound on convergence: 0
-Interval iteration (min, with Power method) took 167 iterations, 5271435160 multiplications and 56.131 seconds.
+Interval iteration (min, with Power method) took 167 iterations, 5271435160 multiplications and 50.726 seconds.
 Maximum finite value in solution vector at end of interval iteration: 159.0
-Expected reachability took 117.099 seconds.
+Expected reachability took 104.678 seconds.
 
 Value in the initial state: 138.25
 
-Time for model checking: 118.778 seconds.
+Time for model checking: 106.365 seconds.
 
 Result: 138.25 (exact floating point)
 
 ---------------------------------------------------------------------
 
-Note: There was 1 warning during computation.
+Note: There were 2 warnings during computation.
 
 
 ----------------------------------------
-Wallclock time:	181.417
+Wallclock time:	164.565
 Return code:	0
 </pre>
 </body></html>

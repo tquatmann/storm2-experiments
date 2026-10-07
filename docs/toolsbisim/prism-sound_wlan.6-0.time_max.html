@@ -27,23 +27,23 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">prism-sound &middot; mdpqvbs &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>37448939728860673819103673575/9643090804763889235918848</code></p>
 <p class="sub">reference result: <code>3883.499646</code></p>
-<table class="meta"><tr><th>status</th><td>no-result</td></tr><tr><th>wallclock time</th><td>189.169 s</td></tr><tr><th>states</th><td>5,007,548</td></tr></table>
+<table class="meta"><tr><th>status</th><td>no-result</td></tr><tr><th>wallclock time</th><td>314.407 s</td></tr><tr><th>states</th><td>5,007,548</td></tr></table>
 <p class="sub">prism-sound_wlan.6-0.time_max.log</p>
-<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism wlan.6.prism wlan.props --prop time_max -const COL=0 -maxiters 1000000 -intervaliter
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism wlan.6.prism wlan.props --prop time_max -const COL=0 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 4g
 Benchmark:	wlan.6-0.time_max
 Configuration:	prism-sound
 Repetition:	1
 Time limit:	900
 Output:
-Picked up JAVA_TOOL_OPTIONS: -Xmx16g
+Picked up JAVA_TOOL_OPTIONS: -Xmx32g
 PRISM
 =====
 
 Version: 4.10.1
-Date: Sat Sep 26 01:16:18 GMT+02:00 2026
-Hostname: n23m0134.hpc.itc.rwth-aachen.de
-Memory limits: cudd=1g, java(heap)=16g
-Command line: prism wlan.6.prism wlan.props --prop time_max -const COL=0 -maxiters 1000000 -intervaliter
+Date: Tue Oct 06 16:22:27 GMT+02:00 2026
+Hostname: r23m0210.hpc.itc.rwth-aachen.de
+Memory limits: cudd=4g, java(heap)=32g
+Command line: prism wlan.6.prism wlan.props --prop time_max -const COL=0 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 4g
 
 Parsing PRISM model file &quot;wlan.6.prism&quot;...
 
@@ -69,14 +69,16 @@ Parsing properties file &quot;wlan.props&quot;...
 Model checking: &quot;time_max&quot;: R{&quot;time&quot;}max=? [ F s1=12&amp;s2=12 ]
 Model constants: COL=0
 
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
 Building model (engine:symbolic)...
 Model constants: COL=0
 
 Computing reachable states...
 
-Reachability (BFS): 195 iterations in 0.29 seconds (average 0.001487, setup 0.00)
+Reachability (BFS): 195 iterations in 0.33 seconds (average 0.001692, setup 0.00)
 
-Time for model construction: 0.35 seconds.
+Time for model construction: 0.43 seconds.
 
 Type:        MDP
 States:      5007548 (1 initial)
@@ -84,9 +86,9 @@ Transitions: 11475748
 
 Transition matrix: 20377 nodes (8 terminal), 11475748 minterms, vars: 47r/47c/7nd
 
-Prob0E: 3158 iterations in 51.01 seconds (average 0.016153, setup 0.00)
+Prob0E: 3158 iterations in 70.25 seconds (average 0.022245, setup 0.00)
 
-Prob1A: 1 iterations in 0.01 seconds (average 0.010000, setup 0.00)
+Prob1A: 1 iterations in 0.00 seconds (average 0.000000, setup 0.00)
 
 goal = 1, inf = 0, maybe = 5007547
 
@@ -115,7 +117,7 @@ Error: Out of memory (or other internal error) in the CUDD library.
 Tip: Try using the -cuddmaxmem switch to increase the memory available to CUDD.
 
 ----------------------------------------
-Wallclock time:	189.169
+Wallclock time:	314.407
 Return code:	1
 </pre>
 </body></html>

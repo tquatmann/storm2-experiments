@@ -25,7 +25,7 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 
 <h1>readers-writers.40.exp_time_many_requests</h1>
 <p class="sub">storm-default &middot; maqvbs &middot; <a href="index.html">back to the table</a></p>
-<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>7.267 s</td></tr><tr><th>result</th><td>3.72931331</td></tr><tr><th>states</th><td>1,884,366</td></tr><tr><th>states after preprocessing</th><td>1,884,366</td></tr></table>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>7.535 s</td></tr><tr><th>result</th><td>3.72931331</td></tr><tr><th>states</th><td>1,884,366</td></tr><tr><th>states after preprocessing</th><td>1,884,366</td></tr></table>
 <p class="sub">storm-default_readers-writers.40.exp_time_many_requests.log</p>
 <pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/storm --jani readers-writers.40.jani --janiproperty exp_time_many_requests
 Benchmark:	readers-writers.40.exp_time_many_requests
@@ -35,13 +35,13 @@ Time limit:	900
 Output:
 Storm 1.14.0 (dev)
 
-Date: Sat Sep 26 00:56:08 2026
+Date: Tue Oct  6 16:40:36 2026
 Command line arguments: --jani readers-writers.40.jani --janiproperty exp_time_many_requests
-Current working directory: /w0/tmp/slurm_tq429871.4466159/invocation-6d2_ee9v
+Current working directory: /w0/tmp/slurm_tq429871.4819396/invocation-h9qoh6bf
 
 Time for model input parsing: 0.001s.
 
-Time for model construction: 2.958s.
+Time for model construction: 2.913s.
 
 -------------------------------------------------------------- 
 Model type: 	Markov Automaton (sparse)
@@ -77,10 +77,10 @@ Choice Labels: 	none
 
 Model checking property &quot;exp_time_many_requests&quot;: Tmin=? [F (((p_lan_w + p_w) + (p_lan_r + p_r)) &gt; (320 / 10))] ...
 Result (for initial states): 3.72931331
-Time for model checking: 4.270s.
+Time for model checking: 4.589s.
 
 ----------------------------------------
-Wallclock time:	7.267
+Wallclock time:	7.535
 Return code:	0
 </pre>
 </body></html>

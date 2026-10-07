@@ -27,23 +27,23 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">prism-default &middot; mdpqvbs &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>322687697779/64024000322687697779</code></p>
 <p class="sub">reference result: <code>5.040105213e-09</code></p>
-<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>63.915 s</td></tr><tr><th>result</th><td>5.04010521292984E-9</td></tr><tr><th>relative difference</th><td>7.4e-17</td></tr><tr><th>states</th><td>1,870,338</td></tr></table>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>63.148 s</td></tr><tr><th>result</th><td>5.04010521292984E-9</td></tr><tr><th>relative difference</th><td>7.4e-17</td></tr><tr><th>states</th><td>1,870,338</td></tr></table>
 <p class="sub">prism-default_zeroconf.1000-8-false.correct_min.log</p>
-<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism zeroconf.prism zeroconf.props --prop correct_min -const N=1000,K=8,reset=false -maxiters 1000000
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism zeroconf.prism zeroconf.props --prop correct_min -const N=1000,K=8,reset=false -maxiters 1000000 -cuddmaxmem 4g
 Benchmark:	zeroconf.1000-8-false.correct_min
 Configuration:	prism-default
 Repetition:	1
 Time limit:	900
 Output:
-Picked up JAVA_TOOL_OPTIONS: -Xmx16g
+Picked up JAVA_TOOL_OPTIONS: -Xmx32g
 PRISM
 =====
 
 Version: 4.10.1
-Date: Sat Sep 26 01:06:59 GMT+02:00 2026
-Hostname: r23m0075.hpc.itc.rwth-aachen.de
-Memory limits: cudd=1g, java(heap)=16g
-Command line: prism zeroconf.prism zeroconf.props --prop correct_min -const 'N=1000,K=8,reset=false' -maxiters 1000000
+Date: Tue Oct 06 16:44:30 GMT+02:00 2026
+Hostname: r23m0119.hpc.itc.rwth-aachen.de
+Memory limits: cudd=4g, java(heap)=32g
+Command line: prism zeroconf.prism zeroconf.props --prop correct_min -const 'N=1000,K=8,reset=false' -maxiters 1000000 -cuddmaxmem 4g
 
 Parsing PRISM model file &quot;zeroconf.prism&quot;...
 
@@ -68,9 +68,9 @@ Model constants: reset=false,N=1000,K=8
 
 Computing reachable states...
 
-Reachability (BFS): 592 iterations in 40.76 seconds (average 0.068851, setup 0.00)
+Reachability (BFS): 592 iterations in 40.49 seconds (average 0.068395, setup 0.00)
 
-Time for model construction: 41.233 seconds.
+Time for model construction: 41.047 seconds.
 
 Type:        MDP
 States:      1870338 (1 initial)
@@ -78,9 +78,9 @@ Transitions: 4245554
 
 Transition matrix: 154038 nodes (6 terminal), 4245554 minterms, vars: 58r/58c/7nd
 
-Prob0E: 133 iterations in 2.78 seconds (average 0.020902, setup 0.00)
+Prob0E: 133 iterations in 2.70 seconds (average 0.020301, setup 0.00)
 
-Prob1A: 91 iterations in 1.87 seconds (average 0.020549, setup 0.00)
+Prob1A: 91 iterations in 1.81 seconds (average 0.019890, setup 0.00)
 
 yes = 17943, no = 611330, maybe = 1241065
 
@@ -94,21 +94,21 @@ Allocating iteration vectors... [3 x 14.3 MB]
 TOTAL: [66.6 MB]
 
 Starting iterations...
-Iteration 109: max relative diff=inf, 5.03 sec so far
-Iteration 218: max relative diff=0.001415, 10.05 sec so far
-Iteration 324: max relative diff=0.000017, 15.08 sec so far
+Iteration 112: max relative diff=inf, 5.04 sec so far
+Iteration 224: max relative diff=0.001410, 10.08 sec so far
+Iteration 336: max relative diff=0.000004, 15.11 sec so far
 
-Iterative method: 345 iterations in 17.40 seconds (average 0.046580, setup 1.33)
+Iterative method: 345 iterations in 16.87 seconds (average 0.044957, setup 1.36)
 
 Value in the initial state: 5.04010521292984E-9
 
-Time for model checking: 22.156 seconds.
+Time for model checking: 21.489 seconds.
 
 Result: 5.04010521292984E-9 (+/- 4.8740535755976034E-14 estimated; rel err 9.670539343293372E-6)
 
 
 ----------------------------------------
-Wallclock time:	63.915
+Wallclock time:	63.148
 Return code:	0
 </pre>
 </body></html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>prism-sound-explicit - avoid-mdp.25-0.2.goal_max</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>avoid-mdp.25-0.2.goal_max</h1>
+<p class="sub">prism-sound-explicit &middot; mdpgridmec &middot; <a href="index.html">back to the table</a></p>
+<p class="sub">reference result: <code>1898493463952474729556179483833463380410368/3051757812568811845134444456464935302734375</code></p>
+<p class="sub">reference result: <code>0.6220983383</code></p>
+<table class="meta"><tr><th>status</th><td>no-result</td></tr><tr><th>wallclock time</th><td>7.424 s</td></tr><tr><th>states</th><td>3,122,501</td></tr></table>
+<p class="sub">prism-sound-explicit_avoid-mdp.25-0.2.goal_max.log</p>
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism avoid-mdp.prism avoid-mdp.props --prop goal_max -const N=25,slippery=0.2 -maxiters 1000000 -intervaliter -heuristic speed -explicit
+Benchmark:	avoid-mdp.25-0.2.goal_max
+Configuration:	prism-sound-explicit
+Repetition:	1
+Time limit:	900
+Output:
+Picked up JAVA_TOOL_OPTIONS: -Xmx32g
+PRISM
+=====
+
+Version: 4.10.1
+Date: Tue Oct 06 16:37:49 GMT+02:00 2026
+Hostname: n23m0061.hpc.itc.rwth-aachen.de
+Memory limits: cudd=1g, java(heap)=32g
+Command line: prism avoid-mdp.prism avoid-mdp.props --prop goal_max -const 'N=25,slippery=0.2' -maxiters 1000000 -intervaliter -heuristic speed -explicit
+
+Parsing PRISM model file &quot;avoid-mdp.prism&quot;...
+
+Type:        MDP
+Modules:     master drone agent agent2
+Actions:     [placement] [north] [south] [east] [west] [adv] [done]
+Variables:   start turn dx dy ax ay dir ax2 ay2 dir2
+Labels:      &quot;goal&quot; &quot;traps&quot; &quot;notbad&quot;
+Rewards:     &quot;time&quot;
+
+Parsing properties file &quot;avoid-mdp.props&quot;...
+
+2 properties:
+(1) &quot;goal_max&quot;: Pmax=? [ &quot;notbad&quot; U &quot;goal&quot; ]
+(2) &quot;time_min&quot;: R{&quot;time&quot;}min=? [ F &quot;goal&quot; ]
+
+---------------------------------------------------------------------
+
+Model checking: &quot;goal_max&quot;: Pmax=? [ &quot;notbad&quot; U &quot;goal&quot; ]
+Model constants: N=25,slippery=0.2
+
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
+Building model (engine:symbolic)...
+Model constants: N=25,slippery=0.2
+
+Computing reachable states...
+
+Reachability (BFS): 104 iterations in 0.10 seconds (average 0.000962, setup 0.00)
+
+Time for model construction: 0.145 seconds.
+
+Type:        MDP
+States:      3122501 (1 initial)
+Transitions: 17743285
+
+Transition matrix: 779 nodes (6 terminal), 17743285 minterms, vars: 26r/26c/7nd
+
+Prob0A: 98 iterations in 0.13 seconds (average 0.001327, setup 0.00)
+
+Prob1E: 2916 iterations in 5.74 seconds (average 0.001968, setup 0.00)
+
+yes = 2500, no = 1176100, maybe = 1943901
+
+Computing remaining probabilities...
+Engine: Sparse
+
+Building quotient MDP, collapsing maximal end components as well as yes and no states...
+Time for computing maximal end components: 0.418 seconds, found 1 MECs.
+
+Error: Not enough extra action variables preallocated, please increase using -ddextraactionvars switch!.
+
+Warning: CUDD reports 31045 non-zero references.
+
+---------------------------------------------------------------------
+
+Note: There was 1 warning during computation.
+
+
+----------------------------------------
+Wallclock time:	7.424
+Return code:	0
+</pre>
+</body></html>

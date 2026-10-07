@@ -27,23 +27,23 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">prism-default &middot; mdpqvbs &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>34900/27</code></p>
 <p class="sub">reference result: <code>1292.592593</code></p>
-<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>17.213 s</td></tr><tr><th>result</th><td>1292.5850850074933</td></tr><tr><th>relative difference</th><td>5.81e-06</td></tr><tr><th>states</th><td>958,894</td></tr></table>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>18.410 s</td></tr><tr><th>result</th><td>1292.5850850074933</td></tr><tr><th>relative difference</th><td>5.81e-06</td></tr><tr><th>states</th><td>958,894</td></tr></table>
 <p class="sub">prism-default_resource-gathering.1300-100-100.expsteps.log</p>
-<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism resource-gathering.pm resource-gathering.prctl --prop expsteps -const B=1300,GOLD_TO_COLLECT=100,GEM_TO_COLLECT=100 -maxiters 1000000
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism resource-gathering.pm resource-gathering.prctl --prop expsteps -const B=1300,GOLD_TO_COLLECT=100,GEM_TO_COLLECT=100 -maxiters 1000000 -cuddmaxmem 4g
 Benchmark:	resource-gathering.1300-100-100.expsteps
 Configuration:	prism-default
 Repetition:	1
 Time limit:	900
 Output:
-Picked up JAVA_TOOL_OPTIONS: -Xmx16g
+Picked up JAVA_TOOL_OPTIONS: -Xmx32g
 PRISM
 =====
 
 Version: 4.10.1
-Date: Sat Sep 26 01:06:28 GMT+02:00 2026
-Hostname: r23m0122.hpc.itc.rwth-aachen.de
-Memory limits: cudd=1g, java(heap)=16g
-Command line: prism resource-gathering.pm resource-gathering.prctl --prop expsteps -const 'B=1300,GOLD_TO_COLLECT=100,GEM_TO_COLLECT=100' -maxiters 1000000
+Date: Tue Oct 06 16:25:29 GMT+02:00 2026
+Hostname: n23m0291.hpc.itc.rwth-aachen.de
+Memory limits: cudd=4g, java(heap)=32g
+Command line: prism resource-gathering.pm resource-gathering.prctl --prop expsteps -const 'B=1300,GOLD_TO_COLLECT=100,GEM_TO_COLLECT=100' -maxiters 1000000 -cuddmaxmem 4g
 
 Parsing PRISM model file &quot;resource-gathering.pm&quot;...
 
@@ -71,9 +71,9 @@ Model constants: GOLD_TO_COLLECT=100,GEM_TO_COLLECT=100,B=1300
 
 Computing reachable states...
 
-Reachability (BFS): 1215 iterations in 0.39 seconds (average 0.000321, setup 0.00)
+Reachability (BFS): 1215 iterations in 0.38 seconds (average 0.000313, setup 0.00)
 
-Time for model construction: 0.417 seconds.
+Time for model construction: 0.442 seconds.
 
 Type:        MDP
 States:      958894 (1 initial)
@@ -81,9 +81,9 @@ Transitions: 3325526
 
 Transition matrix: 898 nodes (4 terminal), 3325526 minterms, vars: 23r/23c/4nd
 
-Prob0A: 1203 iterations in 0.56 seconds (average 0.000466, setup 0.00)
+Prob0A: 1203 iterations in 0.66 seconds (average 0.000549, setup 0.00)
 
-Prob1E: 1204 iterations in 0.63 seconds (average 0.000523, setup 0.00)
+Prob1E: 1204 iterations in 0.76 seconds (average 0.000631, setup 0.00)
 
 Warning: PRISM hasn't checked for zero-reward loops.
 Your minimum rewards may be too low...
@@ -102,14 +102,14 @@ Allocating iteration vectors... [2 x 7.3 MB]
 TOTAL: [98.1 MB]
 
 Starting iterations...
-Iteration 474: max relative diff=0.002114, 5.01 sec so far
-Iteration 942: max relative diff=0.001063, 10.02 sec so far
+Iteration 465: max relative diff=0.002155, 5.02 sec so far
+Iteration 924: max relative diff=0.001083, 10.04 sec so far
 
-Iterative method: 1369 iterations in 15.10 seconds (average 0.010650, setup 0.52)
+Iterative method: 1369 iterations in 15.48 seconds (average 0.010920, setup 0.53)
 
 Value in the initial state: 1292.5850850074933
 
-Time for model checking: 16.335 seconds.
+Time for model checking: 16.965 seconds.
 
 Result: 1292.5850850074933 (+/- 0.012196873627622496 estimated; rel err 9.436031537956195E-6)
 
@@ -119,7 +119,7 @@ Note: There was 1 warning during computation.
 
 
 ----------------------------------------
-Wallclock time:	17.213
+Wallclock time:	18.410
 Return code:	0
 </pre>
 </body></html>

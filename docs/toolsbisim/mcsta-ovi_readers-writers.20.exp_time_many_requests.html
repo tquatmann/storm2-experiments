@@ -25,7 +25,7 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 
 <h1>readers-writers.20.exp_time_many_requests</h1>
 <p class="sub">mcsta-ovi &middot; maqvbs &middot; <a href="index.html">back to the table</a></p>
-<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>1.680 s</td></tr><tr><th>result</th><td>15.446137727857316</td></tr><tr><th>states</th><td>137,070</td></tr></table>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>1.892 s</td></tr><tr><th>result</th><td>15.446137727857316</td></tr><tr><th>states</th><td>137,070</td></tr></table>
 <p class="sub">mcsta-ovi_readers-writers.20.exp_time_many_requests.log</p>
 <pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/modest mcsta readers-writers.20.jani --props exp_time_many_requests --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
 Benchmark:	readers-writers.20.exp_time_many_requests
@@ -52,13 +52,13 @@ Analysis results for readers-writers.20.jani
   States:     137070
   Choices:    137070
   Branches:   273580
-  Rate:       423056 states/s
-  Time:       0.3 s
+  Rate:       376566 states/s
+  Time:       0.4 s
 
 + Property exp_time_many_requests
   Value:  15.446137727857316
   Bounds: [15.446122755374903, 15.44615270033973]
-  Time:   1.2 s
+  Time:   1.3 s
 
   + Precomputations
     Max. prob. 1 states:          137070
@@ -69,11 +69,11 @@ Analysis results for readers-writers.20.jani
     Verif. attempts:   6
     Verif. iterations: 140
     Final epsilon:     6.913471324792418E-09
-    Time:              1.2 s
+    Time:              1.3 s
 
 
 ----------------------------------------
-Wallclock time:	1.680
+Wallclock time:	1.892
 Return code:	0
 </pre>
 </body></html>

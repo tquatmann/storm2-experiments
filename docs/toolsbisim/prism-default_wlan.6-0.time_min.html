@@ -27,23 +27,23 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">prism-default &middot; mdpqvbs &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>1325</code></p>
 <p class="sub">reference result: <code>1325</code></p>
-<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>214.130 s</td></tr><tr><th>result</th><td>1325.0</td></tr><tr><th>relative difference</th><td>0</td></tr><tr><th>states</th><td>5,007,548</td></tr></table>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>227.147 s</td></tr><tr><th>result</th><td>1325.0</td></tr><tr><th>relative difference</th><td>0</td></tr><tr><th>states</th><td>5,007,548</td></tr></table>
 <p class="sub">prism-default_wlan.6-0.time_min.log</p>
-<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism wlan.6.prism wlan.props --prop time_min -const COL=0 -maxiters 1000000
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism wlan.6.prism wlan.props --prop time_min -const COL=0 -maxiters 1000000 -cuddmaxmem 4g
 Benchmark:	wlan.6-0.time_min
 Configuration:	prism-default
 Repetition:	1
 Time limit:	900
 Output:
-Picked up JAVA_TOOL_OPTIONS: -Xmx16g
+Picked up JAVA_TOOL_OPTIONS: -Xmx32g
 PRISM
 =====
 
 Version: 4.10.1
-Date: Sat Sep 26 01:08:02 GMT+02:00 2026
-Hostname: n23m0134.hpc.itc.rwth-aachen.de
-Memory limits: cudd=1g, java(heap)=16g
-Command line: prism wlan.6.prism wlan.props --prop time_min -const COL=0 -maxiters 1000000
+Date: Tue Oct 06 16:17:51 GMT+02:00 2026
+Hostname: n23m0042.hpc.itc.rwth-aachen.de
+Memory limits: cudd=4g, java(heap)=32g
+Command line: prism wlan.6.prism wlan.props --prop time_min -const COL=0 -maxiters 1000000 -cuddmaxmem 4g
 
 Parsing PRISM model file &quot;wlan.6.prism&quot;...
 
@@ -74,9 +74,9 @@ Model constants: COL=0
 
 Computing reachable states...
 
-Reachability (BFS): 195 iterations in 0.31 seconds (average 0.001590, setup 0.00)
+Reachability (BFS): 195 iterations in 0.30 seconds (average 0.001538, setup 0.00)
 
-Time for model construction: 0.396 seconds.
+Time for model construction: 0.508 seconds.
 
 Type:        MDP
 States:      5007548 (1 initial)
@@ -84,9 +84,9 @@ Transitions: 11475748
 
 Transition matrix: 20377 nodes (8 terminal), 11475748 minterms, vars: 47r/47c/7nd
 
-Prob0A: 3101 iterations in 40.92 seconds (average 0.013196, setup 0.00)
+Prob0A: 3101 iterations in 42.86 seconds (average 0.013821, setup 0.00)
 
-Prob1E: 3102 iterations in 46.68 seconds (average 0.015048, setup 0.00)
+Prob1E: 3102 iterations in 55.36 seconds (average 0.017847, setup 0.00)
 
 Warning: PRISM hasn't checked for zero-reward loops.
 Your minimum rewards may be too low...
@@ -105,35 +105,35 @@ Allocating iteration vectors... [2 x 38.2 MB]
 TOTAL: [384.8 MB]
 
 Starting iterations...
-Iteration 134: max relative diff=0.023256, 5.01 sec so far
-Iteration 268: max relative diff=0.011364, 10.02 sec so far
-Iteration 402: max relative diff=0.007519, 15.04 sec so far
-Iteration 537: max relative diff=0.005618, 20.08 sec so far
-Iteration 669: max relative diff=0.004505, 25.11 sec so far
-Iteration 799: max relative diff=0.003774, 30.12 sec so far
-Iteration 929: max relative diff=0.003247, 35.16 sec so far
-Iteration 1057: max relative diff=0.002849, 40.19 sec so far
-Iteration 1184: max relative diff=0.002545, 45.21 sec so far
-Iteration 1311: max relative diff=0.002294, 50.23 sec so far
-Iteration 1442: max relative diff=0.002088, 55.24 sec so far
-Iteration 1574: max relative diff=0.001912, 60.25 sec so far
-Iteration 1705: max relative diff=0.001764, 65.29 sec so far
-Iteration 1838: max relative diff=0.001637, 70.33 sec so far
-Iteration 1969: max relative diff=0.001527, 75.34 sec so far
-Iteration 2101: max relative diff=0.001431, 80.36 sec so far
-Iteration 2234: max relative diff=0.001346, 85.38 sec so far
-Iteration 2367: max relative diff=0.001269, 90.42 sec so far
-Iteration 2501: max relative diff=0.001202, 95.43 sec so far
-Iteration 2636: max relative diff=0.001140, 100.47 sec so far
-Iteration 2771: max relative diff=0.001085, 105.50 sec so far
-Iteration 2905: max relative diff=0.001034, 110.51 sec so far
-Iteration 3039: max relative diff=0.000988, 115.53 sec so far
+Iteration 131: max relative diff=0.023810, 5.01 sec so far
+Iteration 262: max relative diff=0.011628, 10.04 sec so far
+Iteration 393: max relative diff=0.007692, 15.06 sec so far
+Iteration 523: max relative diff=0.005780, 20.07 sec so far
+Iteration 653: max relative diff=0.004630, 25.08 sec so far
+Iteration 783: max relative diff=0.003846, 30.11 sec so far
+Iteration 914: max relative diff=0.003300, 35.14 sec so far
+Iteration 1045: max relative diff=0.002882, 40.17 sec so far
+Iteration 1178: max relative diff=0.002558, 45.21 sec so far
+Iteration 1309: max relative diff=0.002299, 50.24 sec so far
+Iteration 1439: max relative diff=0.002092, 55.25 sec so far
+Iteration 1570: max relative diff=0.001916, 60.28 sec so far
+Iteration 1700: max relative diff=0.001770, 65.29 sec so far
+Iteration 1831: max relative diff=0.001642, 70.31 sec so far
+Iteration 1962: max relative diff=0.001531, 75.34 sec so far
+Iteration 2093: max relative diff=0.001437, 80.36 sec so far
+Iteration 2223: max relative diff=0.001351, 85.39 sec so far
+Iteration 2354: max relative diff=0.001277, 90.42 sec so far
+Iteration 2485: max relative diff=0.001209, 95.44 sec so far
+Iteration 2616: max relative diff=0.001148, 100.46 sec so far
+Iteration 2747: max relative diff=0.001094, 105.50 sec so far
+Iteration 2878: max relative diff=0.001044, 110.53 sec so far
+Iteration 3009: max relative diff=0.000998, 115.55 sec so far
 
-Iterative method: 3117 iterations in 124.67 seconds (average 0.037998, setup 6.23)
+Iterative method: 3117 iterations in 125.77 seconds (average 0.038380, setup 6.14)
 
 Value in the initial state: 1325.0
 
-Time for model checking: 212.88 seconds.
+Time for model checking: 224.651 seconds.
 
 Result: 1325.0 (+/- 7.679429773383165E-4 estimated; rel err 5.795796055383521E-7)
 
@@ -143,7 +143,7 @@ Note: There was 1 warning during computation.
 
 
 ----------------------------------------
-Wallclock time:	214.130
+Wallclock time:	227.147
 Return code:	0
 </pre>
 </body></html>

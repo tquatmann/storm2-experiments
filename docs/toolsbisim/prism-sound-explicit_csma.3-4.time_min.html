@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>prism-sound-explicit - csma.3-4.time_min</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>csma.3-4.time_min</h1>
+<p class="sub">prism-sound-explicit &middot; mdpqvbs &middot; <a href="index.html">back to the table</a></p>
+<p class="sub">reference result: <code>2509374424415801914177659161450455318827631746556399/23384026197294446691258957323460528314494920687616</code></p>
+<p class="sub">reference result: <code>107.3114785</code></p>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>28.911 s</td></tr><tr><th>result</th><td>107.31148072354645</td></tr><tr><th>relative difference</th><td>2.08e-08</td></tr><tr><th>states</th><td>1,460,287</td></tr></table>
+<p class="sub">prism-sound-explicit_csma.3-4.time_min.log</p>
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism csma.3-4.prism csma.props --prop time_min -maxiters 1000000 -intervaliter -heuristic speed -explicit
+Benchmark:	csma.3-4.time_min
+Configuration:	prism-sound-explicit
+Repetition:	1
+Time limit:	900
+Output:
+Picked up JAVA_TOOL_OPTIONS: -Xmx32g
+PRISM
+=====
+
+Version: 4.10.1
+Date: Tue Oct 06 16:29:50 GMT+02:00 2026
+Hostname: n23m0141.hpc.itc.rwth-aachen.de
+Memory limits: cudd=1g, java(heap)=32g
+Command line: prism csma.3-4.prism csma.props --prop time_min -maxiters 1000000 -intervaliter -heuristic speed -explicit
+
+Parsing PRISM model file &quot;csma.3-4.prism&quot;...
+
+Type:        MDP
+Modules:     bus station1 station2 station3
+Actions:     [] [send1] [send2] [send3] [end1] [end2] [end3] [busy1] [busy2] [busy3] [cd] [time]
+Variables:   b y1 y2 s1 x1 bc1 cd1 s2 x2 bc2 cd2 s3 x3 bc3 cd3
+Labels:      &quot;all_delivered&quot; &quot;one_delivered&quot; &quot;collision_max_backoff&quot;
+Rewards:     &quot;time&quot;
+
+Parsing properties file &quot;csma.props&quot;...
+
+5 properties:
+(1) &quot;all_before_max&quot;: Pmax=? [ !&quot;collision_max_backoff&quot; U &quot;all_delivered&quot; ]
+(2) &quot;all_before_min&quot;: Pmin=? [ !&quot;collision_max_backoff&quot; U &quot;all_delivered&quot; ]
+(3) &quot;some_before&quot;: Pmin=? [ F min_backoff_after_success&lt;K ]
+(4) &quot;time_max&quot;: R{&quot;time&quot;}max=? [ F &quot;all_delivered&quot; ]
+(5) &quot;time_min&quot;: R{&quot;time&quot;}min=? [ F &quot;all_delivered&quot; ]
+
+---------------------------------------------------------------------
+
+Model checking: &quot;time_min&quot;: R{&quot;time&quot;}min=? [ F &quot;all_delivered&quot; ]
+
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
+Warning: Switching to explicit engine to allow interval iteration on Rmin operator.
+
+Building model (engine:explicit)...
+
+Computing reachable states... 785368 1460287 states
+Reachable states exploration and model construction done in 5.77 secs.
+Sorting reachable states list...
+
+Time for model construction: 7.048 seconds.
+
+Type:        MDP
+States:      1460287 (1 initial)
+Transitions: 2396727
+Choices:     1471059
+Max/avg:     3/1.01
+Building reward structure...
+
+Starting expected reachability (min)...
+Starting Prob1 (max)...
+Prob1 (max) took 136 iterations and 1.947 seconds.
+target=13, inf=0, rest=1460274
+For Rmin, checking for zero-reward ECs...
+Time for checking for zero-reward ECs: 0.314 seconds, no zero-reward ECs found, proceeding normally.
+Computing upper bound(s) for Rmin using the Dijkstra Sweep for Monotone Pessimistic Initialization algorithm...
+Calculating incoming choices relation for Markov decision process...  done (0.075 seconds)
+Time for computing upper bound(s) for Rmin using the DSI-MP algorithm: 1.909 seconds.
+Upper bound for min expectation (Dijkstra Sweep MPI): 149.2919077166089
+Starting Prob1 (min)...
+Prob1 (min) took 149 iterations and 1.828 seconds.
+Relevant sub-MDP is contracting, proceed...
+Starting interval iteration (min, with Power method)...
+Iteration 95: max relative diff=1.30057087531, 5.01 sec so far
+Iteration 191: max relative diff=0.012210685143, 10.03 sec so far
+Max relative diff between upper and lower bound on convergence: 9.5965126113e-07
+Interval iteration (min, with Power method) took 283 iterations, 1356540124 multiplications and 14.903 seconds.
+Maximum finite value in solution vector at end of interval iteration: 139.67935047681152
+Expected reachability took 20.943 seconds.
+
+Value in the initial state: 107.31148072354645
+
+Time for model checking: 21.309 seconds.
+
+Result: 107.31148072354645 (+/- 1.0298159781011374E-4; rel err 9.596512611303234E-7)
+
+---------------------------------------------------------------------
+
+Note: There were 2 warnings during computation.
+
+
+----------------------------------------
+Wallclock time:	28.911
+Return code:	0
+</pre>
+</body></html>

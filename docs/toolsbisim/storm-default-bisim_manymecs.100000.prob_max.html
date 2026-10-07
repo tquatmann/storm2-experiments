@@ -27,7 +27,7 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">storm-default-bisim &middot; mdpmec &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>1/2</code></p>
 <p class="sub">reference result: <code>0.5</code></p>
-<table class="meta"><tr><th>status</th><td>incorrect</td></tr><tr><th>wallclock time</th><td>0.858 s</td></tr><tr><th>result</th><td>0.4513576463</td></tr><tr><th>relative difference</th><td><span class="bad">0.0973 &gt; 1e-3</span></td></tr><tr><th>states</th><td>300,002</td></tr><tr><th>states after preprocessing</th><td>200,003</td></tr></table>
+<table class="meta"><tr><th>status</th><td>incorrect</td></tr><tr><th>wallclock time</th><td>1.438 s</td></tr><tr><th>result</th><td>0.4513576463</td></tr><tr><th>relative difference</th><td><span class="bad">0.0973 &gt; 1e-3</span></td></tr><tr><th>states</th><td>300,002</td></tr><tr><th>states after preprocessing</th><td>200,003</td></tr></table>
 <p class="sub">storm-default-bisim_manymecs.100000.prob_max.log</p>
 <pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/storm --jani manymecs.jani --janiproperty prob_max --constants N=100000 --bisimulation
 Benchmark:	manymecs.100000.prob_max
@@ -37,13 +37,13 @@ Time limit:	900
 Output:
 Storm 1.14.0 (dev)
 
-Date: Sat Sep 26 01:00:46 2026
+Date: Tue Oct  6 16:23:40 2026
 Command line arguments: --jani manymecs.jani --janiproperty prob_max --constants N=100000 --bisimulation
-Current working directory: /w0/tmp/slurm_tq429871.4466352/invocation-ze3y5py2
+Current working directory: /w0/tmp/slurm_tq429871.4818373/invocation-08u1rw9q
 
-Time for model input parsing: 0.000s.
+Time for model input parsing: 0.001s.
 
-Time for model construction: 0.448s.
+Time for model construction: 0.441s.
 
 -------------------------------------------------------------- 
 Model type: 	MDP (sparse)
@@ -58,7 +58,7 @@ State Labels: 	3 labels
 Choice Labels: 	none
 -------------------------------------------------------------- 
 
-Time for model preprocessing: 0.269s.
+Time for model preprocessing: 0.261s.
 
 -------------------------------------------------------------- 
 Model type: 	MDP (sparse)
@@ -74,10 +74,10 @@ Choice Labels: 	none
 
 Model checking property &quot;prob_max&quot;: Pmax=? [F &quot;p1win&quot;] ...
 Result (for initial states): 0.4513576463
-Time for model checking: 0.113s.
+Time for model checking: 0.115s.
 
 ----------------------------------------
-Wallclock time:	0.858
+Wallclock time:	1.438
 Return code:	0
 </pre>
 </body></html>

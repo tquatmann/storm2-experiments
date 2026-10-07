@@ -25,7 +25,7 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 
 <h1>dpm.6-8-5.PminQueue1Full</h1>
 <p class="sub">mcsta-ovi &middot; maqvbs &middot; <a href="index.html">back to the table</a></p>
-<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>36.161 s</td></tr><tr><th>result</th><td>0.013115174937500251</td></tr><tr><th>states</th><td>42,594,012</td></tr></table>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>34.905 s</td></tr><tr><th>result</th><td>0.013115174937500251</td></tr><tr><th>states</th><td>42,594,012</td></tr></table>
 <p class="sub">mcsta-ovi_dpm.6-8-5.PminQueue1Full.log</p>
 <pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/modest mcsta dpm.jani --props PminQueue1Full --experiment N=6,C=8,TIME_BOUND=5 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
 Benchmark:	dpm.6-8-5.PminQueue1Full
@@ -43,7 +43,7 @@ dpm.jani:model: info: dpm is an MA model.
 dpm.jani: info: Need 16 bytes per state.
 dpm.jani: info: Explored 42594012 states for N=6, C=8, TIME_BOUND=5.0.
 
-Peak memory usage: 13329 MB
+Peak memory usage: 13905 MB
 Analysis results for dpm.jani
 Experiment N=6, C=8, TIME_BOUND=5.0
 
@@ -52,24 +52,24 @@ Experiment N=6, C=8, TIME_BOUND=5.0
   States:     42594012
   Choices:    48736566
   Branches:   82748790
-  Rate:       1548198 states/s
-  Time:       28.8 s
+  Rate:       1604113 states/s
+  Time:       27.7 s
 
 + Property PminQueue1Full
   Probability: 0.013115174937500251
   Bounds:      [0.013115170597025466, 0.013115179277975035]
-  Time:        7.2 s
+  Time:        7.0 s
 
   + Optimistic value iteration
     Total iterations:  24
     Verif. attempts:   1
     Verif. iterations: 2
     Final epsilon:     1E-06
-    Time:              7.1 s
+    Time:              6.9 s
 
 
 ----------------------------------------
-Wallclock time:	36.161
+Wallclock time:	34.905
 Return code:	0
 </pre>
 </body></html>

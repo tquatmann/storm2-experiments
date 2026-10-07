@@ -27,7 +27,7 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">storm-default-bisim &middot; mdpgridmec &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>3653380653778819704498802052281330342937979832521752121999684138390592205782461/3681807200483612150698388711959446722028150995086913681600000000000000000000000</code></p>
 <p class="sub">reference result: <code>0.9922791865</code></p>
-<table class="meta"><tr><th>status</th><td>incorrect</td></tr><tr><th>wallclock time</th><td>6.855 s</td></tr><tr><th>result</th><td>0.9351250171</td></tr><tr><th>relative difference</th><td><span class="bad">0.0576 &gt; 1e-3</span></td></tr><tr><th>states</th><td>161,070</td></tr><tr><th>states after preprocessing</th><td>32,166</td></tr></table>
+<table class="meta"><tr><th>status</th><td>incorrect</td></tr><tr><th>wallclock time</th><td>7.130 s</td></tr><tr><th>result</th><td>0.9351250171</td></tr><tr><th>relative difference</th><td><span class="bad">0.0576 &gt; 1e-3</span></td></tr><tr><th>states</th><td>161,070</td></tr><tr><th>states after preprocessing</th><td>32,166</td></tr></table>
 <p class="sub">storm-default-bisim_refuel-mdp.80-40.reach_max.log</p>
 <pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/storm --jani refuel-mdp.jani --janiproperty reach_max --constants N=80,ENERGY=40 --bisimulation
 Benchmark:	refuel-mdp.80-40.reach_max
@@ -37,13 +37,13 @@ Time limit:	900
 Output:
 Storm 1.14.0 (dev)
 
-Date: Sat Sep 26 01:12:40 2026
+Date: Tue Oct  6 16:52:59 2026
 Command line arguments: --jani refuel-mdp.jani --janiproperty reach_max --constants 'N=80,ENERGY=40' --bisimulation
-Current working directory: /w0/tmp/slurm_tq429871.4466841/invocation-8vhzssoo
+Current working directory: /w0/tmp/slurm_tq429871.4820085/invocation-5gx7oysm
 
 Time for model input parsing: 0.001s.
 
-Time for model construction: 1.163s.
+Time for model construction: 1.262s.
 
 -------------------------------------------------------------- 
 Model type: 	MDP (sparse)
@@ -58,7 +58,7 @@ State Labels: 	3 labels
 Choice Labels: 	none
 -------------------------------------------------------------- 
 
-Time for model preprocessing: 0.417s.
+Time for model preprocessing: 0.477s.
 
 -------------------------------------------------------------- 
 Model type: 	MDP (sparse)
@@ -74,10 +74,10 @@ Choice Labels: 	none
 
 Model checking property &quot;reach_max&quot;: Pmax=? [F &quot;goal&quot;] ...
 Result (for initial states): 0.9351250171
-Time for model checking: 5.242s.
+Time for model checking: 5.357s.
 
 ----------------------------------------
-Wallclock time:	6.855
+Wallclock time:	7.130
 Return code:	0
 </pre>
 </body></html>

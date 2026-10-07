@@ -27,23 +27,23 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">prism-sound &middot; mdpgrid &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>1377652241508664232478352792476482442252855071422105499708659759729200/5790887942449198118866552301288096257267888893001726249456064921143</code></p>
 <p class="sub">reference result: <code>237.9</code></p>
-<table class="meta"><tr><th>status</th><td>no-result</td></tr><tr><th>wallclock time</th><td>12.203 s</td></tr><tr><th>states</th><td>512,000</td></tr></table>
+<table class="meta"><tr><th>status</th><td>no-result</td></tr><tr><th>wallclock time</th><td>10.459 s</td></tr><tr><th>states</th><td>512,000</td></tr></table>
 <p class="sub">prism-sound_random-grid.80-0.3-0.3.time_min.log</p>
-<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism random-grid.prism random-grid.props --prop time_min -const N=80,pover=0.3,pstay=0.3 -maxiters 1000000 -intervaliter
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism random-grid.prism random-grid.props --prop time_min -const N=80,pover=0.3,pstay=0.3 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 4g
 Benchmark:	random-grid.80-0.3-0.3.time_min
 Configuration:	prism-sound
 Repetition:	1
 Time limit:	900
 Output:
-Picked up JAVA_TOOL_OPTIONS: -Xmx16g
+Picked up JAVA_TOOL_OPTIONS: -Xmx32g
 PRISM
 =====
 
 Version: 4.10.1
-Date: Sat Sep 26 00:59:14 GMT+02:00 2026
-Hostname: r23m0058.hpc.itc.rwth-aachen.de
-Memory limits: cudd=1g, java(heap)=16g
-Command line: prism random-grid.prism random-grid.props --prop time_min -const 'N=80,pover=0.3,pstay=0.3' -maxiters 1000000 -intervaliter
+Date: Tue Oct 06 16:57:23 GMT+02:00 2026
+Hostname: n23m0141.hpc.itc.rwth-aachen.de
+Memory limits: cudd=4g, java(heap)=32g
+Command line: prism random-grid.prism random-grid.props --prop time_min -const 'N=80,pover=0.3,pstay=0.3' -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 4g
 
 Parsing PRISM model file &quot;random-grid.prism&quot;...
 
@@ -64,16 +64,18 @@ Parsing properties file &quot;random-grid.props&quot;...
 Model checking: &quot;time_min&quot;: R{&quot;time&quot;}min=? [ F x=N&amp;y=N&amp;z=N ]
 Model constants: N=80,pstay=0.3,pover=0.3
 
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
 Warning: Switching to explicit engine to allow interval iteration on Rmin operator.
 
 Building model (engine:explicit)...
 Model constants: N=80,pstay=0.3,pover=0.3
 
-Computing reachable states... 395161 512000 states
-Reachable states exploration and model construction done in 3.885 secs.
+Computing reachable states... 433195 512000 states
+Reachable states exploration and model construction done in 3.608 secs.
 Sorting reachable states list...
 
-Time for model construction: 6.472 seconds.
+Time for model construction: 5.441 seconds.
 
 Type:        MDP
 States:      512000 (1 initial)
@@ -84,26 +86,26 @@ Building reward structure...
 
 Starting expected reachability (min)...
 Starting Prob1 (max)...
-Prob1 (max) took 121 iterations and 1.85 seconds.
+Prob1 (max) took 121 iterations and 1.716 seconds.
 target=1, inf=0, rest=511999
 For Rmin, checking for zero-reward ECs...
-Time for checking for zero-reward ECs: 0.137 seconds, no zero-reward ECs found, proceeding normally.
+Time for checking for zero-reward ECs: 0.062 seconds, no zero-reward ECs found, proceeding normally.
 Computing upper bound(s) for Rmin using the Dijkstra Sweep for Monotone Pessimistic Initialization algorithm...
-Calculating incoming choices relation for Markov decision process...  done (0.307 seconds)
-Time for computing upper bound(s) for Rmin using the DSI-MP algorithm: 2.71 seconds.
+Calculating incoming choices relation for Markov decision process...  done (0.195 seconds)
+Time for computing upper bound(s) for Rmin using the DSI-MP algorithm: 2.418 seconds.
 Upper bound for min expectation (Dijkstra Sweep MPI): 1.5863597917618622E278
 Starting Prob1 (min)...
-Prob1 (min) took 2 iterations and 0.035 seconds.
+Prob1 (min) took 2 iterations and 0.045 seconds.
 
 Error: Interval iteration for Rmin and non-contracting MDP currently not supported.
 
 ---------------------------------------------------------------------
 
-Note: There was 1 warning during computation.
+Note: There were 2 warnings during computation.
 
 
 ----------------------------------------
-Wallclock time:	12.203
+Wallclock time:	10.459
 Return code:	0
 </pre>
 </body></html>

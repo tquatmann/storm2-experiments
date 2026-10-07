@@ -27,23 +27,23 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">prism-sound &middot; mdpqvbs &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>26677467903150239524795325/117368309888902496256</code></p>
 <p class="sub">reference result: <code>227297.027</code></p>
-<table class="meta"><tr><th>status</th><td>no-result</td></tr><tr><th>wallclock time</th><td>89.986 s</td></tr><tr><th>states</th><td>1,295,218</td></tr></table>
+<table class="meta"><tr><th>status</th><td>timeout</td></tr><tr><th>wallclock time</th><td>900.477 s</td></tr><tr><th>states</th><td>1,295,218</td></tr></table>
 <p class="sub">prism-sound_wlan.5-0.cost_max.log</p>
-<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism wlan.5.prism wlan.props --prop cost_max -const COL=0 -maxiters 1000000 -intervaliter
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism wlan.5.prism wlan.props --prop cost_max -const COL=0 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 4g
 Benchmark:	wlan.5-0.cost_max
 Configuration:	prism-sound
 Repetition:	1
 Time limit:	900
 Output:
-Picked up JAVA_TOOL_OPTIONS: -Xmx16g
+Picked up JAVA_TOOL_OPTIONS: -Xmx32g
 PRISM
 =====
 
 Version: 4.10.1
-Date: Sat Sep 26 01:09:04 GMT+02:00 2026
-Hostname: n23m0237.hpc.itc.rwth-aachen.de
-Memory limits: cudd=1g, java(heap)=16g
-Command line: prism wlan.5.prism wlan.props --prop cost_max -const COL=0 -maxiters 1000000 -intervaliter
+Date: Tue Oct 06 16:52:20 GMT+02:00 2026
+Hostname: n23m0070.hpc.itc.rwth-aachen.de
+Memory limits: cudd=4g, java(heap)=32g
+Command line: prism wlan.5.prism wlan.props --prop cost_max -const COL=0 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 4g
 
 Parsing PRISM model file &quot;wlan.5.prism&quot;...
 
@@ -69,14 +69,16 @@ Parsing properties file &quot;wlan.props&quot;...
 Model checking: &quot;cost_max&quot;: R{&quot;cost&quot;}max=? [ F s1=12&amp;s2=12 ]
 Model constants: COL=0
 
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
 Building model (engine:symbolic)...
 Model constants: COL=0
 
 Computing reachable states...
 
-Reachability (BFS): 170 iterations in 0.23 seconds (average 0.001353, setup 0.00)
+Reachability (BFS): 170 iterations in 0.26 seconds (average 0.001529, setup 0.00)
 
-Time for model construction: 0.323 seconds.
+Time for model construction: 0.332 seconds.
 
 Type:        MDP
 States:      1295218 (1 initial)
@@ -84,38 +86,15 @@ Transitions: 2929960
 
 Transition matrix: 17250 nodes (7 terminal), 2929960 minterms, vars: 45r/45c/7nd
 
-Prob0E: 1622 iterations in 22.23 seconds (average 0.013705, setup 0.00)
+Prob0E: 1622 iterations in 19.04 seconds (average 0.011739, setup 0.00)
 
-Prob1A: 1 iterations in 0.01 seconds (average 0.010000, setup 0.00)
+Prob1A: 1 iterations in 0.00 seconds (average 0.000000, setup 0.00)
 
 goal = 1, inf = 0, maybe = 1295217
 
-CUDD internal error detected, from the following stack trace:
-  jdd.JDD.ptrToNode(JDD.java:1840)
-  jdd.JDD.And(JDD.java:528)
-  symbolic.comp.ProbModelChecker.computeReachRewardsUpperBoundVariant2(ProbModelChecker.java:2208)
-  symbolic.comp.ProbModelChecker.computeReachRewardsUpperBound(ProbModelChecker.java:1931)
-  symbolic.comp.NondetModelChecker.computeReachRewards(NondetModelChecker.java:2575)
-  symbolic.comp.NondetModelChecker.checkRewardReach(NondetModelChecker.java:1487)
-  symbolic.comp.NondetModelChecker.checkRewardPathFormula(NondetModelChecker.java:1445)
-  symbolic.comp.NondetModelChecker.checkExpressionReward(NondetModelChecker.java:368)
-  symbolic.comp.NondetModelChecker.checkExpressionReward(NondetModelChecker.java:326)
-  symbolic.comp.NondetModelChecker.checkExpression(NondetModelChecker.java:189)
-  symbolic.comp.StateModelChecker.checkExpressionFilter(StateModelChecker.java:1192)
-  symbolic.comp.StateModelChecker.checkExpression(StateModelChecker.java:312)
-  symbolic.comp.NonProbModelChecker.checkExpression(NonProbModelChecker.java:88)
-  symbolic.comp.NondetModelChecker.checkExpression(NondetModelChecker.java:204)
-  symbolic.comp.StateModelChecker.check(StateModelChecker.java:238)
-  prism.Prism.modelCheck(Prism.java:3466)
-  prism.PrismCL.run(PrismCL.java:426)
-  prism.PrismCL.go(PrismCL.java:227)
-  prism.PrismCL.main(PrismCL.java:3008)
-
-Error: Out of memory (or other internal error) in the CUDD library.
-Tip: Try using the -cuddmaxmem switch to increase the memory available to CUDD.
-
 ----------------------------------------
-Wallclock time:	89.986
-Return code:	1
+Wallclock time:	900.477
+Return code:	None
+Computation aborted after 900.477 seconds since the time limit of 900 seconds was exceeded.
 </pre>
 </body></html>

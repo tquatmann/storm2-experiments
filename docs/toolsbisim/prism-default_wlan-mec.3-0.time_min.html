@@ -27,23 +27,23 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">prism-default &middot; mdpmec &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>1325</code></p>
 <p class="sub">reference result: <code>1325</code></p>
-<table class="meta"><tr><th>status</th><td>incorrect</td></tr><tr><th>wallclock time</th><td>5.830 s</td></tr><tr><th>result</th><td>0.0</td></tr><tr><th>relative difference</th><td><span class="bad">1 &gt; 1e-3</span></td></tr><tr><th>states</th><td>963,020</td></tr></table>
+<table class="meta"><tr><th>status</th><td>incorrect</td></tr><tr><th>wallclock time</th><td>5.142 s</td></tr><tr><th>result</th><td>0.0</td></tr><tr><th>relative difference</th><td><span class="bad">1 &gt; 1e-3</span></td></tr><tr><th>states</th><td>963,020</td></tr></table>
 <p class="sub">prism-default_wlan-mec.3-0.time_min.log</p>
-<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism wlan-mec.3.prism wlan-mec.props --prop time_min -const COL=0 -maxiters 1000000
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism wlan-mec.3.prism wlan-mec.props --prop time_min -const COL=0 -maxiters 1000000 -cuddmaxmem 4g
 Benchmark:	wlan-mec.3-0.time_min
 Configuration:	prism-default
 Repetition:	1
 Time limit:	900
 Output:
-Picked up JAVA_TOOL_OPTIONS: -Xmx16g
+Picked up JAVA_TOOL_OPTIONS: -Xmx32g
 PRISM
 =====
 
 Version: 4.10.1
-Date: Sat Sep 26 01:12:10 GMT+02:00 2026
-Hostname: n23m0242.hpc.itc.rwth-aachen.de
-Memory limits: cudd=1g, java(heap)=16g
-Command line: prism wlan-mec.3.prism wlan-mec.props --prop time_min -const COL=0 -maxiters 1000000
+Date: Tue Oct 06 16:59:13 GMT+02:00 2026
+Hostname: n23m0135.hpc.itc.rwth-aachen.de
+Memory limits: cudd=4g, java(heap)=32g
+Command line: prism wlan-mec.3.prism wlan-mec.props --prop time_min -const COL=0 -maxiters 1000000 -cuddmaxmem 4g
 
 Parsing PRISM model file &quot;wlan-mec.3.prism&quot;...
 
@@ -69,9 +69,9 @@ Model constants: COL=0
 
 Computing reachable states...
 
-Reachability (BFS): 129 iterations in 0.24 seconds (average 0.001860, setup 0.00)
+Reachability (BFS): 129 iterations in 0.20 seconds (average 0.001550, setup 0.00)
 
-Time for model construction: 0.284 seconds.
+Time for model construction: 0.26 seconds.
 
 Type:        MDP
 States:      963020 (1 initial)
@@ -79,9 +79,9 @@ Transitions: 3875498
 
 Transition matrix: 18609 nodes (6 terminal), 3875498 minterms, vars: 43r/43c/8nd
 
-Prob0A: 413 iterations in 1.31 seconds (average 0.003172, setup 0.00)
+Prob0A: 413 iterations in 1.04 seconds (average 0.002518, setup 0.00)
 
-Prob1E: 414 iterations in 1.64 seconds (average 0.003961, setup 0.00)
+Prob1E: 414 iterations in 1.32 seconds (average 0.003188, setup 0.00)
 
 Warning: PRISM hasn't checked for zero-reward loops.
 Your minimum rewards may be too low...
@@ -101,11 +101,11 @@ TOTAL: [101.1 MB]
 
 Starting iterations...
 
-Iterative method: 1 iterations in 2.05 seconds (average 0.010000, setup 2.04)
+Iterative method: 1 iterations in 1.99 seconds (average 0.010000, setup 1.98)
 
 Value in the initial state: 0.0
 
-Time for model checking: 5.027 seconds.
+Time for model checking: 4.368 seconds.
 
 Result: 0.0 (exact floating point)
 
@@ -115,7 +115,7 @@ Note: There was 1 warning during computation.
 
 
 ----------------------------------------
-Wallclock time:	5.830
+Wallclock time:	5.142
 Return code:	0
 </pre>
 </body></html>

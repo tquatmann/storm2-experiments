@@ -27,23 +27,23 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">prism-sound &middot; mdpmec &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>1/2</code></p>
 <p class="sub">reference result: <code>0.5</code></p>
-<table class="meta"><tr><th>status</th><td>timeout</td></tr><tr><th>wallclock time</th><td>900.424 s</td></tr></table>
+<table class="meta"><tr><th>status</th><td>timeout</td></tr><tr><th>wallclock time</th><td>900.425 s</td></tr></table>
 <p class="sub">prism-sound_bigmec.100000.prob_max.log</p>
-<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism bigmec.prism bigmec.props --prop prob_max -const N=100000 -maxiters 1000000 -intervaliter
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism bigmec.prism bigmec.props --prop prob_max -const N=100000 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 4g
 Benchmark:	bigmec.100000.prob_max
 Configuration:	prism-sound
 Repetition:	1
 Time limit:	900
 Output:
-Picked up JAVA_TOOL_OPTIONS: -Xmx16g
+Picked up JAVA_TOOL_OPTIONS: -Xmx32g
 PRISM
 =====
 
 Version: 4.10.1
-Date: Sat Sep 26 01:13:12 GMT+02:00 2026
-Hostname: n23m0213.hpc.itc.rwth-aachen.de
-Memory limits: cudd=1g, java(heap)=16g
-Command line: prism bigmec.prism bigmec.props --prop prob_max -const N=100000 -maxiters 1000000 -intervaliter
+Date: Tue Oct 06 16:20:27 GMT+02:00 2026
+Hostname: n23m0255.hpc.itc.rwth-aachen.de
+Memory limits: cudd=4g, java(heap)=32g
+Command line: prism bigmec.prism bigmec.props --prop prob_max -const N=100000 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 4g
 
 Parsing PRISM model file &quot;bigmec.prism&quot;...
 
@@ -63,12 +63,14 @@ Parsing properties file &quot;bigmec.props&quot;...
 Model checking: &quot;prob_max&quot;: Pmax=? [ F &quot;p1win&quot; ]
 Model constants: N=100000
 
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
 Building model (engine:symbolic)...
 Model constants: N=100000
 
 ----------------------------------------
-Wallclock time:	900.424
+Wallclock time:	900.425
 Return code:	None
-Computation aborted after 900.424 seconds since the time limit of 900 seconds was exceeded.
+Computation aborted after 900.425 seconds since the time limit of 900 seconds was exceeded.
 </pre>
 </body></html>

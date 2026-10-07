@@ -27,7 +27,7 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">mcsta-ii &middot; mdpgrid &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>150604139209324853546227970120359814179290615495600914253576344393896862504621948676961510324096102775956913676037493726641485954655476328638386859513311839762556670543717098593053323901136309200728572963276189875672343229809253428918020357236914158775705113463983504805850550865619616102898520127922950743522693075145876483867066123533682000927855144260448048112538580268381985830289111277012900542455839617088976217310045698414847704593728115625949394129058568709758493109942311049330588354523883485209310776012611491561774310483410757570359744484266939094812728550747701686536794636999798389620630808938086895052902953548251928651316566680621437/258776524586883188853654887825780311454611075869252080737549318573558400257361506872194437247713634405299175624465381762560157354554928806331436229795329367174712678352510332633817222001044779215709644502388725852847759572857881178355039487107970572025449318148976810713772555981056279217372555229946863989795912780338488514702405181576500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</code></p>
 <p class="sub">reference result: <code>581.9853229</code></p>
-<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>21.886 s</td></tr><tr><th>result</th><td>581.9853228563138</td></tr><tr><th>relative difference</th><td>4.77e-14</td></tr><tr><th>states</th><td>1,860,992</td></tr></table>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>26.355 s</td></tr><tr><th>result</th><td>581.9853228563138</td></tr><tr><th>relative difference</th><td>4.77e-14</td></tr><tr><th>states</th><td>1,860,992</td></tr></table>
 <p class="sub">mcsta-ii_airport-mdp.250-250.time_min.log</p>
 <pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/modest mcsta airport-mdp.jani --props time_min --experiment DMAX=250,PMAX=250 --unsafe --store-mode Memory --alg IntervalIteration --width 1e-6 --relative-width
 Benchmark:	airport-mdp.250-250.time_min
@@ -48,7 +48,7 @@ airport-mdp.jani: warning: The probabilities for a transition do not sum up to 1
 airport-mdp.jani: info: Explored 1860992 states for DMAX=250, PMAX=250.
 airport-mdp.jani:properties[0]: warning: Computing minimum expected reward in property &quot;time_min&quot; without checking for zero-reward end components.
 
-Peak memory usage: 2000 MB
+Peak memory usage: 1972 MB
 Analysis results for airport-mdp.jani
 Experiment DMAX=250, PMAX=250
 
@@ -57,25 +57,25 @@ Experiment DMAX=250, PMAX=250
   States:     1860992
   Choices:    2738496
   Branches:   13907976
-  Rate:       694659 states/s
-  Time:       2.9 s
+  Rate:       605792 states/s
+  Time:       3.3 s
 
 + Property time_min
   Value:  581.9853228563138
   Bounds: [581.9853228562665, 581.985322856361]
-  Time:   18.8 s
+  Time:   22.8 s
 
   + Precomputations
     Max. prob. 1 states:          1860992
-    Time for max. prob. 1 states: 2.4 s
+    Time for max. prob. 1 states: 2.5 s
 
   + Interval iteration
     Iterations: 294
-    Time:       16.4 s
+    Time:       20.3 s
 
 
 ----------------------------------------
-Wallclock time:	21.886
+Wallclock time:	26.355
 Return code:	0
 </pre>
 </body></html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>prism-sound-explicit - zeroconf.20-2-false.correct_max</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>zeroconf.20-2-false.correct_max</h1>
+<p class="sub">prism-sound-explicit &middot; mdpqvbs &middot; <a href="index.html">back to the table</a></p>
+<p class="sub">reference result: <code>186137901729174268511065209171497320718694252975935739961231141070383297312458181231689761539699331000803/9251581321152439541256848521142356863865506387898411218420846883518125316026037895599741228066506366352800803</code></p>
+<p class="sub">reference result: <code>2.011957689e-05</code></p>
+<table class="meta"><tr><th>status</th><td>no-result</td></tr><tr><th>wallclock time</th><td>7.488 s</td></tr><tr><th>states</th><td>89,586</td></tr></table>
+<p class="sub">prism-sound-explicit_zeroconf.20-2-false.correct_max.log</p>
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism zeroconf.prism zeroconf.props --prop correct_max -const N=20,K=2,reset=false -maxiters 1000000 -intervaliter -heuristic speed -explicit
+Benchmark:	zeroconf.20-2-false.correct_max
+Configuration:	prism-sound-explicit
+Repetition:	1
+Time limit:	900
+Output:
+Picked up JAVA_TOOL_OPTIONS: -Xmx32g
+PRISM
+=====
+
+Version: 4.10.1
+Date: Tue Oct 06 17:01:09 GMT+02:00 2026
+Hostname: n23m0039.hpc.itc.rwth-aachen.de
+Memory limits: cudd=1g, java(heap)=32g
+Command line: prism zeroconf.prism zeroconf.props --prop correct_max -const 'N=20,K=2,reset=false' -maxiters 1000000 -intervaliter -heuristic speed -explicit
+
+Parsing PRISM model file &quot;zeroconf.prism&quot;...
+
+Type:        MDP
+Modules:     environment host0
+Actions:     [] [reset] [time] [send] [rec]
+Variables:   b_ip7 b_ip6 b_ip5 b_ip4 b_ip3 b_ip2 b_ip1 b_ip0 n n0 n1 b z ip_mess x y coll probes mess defend ip l
+
+Parsing properties file &quot;zeroconf.props&quot;...
+
+2 properties:
+(1) &quot;correct_max&quot;: Pmax=? [ F (l=4&amp;ip=1) ]
+(2) &quot;correct_min&quot;: Pmin=? [ F (l=4&amp;ip=1) ]
+
+---------------------------------------------------------------------
+
+Model checking: &quot;correct_max&quot;: Pmax=? [ F (l=4&amp;ip=1) ]
+Model constants: reset=false,N=20,K=2
+
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
+Building model (engine:symbolic)...
+Model constants: reset=false,N=20,K=2
+
+Computing reachable states...
+
+Reachability (BFS): 317 iterations in 1.83 seconds (average 0.005773, setup 0.00)
+
+Time for model construction: 2.122 seconds.
+
+Type:        MDP
+States:      89586 (1 initial)
+Transitions: 207825
+
+Transition matrix: 31929 nodes (6 terminal), 207825 minterms, vars: 56r/56c/7nd
+
+Prob0A: 101 iterations in 0.33 seconds (average 0.003267, setup 0.00)
+
+Prob1E: 924 iterations in 3.22 seconds (average 0.003485, setup 0.00)
+
+yes = 25575, no = 26132, maybe = 37879
+
+Computing remaining probabilities...
+Engine: Sparse
+
+Building quotient MDP, collapsing maximal end components as well as yes and no states...
+Time for computing maximal end components: 0.234 seconds, found 0 MECs.
+
+Error: Not enough extra action variables preallocated, please increase using -ddextraactionvars switch!.
+
+Warning: CUDD reports 22556 non-zero references.
+
+---------------------------------------------------------------------
+
+Note: There was 1 warning during computation.
+
+
+----------------------------------------
+Wallclock time:	7.488
+Return code:	0
+</pre>
+</body></html>

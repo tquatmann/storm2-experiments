@@ -27,23 +27,23 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">prism-default &middot; mdpgrid &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>69361519025671746727049573861995588980274563293144165520237565541813099350419189860833278359751429195464570012568647896244385841813350065672781322612015750092655388486873975437900570737415092912284069616849030238071070929944317078277070842165556583602367457588341/228620085710960318381663764284439716858238387162104935839618176113948280945047137682814784170260465719384334476591047178926002085000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</code></p>
 <p class="sub">reference result: <code>303.3920612</code></p>
-<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>13.996 s</td></tr><tr><th>result</th><td>303.3920611567076</td></tr><tr><th>relative difference</th><td>4.91e-15</td></tr><tr><th>states</th><td>499,720</td></tr></table>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>17.602 s</td></tr><tr><th>result</th><td>303.3920611567076</td></tr><tr><th>relative difference</th><td>4.91e-15</td></tr><tr><th>states</th><td>499,720</td></tr></table>
 <p class="sub">prism-default_airport-mdp.130-130.time_min.log</p>
-<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism airport-mdp.prism airport-mdp.props --prop time_min -const DMAX=130,PMAX=130 -maxiters 1000000
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism airport-mdp.prism airport-mdp.props --prop time_min -const DMAX=130,PMAX=130 -maxiters 1000000 -cuddmaxmem 4g
 Benchmark:	airport-mdp.130-130.time_min
 Configuration:	prism-default
 Repetition:	1
 Time limit:	900
 Output:
-Picked up JAVA_TOOL_OPTIONS: -Xmx16g
+Picked up JAVA_TOOL_OPTIONS: -Xmx32g
 PRISM
 =====
 
 Version: 4.10.1
-Date: Sat Sep 26 01:06:28 GMT+02:00 2026
-Hostname: r23m0075.hpc.itc.rwth-aachen.de
-Memory limits: cudd=1g, java(heap)=16g
-Command line: prism airport-mdp.prism airport-mdp.props --prop time_min -const 'DMAX=130,PMAX=130' -maxiters 1000000
+Date: Tue Oct 06 16:29:51 GMT+02:00 2026
+Hostname: n23m0027.hpc.itc.rwth-aachen.de
+Memory limits: cudd=4g, java(heap)=32g
+Command line: prism airport-mdp.prism airport-mdp.props --prop time_min -const 'DMAX=130,PMAX=130' -maxiters 1000000 -cuddmaxmem 4g
 
 Parsing PRISM model file &quot;airport-mdp.prism&quot;...
 
@@ -69,9 +69,9 @@ Model constants: DMAX=130,PMAX=130
 
 Computing reachable states...
 
-Reachability (BFS): 259 iterations in 0.05 seconds (average 0.000193, setup 0.00)
+Reachability (BFS): 259 iterations in 0.06 seconds (average 0.000232, setup 0.00)
 
-Time for model construction: 2.014 seconds.
+Time for model construction: 2.518 seconds.
 
 Warning: Deadlocks detected and fixed in 8 states
 
@@ -83,7 +83,7 @@ Transition matrix: 541150 nodes (3315 terminal), 3721684 minterms, vars: 26r/26c
 
 Prob0A: 259 iterations in 0.06 seconds (average 0.000232, setup 0.00)
 
-Prob1E: 260 iterations in 0.05 seconds (average 0.000192, setup 0.00)
+Prob1E: 260 iterations in 0.06 seconds (average 0.000231, setup 0.00)
 
 Warning: PRISM hasn't checked for zero-reward loops.
 Your minimum rewards may be too low...
@@ -102,14 +102,14 @@ Allocating iteration vectors... [2 x 3.8 MB]
 TOTAL: [67.3 MB]
 
 Starting iterations...
-Iteration 849: max relative diff=0.000116, 5.01 sec so far
-Iteration 1724: max relative diff=0.000001, 10.02 sec so far
+Iteration 742: max relative diff=0.000202, 5.01 sec so far
+Iteration 1483: max relative diff=0.000005, 10.02 sec so far
 
-Iterative method: 1791 iterations in 11.26 seconds (average 0.005807, setup 0.86)
+Iterative method: 1791 iterations in 13.12 seconds (average 0.006756, setup 1.02)
 
 Value in the initial state: 303.3920611567076
 
-Time for model checking: 11.392 seconds.
+Time for model checking: 13.308 seconds.
 
 Result: 303.3920611567076 (+/- 0.0030163651816965367 estimated; rel err 9.942136159385293E-6)
 
@@ -119,7 +119,7 @@ Note: There were 2 warnings during computation.
 
 
 ----------------------------------------
-Wallclock time:	13.996
+Wallclock time:	17.602
 Return code:	0
 </pre>
 </body></html>

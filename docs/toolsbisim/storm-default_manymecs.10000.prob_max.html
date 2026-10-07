@@ -27,7 +27,7 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">storm-default &middot; mdpmec &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>1/2</code></p>
 <p class="sub">reference result: <code>0.5</code></p>
-<table class="meta"><tr><th>status</th><td>incorrect</td></tr><tr><th>wallclock time</th><td>0.104 s</td></tr><tr><th>result</th><td>0.4949091513</td></tr><tr><th>relative difference</th><td><span class="bad">0.0102 &gt; 1e-3</span></td></tr><tr><th>states</th><td>30,002</td></tr></table>
+<table class="meta"><tr><th>status</th><td>incorrect</td></tr><tr><th>wallclock time</th><td>0.118 s</td></tr><tr><th>result</th><td>0.4949091513</td></tr><tr><th>relative difference</th><td><span class="bad">0.0102 &gt; 1e-3</span></td></tr><tr><th>states</th><td>30,002</td></tr></table>
 <p class="sub">storm-default_manymecs.10000.prob_max.log</p>
 <pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/storm --jani manymecs.jani --janiproperty prob_max --constants N=10000
 Benchmark:	manymecs.10000.prob_max
@@ -37,13 +37,13 @@ Time limit:	900
 Output:
 Storm 1.14.0 (dev)
 
-Date: Sat Sep 26 01:05:57 2026
+Date: Tue Oct  6 16:21:43 2026
 Command line arguments: --jani manymecs.jani --janiproperty prob_max --constants N=10000
-Current working directory: /w0/tmp/slurm_tq429871.4466547/invocation-_ognlq_3
+Current working directory: /w0/tmp/slurm_tq429871.4818245/invocation-n8fr44mb
 
-Time for model input parsing: 0.000s.
+Time for model input parsing: 0.001s.
 
-Time for model construction: 0.057s.
+Time for model construction: 0.063s.
 
 -------------------------------------------------------------- 
 Model type: 	MDP (sparse)
@@ -60,10 +60,10 @@ Choice Labels: 	none
 
 Model checking property &quot;prob_max&quot;: Pmax=? [F &quot;p1win&quot;] ...
 Result (for initial states): 0.4949091513
-Time for model checking: 0.017s.
+Time for model checking: 0.019s.
 
 ----------------------------------------
-Wallclock time:	0.104
+Wallclock time:	0.118
 Return code:	0
 </pre>
 </body></html>

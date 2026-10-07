@@ -27,7 +27,7 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">mcsta-ovi &middot; mdpqvbs &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>34900/27</code></p>
 <p class="sub">reference result: <code>1292.592593</code></p>
-<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>7.947 s</td></tr><tr><th>result</th><td>1292.5934985749386</td></tr><tr><th>relative difference</th><td>7.01e-07</td></tr><tr><th>states</th><td>958,801</td></tr></table>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>7.367 s</td></tr><tr><th>result</th><td>1292.5934985749386</td></tr><tr><th>relative difference</th><td>7.01e-07</td></tr><tr><th>states</th><td>958,801</td></tr></table>
 <p class="sub">mcsta-ovi_resource-gathering.1300-100-100.expsteps.log</p>
 <pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/modest mcsta resource-gathering.jani --props expsteps --experiment B=1300,GOLD_TO_COLLECT=100,GEM_TO_COLLECT=100 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
 Benchmark:	resource-gathering.1300-100-100.expsteps
@@ -46,7 +46,7 @@ resource-gathering.jani: info: Need 16 bytes per state.
 resource-gathering.jani: info: Explored 958801 states for B=1300, GOLD_TO_COLLECT=100, GEM_TO_COLLECT=100.
 resource-gathering.jani:properties[1]: warning: Computing minimum expected reward in property &quot;expsteps&quot; without checking for zero-reward end components.
 
-Peak memory usage: 624 MB
+Peak memory usage: 586 MB
 Analysis results for resource-gathering.jani
 Experiment B=1300, GOLD_TO_COLLECT=100, GEM_TO_COLLECT=100
 
@@ -55,28 +55,28 @@ Experiment B=1300, GOLD_TO_COLLECT=100, GEM_TO_COLLECT=100
   States:     958801
   Choices:    3080401
   Branches:   3325201
-  Rate:       650917 states/s
+  Rate:       670490 states/s
   Time:       1.5 s
 
 + Property expsteps
   Value:  1292.5934985749386
   Bounds: [1292.5925925923289, 1292.5944045575484]
-  Time:   6.2 s
+  Time:   5.7 s
 
   + Precomputations
     Max. prob. 1 states:          958801
-    Time for max. prob. 1 states: 0.4 s
+    Time for max. prob. 1 states: 0.3 s
 
   + Optimistic value iteration
     Total iterations:  667
     Verif. attempts:   1
     Verif. iterations: 10
     Final epsilon:     1E-06
-    Time:              5.8 s
+    Time:              5.3 s
 
 
 ----------------------------------------
-Wallclock time:	7.947
+Wallclock time:	7.367
 Return code:	0
 </pre>
 </body></html>

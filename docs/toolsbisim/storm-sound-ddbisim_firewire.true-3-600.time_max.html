@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>storm-sound-ddbisim - firewire.true-3-600.time_max</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>firewire.true-3-600.time_max</h1>
+<p class="sub">storm-sound-ddbisim &middot; mdpqvbs &middot; <a href="index.html">back to the table</a></p>
+<p class="sub">reference result: <code>299</code></p>
+<p class="sub">reference result: <code>299</code></p>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>5.267 s</td></tr><tr><th>result</th><td>299.0000008</td></tr><tr><th>relative difference</th><td>2.68e-09</td></tr><tr><th>states</th><td>1,078,299</td></tr><tr><th>states after preprocessing</th><td>1,961</td></tr></table>
+<p class="sub">storm-sound-ddbisim_firewire.true-3-600.time_max.log</p>
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/storm --jani firewire.true.jani --janiproperty time_max --constants delay=3,deadline=600 --sound --bisimulation --engine dd-to-sparse
+Benchmark:	firewire.true-3-600.time_max
+Configuration:	storm-sound-ddbisim
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Tue Oct  6 16:41:56 2026
+Command line arguments: --jani firewire.true.jani --janiproperty time_max --constants 'delay=3,deadline=600' --sound --bisimulation --engine dd-to-sparse
+Current working directory: /w0/tmp/slurm_tq429871.4819523/invocation-yx3k53zl
+
+Time for model input parsing: 0.003s.
+
+WARN  (threads.cpp:21): Detected thread limitation via Slurm (max. 4 threads.)
+Using Sylvan with 4 parallel threads.
+Time for model construction: 1.908s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (symbolic)
+States: 	1078299 (21110 nodes)
+Transitions: 	1473698 (68262 nodes)
+Choices: 	1453092
+Reward Models:  time
+Variables: 	rows: 16 meta variables (59 DD variables), columns: 16 meta variables (59 DD variables), nondeterminism: 14 meta variables (14 DD variables)
+Labels: 	3
+   * deadlock -&gt; 0 state(s) (1 nodes)
+   * init -&gt; 1 state(s) (60 nodes)
+   * done
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 3.236s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	1961
+Transitions: 	2416
+Choices: 	2394
+Reward Models:  time
+State Labels: 	4 labels
+   * (((s1 = 8) &amp; (s2 = 7)) | ((s1 = 7) &amp; (s2 = 8))) -&gt; 1 item(s)
+   * done -&gt; 1 item(s)
+   * deadlock -&gt; 0 item(s)
+   * init -&gt; 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property &quot;time_max&quot;: R{&quot;time&quot;}max=? [F &quot;done&quot;] ...
+Result (for initial states): 299.0000008
+Time for model checking: 0.001s.
+
+----------------------------------------
+Wallclock time:	5.267
+Return code:	0
+</pre>
+</body></html>

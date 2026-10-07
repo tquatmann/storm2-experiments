@@ -27,23 +27,23 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">prism-sound &middot; mdpgrid &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>107235199887310632150001809562008600/909543680129861140820205019889143</code></p>
 <p class="sub">reference result: <code>117.9</code></p>
-<table class="meta"><tr><th>status</th><td>no-result</td></tr><tr><th>wallclock time</th><td>2.617 s</td></tr><tr><th>states</th><td>64,000</td></tr></table>
+<table class="meta"><tr><th>status</th><td>no-result</td></tr><tr><th>wallclock time</th><td>1.659 s</td></tr><tr><th>states</th><td>64,000</td></tr></table>
 <p class="sub">prism-sound_random-grid.40-0.3-0.3.time_min.log</p>
-<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism random-grid.prism random-grid.props --prop time_min -const N=40,pover=0.3,pstay=0.3 -maxiters 1000000 -intervaliter
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism random-grid.prism random-grid.props --prop time_min -const N=40,pover=0.3,pstay=0.3 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 4g
 Benchmark:	random-grid.40-0.3-0.3.time_min
 Configuration:	prism-sound
 Repetition:	1
 Time limit:	900
 Output:
-Picked up JAVA_TOOL_OPTIONS: -Xmx16g
+Picked up JAVA_TOOL_OPTIONS: -Xmx32g
 PRISM
 =====
 
 Version: 4.10.1
-Date: Sat Sep 26 01:17:50 GMT+02:00 2026
-Hostname: r23m0058.hpc.itc.rwth-aachen.de
-Memory limits: cudd=1g, java(heap)=16g
-Command line: prism random-grid.prism random-grid.props --prop time_min -const 'N=40,pover=0.3,pstay=0.3' -maxiters 1000000 -intervaliter
+Date: Tue Oct 06 16:57:58 GMT+02:00 2026
+Hostname: n23m0141.hpc.itc.rwth-aachen.de
+Memory limits: cudd=4g, java(heap)=32g
+Command line: prism random-grid.prism random-grid.props --prop time_min -const 'N=40,pover=0.3,pstay=0.3' -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 4g
 
 Parsing PRISM model file &quot;random-grid.prism&quot;...
 
@@ -64,16 +64,18 @@ Parsing properties file &quot;random-grid.props&quot;...
 Model checking: &quot;time_min&quot;: R{&quot;time&quot;}min=? [ F x=N&amp;y=N&amp;z=N ]
 Model constants: N=40,pstay=0.3,pover=0.3
 
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
 Warning: Switching to explicit engine to allow interval iteration on Rmin operator.
 
 Building model (engine:explicit)...
 Model constants: N=40,pstay=0.3,pover=0.3
 
 Computing reachable states... 64000 states
-Reachable states exploration and model construction done in 0.662 secs.
+Reachable states exploration and model construction done in 0.535 secs.
 Sorting reachable states list...
 
-Time for model construction: 1.007 seconds.
+Time for model construction: 0.721 seconds.
 
 Type:        MDP
 States:      64000 (1 initial)
@@ -84,13 +86,13 @@ Building reward structure...
 
 Starting expected reachability (min)...
 Starting Prob1 (max)...
-Prob1 (max) took 61 iterations and 0.159 seconds.
+Prob1 (max) took 61 iterations and 0.131 seconds.
 target=1, inf=0, rest=63999
 For Rmin, checking for zero-reward ECs...
-Time for checking for zero-reward ECs: 0.083 seconds, no zero-reward ECs found, proceeding normally.
+Time for checking for zero-reward ECs: 0.017 seconds, no zero-reward ECs found, proceeding normally.
 Computing upper bound(s) for Rmin using the Dijkstra Sweep for Monotone Pessimistic Initialization algorithm...
-Calculating incoming choices relation for Markov decision process...  done (0.038 seconds)
-Time for computing upper bound(s) for Rmin using the DSI-MP algorithm: 0.312 seconds.
+Calculating incoming choices relation for Markov decision process...  done (0.026 seconds)
+Time for computing upper bound(s) for Rmin using the DSI-MP algorithm: 0.254 seconds.
 Upper bound for min expectation (Dijkstra Sweep MPI): 1.1037841674018352E13
 Starting Prob1 (min)...
 Prob1 (min) took 2 iterations and 0.007 seconds.
@@ -99,11 +101,11 @@ Error: Interval iteration for Rmin and non-contracting MDP currently not support
 
 ---------------------------------------------------------------------
 
-Note: There was 1 warning during computation.
+Note: There were 2 warnings during computation.
 
 
 ----------------------------------------
-Wallclock time:	2.617
+Wallclock time:	1.659
 Return code:	0
 </pre>
 </body></html>

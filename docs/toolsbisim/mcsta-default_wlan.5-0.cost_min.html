@@ -27,7 +27,7 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">mcsta-default &middot; mdpqvbs &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>7625</code></p>
 <p class="sub">reference result: <code>7625</code></p>
-<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>9.890 s</td></tr><tr><th>result</th><td>7625</td></tr><tr><th>relative difference</th><td>0</td></tr><tr><th>states</th><td>1,295,218</td></tr></table>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>9.158 s</td></tr><tr><th>result</th><td>7625</td></tr><tr><th>relative difference</th><td>0</td></tr><tr><th>states</th><td>1,295,218</td></tr></table>
 <p class="sub">mcsta-default_wlan.5-0.cost_min.log</p>
 <pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/modest mcsta wlan.5.jani --props cost_min --experiment COL=0 --unsafe --store-mode Memory
 Benchmark:	wlan.5-0.cost_min
@@ -48,7 +48,7 @@ wlan.5.jani: info: Need 16 bytes per state.
 wlan.5.jani: info: Explored 1295218 states for COL=0.
 wlan.5.jani:properties[2]: warning: Computing minimum expected reward in property &quot;cost_min&quot; without checking for zero-reward end components.
 
-Peak memory usage: 592 MB
+Peak memory usage: 569 MB
 Analysis results for wlan.5.jani
 Experiment COL=0
 
@@ -57,26 +57,26 @@ Experiment COL=0
   States:     1295218
   Choices:    1646074
   Branches:   2929960
-  Rate:       1006385 states/s
-  Time:       1.3 s
+  Rate:       1194851 states/s
+  Time:       1.1 s
 
 + Property cost_min
   Value:  7625
   Bounds: [7625, infinity)
-  Time:   7.9 s
+  Time:   7.8 s
 
   + Precomputations
     Max. prob. 1 states:          1295218
-    Time for max. prob. 1 states: 2.7 s
+    Time for max. prob. 1 states: 2.5 s
 
   + Value iteration
     Final error: 0
     Iterations:  524
-    Time:        5.2 s
+    Time:        5.3 s
 
 
 ----------------------------------------
-Wallclock time:	9.890
+Wallclock time:	9.158
 Return code:	0
 </pre>
 </body></html>

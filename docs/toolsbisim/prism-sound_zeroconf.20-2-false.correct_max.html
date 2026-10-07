@@ -27,23 +27,23 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">prism-sound &middot; mdpqvbs &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>186137901729174268511065209171497320718694252975935739961231141070383297312458181231689761539699331000803/9251581321152439541256848521142356863865506387898411218420846883518125316026037895599741228066506366352800803</code></p>
 <p class="sub">reference result: <code>2.011957689e-05</code></p>
-<table class="meta"><tr><th>status</th><td>no-result</td></tr><tr><th>wallclock time</th><td>6.770 s</td></tr><tr><th>states</th><td>89,586</td></tr></table>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>11.275 s</td></tr><tr><th>result</th><td>2.0119576888287864E-5</td></tr><tr><th>relative difference</th><td>3.05e-16</td></tr><tr><th>states</th><td>89,586</td></tr><tr><th>states after preprocessing</th><td>37,881</td></tr></table>
 <p class="sub">prism-sound_zeroconf.20-2-false.correct_max.log</p>
-<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism zeroconf.prism zeroconf.props --prop correct_max -const N=20,K=2,reset=false -maxiters 1000000 -intervaliter
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism zeroconf.prism zeroconf.props --prop correct_max -const N=20,K=2,reset=false -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 4g
 Benchmark:	zeroconf.20-2-false.correct_max
 Configuration:	prism-sound
 Repetition:	1
 Time limit:	900
 Output:
-Picked up JAVA_TOOL_OPTIONS: -Xmx16g
+Picked up JAVA_TOOL_OPTIONS: -Xmx32g
 PRISM
 =====
 
 Version: 4.10.1
-Date: Sat Sep 26 01:00:16 GMT+02:00 2026
-Hostname: r23m0058.hpc.itc.rwth-aachen.de
-Memory limits: cudd=1g, java(heap)=16g
-Command line: prism zeroconf.prism zeroconf.props --prop correct_max -const 'N=20,K=2,reset=false' -maxiters 1000000 -intervaliter
+Date: Tue Oct 06 17:00:33 GMT+02:00 2026
+Hostname: n23m0124.hpc.itc.rwth-aachen.de
+Memory limits: cudd=4g, java(heap)=32g
+Command line: prism zeroconf.prism zeroconf.props --prop correct_max -const 'N=20,K=2,reset=false' -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 4g
 
 Parsing PRISM model file &quot;zeroconf.prism&quot;...
 
@@ -63,14 +63,16 @@ Parsing properties file &quot;zeroconf.props&quot;...
 Model checking: &quot;correct_max&quot;: Pmax=? [ F (l=4&amp;ip=1) ]
 Model constants: reset=false,N=20,K=2
 
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
 Building model (engine:symbolic)...
 Model constants: reset=false,N=20,K=2
 
 Computing reachable states...
 
-Reachability (BFS): 317 iterations in 2.02 seconds (average 0.006372, setup 0.00)
+Reachability (BFS): 317 iterations in 3.06 seconds (average 0.009653, setup 0.00)
 
-Time for model construction: 2.198 seconds.
+Time for model construction: 3.31 seconds.
 
 Type:        MDP
 States:      89586 (1 initial)
@@ -78,25 +80,49 @@ Transitions: 207825
 
 Transition matrix: 31929 nodes (6 terminal), 207825 minterms, vars: 56r/56c/7nd
 
-Prob0A: 101 iterations in 0.35 seconds (average 0.003465, setup 0.00)
+Prob0A: 101 iterations in 0.32 seconds (average 0.003168, setup 0.00)
 
-Prob1E: 924 iterations in 3.39 seconds (average 0.003669, setup 0.00)
+Prob1E: 924 iterations in 4.39 seconds (average 0.004751, setup 0.00)
 
 yes = 25575, no = 26132, maybe = 37879
 
 Computing remaining probabilities...
-Engine: Hybrid
+Engine: Sparse
 
 Building quotient MDP, collapsing maximal end components as well as yes and no states...
-Time for computing maximal end components: 0.246 seconds, found 0 MECs.
+Time for computing maximal end components: 0.291 seconds, found 0 MECs.
+Time for building MEC quotient: 1.276 seconds.
 
-Error: Not enough extra action variables preallocated, please increase using -ddextraactionvars switch!.
+Quotient MDP:
+States:      37881 (1 initial)
+Transitions: 139766
 
-Warning: CUDD reports 22556 non-zero references.
+Transition matrix: 168372 nodes (6 terminal), 139766 minterms, vars: 56r/56c/64nd
+Note: Interval iteration is configured to enforce monotonicity from below.
+
+Building sparse matrix... [n=37881, nc=67659, nnz=87910, k=4] [1.1 MB]
+Creating vector for yes... [295.9 KB]
+Creating vector for maybe... [295.9 KB]
+Allocating iteration vectors... [4 x 295.9 KB]
+TOTAL: [2.8 MB]
+
+Starting iterations (interval iteration)...
+Max relative diff between upper and lower bound on convergence: 8.8755E-07
+Iterative method (interval iteration): 262 iterations in 0.27 seconds (average 0.000534, setup 0.13)
+
+Value in the initial state: 2.0119576888287864E-5
+
+Time for model checking: 6.677 seconds.
+
+Result: 2.0119576888287864E-5
+
+---------------------------------------------------------------------
+
+Note: There was 1 warning during computation.
 
 
 ----------------------------------------
-Wallclock time:	6.770
+Wallclock time:	11.275
 Return code:	0
 </pre>
 </body></html>

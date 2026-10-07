@@ -27,7 +27,7 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">storm-default &middot; mdpmec &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>1/2</code></p>
 <p class="sub">reference result: <code>0.5</code></p>
-<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>45.818 s</td></tr><tr><th>result</th><td>0.5</td></tr><tr><th>relative difference</th><td>0</td></tr><tr><th>states</th><td>200,003</td></tr></table>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>51.879 s</td></tr><tr><th>result</th><td>0.5</td></tr><tr><th>relative difference</th><td>0</td></tr><tr><th>states</th><td>200,003</td></tr></table>
 <p class="sub">storm-default_bigmec.100000.prob_max.log</p>
 <pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/storm --jani bigmec.jani --janiproperty prob_max --constants N=100000
 Benchmark:	bigmec.100000.prob_max
@@ -37,13 +37,13 @@ Time limit:	900
 Output:
 Storm 1.14.0 (dev)
 
-Date: Sat Sep 26 01:04:24 2026
+Date: Tue Oct  6 16:31:42 2026
 Command line arguments: --jani bigmec.jani --janiproperty prob_max --constants N=100000
-Current working directory: /w0/tmp/slurm_tq429871.4466497/invocation-p47x1so1
+Current working directory: /w0/tmp/slurm_tq429871.4819084/invocation-f3nqehpj
 
-Time for model input parsing: 0.000s.
+Time for model input parsing: 0.001s.
 
-Time for model construction: 0.282s.
+Time for model construction: 0.312s.
 
 -------------------------------------------------------------- 
 Model type: 	MDP (sparse)
@@ -60,10 +60,10 @@ Choice Labels: 	none
 
 Model checking property &quot;prob_max&quot;: Pmax=? [F &quot;p1win&quot;] ...
 Result (for initial states): 0.5
-Time for model checking: 45.510s.
+Time for model checking: 51.466s.
 
 ----------------------------------------
-Wallclock time:	45.818
+Wallclock time:	51.879
 Return code:	0
 </pre>
 </body></html>

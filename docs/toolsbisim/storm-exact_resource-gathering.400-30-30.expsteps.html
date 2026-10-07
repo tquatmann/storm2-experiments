@@ -27,7 +27,7 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">storm-exact &middot; mdpqvbs &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>3490/9</code></p>
 <p class="sub">reference result: <code>387.7777778</code></p>
-<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>3.039 s</td></tr><tr><th>result</th><td>3490/9</td></tr><tr><th>relative difference</th><td>0</td></tr><tr><th>states</th><td>90,241</td></tr></table>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>3.490 s</td></tr><tr><th>result</th><td>3490/9</td></tr><tr><th>relative difference</th><td>0</td></tr><tr><th>states</th><td>90,241</td></tr></table>
 <p class="sub">storm-exact_resource-gathering.400-30-30.expsteps.log</p>
 <pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/storm --jani resource-gathering.jani --janiproperty expsteps --constants B=400,GOLD_TO_COLLECT=30,GEM_TO_COLLECT=30 --exact
 Benchmark:	resource-gathering.400-30-30.expsteps
@@ -37,13 +37,13 @@ Time limit:	900
 Output:
 Storm 1.14.0 (dev)
 
-Date: Sat Sep 26 01:16:48 2026
+Date: Tue Oct  6 16:43:52 2026
 Command line arguments: --jani resource-gathering.jani --janiproperty expsteps --constants 'B=400,GOLD_TO_COLLECT=30,GEM_TO_COLLECT=30' --exact
-Current working directory: /w0/tmp/slurm_tq429871.4467015/invocation-x3jzf7zf
+Current working directory: /w0/tmp/slurm_tq429871.4819705/invocation-b1cvhm7m
 
-Time for model input parsing: 0.001s.
+Time for model input parsing: 0.002s.
 
-Time for model construction: 0.957s.
+Time for model construction: 1.095s.
 
 -------------------------------------------------------------- 
 Model type: 	MDP (sparse)
@@ -60,10 +60,10 @@ Choice Labels: 	none
 
 Model checking property &quot;expsteps&quot;: Tmin=? [F &quot;success&quot;] ...
 Result (for initial states): 3490/9 (approx. 387.7777778)
-Time for model checking: 2.037s.
+Time for model checking: 2.352s.
 
 ----------------------------------------
-Wallclock time:	3.039
+Wallclock time:	3.490
 Return code:	0
 </pre>
 </body></html>

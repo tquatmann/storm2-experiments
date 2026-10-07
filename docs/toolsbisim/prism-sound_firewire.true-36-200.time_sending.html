@@ -27,23 +27,23 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">prism-sound &middot; mdpqvbs &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>809/4</code></p>
 <p class="sub">reference result: <code>202.25</code></p>
-<table class="meta"><tr><th>status</th><td>no-result</td></tr><tr><th>wallclock time</th><td>180.352 s</td></tr><tr><th>states</th><td>6,932,041</td></tr></table>
+<table class="meta"><tr><th>status</th><td>no-result</td></tr><tr><th>wallclock time</th><td>216.247 s</td></tr><tr><th>states</th><td>6,932,041</td></tr></table>
 <p class="sub">prism-sound_firewire.true-36-200.time_sending.log</p>
-<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism firewire.true.prism firewire.true.props --prop time_sending -const delay=36,deadline=200 -maxiters 1000000 -intervaliter
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism firewire.true.prism firewire.true.props --prop time_sending -const delay=36,deadline=200 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 4g
 Benchmark:	firewire.true-36-200.time_sending
 Configuration:	prism-sound
 Repetition:	1
 Time limit:	900
 Output:
-Picked up JAVA_TOOL_OPTIONS: -Xmx16g
+Picked up JAVA_TOOL_OPTIONS: -Xmx32g
 PRISM
 =====
 
 Version: 4.10.1
-Date: Sat Sep 26 01:09:35 GMT+02:00 2026
-Hostname: r23m0058.hpc.itc.rwth-aachen.de
-Memory limits: cudd=1g, java(heap)=16g
-Command line: prism firewire.true.prism firewire.true.props --prop time_sending -const 'delay=36,deadline=200' -maxiters 1000000 -intervaliter
+Date: Tue Oct 06 16:57:22 GMT+02:00 2026
+Hostname: n23m0048.hpc.itc.rwth-aachen.de
+Memory limits: cudd=4g, java(heap)=32g
+Command line: prism firewire.true.prism firewire.true.props --prop time_sending -const 'delay=36,deadline=200' -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 4g
 
 Parsing PRISM model file &quot;firewire.true.prism&quot;...
 
@@ -68,14 +68,16 @@ Parsing properties file &quot;firewire.true.props&quot;...
 Model checking: &quot;time_sending&quot;: R{&quot;time_sending&quot;}max=? [ F &quot;done&quot; ]
 Model constants: deadline=200,delay=36
 
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
 Building model (engine:symbolic)...
 Model constants: deadline=200,delay=36
 
 Computing reachable states...
 
-Reachability (BFS): 287 iterations in 34.35 seconds (average 0.119686, setup 0.00)
+Reachability (BFS): 287 iterations in 37.31 seconds (average 0.130000, setup 0.00)
 
-Time for model construction: 46.943 seconds.
+Time for model construction: 50.272 seconds.
 
 Type:        MDP
 States:      6932041 (1 initial)
@@ -83,9 +85,9 @@ Transitions: 15783496
 
 Transition matrix: 817685 nodes (3 terminal), 15783496 minterms, vars: 64r/64c/14nd
 
-Prob0E: 421 iterations in 72.48 seconds (average 0.172162, setup 0.00)
+Prob0E: 421 iterations in 74.05 seconds (average 0.175891, setup 0.00)
 
-Prob1A: 1 iterations in 0.17 seconds (average 0.170000, setup 0.00)
+Prob1A: 1 iterations in 0.16 seconds (average 0.160000, setup 0.00)
 
 goal = 252, inf = 0, maybe = 6931789
 
@@ -114,7 +116,7 @@ Error: Out of memory (or other internal error) in the CUDD library.
 Tip: Try using the -cuddmaxmem switch to increase the memory available to CUDD.
 
 ----------------------------------------
-Wallclock time:	180.352
+Wallclock time:	216.247
 Return code:	1
 </pre>
 </body></html>

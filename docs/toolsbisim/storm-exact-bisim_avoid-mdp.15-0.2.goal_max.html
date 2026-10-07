@@ -27,7 +27,7 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">storm-exact-bisim &middot; mdpgridmec &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>3458086116029131165265024/8138022036054083916015625</code></p>
 <p class="sub">reference result: <code>0.4249295591</code></p>
-<table class="meta"><tr><th>status</th><td>timeout</td></tr><tr><th>wallclock time</th><td>903.208 s</td></tr><tr><th>states</th><td>272,701</td></tr><tr><th>states after preprocessing</th><td>211,334</td></tr></table>
+<table class="meta"><tr><th>status</th><td>timeout</td></tr><tr><th>wallclock time</th><td>903.093 s</td></tr><tr><th>states</th><td>272,701</td></tr><tr><th>states after preprocessing</th><td>211,334</td></tr></table>
 <p class="sub">storm-exact-bisim_avoid-mdp.15-0.2.goal_max.log</p>
 <pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/storm --jani avoid-mdp.jani --janiproperty goal_max --constants N=15,slippery=0.2 --exact --bisimulation
 Benchmark:	avoid-mdp.15-0.2.goal_max
@@ -37,13 +37,13 @@ Time limit:	900
 Output:
 Storm 1.14.0 (dev)
 
-Date: Sat Sep 26 01:15:46 2026
+Date: Tue Oct  6 16:43:52 2026
 Command line arguments: --jani avoid-mdp.jani --janiproperty goal_max --constants 'N=15,slippery=0.2' --exact --bisimulation
-Current working directory: /w0/tmp/slurm_tq429871.4466969/invocation-5qwccl17
+Current working directory: /w0/tmp/slurm_tq429871.4819711/invocation-e6212afb
 
-Time for model input parsing: 0.001s.
+Time for model input parsing: 0.002s.
 
-Time for model construction: 2.266s.
+Time for model construction: 2.400s.
 
 -------------------------------------------------------------- 
 Model type: 	MDP (sparse)
@@ -59,7 +59,7 @@ State Labels: 	4 labels
 Choice Labels: 	none
 -------------------------------------------------------------- 
 
-Time for model preprocessing: 2.332s.
+Time for model preprocessing: 2.409s.
 
 -------------------------------------------------------------- 
 Model type: 	MDP (sparse)
@@ -79,8 +79,8 @@ ERROR: The program received signal 15 and will be aborted in 3s.
 Received signal 14
 
 ----------------------------------------
-Wallclock time:	903.208
+Wallclock time:	903.093
 Return code:	None
-Computation aborted after 903.208 seconds since the time limit of 900 seconds was exceeded.
+Computation aborted after 903.093 seconds since the time limit of 900 seconds was exceeded.
 </pre>
 </body></html>

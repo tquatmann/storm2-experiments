@@ -27,23 +27,23 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">prism-sound &middot; mdpqvbs &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>299</code></p>
 <p class="sub">reference result: <code>299</code></p>
-<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>143.985 s</td></tr><tr><th>result</th><td>299.0001033185034</td></tr><tr><th>relative difference</th><td>3.46e-07</td></tr><tr><th>states</th><td>1,078,695</td></tr></table>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>151.813 s</td></tr><tr><th>result</th><td>299.0001033185034</td></tr><tr><th>relative difference</th><td>3.46e-07</td></tr><tr><th>states</th><td>1,078,695</td></tr></table>
 <p class="sub">prism-sound_firewire.true-3-600.time_max.log</p>
-<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism firewire.true.prism firewire.true.props --prop time_max -const delay=3,deadline=600 -maxiters 1000000 -intervaliter
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism firewire.true.prism firewire.true.props --prop time_max -const delay=3,deadline=600 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 4g
 Benchmark:	firewire.true-3-600.time_max
 Configuration:	prism-sound
 Repetition:	1
 Time limit:	900
 Output:
-Picked up JAVA_TOOL_OPTIONS: -Xmx16g
+Picked up JAVA_TOOL_OPTIONS: -Xmx32g
 PRISM
 =====
 
 Version: 4.10.1
-Date: Sat Sep 26 00:55:08 GMT+02:00 2026
-Hostname: n23m0242.hpc.itc.rwth-aachen.de
-Memory limits: cudd=1g, java(heap)=16g
-Command line: prism firewire.true.prism firewire.true.props --prop time_max -const 'delay=3,deadline=600' -maxiters 1000000 -intervaliter
+Date: Tue Oct 06 16:43:52 GMT+02:00 2026
+Hostname: n23m0042.hpc.itc.rwth-aachen.de
+Memory limits: cudd=4g, java(heap)=32g
+Command line: prism firewire.true.prism firewire.true.props --prop time_max -const 'delay=3,deadline=600' -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 4g
 
 Parsing PRISM model file &quot;firewire.true.prism&quot;...
 
@@ -68,14 +68,16 @@ Parsing properties file &quot;firewire.true.props&quot;...
 Model checking: &quot;time_max&quot;: R{&quot;time&quot;}max=? [ F &quot;done&quot; ]
 Model constants: deadline=600,delay=3
 
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
 Building model (engine:symbolic)...
 Model constants: deadline=600,delay=3
 
 Computing reachable states...
 
-Reachability (BFS): 669 iterations in 8.59 seconds (average 0.012840, setup 0.00)
+Reachability (BFS): 669 iterations in 12.12 seconds (average 0.018117, setup 0.00)
 
-Time for model construction: 9.051 seconds.
+Time for model construction: 12.544 seconds.
 
 Type:        MDP
 States:      1078695 (1 initial)
@@ -83,16 +85,15 @@ Transitions: 1476198
 
 Transition matrix: 68250 nodes (3 terminal), 1476198 minterms, vars: 54r/54c/14nd
 
-Prob0E: 355 iterations in 1.62 seconds (average 0.004563, setup 0.00)
+Prob0E: 355 iterations in 2.57 seconds (average 0.007239, setup 0.00)
 
-Prob1A: 1 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+Prob1A: 1 iterations in 0.01 seconds (average 0.010000, setup 0.00)
 
 goal = 1052, inf = 0, maybe = 1077643
-Time for computing an upper bound for expected reward: 67.32 seconds.
+Time for computing an upper bound for expected reward: 73.293 seconds.
 Upper bound for max expectation (variant 2): 989267.0
 
 Computing remaining rewards...
-Switching engine since hybrid engine does yet support this computation...
 Engine: Sparse
 
 Building sparse matrix (transitions)... [n=1078695, nc=1452436, nnz=1473042, k=3] [26.5 MB]
@@ -105,31 +106,35 @@ Allocating iteration vectors... [4 x 8.2 MB]
 TOTAL: [113.3 MB]
 
 Starting iterations (interval iteration)...
-Iteration 373: max relative diff=1595.175806, 5.02 sec so far
-Iteration 745: max relative diff=229.026420, 10.04 sec so far
-Iteration 1106: max relative diff=37.356993, 15.05 sec so far
-Iteration 1475: max relative diff=6.070914, 20.06 sec so far
-Iteration 1848: max relative diff=0.981475, 25.08 sec so far
-Iteration 2221: max relative diff=0.161053, 30.09 sec so far
-Iteration 2593: max relative diff=0.026421, 35.10 sec so far
-Iteration 2966: max relative diff=0.004315, 40.11 sec so far
-Iteration 3329: max relative diff=0.000700, 45.13 sec so far
-Iteration 3701: max relative diff=0.000111, 50.14 sec so far
-Iteration 4073: max relative diff=0.000017, 55.15 sec so far
-Iteration 4446: max relative diff=0.000003, 60.16 sec so far
+Iteration 372: max relative diff=1600.338188, 5.02 sec so far
+Iteration 745: max relative diff=229.026420, 10.03 sec so far
+Iteration 1119: max relative diff=36.218200, 15.04 sec so far
+Iteration 1490: max relative diff=5.865610, 20.06 sec so far
+Iteration 1870: max relative diff=0.939344, 25.07 sec so far
+Iteration 2254: max relative diff=0.141261, 30.09 sec so far
+Iteration 2635: max relative diff=0.019168, 35.10 sec so far
+Iteration 3011: max relative diff=0.003065, 40.11 sec so far
+Iteration 3392: max relative diff=0.000490, 45.12 sec so far
+Iteration 3772: max relative diff=0.000079, 50.13 sec so far
+Iteration 4154: max relative diff=0.000012, 55.14 sec so far
+Iteration 4537: max relative diff=0.000002, 60.15 sec so far
 Max relative diff between upper and lower bound on convergence: 9.98423E-07
-Iterative method: 4643 iterations in 63.42 seconds (average 0.013530, setup 0.60)
+Iterative method: 4643 iterations in 62.15 seconds (average 0.013259, setup 0.59)
 Maximum finite value in solution vector at end of interval iteration: 469.00022986673787
 
 Value in the initial state: 299.0001033185034
 
-Time for model checking: 132.665 seconds.
+Time for model checking: 138.369 seconds.
 
 Result: 299.0001033185034 (+/- 2.9852855615841815E-4; rel err 9.984229197419944E-7)
 
+---------------------------------------------------------------------
+
+Note: There was 1 warning during computation.
+
 
 ----------------------------------------
-Wallclock time:	143.985
+Wallclock time:	151.813
 Return code:	0
 </pre>
 </body></html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>prism-sound - wlan.5-0.cost_min</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>wlan.5-0.cost_min</h1>
+<p class="sub">prism-sound &middot; mdpqvbs &middot; <a href="index.html">back to the table</a></p>
+<p class="sub">reference result: <code>7625</code></p>
+<p class="sub">reference result: <code>7625</code></p>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>129.128 s</td></tr><tr><th>result</th><td>7625.0</td></tr><tr><th>relative difference</th><td>0</td></tr><tr><th>states</th><td>1,295,218</td></tr></table>
+<p class="sub">prism-sound_wlan.5-0.cost_min.log</p>
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism wlan.5.prism wlan.props --prop cost_min -const COL=0 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 4g
+Benchmark:	wlan.5-0.cost_min
+Configuration:	prism-sound
+Repetition:	1
+Time limit:	900
+Output:
+Picked up JAVA_TOOL_OPTIONS: -Xmx32g
+PRISM
+=====
+
+Version: 4.10.1
+Date: Wed Oct 07 15:29:29 GMT+02:00 2026
+Hostname: n23m0307.hpc.itc.rwth-aachen.de
+Memory limits: cudd=4g, java(heap)=32g
+Command line: prism wlan.5.prism wlan.props --prop cost_min -const COL=0 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 4g
+
+Parsing PRISM model file &quot;wlan.5.prism&quot;...
+
+Type:        MDP
+Modules:     medium station1 station2
+Actions:     [] [send1] [send2] [finish1] [finish2] [time]
+Variables:   col c1 c2 x1 s1 slot1 backoff1 bc1 x2 s2 slot2 backoff2 bc2
+Rewards:     &quot;collisions&quot; &quot;time&quot; &quot;cost&quot;
+
+Parsing properties file &quot;wlan.props&quot;...
+
+7 properties:
+(1) &quot;collisions&quot;: Pmax=? [ F col=COL ]
+(2) &quot;cost_max&quot;: R{&quot;cost&quot;}max=? [ F s1=12&amp;s2=12 ]
+(3) &quot;cost_min&quot;: R{&quot;cost&quot;}min=? [ F s1=12&amp;s2=12 ]
+(4) &quot;num_collisions&quot;: R{&quot;collisions&quot;}max=? [ F s1=12&amp;s2=12 ]
+(5) &quot;sent&quot;: P&gt;=1 [ F s1=12&amp;s2=12 ]
+(6) &quot;time_max&quot;: R{&quot;time&quot;}max=? [ F s1=12&amp;s2=12 ]
+(7) &quot;time_min&quot;: R{&quot;time&quot;}min=? [ F s1=12&amp;s2=12 ]
+
+---------------------------------------------------------------------
+
+Model checking: &quot;cost_min&quot;: R{&quot;cost&quot;}min=? [ F s1=12&amp;s2=12 ]
+Model constants: COL=0
+
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
+Warning: Switching to explicit engine to allow interval iteration on Rmin operator.
+
+Building model (engine:explicit)...
+Model constants: COL=0
+
+Computing reachable states... 593915 1295218 states
+Reachable states exploration and model construction done in 5.648 secs.
+Sorting reachable states list...
+
+Time for model construction: 6.624 seconds.
+
+Type:        MDP
+States:      1295218 (1 initial)
+Transitions: 2929960
+Choices:     1646074
+Max/avg:     3/1.27
+Building reward structure...
+
+Starting expected reachability (min)...
+Starting Prob1 (max)...
+Prob1 (max) took 1565 iterations and 22.404 seconds.
+target=1, inf=0, rest=1295217
+For Rmin, checking for zero-reward ECs...
+Time for checking for zero-reward ECs: 0.288 seconds, no zero-reward ECs found, proceeding normally.
+Computing upper bound(s) for Rmin using the Dijkstra Sweep for Monotone Pessimistic Initialization algorithm...
+Calculating incoming choices relation for Markov decision process...  done (0.115 seconds)
+Time for computing upper bound(s) for Rmin using the DSI-MP algorithm: 2.147 seconds.
+Upper bound for min expectation (Dijkstra Sweep MPI): 424604.2917251587
+Starting Prob1 (min)...
+Prob1 (min) took 1622 iterations and 24.03 seconds.
+Relevant sub-MDP is contracting, proceed...
+Starting interval iteration (min, with Power method)...
+Iteration 113: max relative diff=228.515833365, 5.02 sec so far
+Iteration 226: max relative diff=113.757916682, 10.02 sec so far
+Iteration 332: max relative diff=76.2007803137, 15.05 sec so far
+Iteration 442: max relative diff=57.1649714692, 20.05 sec so far
+Iteration 554: max relative diff=45.1526404049, 25.06 sec so far
+Iteration 666: max relative diff=37.4257277579, 30.07 sec so far
+Iteration 778: max relative diff=31.915061374, 35.09 sec so far
+Iteration 892: max relative diff=27.6894791706, 40.12 sec so far
+Iteration 1004: max relative diff=24.4254066901, 45.13 sec so far
+Iteration 1113: max relative diff=21.9515833365, 50.15 sec so far
+Iteration 1222: max relative diff=19.9164675727, 55.17 sec so far
+Iteration 1331: max relative diff=18.1694939831, 60.21 sec so far
+Iteration 1439: max relative diff=16.7287804478, 65.23 sec so far
+Iteration 1548: max relative diff=13.8203941265, 70.25 sec so far
+Max relative diff between upper and lower bound on convergence: 1.27176250361e-07
+Interval iteration (min, with Power method) took 1587 iterations, 9299689866 multiplications and 72.084 seconds.
+Maximum finite value in solution vector at end of interval iteration: 424442.02728271484
+Expected reachability took 120.999 seconds.
+
+Value in the initial state: 7625.0
+
+Time for model checking: 121.552 seconds.
+
+Result: 7625.0 (+/- 9.697189090029495E-4; rel err 1.2717625036104256E-7)
+
+---------------------------------------------------------------------
+
+Note: There were 2 warnings during computation.
+
+
+----------------------------------------
+Wallclock time:	129.128
+Return code:	0
+</pre>
+</body></html>

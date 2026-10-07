@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>storm-sound-ddbisim - obstacle-mdp.800.steps_min</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>obstacle-mdp.800.steps_min</h1>
+<p class="sub">storm-sound-ddbisim &middot; mdpgrid &middot; <a href="index.html">back to the table</a></p>
+<p class="sub">reference result: <code>217869793388429752066115702479338842975206611570247933884297520661157024793388429752066115702479338842975206611570247933884297520661157024793388429752066115702479338842975206611570247933884297520661157024793388429752066115702479338842975206611570247933884297520661157024793388429752066115702479338842975206611570247933884297520661157024793388429752066115702479338842975206611570247933884297520661157024793388429752066115702479338842975206611570247933884297520661157024793388429752066115702479338842975206611570247933884297520661157024793388429752066115702479338842975206611570247933884297520661157024793388429752066115702479338842975206611570247933884297520661157024793388429752066115702479338842975206611570247933884297520661157024793388429752066115702479338842975206611570247933884297520661157024793/200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</code></p>
+<p class="sub">reference result: <code>1089.348967</code></p>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>194.102 s</td></tr><tr><th>result</th><td>1089.348967</td></tr><tr><th>relative difference</th><td>5.31e-11</td></tr><tr><th>states</th><td>640,001</td></tr><tr><th>states after preprocessing</th><td>320,401</td></tr></table>
+<p class="sub">storm-sound-ddbisim_obstacle-mdp.800.steps_min.log</p>
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/storm --jani obstacle-mdp.jani --janiproperty steps_min --constants N=800 --sound --bisimulation --engine dd-to-sparse
+Benchmark:	obstacle-mdp.800.steps_min
+Configuration:	storm-sound-ddbisim
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct  7 15:30:39 2026
+Command line arguments: --jani obstacle-mdp.jani --janiproperty steps_min --constants N=800 --sound --bisimulation --engine dd-to-sparse
+Current working directory: /w0/tmp/slurm_tq429871.4851441/invocation-hw9wt7ji
+
+Time for model input parsing: 0.001s.
+
+WARN  (threads.cpp:21): Detected thread limitation via Slurm (max. 4 threads.)
+Using Sylvan with 4 parallel threads.
+Time for model construction: 1.322s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (symbolic)
+States: 	640001 (34 nodes)
+Transitions: 	5113599 (777 nodes)
+Choices: 	2559998
+Reward Models:  none
+Variables: 	rows: 5 meta variables (23 DD variables), columns: 5 meta variables (23 DD variables), nondeterminism: 5 meta variables (5 DD variables)
+Labels: 	3
+   * deadlock -&gt; 0 state(s) (1 nodes)
+   * init -&gt; 1 state(s) (24 nodes)
+   * goal
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 186.579s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	320401
+Transitions: 	2559995
+Choices: 	1281598
+Reward Models:  none
+State Labels: 	4 labels
+   * ((start &amp; (ax = 799)) &amp; (ay = 799)) -&gt; 1 item(s)
+   * goal -&gt; 1 item(s)
+   * deadlock -&gt; 0 item(s)
+   * init -&gt; 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property &quot;steps_min&quot;: Tmin=? [F &quot;goal&quot;] ...
+Result (for initial states): 1089.348967
+Time for model checking: 5.947s.
+
+----------------------------------------
+Wallclock time:	194.102
+Return code:	0
+</pre>
+</body></html>

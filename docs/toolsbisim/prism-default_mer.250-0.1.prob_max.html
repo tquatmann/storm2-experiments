@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>prism-default - mer.250-0.1.prob_max</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>mer.250-0.1.prob_max</h1>
+<p class="sub">prism-default &middot; mdpmec &middot; <a href="index.html">back to the table</a></p>
+<p class="sub">reference result: <code>1328233201521567253066077997049398999908435974161881158214614743165778968054226285957329232655658794894293544649387159632746892794697514769450057875739529517230749748058162109661754603834579079869920221159969643255614636256494370659289121270740052189236992213573516281827008443725868599037759882837135959461592322307209979859225441749798468479956087/6109872726999209364103958786427235399578805481144653327787227818562583253049440915403714470216030456513750305387180934310635706855608567939470266228401835779261448841067545704444071177639063767401633017335860358975827326779874105032729957845404240070490164182438174896404239202989274422186806159710153565673036724081867987479199655354022979736328125</code></p>
+<p class="sub">reference result: <code>0.2173913043</code></p>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>14.125 s</td></tr><tr><th>result</th><td>0.21739124736</td></tr><tr><th>relative difference</th><td>2.62e-07</td></tr><tr><th>states</th><td>1,478,314</td></tr></table>
+<p class="sub">prism-default_mer.250-0.1.prob_max.log</p>
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/prism mer.prism mer.props --prop prob_max -const n=250,x=0.1 -maxiters 1000000 -cuddmaxmem 4g
+Benchmark:	mer.250-0.1.prob_max
+Configuration:	prism-default
+Repetition:	1
+Time limit:	900
+Output:
+Picked up JAVA_TOOL_OPTIONS: -Xmx32g
+PRISM
+=====
+
+Version: 4.10.1
+Date: Wed Oct 07 15:31:17 GMT+02:00 2026
+Hostname: n23m0402.hpc.itc.rwth-aachen.de
+Memory limits: cudd=4g, java(heap)=32g
+Command line: prism mer.prism mer.props --prop prob_max -const 'n=250,x=0.1' -maxiters 1000000 -cuddmaxmem 4g
+
+Parsing PRISM model file &quot;mer.prism&quot;...
+
+Type:        MDP
+Modules:     arbiter user1 user2 property loops
+Actions:     [] [u1_request_comm] [u1_grant_comm] [u1_deny_comm] [u2_request_comm] [u2_grant_comm] [u2_deny_comm] [u1_rescind_drive] [u2_rescind_drive] [u1_request_drive] [u1_grant_drive] [u1_deny_drive] [u2_request_drive] [u2_grant_drive] [u2_deny_drive] [u1_cancel_comm] [u2_cancel_comm] [u1_cancel_drive] [u2_cancel_drive]
+Variables:   s r k commUser driveUser gc dc gd dd s1 r1 rescind1 s2 r2 rescind2 e u
+Labels:      &quot;err_G&quot;
+
+Parsing properties file &quot;mer.props&quot;...
+
+1 property:
+(1) &quot;prob_max&quot;: Pmax=? [ F &quot;err_G&quot; ]
+
+---------------------------------------------------------------------
+
+Model checking: &quot;prob_max&quot;: Pmax=? [ F &quot;err_G&quot; ]
+Model constants: n=250,x=0.1
+
+Building model (engine:symbolic)...
+Model constants: n=250,x=0.1
+
+Computing reachable states...
+
+Reachability (BFS): 2529 iterations in 7.24 seconds (average 0.002863, setup 0.00)
+
+Time for model construction: 7.396 seconds.
+
+Type:        MDP
+States:      1478314 (1 initial)
+Transitions: 5823104
+
+Transition matrix: 29714 nodes (6 terminal), 5823104 minterms, vars: 36r/36c/22nd
+
+Prob0A: 14 iterations in 0.08 seconds (average 0.005714, setup 0.00)
+
+Prob1E: 38 iterations in 0.17 seconds (average 0.004474, setup 0.00)
+
+yes = 947172, no = 275596, maybe = 255546
+
+Computing remaining probabilities...
+Engine: Hybrid
+
+Building hybrid MTBDD matrices... [nm=25, levels=36, nodes=34131] [1.6 MB]
+Adding sparse bits... [levels=28-35, num=258, compact=25/25] [18.9 MB]
+Creating vector for yes... [dist=2, compact] [2.8 MB]
+Allocating iteration vectors... [3 x 11.3 MB]
+TOTAL: [57.2 MB]
+
+Starting iterations...
+Iteration 57: max relative diff=0.000003, 5.03 sec so far
+
+Iterative method: 64 iterations in 5.89 seconds (average 0.088281, setup 0.24)
+
+Value in the initial state: 0.21739124736
+
+Time for model checking: 6.154 seconds.
+
+Result: 0.21739124736 (+/- 7.062069611065207E-7 estimated; rel err 3.2485528726786392E-6)
+
+
+----------------------------------------
+Wallclock time:	14.125
+Return code:	0
+</pre>
+</body></html>

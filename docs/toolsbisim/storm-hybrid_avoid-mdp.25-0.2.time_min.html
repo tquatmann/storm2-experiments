@@ -27,9 +27,9 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">storm-hybrid &middot; mdpgrid &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>121</code></p>
 <p class="sub">reference result: <code>121</code></p>
-<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>15.397 s</td></tr><tr><th>result</th><td>121.0001486</td></tr><tr><th>relative difference</th><td>1.23e-06</td></tr><tr><th>states</th><td>3,122,501</td></tr></table>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>15.766 s</td></tr><tr><th>result</th><td>121.0001486</td></tr><tr><th>relative difference</th><td>1.23e-06</td></tr><tr><th>states</th><td>3,122,501</td></tr></table>
 <p class="sub">storm-hybrid_avoid-mdp.25-0.2.time_min.log</p>
-<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/storm --jani avoid-mdp.jani --janiproperty time_min --constants N=25,slippery=0.2 --engine hybrid
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/storm --jani avoid-mdp.jani --janiproperty time_min --constants N=25,slippery=0.2 --engine hybrid --sylvan:threads 4 --sylvan:maxmem 4096
 Benchmark:	avoid-mdp.25-0.2.time_min
 Configuration:	storm-hybrid
 Repetition:	1
@@ -37,15 +37,15 @@ Time limit:	900
 Output:
 Storm 1.14.0 (dev)
 
-Date: Tue Oct  6 16:24:53 2026
-Command line arguments: --jani avoid-mdp.jani --janiproperty time_min --constants 'N=25,slippery=0.2' --engine hybrid
-Current working directory: /w0/tmp/slurm_tq429871.4818448/invocation-_p6_3u1r
-
-Time for model input parsing: 0.002s.
+Date: Wed Oct  7 17:23:05 2026
+Command line arguments: --jani avoid-mdp.jani --janiproperty time_min --constants 'N=25,slippery=0.2' --engine hybrid '--sylvan:threads' 4 '--sylvan:maxmem' 4096
+Current working directory: /w0/tmp/slurm_tq429871.4854057/invocation-gdpqzf1x
 
 WARN  (threads.cpp:21): Detected thread limitation via Slurm (max. 4 threads.)
+Time for model input parsing: 0.001s.
+
 Using Sylvan with 4 parallel threads.
-Time for model construction: 0.634s.
+Time for model construction: 0.771s.
 
 -------------------------------------------------------------- 
 Model type: 	MDP (symbolic)
@@ -62,10 +62,10 @@ Labels: 	3
 
 Model checking property &quot;time_min&quot;: Tmin=? [F &quot;goal&quot;] ...
 Result (for initial states): 121.0001486
-Time for model checking: 14.213s.
+Time for model checking: 14.894s.
 
 ----------------------------------------
-Wallclock time:	15.397
+Wallclock time:	15.766
 Return code:	0
 </pre>
 </body></html>

@@ -27,9 +27,9 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">storm-hybrid-sound &middot; mdpqvbs &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>166122942688484522122222831070293418963831808920856249617133764705825669222172375796788473650081795725931645/1422063199867123919195021167725985101479111788846785036704887421368371275362579041459447439142249285287936</code></p>
 <p class="sub">reference result: <code>116.8182558</code></p>
-<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>3.817 s</td></tr><tr><th>result</th><td>116.8182558</td></tr><tr><th>relative difference</th><td>2.57e-10</td></tr><tr><th>states</th><td>1,460,287</td></tr></table>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>3.714 s</td></tr><tr><th>result</th><td>116.8182558</td></tr><tr><th>relative difference</th><td>2.57e-10</td></tr><tr><th>states</th><td>1,460,287</td></tr></table>
 <p class="sub">storm-hybrid-sound_csma.3-4.time_max.log</p>
-<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/storm --jani csma.3-4.jani --janiproperty time_max --engine hybrid --sound
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/storm --jani csma.3-4.jani --janiproperty time_max --engine hybrid --sound --sylvan:threads 4 --sylvan:maxmem 4096
 Benchmark:	csma.3-4.time_max
 Configuration:	storm-hybrid-sound
 Repetition:	1
@@ -37,15 +37,15 @@ Time limit:	900
 Output:
 Storm 1.14.0 (dev)
 
-Date: Tue Oct  6 16:43:52 2026
-Command line arguments: --jani csma.3-4.jani --janiproperty time_max --engine hybrid --sound
-Current working directory: /w0/tmp/slurm_tq429871.4819702/invocation-v5__sde9
-
-Time for model input parsing: 0.003s.
+Date: Wed Oct  7 17:21:14 2026
+Command line arguments: --jani csma.3-4.jani --janiproperty time_max --engine hybrid --sound '--sylvan:threads' 4 '--sylvan:maxmem' 4096
+Current working directory: /w0/tmp/slurm_tq429871.4853975/invocation-gmu7i6li
 
 WARN  (threads.cpp:21): Detected thread limitation via Slurm (max. 4 threads.)
+Time for model input parsing: 0.003s.
+
 Using Sylvan with 4 parallel threads.
-Time for model construction: 1.006s.
+Time for model construction: 0.733s.
 
 -------------------------------------------------------------- 
 Model type: 	MDP (symbolic)
@@ -62,10 +62,10 @@ Labels: 	3
 
 Model checking property &quot;time_max&quot;: R{&quot;time&quot;}max=? [F &quot;all_delivered&quot;] ...
 Result (for initial states): 116.8182558
-Time for model checking: 2.679s.
+Time for model checking: 2.861s.
 
 ----------------------------------------
-Wallclock time:	3.817
+Wallclock time:	3.714
 Return code:	0
 </pre>
 </body></html>

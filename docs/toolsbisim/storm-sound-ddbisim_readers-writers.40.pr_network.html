@@ -25,9 +25,9 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 
 <h1>readers-writers.40.pr_network</h1>
 <p class="sub">storm-sound-ddbisim &middot; maqvbs &middot; <a href="index.html">back to the table</a></p>
-<table class="meta"><tr><th>status</th><td>no-result</td></tr><tr><th>wallclock time</th><td>371.035 s</td></tr><tr><th>states</th><td>1,884,366</td></tr></table>
+<table class="meta"><tr><th>status</th><td>no-result</td></tr><tr><th>wallclock time</th><td>426.424 s</td></tr><tr><th>states</th><td>1,884,366</td></tr></table>
 <p class="sub">storm-sound-ddbisim_readers-writers.40.pr_network.log</p>
-<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/storm --jani readers-writers.40.jani --janiproperty pr_network --sound --bisimulation --engine dd-to-sparse
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/storm --jani readers-writers.40.jani --janiproperty pr_network --sound --bisimulation --engine dd-to-sparse --sylvan:threads 4 --sylvan:maxmem 4096
 Benchmark:	readers-writers.40.pr_network
 Configuration:	storm-sound-ddbisim
 Repetition:	1
@@ -35,17 +35,17 @@ Time limit:	900
 Output:
 Storm 1.14.0 (dev)
 
-Date: Tue Oct  6 16:44:30 2026
-Command line arguments: --jani readers-writers.40.jani --janiproperty pr_network --sound --bisimulation --engine dd-to-sparse
-Current working directory: /w0/tmp/slurm_tq429871.4819760/invocation-2zawzd9f
-
-Time for model input parsing: 0.001s.
+Date: Wed Oct  7 17:17:59 2026
+Command line arguments: --jani readers-writers.40.jani --janiproperty pr_network --sound --bisimulation --engine dd-to-sparse '--sylvan:threads' 4 '--sylvan:maxmem' 4096
+Current working directory: /w0/tmp/slurm_tq429871.4853464/invocation-mh8ehvbn
 
 WARN  (threads.cpp:21): Detected thread limitation via Slurm (max. 4 threads.)
-Using Sylvan with 4 parallel threads.
-Time for model construction: 1.153s.
+Time for model input parsing: 0.011s.
 
-BDD Unique table full, 67108641 of 67108864 buckets filled!
+Using Sylvan with 4 parallel threads.
+Time for model construction: 1.266s.
+
+BDD Unique table full, 67108680 of 67108864 buckets filled!
 -------------------------------------------------------------- 
 Model type: 	Markov Automaton (symbolic)
 States: 	1884366 (9462 nodes)
@@ -59,7 +59,7 @@ Labels: 	2
 -------------------------------------------------------------- 
 
 ----------------------------------------
-Wallclock time:	371.035
+Wallclock time:	426.424
 Return code:	1
 </pre>
 </body></html>

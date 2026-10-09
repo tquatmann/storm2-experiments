@@ -11,7 +11,7 @@ import random
 import sys
 from pathlib import Path
 
-from commands import pick_command
+from commands import is_meta, pick_command
 
 # The experiment directory, e.g. comparison_tools_bisim; the scripts are run from there.
 ROOT = Path.cwd()
@@ -80,6 +80,16 @@ def main():
         sys.exit(f"{CONFIGS_FILE}: configuration identifiers must not contain '_': "
                  f"{', '.join(invalid)}")
 
+    # Meta configurations are assembled from other configurations during
+    # postprocessing, so there is nothing to run for them.
+    meta = [i for i in all_configs if is_meta(all_configs[i])]
+    requested = [i.strip() for i in args.configs.split(",")] if args.configs else []
+    if any(i in meta for i in requested):
+        sys.exit("meta configurations have no invocations: "
+                 f"{', '.join(i for i in requested if i in meta)}")
+    for i in meta:
+        del all_configs[i]
+
     configs = select(all_configs, args.configs, "configuration")
     benchmarks = select(load_dict(INDEX_FILE), args.benchmarks, "benchmark")
     logdir = args.logdir.rstrip("/")
@@ -124,6 +134,8 @@ def main():
     print(f"wrote {len(invocations)} invocations "
           f"({len(configs)} configurations x {len(benchmarks)} benchmarks "
           f"x {args.repetitions} repetition(s)) to {args.out}")
+    if meta:
+        print(f"  ignored:     {len(meta)} meta configuration(s): {', '.join(meta)}")
     if skipped:
         print(f"  skipped:     {skipped} configuration/benchmark pairs "
               f"the configuration is not applicable to")

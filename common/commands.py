@@ -16,12 +16,27 @@ FILE_KEYS = {"jani", "prism", "prism-property", "bundle"}
 # as they can be large; the placeholder is replaced by the prefix.
 BUNDLE_KEYS = {"bundle"}
 
+# A meta configuration has no command of its own. It stands for the best of the
+# configurations it lists, and is therefore ignored when generating invocations
+# and only assembled again during postprocessing.
+META_KEY = "meta"
+
 # Configuration keys holding a command line, in the order in which they are tried.
 # The first one whose model file placeholders the benchmark provides is used, so
 # input specific variants (e.g. a "cmdprism") can simply be added here.
 CMD_KEYS = ["cmd"]
 
 PLACEHOLDER = re.compile(r"%([A-Za-z][A-Za-z0-9-]*)")
+
+
+def is_meta(config):
+    """Whether the configuration combines the results of other configurations."""
+    return META_KEY in config
+
+
+def members(config):
+    """The configurations a meta configuration is built from."""
+    return config.get(META_KEY, [])
 
 
 def placeholders(cmd):

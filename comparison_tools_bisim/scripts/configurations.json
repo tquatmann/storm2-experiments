@@ -36,7 +36,7 @@
   },
   "storm-sound-ddbisim": {
     "bin": "bin/storm",
-    "cmd": "--jani %jani --janiproperty %property --constants %constants --sound --bisimulation --engine dd-to-sparse  --sylvan:threads 4 --sylvan:maxmem 4096",
+    "cmd": "--jani %jani --janiproperty %property --constants %constants --sound --bisimulation --engine dd-to-sparse  --sylvan:threads 4 --sylvan:maxmem 8192",
     "description": "Storm with symbolic (strong) bisimulation"
   },
   "storm-exact-bisim": {
@@ -73,5 +73,14 @@
     "bin": "bin/prism",
     "cmd": "%prism %prism-property --prop %property -const %constants -maxiters 1000000 -intervaliter -heuristic speed -explicit",
     "description": "Prism with interval iteration"
+  },
+  "storm-sound-best": {
+    "meta": [
+      "storm-sound",
+      "storm-sound-bisim",
+      "storm-hybrid-sound",
+      "storm-sound-ddbisim"
+    ],
+    "description": "Best of all sound storm configs."
   }
 }

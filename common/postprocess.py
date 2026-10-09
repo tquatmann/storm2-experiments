@@ -26,6 +26,8 @@ import sys
 from fractions import Fraction
 from pathlib import Path
 
+from commands import is_meta, members
+
 # Exact results are rationals whose numerator and denominator can have tens of
 # thousands of digits, well beyond the limit python applies by default.
 sys.set_int_max_str_digits(0)
@@ -33,6 +35,7 @@ sys.set_int_max_str_digits(0)
 # The experiment directory, e.g. comparison_tools_bisim; the scripts are run from there.
 ROOT = Path.cwd()
 INDEX_FILE = ROOT / "benchmarks" / "index.json"
+CONFIGS_FILE = ROOT / "scripts" / "configurations.json"
 
 # Relative precision a result has to meet to count as correct.
 GOAL_PRECISION = Fraction(1, 1000)
@@ -52,10 +55,12 @@ PLOT_TIMEOUT = 1200.0
 PLOT_INCORRECT = 2400.0
 PLOT_NA = 4800.0
 
-# Configurations whose model size after preprocessing is reported. Others also
-# print a reduced model, for example PRISM collapsing end components with its
-# sound engine, but those sizes are not of interest here.
-QUOTIENT_CONFIGURATIONS = ["storm-default-bisim", "storm-exact-bisim"]
+# The columns reporting the size of the model after preprocessing, as the heading
+# they are given mapped to the configuration the counts are taken from. The
+# bisimulation configurations compute the same quotient, so one of them is enough.
+# Configurations left out here still reduce, for example PRISM collapsing end
+# components with its sound engine, but those sizes are not of interest.
+QUOTIENT_COLUMNS = {"states-sparse-bisim": "storm-sound-bisim"}
 
 # Statuses in decreasing order of severity; the worst one of the repetitions is
 # what the csv files report for a benchmark.
@@ -368,14 +373,26 @@ TABLE_STYLE = """
 table { border-collapse: collapse; font-size: 0.82rem; }
 th, td { padding: 0.22rem 0.5rem; border-bottom: 1px solid #eee; text-align: right;
           white-space: nowrap; }
-th { position: sticky; top: 0; background: #fff; cursor: pointer;
+th { position: sticky; top: 0; z-index: 2; background: #fff; cursor: pointer;
       border-bottom: 2px solid #ccc; user-select: none; }
 th:hover { background: #f0f0f0; }
 th.sorted::after { content: " \\2191"; color: #888; }
 th.sorted.desc::after { content: " \\2193"; }
+/* Keep the benchmark column in view while scrolling sideways. The page itself is
+   the scroll container, so this stacks with the sticky header above. */
+td:first-child, th:first-child { position: sticky; left: 0; background: #fff;
+                                 border-right: 1px solid #ddd; }
+td:first-child { z-index: 1; }
+th:first-child { z-index: 3; }
 td:first-child, th:first-child, td:nth-child(2), th:nth-child(2) { text-align: left; }
-tbody tr:hover { background: #fafafa; }
+tbody tr:hover, tbody tr:hover td:first-child { background: #fafafa; }
 td.best { background: #cdf3cd; font-weight: 600; }
+/* Meta configurations are assembled from other columns rather than measured, so
+   they are tinted and take no part in the fastest-in-row highlight. */
+td.meta { background: #eceefb; }
+th.meta { background: #e3e6f7; font-style: italic; }
+tbody tr:hover td.meta { background: #e3e6f7; }
+button.toggle.meta.on { background: #5a4fcf; border-color: #5a4fcf; }
 td.timeout a, td.memout a { color: #b35c00; }
 td.incorrect a { color: #c01c28; }
 td.no-result a { color: #777; }
@@ -386,6 +403,11 @@ button.toggle { font: inherit; font-size: 0.8rem; margin-right: 0.35rem;
                  padding: 0.2rem 0.6rem; border: 1px solid #bbb; border-radius: 999px;
                  background: #fff; color: #888; cursor: pointer; }
 button.toggle.on { background: #1a5fb4; border-color: #1a5fb4; color: #fff; }
+button.bulk { font: inherit; font-size: 0.8rem; margin-right: 0.35rem;
+              padding: 0.2rem 0.6rem; border: 1px solid #bbb; border-radius: 4px;
+              background: #f3f3f3; color: #333; cursor: pointer; }
+button.bulk:hover { background: #e7e7e7; }
+button.bulk:last-of-type { margin-right: 1.1rem; }
 """
 
 TABLE_BODY = """<h1>Results</h1>
@@ -409,7 +431,8 @@ function highlight() {
     let best = null;
     for (const cell of row.cells) {
       cell.classList.remove("best");
-      if (cell.dataset.kind !== "time" || cell.classList.contains("hidden")) continue;
+      if (cell.dataset.kind !== "time" || cell.classList.contains("hidden")
+          || cell.classList.contains("meta")) continue;
       const value = parseFloat(cell.dataset.sort);
       if (best === null || value < parseFloat(best.dataset.sort)) best = cell;
     }
@@ -417,11 +440,19 @@ function highlight() {
   }
 }
 
-function toggleColumn(button) {
-  const column = button.dataset.col;
-  const on = button.classList.toggle("on");
-  for (const cell of table.querySelectorAll('[data-col="' + CSS.escape(column) + '"]'))
+function applyColumn(button, on) {
+  button.classList.toggle("on", on);
+  for (const cell of table.querySelectorAll('[data-col="' + CSS.escape(button.dataset.col) + '"]'))
     cell.classList.toggle("hidden", !on);
+}
+
+function toggleColumn(button) {
+  applyColumn(button, !button.classList.contains("on"));
+  highlight();
+}
+
+function setAllColumns(on) {
+  for (const button of document.querySelectorAll("button.toggle")) applyColumn(button, on);
   highlight();
 }
 
@@ -511,33 +542,47 @@ def write_log_page(path, configuration, benchmark_id, benchmark, repetitions):
     path.write_text("\n".join(parts))
 
 
-def distinct_quotients(reducing, quotient):
-    """The reducing configurations, without those an earlier one already covers.
+def quotient_column_sources(quotient):
+    """The quotient size columns that the collected data actually provides."""
+    return [(name, c) for name, c in QUOTIENT_COLUMNS.items() if c in quotient]
 
-    The bisimulation configurations compute the same quotient, so showing the size
-    once is enough; a configuration that reduced differently would be kept.
+
+def meta_cells(meta, benchmarks, cells):
+    """The cell of each meta configuration, and the member it was taken from.
+
+    A meta configuration stands for the best of its members: the smallest runtime
+    if any member has one, and otherwise the least severe of their statuses.
     """
-    shown = []
-    for configuration in reducing:
-        sizes = quotient[configuration]
-        if any(all(sizes.get(b) == quotient[s].get(b) for b in sizes) for s in shown):
-            continue
-        shown.append(configuration)
-    return shown
+    chosen = {}
+    for meta_id, member_ids in meta.items():
+        for benchmark_id in benchmarks:
+            available = [(c, cells[benchmark_id, c]) for c in member_ids
+                         if (benchmark_id, c) in cells]
+            if not available:
+                continue
+            times = [(c, v) for c, v in available if isinstance(v, float)]
+            if times:
+                chosen[benchmark_id, meta_id] = min(times, key=lambda cv: cv[1])
+            else:
+                chosen[benchmark_id, meta_id] = max(
+                    available, key=lambda cv: STATUSES.index(cv[1])
+                    if cv[1] in STATUSES else -1)
+    return chosen
 
 
 def write_table(outdir, index, results, configurations, benchmarks, cells,
-                states, quotient, reducing):
+                states, quotient, meta=(), chosen=None):
     """An interactive html version of the scatter table, with a page per cell."""
     tabledir = outdir / "table"
     tabledir.mkdir(parents=True, exist_ok=True)
-    reducing = distinct_quotients(reducing, quotient)
+    quotient_columns = quotient_column_sources(quotient)
 
-    header = ["benchmark", "type", "states"] + [f"states-{c}" for c in reducing]
+    header = ["benchmark", "type", "states"] + [name for name, _ in quotient_columns]
     head = "".join(f"<th data-kind=\"{'text' if i < 2 else 'number'}\" "
                    f"onclick=\"sortTable({i})\">{escape(h)}</th>"
                    for i, h in enumerate(header))
-    head += "".join(f"<th class=\"cfg\" data-col=\"{escape(c)}\" data-kind=\"number\" "
+    head += "".join(f"<th class=\"cfg{' meta' if c in meta else ''}\" "
+                    f"data-col=\"{escape(c)}\" data-kind=\"number\" "
                     f"onclick=\"sortTable({len(header) + i})\">{escape(c)}</th>"
                     for i, c in enumerate(configurations))
 
@@ -546,33 +591,46 @@ def write_table(outdir, index, results, configurations, benchmarks, cells,
         benchmark = index.get(benchmark_id, {})
         fixed = [(benchmark_id, benchmark_id), (benchmark.get("type", ""), benchmark.get("type", "")),
                  (states.get(benchmark_id, ""), states.get(benchmark_id, -1))]
-        for configuration in reducing:
+        for _, configuration in quotient_columns:
             value = quotient[configuration].get(benchmark_id, "")
             fixed.append((value, value if value != "" else -1))
         row = "".join(f"<td data-sort=\"{escape(key)}\">{escape(text) if text != '' else '&ndash;'}</td>"
                       for text, key in fixed)
         for configuration in configurations:
-            repetitions = results[configuration].get(benchmark_id)
             cell = cells.get((benchmark_id, configuration))
-            if repetitions is None:
-                row += (f"<td class=\"cfg na\" data-col=\"{escape(configuration)}\" "
+            title = ""
+            if configuration in meta:
+                # The cell is the one of a member, so it links to that member's page.
+                source = (chosen or {}).get((benchmark_id, configuration))
+                page = log_page_name(source[0], benchmark_id) if source else None
+                title = f" title=\"{escape(source[0])}\"" if source else ""
+            else:
+                repetitions = results[configuration].get(benchmark_id)
+                page = None if repetitions is None else log_page_name(configuration, benchmark_id)
+                if page is not None:
+                    write_log_page(tabledir / page, configuration, benchmark_id,
+                                   benchmark, repetitions)
+            marker = " meta" if configuration in meta else ""
+            if page is None:
+                row += (f"<td class=\"cfg{marker} na\" data-col=\"{escape(configuration)}\" "
                         f"data-kind=\"none\" data-sort=\"{PLOT_NA + 1}\">&ndash;</td>")
                 continue
-            page = log_page_name(configuration, benchmark_id)
-            write_log_page(tabledir / page, configuration, benchmark_id, benchmark, repetitions)
             if isinstance(cell, float):
                 text, kind, key = f"{cell:.2f}", "time", cell
             else:
                 text, kind = cell, cell
                 key = {"timeout": PLOT_TIMEOUT, "memout": PLOT_TIMEOUT + 1,
                        "incorrect": PLOT_INCORRECT}.get(cell, PLOT_NA)
-            row += (f"<td class=\"cfg {escape(kind)}\" data-col=\"{escape(configuration)}\" "
-                    f"data-kind=\"{escape(kind)}\" data-sort=\"{key}\">"
+            row += (f"<td class=\"cfg{marker} {escape(kind)}\" data-col=\"{escape(configuration)}\" "
+                    f"data-kind=\"{escape(kind)}\" data-sort=\"{key}\"{title}>"
                     f"<a href=\"{escape(page)}\">{escape(text)}</a></td>")
         body.append(f"<tr>{row}</tr>")
 
-    buttons = "".join(
-        f"<button class=\"toggle on\" data-col=\"{escape(c)}\" "
+    buttons = ("<button class=\"bulk\" onclick=\"setAllColumns(true)\">show all</button>"
+               "<button class=\"bulk\" onclick=\"setAllColumns(false)\">hide all</button>")
+    buttons += "".join(
+        f"<button class=\"toggle{' meta' if c in meta else ''} on\" "
+        f"data-col=\"{escape(c)}\" "
         f"onclick=\"toggleColumn(this)\">{escape(c)}</button>" for c in configurations)
 
     (tabledir / "index.html").write_text(
@@ -656,34 +714,44 @@ def main():
         results.setdefault(entry["configuration"], {}) \
                .setdefault(benchmark_id, {})[str(entry["repetition"])] = data
 
-    configurations = sorted(results)
+    executed = sorted(results)
     benchmarks = sorted({b for c in results.values() for b in c})
+
+    # Meta configurations get a column of their own, assembled from the columns of
+    # their members; they have no executions and so no entry in results.json.
+    meta = {}
+    if CONFIGS_FILE.is_file():
+        with open(CONFIGS_FILE) as f:
+            defined = json.load(f)
+        for name, config in defined.items():
+            if is_meta(config) and any(m in results for m in members(config)):
+                meta[name] = [m for m in members(config) if m in results]
+    configurations = sorted(executed + list(meta))
 
     with open(outdir / "results.json", "w") as f:
         json.dump(results, f, indent="\t")
         f.write("\n")
 
-    reducing = [c for c in configurations
-                if c in quotient and c in QUOTIENT_CONFIGURATIONS]
-    columns = ["benchmark", "type", "states"] + [f"states-{c}" for c in reducing]
+    quotient_columns = quotient_column_sources(quotient)
+    columns = ["benchmark", "type", "states"] + [name for name, _ in quotient_columns]
 
     def states_row(benchmark_id):
         return [benchmark_id,
                 index.get(benchmark_id, {}).get("type", ""),
                 states.get(benchmark_id, "")] + \
-               [quotient[c].get(benchmark_id, "") for c in reducing]
+               [quotient[c].get(benchmark_id, "") for _, c in quotient_columns]
 
     # A configuration that cannot be run on a benchmark has no execution for it,
     # for example PRISM on a benchmark that only comes as a jani file.
     supported = {b for b in benchmarks
-                 if all(results[c].get(b) for c in configurations)}
+                 if all(results[c].get(b) for c in executed)}
 
     for time_key, suffix in TIMINGS:
         # For each benchmark and configuration either the median runtime or the status.
         medians = {}
         cells = {}        # (benchmark, configuration) -> median runtime or status
         for benchmark_id in benchmarks:
-            for configuration in configurations:
+            for configuration in executed:
                 repetitions = results[configuration].get(benchmark_id)
                 if not repetitions:
                     continue
@@ -694,8 +762,14 @@ def main():
                 else:
                     cells[benchmark_id, configuration] = median
                     medians.setdefault(configuration, []).append((benchmark_id, median))
+        chosen = meta_cells(meta, benchmarks, cells)
+        for (benchmark_id, meta_id), (_, value) in chosen.items():
+            cells[benchmark_id, meta_id] = value
+            if isinstance(value, float):
+                medians.setdefault(meta_id, []).append((benchmark_id, value))
         if time_key == "wallclock-time":
             table_cells = cells
+            table_chosen = chosen
 
         # Every cell is a number that pgfplots can plot.
         with open(outdir / f"scatter{suffix}.csv", "w", newline="") as f:
@@ -767,10 +841,12 @@ def main():
     if missing:
         print(f"  no state count from {STATES_CONFIGURATION} for {len(missing)} benchmark(s): "
               f"{', '.join(missing[:3])}{' ...' if len(missing) > 3 else ''}")
-    if reducing:
-        print(f"  state counts after preprocessing for: {', '.join(reducing)}")
+    for name, configuration in quotient_columns:
+        print(f"  column {name}: state count after preprocessing from {configuration}")
+    for name, member_ids in meta.items():
+        print(f"  meta configuration {name}: best of {', '.join(member_ids)}")
     tabledir = write_table(outdir, index, results, configurations, benchmarks,
-                           table_cells, states, quotient, reducing)
+                           table_cells, states, quotient, meta, table_chosen)
     print(f"  {len(supported)} of {len(benchmarks)} benchmarks are supported by "
           f"every configuration")
     print(f"wrote results.json, scatter.csv, quantile.csv and "

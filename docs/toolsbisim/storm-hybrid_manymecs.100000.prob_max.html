@@ -27,7 +27,7 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">storm-hybrid &middot; mdpmec &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>1/2</code></p>
 <p class="sub">reference result: <code>0.5</code></p>
-<table class="meta"><tr><th>status</th><td>incorrect</td></tr><tr><th>wallclock time</th><td>322.928 s</td></tr><tr><th>result</th><td>0.4513576463</td></tr><tr><th>relative difference</th><td><span class="bad">0.0973 &gt; 1e-3</span></td></tr><tr><th>states</th><td>300,002</td></tr></table>
+<table class="meta"><tr><th>status</th><td>incorrect</td></tr><tr><th>wallclock time</th><td>318.255 s</td></tr><tr><th>result</th><td>0.4513576463</td></tr><tr><th>relative difference</th><td><span class="bad">0.0973 &gt; 1e-3</span></td></tr><tr><th>states</th><td>300,002</td></tr></table>
 <p class="sub">storm-hybrid_manymecs.100000.prob_max.log</p>
 <pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/storm --jani manymecs.jani --janiproperty prob_max --constants N=100000 --engine hybrid --sylvan:threads 4 --sylvan:maxmem 4096
 Benchmark:	manymecs.100000.prob_max
@@ -37,15 +37,15 @@ Time limit:	900
 Output:
 Storm 1.14.0 (dev)
 
-Date: Wed Oct  7 17:19:13 2026
+Date: Fri Oct  9 10:48:10 2026
 Command line arguments: --jani manymecs.jani --janiproperty prob_max --constants N=100000 --engine hybrid '--sylvan:threads' 4 '--sylvan:maxmem' 4096
-Current working directory: /w0/tmp/slurm_tq429871.4853782/invocation-rb4ew338
+Current working directory: /w0/tmp/slurm_tq429871.4889323/invocation-dx2hhqp_
 
 WARN  (threads.cpp:21): Detected thread limitation via Slurm (max. 4 threads.)
 Time for model input parsing: 0.001s.
 
 Using Sylvan with 4 parallel threads.
-Time for model construction: 319.380s.
+Time for model construction: 313.209s.
 
 -------------------------------------------------------------- 
 Model type: 	MDP (symbolic)
@@ -62,10 +62,10 @@ Labels: 	3
 
 Model checking property &quot;prob_max&quot;: Pmax=? [F &quot;p1win&quot;] ...
 Result (for initial states): 0.4513576463
-Time for model checking: 3.427s.
+Time for model checking: 3.672s.
 
 ----------------------------------------
-Wallclock time:	322.928
+Wallclock time:	318.255
 Return code:	0
 </pre>
 </body></html>

@@ -27,7 +27,7 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">storm-hybrid &middot; mdpmec &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>3124/3125</code></p>
 <p class="sub">reference result: <code>0.99968</code></p>
-<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>7.199 s</td></tr><tr><th>result</th><td>0.99968</td></tr><tr><th>relative difference</th><td>0</td></tr><tr><th>states</th><td>2,781,085</td></tr></table>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>7.439 s</td></tr><tr><th>result</th><td>0.99968</td></tr><tr><th>relative difference</th><td>0</td></tr><tr><th>states</th><td>2,781,085</td></tr></table>
 <p class="sub">storm-hybrid_sensor.5.max_success.log</p>
 <pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/storm --jani sensor.5.jani --janiproperty max_success --engine hybrid --sylvan:threads 4 --sylvan:maxmem 4096
 Benchmark:	sensor.5.max_success
@@ -37,9 +37,9 @@ Time limit:	900
 Output:
 Storm 1.14.0 (dev)
 
-Date: Wed Oct  7 17:19:50 2026
+Date: Fri Oct  9 10:49:16 2026
 Command line arguments: --jani sensor.5.jani --janiproperty max_success --engine hybrid '--sylvan:threads' 4 '--sylvan:maxmem' 4096
-Current working directory: /w0/tmp/slurm_tq429871.4853820/invocation-x23n6zp_
+Current working directory: /w0/tmp/slurm_tq429871.4889362/invocation-twyyzvka
 
 WARN  (threads.cpp:21): Detected thread limitation via Slurm (max. 4 threads.)
 Time for model input parsing: 0.003s.
@@ -55,7 +55,7 @@ WARN  (DdJaniModelBuilder.cpp:1513): Destination does not have any effect.
 WARN  (DdJaniModelBuilder.cpp:1513): Destination does not have any effect.
 WARN  (DdJaniModelBuilder.cpp:1513): Destination does not have any effect.
 WARN  (DdJaniModelBuilder.cpp:1513): Destination does not have any effect.
-Time for model construction: 0.808s.
+Time for model construction: 0.753s.
 
 -------------------------------------------------------------- 
 Model type: 	MDP (symbolic)
@@ -71,10 +71,10 @@ Labels: 	2
 
 Model checking property &quot;max_success&quot;: Pmax=? [F (x = 1)] ...
 Result (for initial states): 0.99968
-Time for model checking: 6.133s.
+Time for model checking: 6.560s.
 
 ----------------------------------------
-Wallclock time:	7.199
+Wallclock time:	7.439
 Return code:	0
 </pre>
 </body></html>

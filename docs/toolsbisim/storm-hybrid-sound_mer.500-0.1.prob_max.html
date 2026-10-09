@@ -27,7 +27,7 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">storm-hybrid-sound &middot; mdpmec &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>40576679065357342564786501944513789983351802016161218461813666947650735259816331932801753352081787059112825649144532288009369022667566625862674818139301337227583072440796745664086742434169644848308716991141961439923500544121562338730659924831539787122204277341496803526933470183854824314000767952627947758963889082049889849043753407324028149098340428789791425791099543200309471767985597437627817631770353753069558470697476265270140418689978356283243908878896029059184556215305862037592072083778958583481127669088771212861831233264262850288193229300961483761737332822241006813342925153458706861276043672867657940896340864273785882945366115433515581680567073569837996088596113826639993941004918382663/186652723700643775798017908944763433923418289274341604924342867959193382195155126890888065419576220471918997986064848524843097504270806478968304163440786151246882133227665030054799015197180366302220098159253022623648102502959186758161035654225083020762139675770885296223893962845732191844403532582088559691233889777429493305601265673690529485852365972433040558639057898721423570132733748213087961106143627264119968965208390820242645925973900438902921980842921733672248958590406965372923531585383209484013187277808347579164423673015609111325688854785077503425570959356311269280742975536353379971078413853087884801742394734940349972525338149459352507160785875246766796209385574911721050739288330078125</code></p>
 <p class="sub">reference result: <code>0.2173913043</code></p>
-<table class="meta"><tr><th>status</th><td>incorrect</td></tr><tr><th>wallclock time</th><td>4.986 s</td></tr><tr><th>result</th><td>0.2017391305</td></tr><tr><th>relative difference</th><td><span class="bad">0.072 &gt; 1e-3</span></td></tr><tr><th>states</th><td>1,109,142</td></tr></table>
+<table class="meta"><tr><th>status</th><td>incorrect</td></tr><tr><th>wallclock time</th><td>5.619 s</td></tr><tr><th>result</th><td>0.2017391305</td></tr><tr><th>relative difference</th><td><span class="bad">0.072 &gt; 1e-3</span></td></tr><tr><th>states</th><td>1,109,142</td></tr></table>
 <p class="sub">storm-hybrid-sound_mer.500-0.1.prob_max.log</p>
 <pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/storm --jani mer.jani --janiproperty prob_max --constants n=500,x=0.1 --engine hybrid --sound --sylvan:threads 4 --sylvan:maxmem 4096
 Benchmark:	mer.500-0.1.prob_max
@@ -37,15 +37,15 @@ Time limit:	900
 Output:
 Storm 1.14.0 (dev)
 
-Date: Wed Oct  7 17:23:41 2026
+Date: Fri Oct  9 10:52:05 2026
 Command line arguments: --jani mer.jani --janiproperty prob_max --constants 'n=500,x=0.1' --engine hybrid --sound '--sylvan:threads' 4 '--sylvan:maxmem' 4096
-Current working directory: /w0/tmp/slurm_tq429871.4854064/invocation-9e5lx1lg
+Current working directory: /w0/tmp/slurm_tq429871.4889509/invocation-z0mw_j1r
 
 WARN  (threads.cpp:21): Detected thread limitation via Slurm (max. 4 threads.)
 Time for model input parsing: 0.002s.
 
 Using Sylvan with 4 parallel threads.
-Time for model construction: 0.922s.
+Time for model construction: 1.068s.
 
 -------------------------------------------------------------- 
 Model type: 	MDP (symbolic)
@@ -62,10 +62,10 @@ Labels: 	3
 
 Model checking property &quot;prob_max&quot;: Pmax=? [F &quot;err_G&quot;] ...
 Result (for initial states): 0.2017391305
-Time for model checking: 3.970s.
+Time for model checking: 4.436s.
 
 ----------------------------------------
-Wallclock time:	4.986
+Wallclock time:	5.619
 Return code:	0
 </pre>
 </body></html>

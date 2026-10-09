@@ -25,7 +25,7 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 
 <h1>evade-mdp.10-0.7.prob_max</h1>
 <p class="sub">storm-sound-ddbisim &middot; mdpgridmec &middot; <a href="index.html">back to the table</a></p>
-<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>162.616 s</td></tr><tr><th>result</th><td>0.9986631707</td></tr><tr><th>states</th><td>1,611,899</td></tr><tr><th>states after preprocessing</th><td>794,793</td></tr></table>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>154.019 s</td></tr><tr><th>result</th><td>0.99866318</td></tr><tr><th>states</th><td>1,611,899</td></tr><tr><th>states after preprocessing</th><td>794,793</td></tr></table>
 <p class="sub">storm-sound-ddbisim_evade-mdp.10-0.7.prob_max.log</p>
 <pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/storm --jani evade-mdp.jani --janiproperty prob_max --constants N=10,slippery=0.7 --sound --bisimulation --engine dd-to-sparse --sylvan:threads 4 --sylvan:maxmem 4096
 Benchmark:	evade-mdp.10-0.7.prob_max
@@ -35,15 +35,15 @@ Time limit:	900
 Output:
 Storm 1.14.0 (dev)
 
-Date: Wed Oct  7 17:18:36 2026
+Date: Fri Oct  9 10:47:34 2026
 Command line arguments: --jani evade-mdp.jani --janiproperty prob_max --constants 'N=10,slippery=0.7' --sound --bisimulation --engine dd-to-sparse '--sylvan:threads' 4 '--sylvan:maxmem' 4096
-Current working directory: /w0/tmp/slurm_tq429871.4853689/invocation-mpxt2p_n
+Current working directory: /w0/tmp/slurm_tq429871.4889291/invocation-k1m2s1up
 
 WARN  (threads.cpp:21): Detected thread limitation via Slurm (max. 4 threads.)
-Time for model input parsing: 0.002s.
+Time for model input parsing: 0.001s.
 
 Using Sylvan with 4 parallel threads.
-Time for model construction: 0.548s.
+Time for model construction: 0.558s.
 
 -------------------------------------------------------------- 
 Model type: 	MDP (symbolic)
@@ -59,7 +59,7 @@ Labels: 	4
    * notbad
 -------------------------------------------------------------- 
 
-Time for model preprocessing: 105.082s.
+Time for model preprocessing: 97.561s.
 
 -------------------------------------------------------------- 
 Model type: 	MDP (sparse)
@@ -78,11 +78,11 @@ Choice Labels: 	none
 -------------------------------------------------------------- 
 
 Model checking property &quot;prob_max&quot;: Pmax=? [&quot;notbad&quot; U &quot;goal&quot;] ...
-Result (for initial states): 0.9986631707
-Time for model checking: 56.737s.
+Result (for initial states): 0.99866318
+Time for model checking: 54.862s.
 
 ----------------------------------------
-Wallclock time:	162.616
+Wallclock time:	154.019
 Return code:	0
 </pre>
 </body></html>

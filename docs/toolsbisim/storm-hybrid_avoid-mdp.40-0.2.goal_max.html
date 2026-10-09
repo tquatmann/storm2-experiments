@@ -27,7 +27,7 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">storm-hybrid &middot; mdpgridmec &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>207593292217354101801791165698914236543199149466244717912662620398157824/238418579101562535960004535106360707297156330707340840995311737060546875</code></p>
 <p class="sub">reference result: <code>0.8707093759</code></p>
-<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>54.181 s</td></tr><tr><th>result</th><td>0.8707093756</td></tr><tr><th>relative difference</th><td>3.68e-10</td></tr><tr><th>states</th><td>13,803,441</td></tr></table>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>54.788 s</td></tr><tr><th>result</th><td>0.8707093756</td></tr><tr><th>relative difference</th><td>3.68e-10</td></tr><tr><th>states</th><td>13,803,441</td></tr></table>
 <p class="sub">storm-hybrid_avoid-mdp.40-0.2.goal_max.log</p>
 <pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/storm --jani avoid-mdp.jani --janiproperty goal_max --constants N=40,slippery=0.2 --engine hybrid --sylvan:threads 4 --sylvan:maxmem 4096
 Benchmark:	avoid-mdp.40-0.2.goal_max
@@ -37,15 +37,15 @@ Time limit:	900
 Output:
 Storm 1.14.0 (dev)
 
-Date: Wed Oct  7 17:23:42 2026
+Date: Fri Oct  9 10:52:05 2026
 Command line arguments: --jani avoid-mdp.jani --janiproperty goal_max --constants 'N=40,slippery=0.2' --engine hybrid '--sylvan:threads' 4 '--sylvan:maxmem' 4096
-Current working directory: /w0/tmp/slurm_tq429871.4854063/invocation-exzzn3wf
+Current working directory: /w0/tmp/slurm_tq429871.4889508/invocation-s5hsgmlk
 
 WARN  (threads.cpp:21): Detected thread limitation via Slurm (max. 4 threads.)
 Time for model input parsing: 0.001s.
 
 Using Sylvan with 4 parallel threads.
-Time for model construction: 1.270s.
+Time for model construction: 1.436s.
 
 -------------------------------------------------------------- 
 Model type: 	MDP (symbolic)
@@ -63,10 +63,10 @@ Labels: 	4
 
 Model checking property &quot;goal_max&quot;: Pmax=? [&quot;notbad&quot; U &quot;goal&quot;] ...
 Result (for initial states): 0.8707093756
-Time for model checking: 52.793s.
+Time for model checking: 53.238s.
 
 ----------------------------------------
-Wallclock time:	54.181
+Wallclock time:	54.788
 Return code:	0
 </pre>
 </body></html>

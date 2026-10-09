@@ -27,7 +27,7 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">storm-sound-ddbisim &middot; mdpgrid &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>69361519025671746727049573861995588980274563293144165520237565541813099350419189860833278359751429195464570012568647896244385841813350065672781322612015750092655388486873975437900570737415092912284069616849030238071070929944317078277070842165556583602367457588341/228620085710960318381663764284439716858238387162104935839618176113948280945047137682814784170260465719384334476591047178926002085000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</code></p>
 <p class="sub">reference result: <code>303.3920612</code></p>
-<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>18.871 s</td></tr><tr><th>result</th><td>303.3920612</td></tr><tr><th>relative difference</th><td>1.43e-10</td></tr><tr><th>states</th><td>499,712</td></tr><tr><th>states after preprocessing</th><td>67,596</td></tr></table>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>16.637 s</td></tr><tr><th>result</th><td>303.3920612</td></tr><tr><th>relative difference</th><td>1.43e-10</td></tr><tr><th>states</th><td>499,712</td></tr><tr><th>states after preprocessing</th><td>67,596</td></tr></table>
 <p class="sub">storm-sound-ddbisim_airport-mdp.130-130.time_min.log</p>
 <pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/storm --jani airport-mdp.jani --janiproperty time_min --constants DMAX=130,PMAX=130 --sound --bisimulation --engine dd-to-sparse --sylvan:threads 4 --sylvan:maxmem 4096
 Benchmark:	airport-mdp.130-130.time_min
@@ -37,15 +37,15 @@ Time limit:	900
 Output:
 Storm 1.14.0 (dev)
 
-Date: Wed Oct  7 17:23:04 2026
+Date: Fri Oct  9 10:51:34 2026
 Command line arguments: --jani airport-mdp.jani --janiproperty time_min --constants 'DMAX=130,PMAX=130' --sound --bisimulation --engine dd-to-sparse '--sylvan:threads' 4 '--sylvan:maxmem' 4096
-Current working directory: /w0/tmp/slurm_tq429871.4854054/invocation-nck7x74l
+Current working directory: /w0/tmp/slurm_tq429871.4889497/invocation-554w5x1t
 
 WARN  (threads.cpp:21): Detected thread limitation via Slurm (max. 4 threads.)
-Time for model input parsing: 0.001s.
+Time for model input parsing: 0.002s.
 
 Using Sylvan with 4 parallel threads.
-Time for model construction: 1.215s.
+Time for model construction: 0.983s.
 
 -------------------------------------------------------------- 
 Model type: 	MDP (symbolic)
@@ -59,7 +59,7 @@ Labels: 	2
    * init -&gt; 1 state(s) (32 nodes)
 -------------------------------------------------------------- 
 
-Time for model preprocessing: 17.459s.
+Time for model preprocessing: 13.714s.
 
 -------------------------------------------------------------- 
 Model type: 	MDP (sparse)
@@ -76,10 +76,10 @@ Choice Labels: 	none
 
 Model checking property &quot;time_min&quot;: Tmin=? [F ((p = 0) &amp; (d = 0))] ...
 Result (for initial states): 303.3920612
-Time for model checking: 0.041s.
+Time for model checking: 0.038s.
 
 ----------------------------------------
-Wallclock time:	18.871
+Wallclock time:	16.637
 Return code:	0
 </pre>
 </body></html>

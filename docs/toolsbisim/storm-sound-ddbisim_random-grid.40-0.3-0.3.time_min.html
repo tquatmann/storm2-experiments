@@ -27,7 +27,7 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">storm-sound-ddbisim &middot; mdpgrid &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>107235199887310632150001809562008600/909543680129861140820205019889143</code></p>
 <p class="sub">reference result: <code>117.9</code></p>
-<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>1.898 s</td></tr><tr><th>result</th><td>117.9000574</td></tr><tr><th>relative difference</th><td>4.87e-07</td></tr><tr><th>states</th><td>64,000</td></tr><tr><th>states after preprocessing</th><td>11,480</td></tr></table>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>2.016 s</td></tr><tr><th>result</th><td>117.9000574</td></tr><tr><th>relative difference</th><td>4.87e-07</td></tr><tr><th>states</th><td>64,000</td></tr><tr><th>states after preprocessing</th><td>11,480</td></tr></table>
 <p class="sub">storm-sound-ddbisim_random-grid.40-0.3-0.3.time_min.log</p>
 <pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/storm --jani random-grid.jani --janiproperty time_min --constants N=40,pover=0.3,pstay=0.3 --sound --bisimulation --engine dd-to-sparse --sylvan:threads 4 --sylvan:maxmem 4096
 Benchmark:	random-grid.40-0.3-0.3.time_min
@@ -37,15 +37,15 @@ Time limit:	900
 Output:
 Storm 1.14.0 (dev)
 
-Date: Wed Oct  7 17:21:50 2026
+Date: Fri Oct  9 10:50:57 2026
 Command line arguments: --jani random-grid.jani --janiproperty time_min --constants 'N=40,pover=0.3,pstay=0.3' --sound --bisimulation --engine dd-to-sparse '--sylvan:threads' 4 '--sylvan:maxmem' 4096
-Current working directory: /w0/tmp/slurm_tq429871.4854017/invocation-jjk5g23q
+Current working directory: /w0/tmp/slurm_tq429871.4889459/invocation-ay24ds4i
 
 WARN  (threads.cpp:21): Detected thread limitation via Slurm (max. 4 threads.)
-Time for model input parsing: 0.001s.
+Time for model input parsing: 0.000s.
 
 Using Sylvan with 4 parallel threads.
-Time for model construction: 0.289s.
+Time for model construction: 0.332s.
 
 -------------------------------------------------------------- 
 Model type: 	MDP (symbolic)
@@ -59,7 +59,7 @@ Labels: 	2
    * init -&gt; 1 state(s) (22 nodes)
 -------------------------------------------------------------- 
 
-Time for model preprocessing: 1.468s.
+Time for model preprocessing: 1.557s.
 
 -------------------------------------------------------------- 
 Model type: 	MDP (sparse)
@@ -79,7 +79,7 @@ Result (for initial states): 117.9000574
 Time for model checking: 0.033s.
 
 ----------------------------------------
-Wallclock time:	1.898
+Wallclock time:	2.016
 Return code:	0
 </pre>
 </body></html>

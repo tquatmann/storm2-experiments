@@ -27,9 +27,9 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">storm-sound-ddbisim &middot; mdpgrid &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>59187092731019969158966491296086814245605832244653673773865385174244821224451213302450900829430849903863734092205657735887689585696488062507018497164935990129853863243636548718917293874008086558259658013236681490462015812707682410949937400777248084495087475670517930380703924360630259767540835790005462282463952189013709734216842971006730406602720647747011338972898443959599325025588252009773549463398452420116416675383536168452762593064574864027964925284859069161142260239800723511771849545116316469432088061426604549381407950974290974928510606200647157804284617008434958784776180845020637628861081166163384634354948178231302613318986010590012689979441826295804102730632410614511638846024175525718872204217/602074626036791513333214899016330463287427374181254519619835948388604907336024655021578542147828061324099209613055831927186491794009200926670633101900919792530750913152720569774300322754696513641958563171300299173776919147837998461647277885780239875103753384940314193595130398189039762527852197614973989715591925769202875505179457354623284641088468246971087429020769151613307805535323384434557160005970219572141877798509888302485121738638800571834358515093855017556824789481758540478165192145224223568323973329146795583056417418435177864705212449912185356408151797753621363213243722761115593265927057072658660423690538301132468392759274498082010720732399883248063114826376806400000000000000000000000000000</code></p>
 <p class="sub">reference result: <code>98.30524352</code></p>
-<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>106.688 s</td></tr><tr><th>result</th><td>98.30527496</td></tr><tr><th>relative difference</th><td>3.2e-07</td></tr><tr><th>states</th><td>1,619,941</td></tr><tr><th>states after preprocessing</th><td>1,614,607</td></tr></table>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>99.769 s</td></tr><tr><th>result</th><td>98.30527496</td></tr><tr><th>relative difference</th><td>3.2e-07</td></tr><tr><th>states</th><td>1,619,941</td></tr><tr><th>states after preprocessing</th><td>1,614,607</td></tr></table>
 <p class="sub">storm-sound-ddbisim_intercept-mdp.30-0.0.time_min.log</p>
-<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/storm --jani intercept-mdp.jani --janiproperty time_min --constants N=30,slippery=0.0 --sound --bisimulation --engine dd-to-sparse --sylvan:threads 4 --sylvan:maxmem 4096
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/storm --jani intercept-mdp.jani --janiproperty time_min --constants N=30,slippery=0.0 --sound --bisimulation --engine dd-to-sparse --sylvan:threads 4 --sylvan:maxmem 8192
 Benchmark:	intercept-mdp.30-0.0.time_min
 Configuration:	storm-sound-ddbisim
 Repetition:	1
@@ -37,19 +37,19 @@ Time limit:	900
 Output:
 Storm 1.14.0 (dev)
 
-Date: Fri Oct  9 11:49:21 2026
-Command line arguments: --jani intercept-mdp.jani --janiproperty time_min --constants 'N=30,slippery=0.0' --sound --bisimulation --engine dd-to-sparse '--sylvan:threads' 4 '--sylvan:maxmem' 4096
-Current working directory: /w0/tmp/slurm_tq429871.4890473/invocation-wyvox1ug
+Date: Sat Oct 10 09:18:29 2026
+Command line arguments: --jani intercept-mdp.jani --janiproperty time_min --constants 'N=30,slippery=0.0' --sound --bisimulation --engine dd-to-sparse '--sylvan:threads' 4 '--sylvan:maxmem' 8192
+Current working directory: /w0/tmp/slurm_tq429871.4903685/invocation-tlffpmr0
 
 WARN  (threads.cpp:21): Detected thread limitation via Slurm (max. 4 threads.)
-Time for model input parsing: 0.001s.
+Time for model input parsing: 0.002s.
 
 Using Sylvan with 4 parallel threads.
 WARN  (DdJaniModelBuilder.cpp:1513): Destination does not have any effect.
 WARN  (DdJaniModelBuilder.cpp:1513): Destination does not have any effect.
 WARN  (DdJaniModelBuilder.cpp:1513): Destination does not have any effect.
 WARN  (DdJaniModelBuilder.cpp:1513): Destination does not have any effect.
-Time for model construction: 0.606s.
+Time for model construction: 1.141s.
 
 -------------------------------------------------------------- 
 Model type: 	MDP (symbolic)
@@ -64,7 +64,7 @@ Labels: 	3
    * goal
 -------------------------------------------------------------- 
 
-Time for model preprocessing: 104.486s.
+Time for model preprocessing: 96.998s.
 
 -------------------------------------------------------------- 
 Model type: 	MDP (sparse)
@@ -82,10 +82,10 @@ Choice Labels: 	none
 
 Model checking property &quot;time_min&quot;: Tmin=? [F &quot;goal&quot;] ...
 Result (for initial states): 98.30527496
-Time for model checking: 1.439s.
+Time for model checking: 1.335s.
 
 ----------------------------------------
-Wallclock time:	106.688
+Wallclock time:	99.769
 Return code:	0
 </pre>
 </body></html>

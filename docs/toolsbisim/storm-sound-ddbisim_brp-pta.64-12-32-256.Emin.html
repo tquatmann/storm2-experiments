@@ -25,9 +25,9 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 
 <h1>brp-pta.64-12-32-256.Emin</h1>
 <p class="sub">storm-sound-ddbisim &middot; ptaqvbs &middot; <a href="index.html">back to the table</a></p>
-<table class="meta"><tr><th>status</th><td>no-result</td></tr><tr><th>wallclock time</th><td>0.026 s</td></tr></table>
+<table class="meta"><tr><th>status</th><td>no-result</td></tr><tr><th>wallclock time</th><td>0.027 s</td></tr></table>
 <p class="sub">storm-sound-ddbisim_brp-pta.64-12-32-256.Emin.log</p>
-<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/storm --jani brp-pta-mdp.jani --janiproperty Emin --constants N=64,MAX=12,TD=32,TIME_BOUND=256 --sound --bisimulation --engine dd-to-sparse --sylvan:threads 4 --sylvan:maxmem 4096
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/storm --jani brp-pta-mdp.jani --janiproperty Emin --constants N=64,MAX=12,TD=32,TIME_BOUND=256 --sound --bisimulation --engine dd-to-sparse --sylvan:threads 4 --sylvan:maxmem 8192
 Benchmark:	brp-pta.64-12-32-256.Emin
 Configuration:	storm-sound-ddbisim
 Repetition:	1
@@ -35,9 +35,9 @@ Time limit:	900
 Output:
 Storm 1.14.0 (dev)
 
-Date: Fri Oct  9 11:49:55 2026
-Command line arguments: --jani brp-pta-mdp.jani --janiproperty Emin --constants 'N=64,MAX=12,TD=32,TIME_BOUND=256' --sound --bisimulation --engine dd-to-sparse '--sylvan:threads' 4 '--sylvan:maxmem' 4096
-Current working directory: /w0/tmp/slurm_tq429871.4890493/invocation-bh2o5wrj
+Date: Sat Oct 10 09:20:10 2026
+Command line arguments: --jani brp-pta-mdp.jani --janiproperty Emin --constants 'N=64,MAX=12,TD=32,TIME_BOUND=256' --sound --bisimulation --engine dd-to-sparse '--sylvan:threads' 4 '--sylvan:maxmem' 8192
+Current working directory: /w0/tmp/slurm_tq429871.4903756/invocation-wku38j1m
 
 WARN  (threads.cpp:21): Detected thread limitation via Slurm (max. 4 threads.)
 Time for model input parsing: 0.002s.
@@ -48,7 +48,7 @@ ERROR (DdJaniModelBuilder.cpp:2415): The symbolic JANI model builder currently d
 ERROR (storm-cli.cpp:49): An exception caused Storm to terminate. The message of the exception is: WrongFormatException: The symbolic JANI model builder currently does not support assignment levels.
 
 ----------------------------------------
-Wallclock time:	0.026
+Wallclock time:	0.027
 Return code:	1
 </pre>
 </body></html>

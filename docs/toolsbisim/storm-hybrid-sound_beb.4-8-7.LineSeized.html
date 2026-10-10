@@ -27,7 +27,7 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">storm-hybrid-sound &middot; mdpqvbs &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>1180456441149525318505/1180591620717411303424</code></p>
 <p class="sub">reference result: <code>0.9998854985</code></p>
-<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>15.516 s</td></tr><tr><th>result</th><td>0.9998854985</td></tr><tr><th>relative difference</th><td>4.78e-11</td></tr><tr><th>states</th><td>20,186,888</td></tr></table>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>16.926 s</td></tr><tr><th>result</th><td>0.9998854985</td></tr><tr><th>relative difference</th><td>4.78e-11</td></tr><tr><th>states</th><td>20,186,888</td></tr></table>
 <p class="sub">storm-hybrid-sound_beb.4-8-7.LineSeized.log</p>
 <pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/storm --jani beb.4-8.jani --janiproperty LineSeized --constants N=7 --engine hybrid --sound --sylvan:threads 4 --sylvan:maxmem 4096
 Benchmark:	beb.4-8-7.LineSeized
@@ -37,15 +37,15 @@ Time limit:	900
 Output:
 Storm 1.14.0 (dev)
 
-Date: Fri Oct  9 11:51:02 2026
+Date: Sat Oct 10 09:22:58 2026
 Command line arguments: --jani beb.4-8.jani --janiproperty LineSeized --constants N=7 --engine hybrid --sound '--sylvan:threads' 4 '--sylvan:maxmem' 4096
-Current working directory: /w0/tmp/slurm_tq429871.4890536/invocation-bzimaszm
+Current working directory: /w0/tmp/slurm_tq429871.4903865/invocation-51uefttf
 
 WARN  (threads.cpp:21): Detected thread limitation via Slurm (max. 4 threads.)
-Time for model input parsing: 0.003s.
+Time for model input parsing: 0.004s.
 
 Using Sylvan with 4 parallel threads.
-Time for model construction: 0.757s.
+Time for model construction: 0.747s.
 
 -------------------------------------------------------------- 
 Model type: 	MDP (symbolic)
@@ -61,10 +61,10 @@ Labels: 	2
 
 Model checking property &quot;LineSeized&quot;: Pmax=? [F (line_seized)] ...
 Result (for initial states): 0.9998854985
-Time for model checking: 14.647s.
+Time for model checking: 16.065s.
 
 ----------------------------------------
-Wallclock time:	15.516
+Wallclock time:	16.926
 Return code:	0
 </pre>
 </body></html>

@@ -25,9 +25,9 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 
 <h1>dpm.6-8-5.PminQueue1Full</h1>
 <p class="sub">storm-sound-ddbisim &middot; maqvbs &middot; <a href="index.html">back to the table</a></p>
-<table class="meta"><tr><th>status</th><td>no-result</td></tr><tr><th>wallclock time</th><td>223.880 s</td></tr><tr><th>states</th><td>42,594,012</td></tr></table>
+<table class="meta"><tr><th>status</th><td>timeout</td></tr><tr><th>wallclock time</th><td>903.190 s</td></tr><tr><th>states</th><td>42,594,012</td></tr></table>
 <p class="sub">storm-sound-ddbisim_dpm.6-8-5.PminQueue1Full.log</p>
-<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/storm --jani dpm.jani --janiproperty PminQueue1Full --constants N=6,C=8,TIME_BOUND=5 --sound --bisimulation --engine dd-to-sparse --sylvan:threads 4 --sylvan:maxmem 4096
+<pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/storm --jani dpm.jani --janiproperty PminQueue1Full --constants N=6,C=8,TIME_BOUND=5 --sound --bisimulation --engine dd-to-sparse --sylvan:threads 4 --sylvan:maxmem 8192
 Benchmark:	dpm.6-8-5.PminQueue1Full
 Configuration:	storm-sound-ddbisim
 Repetition:	1
@@ -35,9 +35,9 @@ Time limit:	900
 Output:
 Storm 1.14.0 (dev)
 
-Date: Fri Oct  9 11:46:31 2026
-Command line arguments: --jani dpm.jani --janiproperty PminQueue1Full --constants 'N=6,C=8,TIME_BOUND=5' --sound --bisimulation --engine dd-to-sparse '--sylvan:threads' 4 '--sylvan:maxmem' 4096
-Current working directory: /w0/tmp/slurm_tq429871.4890334/invocation-edynl23c
+Date: Sat Oct 10 09:24:39 2026
+Command line arguments: --jani dpm.jani --janiproperty PminQueue1Full --constants 'N=6,C=8,TIME_BOUND=5' --sound --bisimulation --engine dd-to-sparse '--sylvan:threads' 4 '--sylvan:maxmem' 8192
+Current working directory: /w0/tmp/slurm_tq429871.4903922/invocation-fi21usqp
 
 WARN  (threads.cpp:21): Detected thread limitation via Slurm (max. 4 threads.)
 Time for model input parsing: 0.002s.
@@ -59,10 +59,8 @@ WARN  (DdJaniModelBuilder.cpp:1505): The guard '(((6 &gt;= 7) &amp; (items7 &gt;
 WARN  (DdJaniModelBuilder.cpp:1505): The guard '(((6 &gt;= 8) &amp; (items8 &gt; 0)) &amp; (ServiceProvider_pmode = 1))' is unsatisfiable.
 WARN  (DdJaniModelBuilder.cpp:1505): The guard '(((6 &gt;= 9) &amp; (items9 &gt; 0)) &amp; (ServiceProvider_pmode = 1))' is unsatisfiable.
 WARN  (DdJaniModelBuilder.cpp:1505): The guard '(((6 &gt;= 10) &amp; (items10 &gt; 0)) &amp; (ServiceProvider_pmode = 1))' is unsatisfiable.
-Time for model construction: 0.661s.
+Time for model construction: 0.745s.
 
-BDD Unique table full, 67108717 of 67108864 buckets filled!
-BDD Unique table full, 67108718 of 67108864 buckets filled!
 -------------------------------------------------------------- 
 Model type: 	Markov Automaton (symbolic)
 States: 	42594012 (404 nodes)
@@ -74,9 +72,12 @@ Labels: 	2
    * deadlock -&gt; 0 state(s) (1 nodes)
    * init -&gt; 1 state(s) (55 nodes)
 -------------------------------------------------------------- 
+ERROR: The program received signal 15 and will be aborted in 3s.
+Received signal 14
 
 ----------------------------------------
-Wallclock time:	223.880
-Return code:	1
+Wallclock time:	903.190
+Return code:	None
+Computation aborted after 903.190 seconds since the time limit of 900 seconds was exceeded.
 </pre>
 </body></html>

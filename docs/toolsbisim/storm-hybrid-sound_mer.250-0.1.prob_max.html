@@ -27,7 +27,7 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">storm-hybrid-sound &middot; mdpmec &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>1328233201521567253066077997049398999908435974161881158214614743165778968054226285957329232655658794894293544649387159632746892794697514769450057875739529517230749748058162109661754603834579079869920221159969643255614636256494370659289121270740052189236992213573516281827008443725868599037759882837135959461592322307209979859225441749798468479956087/6109872726999209364103958786427235399578805481144653327787227818562583253049440915403714470216030456513750305387180934310635706855608567939470266228401835779261448841067545704444071177639063767401633017335860358975827326779874105032729957845404240070490164182438174896404239202989274422186806159710153565673036724081867987479199655354022979736328125</code></p>
 <p class="sub">reference result: <code>0.2173913043</code></p>
-<table class="meta"><tr><th>status</th><td>incorrect</td></tr><tr><th>wallclock time</th><td>3.420 s</td></tr><tr><th>result</th><td>0.02173913044</td></tr><tr><th>relative difference</th><td><span class="bad">0.9 &gt; 1e-3</span></td></tr><tr><th>states</th><td>555,642</td></tr></table>
+<table class="meta"><tr><th>status</th><td>incorrect</td></tr><tr><th>wallclock time</th><td>3.177 s</td></tr><tr><th>result</th><td>0.02173913044</td></tr><tr><th>relative difference</th><td><span class="bad">0.9 &gt; 1e-3</span></td></tr><tr><th>states</th><td>555,642</td></tr></table>
 <p class="sub">storm-hybrid-sound_mer.250-0.1.prob_max.log</p>
 <pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/storm --jani mer.jani --janiproperty prob_max --constants n=250,x=0.1 --engine hybrid --sound --sylvan:threads 4 --sylvan:maxmem 4096
 Benchmark:	mer.250-0.1.prob_max
@@ -37,15 +37,15 @@ Time limit:	900
 Output:
 Storm 1.14.0 (dev)
 
-Date: Fri Oct  9 11:45:58 2026
+Date: Sat Oct 10 09:24:39 2026
 Command line arguments: --jani mer.jani --janiproperty prob_max --constants 'n=250,x=0.1' --engine hybrid --sound '--sylvan:threads' 4 '--sylvan:maxmem' 4096
-Current working directory: /w0/tmp/slurm_tq429871.4890321/invocation-y46hmu_9
+Current working directory: /w0/tmp/slurm_tq429871.4903929/invocation-1fisejuc
 
 WARN  (threads.cpp:21): Detected thread limitation via Slurm (max. 4 threads.)
-Time for model input parsing: 0.003s.
+Time for model input parsing: 0.002s.
 
 Using Sylvan with 4 parallel threads.
-Time for model construction: 0.739s.
+Time for model construction: 0.704s.
 
 -------------------------------------------------------------- 
 Model type: 	MDP (symbolic)
@@ -62,10 +62,10 @@ Labels: 	3
 
 Model checking property &quot;prob_max&quot;: Pmax=? [F &quot;err_G&quot;] ...
 Result (for initial states): 0.02173913044
-Time for model checking: 2.295s.
+Time for model checking: 2.360s.
 
 ----------------------------------------
-Wallclock time:	3.420
+Wallclock time:	3.177
 Return code:	0
 </pre>
 </body></html>

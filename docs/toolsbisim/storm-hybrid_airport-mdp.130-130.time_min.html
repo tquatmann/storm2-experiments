@@ -27,7 +27,7 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">storm-hybrid &middot; mdpgrid &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>69361519025671746727049573861995588980274563293144165520237565541813099350419189860833278359751429195464570012568647896244385841813350065672781322612015750092655388486873975437900570737415092912284069616849030238071070929944317078277070842165556583602367457588341/228620085710960318381663764284439716858238387162104935839618176113948280945047137682814784170260465719384334476591047178926002085000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</code></p>
 <p class="sub">reference result: <code>303.3920612</code></p>
-<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>2.826 s</td></tr><tr><th>result</th><td>303.3920656</td></tr><tr><th>relative difference</th><td>1.46e-08</td></tr><tr><th>states</th><td>499,712</td></tr></table>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>2.759 s</td></tr><tr><th>result</th><td>303.3920656</td></tr><tr><th>relative difference</th><td>1.46e-08</td></tr><tr><th>states</th><td>499,712</td></tr></table>
 <p class="sub">storm-hybrid_airport-mdp.130-130.time_min.log</p>
 <pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/storm --jani airport-mdp.jani --janiproperty time_min --constants DMAX=130,PMAX=130 --engine hybrid --sylvan:threads 4 --sylvan:maxmem 4096
 Benchmark:	airport-mdp.130-130.time_min
@@ -37,15 +37,15 @@ Time limit:	900
 Output:
 Storm 1.14.0 (dev)
 
-Date: Fri Oct  9 10:47:32 2026
+Date: Fri Oct  9 11:45:57 2026
 Command line arguments: --jani airport-mdp.jani --janiproperty time_min --constants 'DMAX=130,PMAX=130' --engine hybrid '--sylvan:threads' 4 '--sylvan:maxmem' 4096
-Current working directory: /w0/tmp/slurm_tq429871.4889285/invocation-k38lk9yp
+Current working directory: /w0/tmp/slurm_tq429871.4890313/invocation-wun9d_lm
 
 WARN  (threads.cpp:21): Detected thread limitation via Slurm (max. 4 threads.)
 Time for model input parsing: 0.001s.
 
 Using Sylvan with 4 parallel threads.
-Time for model construction: 1.191s.
+Time for model construction: 1.115s.
 
 -------------------------------------------------------------- 
 Model type: 	MDP (symbolic)
@@ -61,10 +61,10 @@ Labels: 	2
 
 Model checking property &quot;time_min&quot;: Tmin=? [F ((p = 0) &amp; (d = 0))] ...
 Result (for initial states): 303.3920656
-Time for model checking: 1.502s.
+Time for model checking: 1.516s.
 
 ----------------------------------------
-Wallclock time:	2.826
+Wallclock time:	2.759
 Return code:	0
 </pre>
 </body></html>

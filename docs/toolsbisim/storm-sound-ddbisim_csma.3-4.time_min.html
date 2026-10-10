@@ -27,7 +27,7 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">storm-sound-ddbisim &middot; mdpqvbs &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>2509374424415801914177659161450455318827631746556399/23384026197294446691258957323460528314494920687616</code></p>
 <p class="sub">reference result: <code>107.3114785</code></p>
-<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>6.679 s</td></tr><tr><th>result</th><td>107.3114785</td></tr><tr><th>relative difference</th><td>3.93e-11</td></tr><tr><th>states</th><td>1,460,287</td></tr><tr><th>states after preprocessing</th><td>30,078</td></tr></table>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>7.948 s</td></tr><tr><th>result</th><td>107.3114785</td></tr><tr><th>relative difference</th><td>3.93e-11</td></tr><tr><th>states</th><td>1,460,287</td></tr><tr><th>states after preprocessing</th><td>30,078</td></tr></table>
 <p class="sub">storm-sound-ddbisim_csma.3-4.time_min.log</p>
 <pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/storm --jani csma.3-4.jani --janiproperty time_min --sound --bisimulation --engine dd-to-sparse --sylvan:threads 4 --sylvan:maxmem 4096
 Benchmark:	csma.3-4.time_min
@@ -37,15 +37,15 @@ Time limit:	900
 Output:
 Storm 1.14.0 (dev)
 
-Date: Fri Oct  9 10:53:14 2026
+Date: Fri Oct  9 11:51:05 2026
 Command line arguments: --jani csma.3-4.jani --janiproperty time_min --sound --bisimulation --engine dd-to-sparse '--sylvan:threads' 4 '--sylvan:maxmem' 4096
-Current working directory: /w0/tmp/slurm_tq429871.4889598/invocation-_vuguqv5
+Current working directory: /w0/tmp/slurm_tq429871.4890554/invocation-o8wztozt
 
 WARN  (threads.cpp:21): Detected thread limitation via Slurm (max. 4 threads.)
 Time for model input parsing: 0.003s.
 
 Using Sylvan with 4 parallel threads.
-Time for model construction: 0.857s.
+Time for model construction: 0.715s.
 
 -------------------------------------------------------------- 
 Model type: 	MDP (symbolic)
@@ -60,7 +60,7 @@ Labels: 	3
    * all_delivered
 -------------------------------------------------------------- 
 
-Time for model preprocessing: 5.690s.
+Time for model preprocessing: 5.120s.
 
 -------------------------------------------------------------- 
 Model type: 	MDP (sparse)
@@ -78,10 +78,10 @@ Choice Labels: 	none
 
 Model checking property &quot;time_min&quot;: R{&quot;time&quot;}min=? [F &quot;all_delivered&quot;] ...
 Result (for initial states): 107.3114785
-Time for model checking: 0.012s.
+Time for model checking: 0.010s.
 
 ----------------------------------------
-Wallclock time:	6.679
+Wallclock time:	7.948
 Return code:	0
 </pre>
 </body></html>

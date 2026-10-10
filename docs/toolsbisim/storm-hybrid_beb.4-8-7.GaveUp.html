@@ -27,7 +27,7 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">storm-hybrid &middot; mdpqvbs &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>135179567885984919/1180591620717411303424</code></p>
 <p class="sub">reference result: <code>0.0001145015478</code></p>
-<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>12.120 s</td></tr><tr><th>result</th><td>0.0001145015478</td></tr><tr><th>relative difference</th><td>4.34e-11</td></tr><tr><th>states</th><td>20,175,095</td></tr></table>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>12.140 s</td></tr><tr><th>result</th><td>0.0001145015478</td></tr><tr><th>relative difference</th><td>4.34e-11</td></tr><tr><th>states</th><td>20,175,095</td></tr></table>
 <p class="sub">storm-hybrid_beb.4-8-7.GaveUp.log</p>
 <pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/storm --jani beb.4-8.jani --janiproperty GaveUp --constants N=7 --engine hybrid --sylvan:threads 4 --sylvan:maxmem 4096
 Benchmark:	beb.4-8-7.GaveUp
@@ -37,15 +37,15 @@ Time limit:	900
 Output:
 Storm 1.14.0 (dev)
 
-Date: Fri Oct  9 10:50:23 2026
+Date: Fri Oct  9 11:48:46 2026
 Command line arguments: --jani beb.4-8.jani --janiproperty GaveUp --constants N=7 --engine hybrid '--sylvan:threads' 4 '--sylvan:maxmem' 4096
-Current working directory: /w0/tmp/slurm_tq429871.4889415/invocation-ciz14zno
+Current working directory: /w0/tmp/slurm_tq429871.4890436/invocation-lyf9mwf_
 
 WARN  (threads.cpp:21): Detected thread limitation via Slurm (max. 4 threads.)
 Time for model input parsing: 0.003s.
 
 Using Sylvan with 4 parallel threads.
-Time for model construction: 0.833s.
+Time for model construction: 0.800s.
 
 -------------------------------------------------------------- 
 Model type: 	MDP (symbolic)
@@ -61,10 +61,10 @@ Labels: 	2
 
 Model checking property &quot;GaveUp&quot;: Pmax=? [F (gave_up)] ...
 Result (for initial states): 0.0001145015478
-Time for model checking: 11.184s.
+Time for model checking: 11.212s.
 
 ----------------------------------------
-Wallclock time:	12.120
+Wallclock time:	12.140
 Return code:	0
 </pre>
 </body></html>

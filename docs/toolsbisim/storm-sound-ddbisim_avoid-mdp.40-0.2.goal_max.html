@@ -27,7 +27,7 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">storm-sound-ddbisim &middot; mdpgridmec &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>207593292217354101801791165698914236543199149466244717912662620398157824/238418579101562535960004535106360707297156330707340840995311737060546875</code></p>
 <p class="sub">reference result: <code>0.8707093759</code></p>
-<table class="meta"><tr><th>status</th><td>timeout</td></tr><tr><th>wallclock time</th><td>903.148 s</td></tr><tr><th>states</th><td>13,803,441</td></tr></table>
+<table class="meta"><tr><th>status</th><td>timeout</td></tr><tr><th>wallclock time</th><td>903.143 s</td></tr><tr><th>states</th><td>13,803,441</td></tr></table>
 <p class="sub">storm-sound-ddbisim_avoid-mdp.40-0.2.goal_max.log</p>
 <pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/storm --jani avoid-mdp.jani --janiproperty goal_max --constants N=40,slippery=0.2 --sound --bisimulation --engine dd-to-sparse --sylvan:threads 4 --sylvan:maxmem 4096
 Benchmark:	avoid-mdp.40-0.2.goal_max
@@ -37,15 +37,15 @@ Time limit:	900
 Output:
 Storm 1.14.0 (dev)
 
-Date: Fri Oct  9 10:48:43 2026
+Date: Fri Oct  9 11:47:06 2026
 Command line arguments: --jani avoid-mdp.jani --janiproperty goal_max --constants 'N=40,slippery=0.2' --sound --bisimulation --engine dd-to-sparse '--sylvan:threads' 4 '--sylvan:maxmem' 4096
-Current working directory: /w0/tmp/slurm_tq429871.4889343/invocation-_e8da_xw
+Current working directory: /w0/tmp/slurm_tq429871.4890361/invocation-mhttwe4a
 
 WARN  (threads.cpp:21): Detected thread limitation via Slurm (max. 4 threads.)
 Time for model input parsing: 0.001s.
 
 Using Sylvan with 4 parallel threads.
-Time for model construction: 1.415s.
+Time for model construction: 1.374s.
 
 -------------------------------------------------------------- 
 Model type: 	MDP (symbolic)
@@ -64,8 +64,8 @@ ERROR: The program received signal 15 and will be aborted in 3s.
 Received signal 14
 
 ----------------------------------------
-Wallclock time:	903.148
+Wallclock time:	903.143
 Return code:	None
-Computation aborted after 903.148 seconds since the time limit of 900 seconds was exceeded.
+Computation aborted after 903.143 seconds since the time limit of 900 seconds was exceeded.
 </pre>
 </body></html>

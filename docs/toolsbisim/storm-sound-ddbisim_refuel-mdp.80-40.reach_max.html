@@ -27,7 +27,7 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 <p class="sub">storm-sound-ddbisim &middot; mdpgridmec &middot; <a href="index.html">back to the table</a></p>
 <p class="sub">reference result: <code>3653380653778819704498802052281330342937979832521752121999684138390592205782461/3681807200483612150698388711959446722028150995086913681600000000000000000000000</code></p>
 <p class="sub">reference result: <code>0.9922791865</code></p>
-<table class="meta"><tr><th>status</th><td>timeout</td></tr><tr><th>wallclock time</th><td>900.107 s</td></tr><tr><th>states</th><td>161,070</td></tr><tr><th>states after preprocessing</th><td>32,166</td></tr></table>
+<table class="meta"><tr><th>status</th><td>timeout</td></tr><tr><th>wallclock time</th><td>900.124 s</td></tr><tr><th>states</th><td>161,070</td></tr><tr><th>states after preprocessing</th><td>32,166</td></tr></table>
 <p class="sub">storm-sound-ddbisim_refuel-mdp.80-40.reach_max.log</p>
 <pre>Command:	/rwthfs/rz/cluster/home/tq429871/git/storm2-experiments/comparison_tools_bisim/bin/storm --jani refuel-mdp.jani --janiproperty reach_max --constants N=80,ENERGY=40 --sound --bisimulation --engine dd-to-sparse --sylvan:threads 4 --sylvan:maxmem 4096
 Benchmark:	refuel-mdp.80-40.reach_max
@@ -37,15 +37,15 @@ Time limit:	900
 Output:
 Storm 1.14.0 (dev)
 
-Date: Fri Oct  9 10:53:13 2026
+Date: Fri Oct  9 11:51:05 2026
 Command line arguments: --jani refuel-mdp.jani --janiproperty reach_max --constants 'N=80,ENERGY=40' --sound --bisimulation --engine dd-to-sparse '--sylvan:threads' 4 '--sylvan:maxmem' 4096
-Current working directory: /w0/tmp/slurm_tq429871.4889595/invocation-_xq7jpqg
+Current working directory: /w0/tmp/slurm_tq429871.4890551/invocation-pcfqtuns
 
 WARN  (threads.cpp:21): Detected thread limitation via Slurm (max. 4 threads.)
-Time for model input parsing: 0.001s.
+Time for model input parsing: 0.002s.
 
 Using Sylvan with 4 parallel threads.
-Time for model construction: 0.487s.
+Time for model construction: 0.563s.
 
 -------------------------------------------------------------- 
 Model type: 	MDP (symbolic)
@@ -60,7 +60,7 @@ Labels: 	3
    * goal
 -------------------------------------------------------------- 
 
-Time for model preprocessing: 1.170s.
+Time for model preprocessing: 1.199s.
 
 -------------------------------------------------------------- 
 Model type: 	MDP (sparse)
@@ -78,14 +78,14 @@ Choice Labels: 	none
 
 Model checking property &quot;reach_max&quot;: Pmax=? [F &quot;goal&quot;] ...
 ERROR: The program received signal 15 and will be aborted in 3s.
-WARN  (AbstractEquationSolver.cpp:371): Iterative solver was aborted after 6244183 iterations.
+WARN  (AbstractEquationSolver.cpp:371): Iterative solver was aborted after 5722812 iterations.
 WARN  (TopologicalMinMaxLinearEquationSolver.cpp:143): Topological solver aborted after analyzing 1024/1024 SCCs.
-Result till abort (for initial states): 0.9832485076
-Time for model checking: 898.338s.
+Result till abort (for initial states): 0.9829553716
+Time for model checking: 896.253s.
 
 ----------------------------------------
-Wallclock time:	900.107
+Wallclock time:	900.124
 Return code:	None
-Computation aborted after 900.107 seconds since the time limit of 900 seconds was exceeded.
+Computation aborted after 900.124 seconds since the time limit of 900 seconds was exceeded.
 </pre>
 </body></html>
